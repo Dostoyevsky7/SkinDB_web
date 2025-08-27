@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Excel Data Browser</title>
+    <style>
+        table { width:100%; border-collapse: collapse; }
+        th, td { border:1px solid #ccc; padding:4px; }
+        .pager { margin:8px 0; }
+        .pager button { margin-right:4px; }
+    </style>
+</head>
+<body>
+<h2>Browse Data from IntegrateTable.xlsx</h2>
+<div id="grid"></div>
+<div class="pager" id="pager"></div>
+
+<!-- SheetJS for parsing Excel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+    let allData = [], headers = [];
+    let page = 1, pageSize = 20;
+
+    async function loadAndRender() {
+        // 1) Fetch the Excel file from server
+        const response = await fetch('BrowseShow.xlsx');
+        if (!response.ok) {
+            document.getElementById('grid').innerText = 'Failed to load Excel file';
+            return;
+        }
+        const buffer = await response.arrayBuffer();
+
+        // 2) Parse it
+        const workbook = XLSX.read(buffer, { type: 'array' });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        headers = rows[0];
+        allData = rows.slice(1).map(r => {
+            const obj = {};
+            headers.forEach((h,i)=> obj[h] = r[i]);
+            return obj;
+        });
+
+        // 3) Render first page
+        render();
+    }
+
+    function render() {
+        const start = (page - 1) * pageSize;
+        const slice = allData.slice(start, start + pageSize);
+
+        // Build table
+        let html = '<table><thead><tr>';
+        headers.forEach(h => html += `<th>${h}</th>`);
+        html += '<th>Details</th></tr></thead><tbody>';
+        slice.forEach(row => {
+            html += '<tr>';
+            headers.forEach(h => html += `<td>${row[h] || ''}</td>`);
+            html += `<td>
+          <a href="details.html?said=${encodeURIComponent(row.SAID)}">
+            View
+          </a>
+        </td>`;
+            html += '</tr>';
+        });
+        html += '</tbody></table>';
+        document.getElementById('grid').innerHTML = html;
+
+        // Build pager
+        const totalPages = Math.ceil(allData.length / pageSize);
+        document.getElementById('pager').innerHTML =
+            `<button ${page === 1 ? 'disabled' : ''} onclick="goPage(${page - 1})">
+           Previous
+         </button>
+         Page ${page} of ${totalPages}
+         <button ${page === totalPages ? 'disabled' : ''} onclick="goPage(${page + 1})">
+           Next
+         </button>`;
+    }
+
+    window.goPage = p => {
+        const totalPages = Math.ceil(allData.length / pageSize);
+        if (p < 1 || p > totalPages) return;
+        page = p;
+        render();
+    };
+
+    window.addEventListener('DOMContentLoaded', loadAndRender);
+</script>
+</body>
+</html>
