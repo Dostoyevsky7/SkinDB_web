@@ -1,0 +1,3227 @@
+{
+  "SAID011": {
+    "GSE": "GSE146122",
+    "GSM": "GSM4378540",
+    "csv_path": "SkinDB_New/10X/mouse/GSE146122/GSM4378540/DEG_results/GSM4378540_annotated_all_DEGs.csv"
+  },
+  "SAID012": {
+    "GSE": "GSE146122",
+    "GSM": "GSM4378541",
+    "csv_path": "SkinDB_New/10X/mouse/GSE146122/GSM4378541/DEG_results/GSM4378541_annotated_all_DEGs.csv"
+  },
+  "SAID013": {
+    "GSE": "GSE146122",
+    "GSM": "GSM4378542",
+    "csv_path": "SkinDB_New/10X/mouse/GSE146122/GSM4378542/DEG_results/GSM4378542_annotated_all_DEGs.csv"
+  },
+  "SAID014": {
+    "GSE": "GSE147415",
+    "GSM": "GSM4430247",
+    "csv_path": "SkinDB_New/10X/mouse/GSE147415/GSM4430247/DEG_results/GSM4430247_annotated_all_DEGs.csv"
+  },
+  "SAID015": {
+    "GSE": "GSE147415",
+    "GSM": "GSM4430248",
+    "csv_path": "SkinDB_New/10X/mouse/GSE147415/GSM4430248/DEG_results/GSM4430248_annotated_all_DEGs.csv"
+  },
+  "SAID016": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647785",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647785/DEG_results/GSM4647785_annotated_all_DEGs.csv"
+  },
+  "SAID017": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647786",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647786/DEG_results/GSM4647786_annotated_all_DEGs.csv"
+  },
+  "SAID018": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647787",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647787/DEG_results/GSM4647787_annotated_all_DEGs.csv"
+  },
+  "SAID019": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647788",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647788/DEG_results/GSM4647788_annotated_all_DEGs.csv"
+  },
+  "SAID020": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647789",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647789/DEG_results/GSM4647789_annotated_all_DEGs.csv"
+  },
+  "SAID021": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647790",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647790/DEG_results/GSM4647790_annotated_all_DEGs.csv"
+  },
+  "SAID022": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647791",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647791/DEG_results/GSM4647791_annotated_all_DEGs.csv"
+  },
+  "SAID023": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647792",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647792/DEG_results/GSM4647792_annotated_all_DEGs.csv"
+  },
+  "SAID024": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647793",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647793/DEG_results/GSM4647793_annotated_all_DEGs.csv"
+  },
+  "SAID025": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647794",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647794/DEG_results/GSM4647794_annotated_all_DEGs.csv"
+  },
+  "SAID026": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647795",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647795/DEG_results/GSM4647795_annotated_all_DEGs.csv"
+  },
+  "SAID027": {
+    "GSE": "GSE153596",
+    "GSM": "GSM4647796",
+    "csv_path": "SkinDB_New/10X/mouse/GSE153596/GSM4647796/DEG_results/GSM4647796_annotated_all_DEGs.csv"
+  },
+  "SAID028": {
+    "GSE": "GSE158691",
+    "GSM": "GSM4805558",
+    "csv_path": "SkinDB_New/10X/mouse/GSE158691/GSM4805558/DEG_results/GSM4805558_annotated_all_DEGs.csv"
+  },
+  "SAID029": {
+    "GSE": "GSE158691",
+    "GSM": "GSM4805560",
+    "csv_path": "SkinDB_New/10X/mouse/GSE158691/GSM4805560/DEG_results/GSM4805560_annotated_all_DEGs.csv"
+  },
+  "SAID030": {
+    "GSE": "GSE158691",
+    "GSM": "GSM4805563",
+    "csv_path": "SkinDB_New/10X/mouse/GSE158691/GSM4805563/DEG_results/GSM4805563_annotated_all_DEGs.csv"
+  },
+  "SAID031": {
+    "GSE": "GSE158691",
+    "GSM": "GSM4805565",
+    "csv_path": "SkinDB_New/10X/mouse/GSE158691/GSM4805565/DEG_results/GSM4805565_annotated_all_DEGs.csv"
+  },
+  "SAID032": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984065",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984065/DEG_results/GSM4984065_annotated_all_DEGs.csv"
+  },
+  "SAID033": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984066",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984066/DEG_results/GSM4984066_annotated_all_DEGs.csv"
+  },
+  "SAID034": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984067",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984067/DEG_results/GSM4984067_annotated_all_DEGs.csv"
+  },
+  "SAID035": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984068",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984068/DEG_results/GSM4984068_annotated_all_DEGs.csv"
+  },
+  "SAID036": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984069",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984069/DEG_results/GSM4984069_annotated_all_DEGs.csv"
+  },
+  "SAID037": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984070",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984070/DEG_results/GSM4984070_annotated_all_DEGs.csv"
+  },
+  "SAID038": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984071",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984071/DEG_results/GSM4984071_annotated_all_DEGs.csv"
+  },
+  "SAID039": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984072",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984072/DEG_results/GSM4984072_annotated_all_DEGs.csv"
+  },
+  "SAID040": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984073",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984073/DEG_results/GSM4984073_annotated_all_DEGs.csv"
+  },
+  "SAID041": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984074",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984074/DEG_results/GSM4984074_annotated_all_DEGs.csv"
+  },
+  "SAID042": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984075",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984075/DEG_results/GSM4984075_annotated_all_DEGs.csv"
+  },
+  "SAID043": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984076",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984076/DEG_results/GSM4984076_annotated_all_DEGs.csv"
+  },
+  "SAID044": {
+    "GSE": "GSE163700",
+    "GSM": "GSM4984077",
+    "csv_path": "SkinDB_New/10X/mouse/GSE163700/GSM4984077/DEG_results/GSM4984077_annotated_all_DEGs.csv"
+  },
+  "SAID045": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024746",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024746/DEG_results/GSM5024746_annotated_all_DEGs.csv"
+  },
+  "SAID046": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024747",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024747/DEG_results/GSM5024747_annotated_all_DEGs.csv"
+  },
+  "SAID047": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024748",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024748/DEG_results/GSM5024748_annotated_all_DEGs.csv"
+  },
+  "SAID048": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024749",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024749/DEG_results/GSM5024749_annotated_all_DEGs.csv"
+  },
+  "SAID049": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024750",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024750/DEG_results/GSM5024750_annotated_all_DEGs.csv"
+  },
+  "SAID050": {
+    "GSE": "GSE165021",
+    "GSM": "GSM5024751",
+    "csv_path": "SkinDB_New/10X/mouse/GSE165021/GSM5024751/DEG_results/GSM5024751_annotated_all_DEGs.csv"
+  },
+  "SAID051": {
+    "GSE": "GSE166855",
+    "GSM": "GSM5086716",
+    "csv_path": "SkinDB_New/10X/mouse/GSE166855/GSM5086716/DEG_results/GSM5086716_annotated_all_DEGs.csv"
+  },
+  "SAID052": {
+    "GSE": "GSE166855",
+    "GSM": "GSM5086717",
+    "csv_path": "SkinDB_New/10X/mouse/GSE166855/GSM5086717/DEG_results/GSM5086717_annotated_all_DEGs.csv"
+  },
+  "SAID053": {
+    "GSE": "GSE166855",
+    "GSM": "GSM5086718",
+    "csv_path": "SkinDB_New/10X/mouse/GSE166855/GSM5086718/DEG_results/GSM5086718_annotated_all_DEGs.csv"
+  },
+  "SAID054": {
+    "GSE": "GSE166855",
+    "GSM": "GSM5086719",
+    "csv_path": "SkinDB_New/10X/mouse/GSE166855/GSM5086719/DEG_results/GSM5086719_annotated_all_DEGs.csv"
+  },
+  "SAID055": {
+    "GSE": "GSE166855",
+    "GSM": "GSM5086720",
+    "csv_path": "SkinDB_New/10X/mouse/GSE166855/GSM5086720/DEG_results/GSM5086720_annotated_all_DEGs.csv"
+  },
+  "SAID056": {
+    "GSE": "GSE171161",
+    "GSM": "GSM5220140",
+    "csv_path": "SkinDB_New/10X/mouse/GSE171161/GSM5220140/DEG_results/GSM5220140_annotated_all_DEGs.csv"
+  },
+  "SAID057": {
+    "GSE": "GSE171161",
+    "GSM": "GSM5220141",
+    "csv_path": "SkinDB_New/10X/mouse/GSE171161/GSM5220141/DEG_results/GSM5220141_annotated_all_DEGs.csv"
+  },
+  "SAID058": {
+    "GSE": "GSE171161",
+    "GSM": "GSM5220142",
+    "csv_path": "SkinDB_New/10X/mouse/GSE171161/GSM5220142/DEG_results/GSM5220142_annotated_all_DEGs.csv"
+  },
+  "SAID059": {
+    "GSE": "GSE171161",
+    "GSM": "GSM5220143",
+    "csv_path": "SkinDB_New/10X/mouse/GSE171161/GSM5220143/DEG_results/GSM5220143_annotated_all_DEGs.csv"
+  },
+  "SAID060": {
+    "GSE": "GSE172226",
+    "GSM": "GSM5244390",
+    "csv_path": "SkinDB_New/10X/mouse/GSE172226/GSM5244390/DEG_results/GSM5244390_annotated_all_DEGs.csv"
+  },
+  "SAID061": {
+    "GSE": "GSE172226",
+    "GSM": "GSM5244391",
+    "csv_path": "SkinDB_New/10X/mouse/GSE172226/GSM5244391/DEG_results/GSM5244391_annotated_all_DEGs.csv"
+  },
+  "SAID062": {
+    "GSE": "GSE172226",
+    "GSM": "GSM5244392",
+    "csv_path": "SkinDB_New/10X/mouse/GSE172226/GSM5244392/DEG_results/GSM5244392_annotated_all_DEGs.csv"
+  },
+  "SAID063": {
+    "GSE": "GSE172226",
+    "GSM": "GSM5244393",
+    "csv_path": "SkinDB_New/10X/mouse/GSE172226/GSM5244393/DEG_results/GSM5244393_annotated_all_DEGs.csv"
+  },
+  "SAID064": {
+    "GSE": "GSE172226",
+    "GSM": "GSM5244394",
+    "csv_path": "SkinDB_New/10X/mouse/GSE172226/GSM5244394/DEG_results/GSM5244394_annotated_all_DEGs.csv"
+  },
+  "SAID065": {
+    "GSE": "GSE173385",
+    "GSM": "GSM5266942",
+    "csv_path": "SkinDB_New/10X/mouse/GSE173385/GSM5266942/DEG_results/GSM5266942_annotated_all_DEGs.csv"
+  },
+  "SAID066": {
+    "GSE": "GSE173385",
+    "GSM": "GSM5266943",
+    "csv_path": "SkinDB_New/10X/mouse/GSE173385/GSM5266943/DEG_results/GSM5266943_annotated_all_DEGs.csv"
+  },
+  "SAID067": {
+    "GSE": "GSE173385",
+    "GSM": "GSM5266944",
+    "csv_path": "SkinDB_New/10X/mouse/GSE173385/GSM5266944/DEG_results/GSM5266944_annotated_all_DEGs.csv"
+  },
+  "SAID068": {
+    "GSE": "GSE180405",
+    "GSM": "GSM5462374",
+    "csv_path": "SkinDB_New/10X/mouse/GSE180405/GSM5462374/DEG_results/GSM5462374_annotated_all_DEGs.csv"
+  },
+  "SAID069": {
+    "GSE": "GSE180718",
+    "GSM": "GSM5468896",
+    "csv_path": "SkinDB_New/10X/mouse/GSE180718/GSM5468896/DEG_results/GSM5468896_annotated_all_DEGs.csv"
+  },
+  "SAID070": {
+    "GSE": "GSE180723",
+    "GSM": "GSM5469092",
+    "csv_path": "SkinDB_New/10X/mouse/GSE180723/GSM5469092/DEG_results/GSM5469092_annotated_all_DEGs.csv"
+  },
+  "SAID071": {
+    "GSE": "GSE180723",
+    "GSM": "GSM5469093",
+    "csv_path": "SkinDB_New/10X/mouse/GSE180723/GSM5469093/DEG_results/GSM5469093_annotated_all_DEGs.csv"
+  },
+  "SAID072": {
+    "GSE": "GSE180723",
+    "GSM": "GSM5469094",
+    "csv_path": "SkinDB_New/10X/mouse/GSE180723/GSM5469094/DEG_results/GSM5469094_annotated_all_DEGs.csv"
+  },
+  "SAID073": {
+    "GSE": "GSE183441",
+    "GSM": "GSM5557657",
+    "csv_path": "SkinDB_New/10X/mouse/GSE183441/GSM5557657/DEG_results/GSM5557657_annotated_all_DEGs.csv"
+  },
+  "SAID074": {
+    "GSE": "GSE183441",
+    "GSM": "GSM5557658",
+    "csv_path": "SkinDB_New/10X/mouse/GSE183441/GSM5557658/DEG_results/GSM5557658_annotated_all_DEGs.csv"
+  },
+  "SAID075": {
+    "GSE": "GSE183441",
+    "GSM": "GSM5557659",
+    "csv_path": "SkinDB_New/10X/mouse/GSE183441/GSM5557659/DEG_results/GSM5557659_annotated_all_DEGs.csv"
+  },
+  "SAID076": {
+    "GSE": "GSE183441",
+    "GSM": "GSM5557660",
+    "csv_path": "SkinDB_New/10X/mouse/GSE183441/GSM5557660/DEG_results/GSM5557660_annotated_all_DEGs.csv"
+  },
+  "SAID077": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682894",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682894/DEG_results/GSM5682894_annotated_all_DEGs.csv"
+  },
+  "SAID078": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682895",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682895/DEG_results/GSM5682895_annotated_all_DEGs.csv"
+  },
+  "SAID079": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682896",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682896/DEG_results/GSM5682896_annotated_all_DEGs.csv"
+  },
+  "SAID080": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682897",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682897/DEG_results/GSM5682897_annotated_all_DEGs.csv"
+  },
+  "SAID081": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682898",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682898/DEG_results/GSM5682898_annotated_all_DEGs.csv"
+  },
+  "SAID082": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682899",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682899/DEG_results/GSM5682899_annotated_all_DEGs.csv"
+  },
+  "SAID083": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682900",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682900/DEG_results/GSM5682900_annotated_all_DEGs.csv"
+  },
+  "SAID084": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682901",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682901/DEG_results/GSM5682901_annotated_all_DEGs.csv"
+  },
+  "SAID085": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682902",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682902/DEG_results/GSM5682902_annotated_all_DEGs.csv"
+  },
+  "SAID086": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682903",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682903/DEG_results/GSM5682903_annotated_all_DEGs.csv"
+  },
+  "SAID087": {
+    "GSE": "GSE188432",
+    "GSM": "GSM5682904",
+    "csv_path": "SkinDB_New/10X/mouse/GSE188432/GSM5682904/DEG_results/GSM5682904_annotated_all_DEGs.csv"
+  },
+  "SAID088": {
+    "GSE": "GSE189210",
+    "GSM": "GSM5696148",
+    "csv_path": "SkinDB_New/10X/mouse/GSE189210/GSM5696148/DEG_results/GSM5696148_annotated_all_DEGs.csv"
+  },
+  "SAID089": {
+    "GSE": "GSE189210",
+    "GSM": "GSM5696149",
+    "csv_path": "SkinDB_New/10X/mouse/GSE189210/GSM5696149/DEG_results/GSM5696149_annotated_all_DEGs.csv"
+  },
+  "SAID090": {
+    "GSE": "GSE196677",
+    "GSM": "GSM5898068",
+    "csv_path": "SkinDB_New/10X/mouse/GSE196677/GSM5898068/DEG_results/GSM5898068_annotated_all_DEGs.csv"
+  },
+  "SAID091": {
+    "GSE": "GSE196677",
+    "GSM": "GSM5898069",
+    "csv_path": "SkinDB_New/10X/mouse/GSE196677/GSM5898069/DEG_results/GSM5898069_annotated_all_DEGs.csv"
+  },
+  "SAID092": {
+    "GSE": "GSE196677",
+    "GSM": "GSM5898070",
+    "csv_path": "SkinDB_New/10X/mouse/GSE196677/GSM5898070/DEG_results/GSM5898070_annotated_all_DEGs.csv"
+  },
+  "SAID093": {
+    "GSE": "GSE204731",
+    "GSM": "GSM6189426",
+    "csv_path": "SkinDB_New/10X/mouse/GSE204731/GSM6189426/DEG_results/GSM6189426_annotated_all_DEGs.csv"
+  },
+  "SAID094": {
+    "GSE": "GSE204731",
+    "GSM": "GSM6189427",
+    "csv_path": "SkinDB_New/10X/mouse/GSE204731/GSM6189427/DEG_results/GSM6189427_annotated_all_DEGs.csv"
+  },
+  "SAID095": {
+    "GSE": "GSE205020",
+    "GSM": "GSM6204200",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205020/GSM6204200/DEG_results/GSM6204200_annotated_all_DEGs.csv"
+  },
+  "SAID096": {
+    "GSE": "GSE205020",
+    "GSM": "GSM6204201",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205020/GSM6204201/DEG_results/GSM6204201_annotated_all_DEGs.csv"
+  },
+  "SAID097": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222585",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222585/DEG_results/GSM6222585_annotated_all_DEGs.csv"
+  },
+  "SAID098": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222587",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222587/DEG_results/GSM6222587_annotated_all_DEGs.csv"
+  },
+  "SAID099": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222588",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222588/DEG_results/GSM6222588_annotated_all_DEGs.csv"
+  },
+  "SAID100": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222589",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222589/DEG_results/GSM6222589_annotated_all_DEGs.csv"
+  },
+  "SAID101": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222590",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222590/DEG_results/GSM6222590_annotated_all_DEGs.csv"
+  },
+  "SAID102": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222591",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222591/DEG_results/GSM6222591_annotated_all_DEGs.csv"
+  },
+  "SAID103": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222592",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222592/DEG_results/GSM6222592_annotated_all_DEGs.csv"
+  },
+  "SAID104": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222593",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222593/DEG_results/GSM6222593_annotated_all_DEGs.csv"
+  },
+  "SAID105": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222594",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222594/DEG_results/GSM6222594_annotated_all_DEGs.csv"
+  },
+  "SAID106": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222595",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222595/DEG_results/GSM6222595_annotated_all_DEGs.csv"
+  },
+  "SAID107": {
+    "GSE": "GSE205745",
+    "GSM": "GSM6222596",
+    "csv_path": "SkinDB_New/10X/mouse/GSE205745/GSM6222596/DEG_results/GSM6222596_annotated_all_DEGs.csv"
+  },
+  "SAID108": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423811",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423811/DEG_results/GSM6423811_annotated_all_DEGs.csv"
+  },
+  "SAID109": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423812",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423812/DEG_results/GSM6423812_annotated_all_DEGs.csv"
+  },
+  "SAID110": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423813",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423813/DEG_results/GSM6423813_annotated_all_DEGs.csv"
+  },
+  "SAID111": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423814",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423814/DEG_results/GSM6423814_annotated_all_DEGs.csv"
+  },
+  "SAID112": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423815",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423815/DEG_results/GSM6423815_annotated_all_DEGs.csv"
+  },
+  "SAID113": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423816",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423816/DEG_results/GSM6423816_annotated_all_DEGs.csv"
+  },
+  "SAID114": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423817",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423817/DEG_results/GSM6423817_annotated_all_DEGs.csv"
+  },
+  "SAID115": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423818",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423818/DEG_results/GSM6423818_annotated_all_DEGs.csv"
+  },
+  "SAID116": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423819",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423819/DEG_results/GSM6423819_annotated_all_DEGs.csv"
+  },
+  "SAID117": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423820",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423820/DEG_results/GSM6423820_annotated_all_DEGs.csv"
+  },
+  "SAID118": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423821",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423821/DEG_results/GSM6423821_annotated_all_DEGs.csv"
+  },
+  "SAID119": {
+    "GSE": "GSE210224",
+    "GSM": "GSM6423822",
+    "csv_path": "SkinDB_New/10X/mouse/GSE210224/GSM6423822/DEG_results/GSM6423822_annotated_all_DEGs.csv"
+  },
+  "SAID120": {
+    "GSE": "GSE211279",
+    "GSM": "GSM6460378",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211279/GSM6460378/DEG_results/GSM6460378_annotated_all_DEGs.csv"
+  },
+  "SAID121": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468127",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468127/DEG_results/GSM6468127_annotated_all_DEGs.csv"
+  },
+  "SAID122": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468128",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468128/DEG_results/GSM6468128_annotated_all_DEGs.csv"
+  },
+  "SAID123": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468129",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468129/DEG_results/GSM6468129_annotated_all_DEGs.csv"
+  },
+  "SAID124": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468130",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468130/DEG_results/GSM6468130_annotated_all_DEGs.csv"
+  },
+  "SAID125": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468131",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468131/DEG_results/GSM6468131_annotated_all_DEGs.csv"
+  },
+  "SAID126": {
+    "GSE": "GSE211381",
+    "GSM": "GSM6468132",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211381/GSM6468132/DEG_results/GSM6468132_annotated_all_DEGs.csv"
+  },
+  "SAID127": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502671",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502671/DEG_results/GSM6502671_annotated_all_DEGs.csv"
+  },
+  "SAID128": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502672",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502672/DEG_results/GSM6502672_annotated_all_DEGs.csv"
+  },
+  "SAID129": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502673",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502673/DEG_results/GSM6502673_annotated_all_DEGs.csv"
+  },
+  "SAID130": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502674",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502674/DEG_results/GSM6502674_annotated_all_DEGs.csv"
+  },
+  "SAID131": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502675",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502675/DEG_results/GSM6502675_annotated_all_DEGs.csv"
+  },
+  "SAID132": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502676",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502676/DEG_results/GSM6502676_annotated_all_DEGs.csv"
+  },
+  "SAID133": {
+    "GSE": "GSE211810",
+    "GSM": "GSM6502677",
+    "csv_path": "SkinDB_New/10X/mouse/GSE211810/GSM6502677/DEG_results/GSM6502677_annotated_all_DEGs.csv"
+  },
+  "SAID134": {
+    "GSE": "GSE212673",
+    "GSM": "GSM6543169",
+    "csv_path": "SkinDB_New/10X/mouse/GSE212673/GSM6543169/DEG_results/GSM6543169_annotated_all_DEGs.csv"
+  },
+  "SAID135": {
+    "GSE": "GSE212673",
+    "GSM": "GSM6543170",
+    "csv_path": "SkinDB_New/10X/mouse/GSE212673/GSM6543170/DEG_results/GSM6543170_annotated_all_DEGs.csv"
+  },
+  "SAID136": {
+    "GSE": "GSE212673",
+    "GSM": "GSM6543171",
+    "csv_path": "SkinDB_New/10X/mouse/GSE212673/GSM6543171/DEG_results/GSM6543171_annotated_all_DEGs.csv"
+  },
+  "SAID137": {
+    "GSE": "GSE213195",
+    "GSM": "GSM6574277",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213195/GSM6574277/DEG_results/GSM6574277_annotated_all_DEGs.csv"
+  },
+  "SAID138": {
+    "GSE": "GSE213195",
+    "GSM": "GSM6574278",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213195/GSM6574278/DEG_results/GSM6574278_annotated_all_DEGs.csv"
+  },
+  "SAID139": {
+    "GSE": "GSE213195",
+    "GSM": "GSM6574279",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213195/GSM6574279/DEG_results/GSM6574279_annotated_all_DEGs.csv"
+  },
+  "SAID140": {
+    "GSE": "GSE213195",
+    "GSM": "GSM6574280",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213195/GSM6574280/DEG_results/GSM6574280_annotated_all_DEGs.csv"
+  },
+  "SAID141": {
+    "GSE": "GSE213195",
+    "GSM": "GSM6574281",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213195/GSM6574281/DEG_results/GSM6574281_annotated_all_DEGs.csv"
+  },
+  "SAID142": {
+    "GSE": "GSE213528",
+    "GSM": "GSM6588784",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213528/GSM6588784/DEG_results/GSM6588784_annotated_all_DEGs.csv"
+  },
+  "SAID143": {
+    "GSE": "GSE213528",
+    "GSM": "GSM6588785",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213528/GSM6588785/DEG_results/GSM6588785_annotated_all_DEGs.csv"
+  },
+  "SAID144": {
+    "GSE": "GSE213528",
+    "GSM": "GSM6588786",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213528/GSM6588786/DEG_results/GSM6588786_annotated_all_DEGs.csv"
+  },
+  "SAID145": {
+    "GSE": "GSE213528",
+    "GSM": "GSM6588787",
+    "csv_path": "SkinDB_New/10X/mouse/GSE213528/GSM6588787/DEG_results/GSM6588787_annotated_all_DEGs.csv"
+  },
+  "SAID146": {
+    "GSE": "GSE215980",
+    "GSM": "GSM6652415",
+    "csv_path": "SkinDB_New/10X/mouse/GSE215980/GSM6652415/DEG_results/GSM6652415_annotated_all_DEGs.csv"
+  },
+  "SAID147": {
+    "GSE": "GSE215980",
+    "GSM": "GSM6652416",
+    "csv_path": "SkinDB_New/10X/mouse/GSE215980/GSM6652416/DEG_results/GSM6652416_annotated_all_DEGs.csv"
+  },
+  "SAID148": {
+    "GSE": "GSE215980",
+    "GSM": "GSM6652417",
+    "csv_path": "SkinDB_New/10X/mouse/GSE215980/GSM6652417/DEG_results/GSM6652417_annotated_all_DEGs.csv"
+  },
+  "SAID149": {
+    "GSE": "GSE215980",
+    "GSM": "GSM6652418",
+    "csv_path": "SkinDB_New/10X/mouse/GSE215980/GSM6652418/DEG_results/GSM6652418_annotated_all_DEGs.csv"
+  },
+  "SAID150": {
+    "GSE": "GSE215980",
+    "GSM": "GSM6652419",
+    "csv_path": "SkinDB_New/10X/mouse/GSE215980/GSM6652419/DEG_results/GSM6652419_annotated_all_DEGs.csv"
+  },
+  "SAID151": {
+    "GSE": "GSE218906",
+    "GSM": "GSM6759239",
+    "csv_path": "SkinDB_New/10X/mouse/GSE218906/GSM6759239/DEG_results/GSM6759239_annotated_all_DEGs.csv"
+  },
+  "SAID152": {
+    "GSE": "GSE218906",
+    "GSM": "GSM6759240",
+    "csv_path": "SkinDB_New/10X/mouse/GSE218906/GSM6759240/DEG_results/GSM6759240_annotated_all_DEGs.csv"
+  },
+  "SAID153": {
+    "GSE": "GSE218906",
+    "GSM": "GSM6759241",
+    "csv_path": "SkinDB_New/10X/mouse/GSE218906/GSM6759241/DEG_results/GSM6759241_annotated_all_DEGs.csv"
+  },
+  "SAID154": {
+    "GSE": "GSE221310",
+    "GSM": "GSM6858204",
+    "csv_path": "SkinDB_New/10X/mouse/GSE221310/GSM6858204/DEG_results/GSM6858204_annotated_all_DEGs.csv"
+  },
+  "SAID155": {
+    "GSE": "GSE221310",
+    "GSM": "GSM6858205",
+    "csv_path": "SkinDB_New/10X/mouse/GSE221310/GSM6858205/DEG_results/GSM6858205_annotated_all_DEGs.csv"
+  },
+  "SAID156": {
+    "GSE": "GSE223660",
+    "GSM": "GSM6970228",
+    "csv_path": "SkinDB_New/10X/mouse/GSE223660/GSM6970228/DEG_results/GSM6970228_annotated_all_DEGs.csv"
+  },
+  "SAID157": {
+    "GSE": "GSE224491",
+    "GSM": "GSM7025082",
+    "csv_path": "SkinDB_New/10X/mouse/GSE224491/GSM7025082/DEG_results/GSM7025082_annotated_all_DEGs.csv"
+  },
+  "SAID158": {
+    "GSE": "GSE227783",
+    "GSM": "GSM7108145",
+    "csv_path": "SkinDB_New/10X/mouse/GSE227783/GSM7108145/DEG_results/GSM7108145_annotated_all_DEGs.csv"
+  },
+  "SAID159": {
+    "GSE": "GSE227783",
+    "GSM": "GSM7108146",
+    "csv_path": "SkinDB_New/10X/mouse/GSE227783/GSM7108146/DEG_results/GSM7108146_annotated_all_DEGs.csv"
+  },
+  "SAID160": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225686",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225686/DEG_results/GSM7225686_annotated_all_DEGs.csv"
+  },
+  "SAID161": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225687",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225687/DEG_results/GSM7225687_annotated_all_DEGs.csv"
+  },
+  "SAID162": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225688",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225688/DEG_results/GSM7225688_annotated_all_DEGs.csv"
+  },
+  "SAID163": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225689",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225689/DEG_results/GSM7225689_annotated_all_DEGs.csv"
+  },
+  "SAID164": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225690",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225690/DEG_results/GSM7225690_annotated_all_DEGs.csv"
+  },
+  "SAID165": {
+    "GSE": "GSE230512",
+    "GSM": "GSM7225691",
+    "csv_path": "SkinDB_New/10X/mouse/GSE230512/GSM7225691/DEG_results/GSM7225691_annotated_all_DEGs.csv"
+  },
+  "SAID166": {
+    "GSE": "GSE231728",
+    "GSM": "GSM7299703",
+    "csv_path": "SkinDB_New/10X/mouse/GSE231728/GSM7299703/DEG_results/GSM7299703_annotated_all_DEGs.csv"
+  },
+  "SAID167": {
+    "GSE": "GSE231728",
+    "GSM": "GSM7299704",
+    "csv_path": "SkinDB_New/10X/mouse/GSE231728/GSM7299704/DEG_results/GSM7299704_annotated_all_DEGs.csv"
+  },
+  "SAID168": {
+    "GSE": "GSE231728",
+    "GSM": "GSM7299705",
+    "csv_path": "SkinDB_New/10X/mouse/GSE231728/GSM7299705/DEG_results/GSM7299705_annotated_all_DEGs.csv"
+  },
+  "SAID169": {
+    "GSE": "GSE232568",
+    "GSM": "GSM7350405",
+    "csv_path": "SkinDB_New/10X/mouse/GSE232568/GSM7350405/DEG_results/GSM7350405_annotated_all_DEGs.csv"
+  },
+  "SAID170": {
+    "GSE": "GSE232568",
+    "GSM": "GSM7350406",
+    "csv_path": "SkinDB_New/10X/mouse/GSE232568/GSM7350406/DEG_results/GSM7350406_annotated_all_DEGs.csv"
+  },
+  "SAID171": {
+    "GSE": "GSE234269",
+    "GSM": "GSM7461430",
+    "csv_path": "SkinDB_New/10X/mouse/GSE234269/GSM7461430/DEG_results/GSM7461430_annotated_all_DEGs.csv"
+  },
+  "SAID172": {
+    "GSE": "GSE234269",
+    "GSM": "GSM7461431",
+    "csv_path": "SkinDB_New/10X/mouse/GSE234269/GSM7461431/DEG_results/GSM7461431_annotated_all_DEGs.csv"
+  },
+  "SAID173": {
+    "GSE": "GSE234269",
+    "GSM": "GSM7461432",
+    "csv_path": "SkinDB_New/10X/mouse/GSE234269/GSM7461432/DEG_results/GSM7461432_annotated_all_DEGs.csv"
+  },
+  "SAID174": {
+    "GSE": "GSE236918",
+    "GSM": "GSM7585467",
+    "csv_path": "SkinDB_New/10X/mouse/GSE236918/GSM7585467/DEG_results/GSM7585467_annotated_all_DEGs.csv"
+  },
+  "SAID175": {
+    "GSE": "GSE236918",
+    "GSM": "GSM7585468",
+    "csv_path": "SkinDB_New/10X/mouse/GSE236918/GSM7585468/DEG_results/GSM7585468_annotated_all_DEGs.csv"
+  },
+  "SAID176": {
+    "GSE": "GSE236918",
+    "GSM": "GSM7585469",
+    "csv_path": "SkinDB_New/10X/mouse/GSE236918/GSM7585469/DEG_results/GSM7585469_annotated_all_DEGs.csv"
+  },
+  "SAID177": {
+    "GSE": "GSE236918",
+    "GSM": "GSM7585470",
+    "csv_path": "SkinDB_New/10X/mouse/GSE236918/GSM7585470/DEG_results/GSM7585470_annotated_all_DEGs.csv"
+  },
+  "SAID178": {
+    "GSE": "GSE227783",
+    "GSM": "GSM7761852",
+    "csv_path": "SkinDB_New/10X/mouse/GSE227783/GSM7761852/DEG_results/GSM7761852_annotated_all_DEGs.csv"
+  },
+  "SAID179": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816028",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816028/DEG_results/GSM7816028_annotated_all_DEGs.csv"
+  },
+  "SAID180": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816029",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816029/DEG_results/GSM7816029_annotated_all_DEGs.csv"
+  },
+  "SAID181": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816030",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816030/DEG_results/GSM7816030_annotated_all_DEGs.csv"
+  },
+  "SAID182": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816031",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816031/DEG_results/GSM7816031_annotated_all_DEGs.csv"
+  },
+  "SAID183": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816032",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816032/DEG_results/GSM7816032_annotated_all_DEGs.csv"
+  },
+  "SAID184": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816033",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816033/DEG_results/GSM7816033_annotated_all_DEGs.csv"
+  },
+  "SAID185": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816034",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816034/DEG_results/GSM7816034_annotated_all_DEGs.csv"
+  },
+  "SAID186": {
+    "GSE": "GSE244430",
+    "GSM": "GSM7816035",
+    "csv_path": "SkinDB_New/10X/mouse/GSE244430/GSM7816035/DEG_results/GSM7816035_annotated_all_DEGs.csv"
+  },
+  "SAID187": {
+    "GSE": "GSE245094",
+    "GSM": "GSM7836274",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245094/GSM7836274/DEG_results/GSM7836274_annotated_all_DEGs.csv"
+  },
+  "SAID188": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850083",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850083/DEG_results/GSM7850083_annotated_all_DEGs.csv"
+  },
+  "SAID189": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850084",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850084/DEG_results/GSM7850084_annotated_all_DEGs.csv"
+  },
+  "SAID190": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850085",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850085/DEG_results/GSM7850085_annotated_all_DEGs.csv"
+  },
+  "SAID191": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850086",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850086/DEG_results/GSM7850086_annotated_all_DEGs.csv"
+  },
+  "SAID192": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850087",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850087/DEG_results/GSM7850087_annotated_all_DEGs.csv"
+  },
+  "SAID193": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850088",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850088/DEG_results/GSM7850088_annotated_all_DEGs.csv"
+  },
+  "SAID194": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850089",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850089/DEG_results/GSM7850089_annotated_all_DEGs.csv"
+  },
+  "SAID195": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850090",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850090/DEG_results/GSM7850090_annotated_all_DEGs.csv"
+  },
+  "SAID196": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850091",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850091/DEG_results/GSM7850091_annotated_all_DEGs.csv"
+  },
+  "SAID197": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850092",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850092/DEG_results/GSM7850092_annotated_all_DEGs.csv"
+  },
+  "SAID198": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850093",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850093/DEG_results/GSM7850093_annotated_all_DEGs.csv"
+  },
+  "SAID199": {
+    "GSE": "GSE245865",
+    "GSM": "GSM7850094",
+    "csv_path": "SkinDB_New/10X/mouse/GSE245865/GSM7850094/DEG_results/GSM7850094_annotated_all_DEGs.csv"
+  },
+  "SAID200": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885618",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885618/DEG_results/GSM7885618_annotated_all_DEGs.csv"
+  },
+  "SAID201": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885619",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885619/DEG_results/GSM7885619_annotated_all_DEGs.csv"
+  },
+  "SAID202": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885620",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885620/DEG_results/GSM7885620_annotated_all_DEGs.csv"
+  },
+  "SAID203": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885621",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885621/DEG_results/GSM7885621_annotated_all_DEGs.csv"
+  },
+  "SAID204": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885622",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885622/DEG_results/GSM7885622_annotated_all_DEGs.csv"
+  },
+  "SAID205": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885623",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885623/DEG_results/GSM7885623_annotated_all_DEGs.csv"
+  },
+  "SAID206": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885624",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885624/DEG_results/GSM7885624_annotated_all_DEGs.csv"
+  },
+  "SAID207": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885625",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885625/DEG_results/GSM7885625_annotated_all_DEGs.csv"
+  },
+  "SAID208": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885626",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885626/DEG_results/GSM7885626_annotated_all_DEGs.csv"
+  },
+  "SAID209": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885627",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885627/DEG_results/GSM7885627_annotated_all_DEGs.csv"
+  },
+  "SAID210": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885628",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885628/DEG_results/GSM7885628_annotated_all_DEGs.csv"
+  },
+  "SAID211": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885629",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885629/DEG_results/GSM7885629_annotated_all_DEGs.csv"
+  },
+  "SAID212": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885630",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885630/DEG_results/GSM7885630_annotated_all_DEGs.csv"
+  },
+  "SAID213": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885631",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885631/DEG_results/GSM7885631_annotated_all_DEGs.csv"
+  },
+  "SAID214": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885632",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885632/DEG_results/GSM7885632_annotated_all_DEGs.csv"
+  },
+  "SAID215": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885633",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885633/DEG_results/GSM7885633_annotated_all_DEGs.csv"
+  },
+  "SAID216": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885634",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885634/DEG_results/GSM7885634_annotated_all_DEGs.csv"
+  },
+  "SAID217": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885635",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885635/DEG_results/GSM7885635_annotated_all_DEGs.csv"
+  },
+  "SAID218": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885636",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885636/DEG_results/GSM7885636_annotated_all_DEGs.csv"
+  },
+  "SAID219": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885637",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885637/DEG_results/GSM7885637_annotated_all_DEGs.csv"
+  },
+  "SAID220": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885638",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885638/DEG_results/GSM7885638_annotated_all_DEGs.csv"
+  },
+  "SAID221": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885639",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885639/DEG_results/GSM7885639_annotated_all_DEGs.csv"
+  },
+  "SAID222": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885640",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885640/DEG_results/GSM7885640_annotated_all_DEGs.csv"
+  },
+  "SAID223": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885641",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885641/DEG_results/GSM7885641_annotated_all_DEGs.csv"
+  },
+  "SAID224": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885642",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885642/DEG_results/GSM7885642_annotated_all_DEGs.csv"
+  },
+  "SAID225": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885643",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885643/DEG_results/GSM7885643_annotated_all_DEGs.csv"
+  },
+  "SAID226": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885644",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885644/DEG_results/GSM7885644_annotated_all_DEGs.csv"
+  },
+  "SAID227": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885645",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885645/DEG_results/GSM7885645_annotated_all_DEGs.csv"
+  },
+  "SAID228": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885646",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885646/DEG_results/GSM7885646_annotated_all_DEGs.csv"
+  },
+  "SAID229": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885647",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885647/DEG_results/GSM7885647_annotated_all_DEGs.csv"
+  },
+  "SAID230": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885648",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885648/DEG_results/GSM7885648_annotated_all_DEGs.csv"
+  },
+  "SAID231": {
+    "GSE": "GSE247227",
+    "GSM": "GSM7885649",
+    "csv_path": "SkinDB_New/10X/mouse/GSE247227/GSM7885649/DEG_results/GSM7885649_annotated_all_DEGs.csv"
+  },
+  "SAID232": {
+    "GSE": "GSE253098",
+    "GSM": "GSM8013669",
+    "csv_path": "SkinDB_New/10X/mouse/GSE253098/GSM8013669/DEG_results/GSM8013669_annotated_all_DEGs.csv"
+  },
+  "SAID233": {
+    "GSE": "GSE254658",
+    "GSM": "GSM8047982",
+    "csv_path": "SkinDB_New/10X/mouse/GSE254658/GSM8047982/DEG_results/GSM8047982_annotated_all_DEGs.csv"
+  },
+  "SAID234": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073311",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073311/DEG_results/GSM8073311_annotated_all_DEGs.csv"
+  },
+  "SAID235": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073312",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073312/DEG_results/GSM8073312_annotated_all_DEGs.csv"
+  },
+  "SAID236": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073313",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073313/DEG_results/GSM8073313_annotated_all_DEGs.csv"
+  },
+  "SAID237": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073314",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073314/DEG_results/GSM8073314_annotated_all_DEGs.csv"
+  },
+  "SAID238": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073315",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073315/DEG_results/GSM8073315_annotated_all_DEGs.csv"
+  },
+  "SAID239": {
+    "GSE": "GSE255493",
+    "GSM": "GSM8073316",
+    "csv_path": "SkinDB_New/10X/mouse/GSE255493/GSM8073316/DEG_results/GSM8073316_annotated_all_DEGs.csv"
+  },
+  "SAID240": {
+    "GSE": "GSE261227",
+    "GSM": "GSM8138118",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261227/GSM8138118/DEG_results/GSM8138118_annotated_all_DEGs.csv"
+  },
+  "SAID241": {
+    "GSE": "GSE261227",
+    "GSM": "GSM8138119",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261227/GSM8138119/DEG_results/GSM8138119_annotated_all_DEGs.csv"
+  },
+  "SAID242": {
+    "GSE": "GSE261227",
+    "GSM": "GSM8138120",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261227/GSM8138120/DEG_results/GSM8138120_annotated_all_DEGs.csv"
+  },
+  "SAID243": {
+    "GSE": "GSE261227",
+    "GSM": "GSM8138121",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261227/GSM8138121/DEG_results/GSM8138121_annotated_all_DEGs.csv"
+  },
+  "SAID244": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150922",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150922/DEG_results/GSM8150922_annotated_all_DEGs.csv"
+  },
+  "SAID245": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150923",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150923/DEG_results/GSM8150923_annotated_all_DEGs.csv"
+  },
+  "SAID246": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150924",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150924/DEG_results/GSM8150924_annotated_all_DEGs.csv"
+  },
+  "SAID247": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150925",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150925/DEG_results/GSM8150925_annotated_all_DEGs.csv"
+  },
+  "SAID248": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150926",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150926/DEG_results/GSM8150926_annotated_all_DEGs.csv"
+  },
+  "SAID249": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150927",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150927/DEG_results/GSM8150927_annotated_all_DEGs.csv"
+  },
+  "SAID250": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150928",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150928/DEG_results/GSM8150928_annotated_all_DEGs.csv"
+  },
+  "SAID251": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150929",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150929/DEG_results/GSM8150929_annotated_all_DEGs.csv"
+  },
+  "SAID252": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150930",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150930/DEG_results/GSM8150930_annotated_all_DEGs.csv"
+  },
+  "SAID253": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150931",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150931/DEG_results/GSM8150931_annotated_all_DEGs.csv"
+  },
+  "SAID254": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150932",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150932/DEG_results/GSM8150932_annotated_all_DEGs.csv"
+  },
+  "SAID255": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150933",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150933/DEG_results/GSM8150933_annotated_all_DEGs.csv"
+  },
+  "SAID256": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150934",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150934/DEG_results/GSM8150934_annotated_all_DEGs.csv"
+  },
+  "SAID257": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150935",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150935/DEG_results/GSM8150935_annotated_all_DEGs.csv"
+  },
+  "SAID258": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150936",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150936/DEG_results/GSM8150936_annotated_all_DEGs.csv"
+  },
+  "SAID259": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150937",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150937/DEG_results/GSM8150937_annotated_all_DEGs.csv"
+  },
+  "SAID260": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150938",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150938/DEG_results/GSM8150938_annotated_all_DEGs.csv"
+  },
+  "SAID261": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150939",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150939/DEG_results/GSM8150939_annotated_all_DEGs.csv"
+  },
+  "SAID262": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150940",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150940/DEG_results/GSM8150940_annotated_all_DEGs.csv"
+  },
+  "SAID263": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150941",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150941/DEG_results/GSM8150941_annotated_all_DEGs.csv"
+  },
+  "SAID264": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150942",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150942/DEG_results/GSM8150942_annotated_all_DEGs.csv"
+  },
+  "SAID265": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150943",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150943/DEG_results/GSM8150943_annotated_all_DEGs.csv"
+  },
+  "SAID266": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150944",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150944/DEG_results/GSM8150944_annotated_all_DEGs.csv"
+  },
+  "SAID267": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150945",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150945/DEG_results/GSM8150945_annotated_all_DEGs.csv"
+  },
+  "SAID268": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150946",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150946/DEG_results/GSM8150946_annotated_all_DEGs.csv"
+  },
+  "SAID269": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150947",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150947/DEG_results/GSM8150947_annotated_all_DEGs.csv"
+  },
+  "SAID270": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150948",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150948/DEG_results/GSM8150948_annotated_all_DEGs.csv"
+  },
+  "SAID271": {
+    "GSE": "GSE261766",
+    "GSM": "GSM8150949",
+    "csv_path": "SkinDB_New/10X/mouse/GSE261766/GSM8150949/DEG_results/GSM8150949_annotated_all_DEGs.csv"
+  },
+  "SAID272": {
+    "GSE": "GSE269455",
+    "GSM": "GSM8316001",
+    "csv_path": "SkinDB_New/10X/mouse/GSE269455/GSM8316001/DEG_results/GSM8316001_annotated_all_DEGs.csv"
+  },
+  "SAID273": {
+    "GSE": "GSE269455",
+    "GSM": "GSM8316002",
+    "csv_path": "SkinDB_New/10X/mouse/GSE269455/GSM8316002/DEG_results/GSM8316002_annotated_all_DEGs.csv"
+  },
+  "SAID274": {
+    "GSE": "GSE269455",
+    "GSM": "GSM8316003",
+    "csv_path": "SkinDB_New/10X/mouse/GSE269455/GSM8316003/DEG_results/GSM8316003_annotated_all_DEGs.csv"
+  },
+  "SAID275": {
+    "GSE": "GSE270324",
+    "GSM": "GSM8339567",
+    "csv_path": "SkinDB_New/10X/mouse/GSE270324/GSM8339567/DEG_results/GSM8339567_annotated_all_DEGs.csv"
+  },
+  "SAID276": {
+    "GSE": "GSE270324",
+    "GSM": "GSM8339568",
+    "csv_path": "SkinDB_New/10X/mouse/GSE270324/GSM8339568/DEG_results/GSM8339568_annotated_all_DEGs.csv"
+  },
+  "SAID277": {
+    "GSE": "GSE272509",
+    "GSM": "GSM8403737",
+    "csv_path": "SkinDB_New/10X/mouse/GSE272509/GSM8403737/DEG_results/GSM8403737_annotated_all_DEGs.csv"
+  },
+  "SAID278": {
+    "GSE": "GSE272509",
+    "GSM": "GSM8403738",
+    "csv_path": "SkinDB_New/10X/mouse/GSE272509/GSM8403738/DEG_results/GSM8403738_annotated_all_DEGs.csv"
+  },
+  "SAID279": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685065",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685065/DEG_results/GSM3685065_annotated_all_DEGs.csv"
+  },
+  "SAID280": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685066",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685066/DEG_results/GSM3685066_annotated_all_DEGs.csv"
+  },
+  "SAID281": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685067",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685067/DEG_results/GSM3685067_annotated_all_DEGs.csv"
+  },
+  "SAID282": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685068",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685068/DEG_results/GSM3685068_annotated_all_DEGs.csv"
+  },
+  "SAID283": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685069",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685069/DEG_results/GSM3685069_annotated_all_DEGs.csv"
+  },
+  "SAID284": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685070",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685070/DEG_results/GSM3685070_annotated_all_DEGs.csv"
+  },
+  "SAID285": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685071",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685071/DEG_results/GSM3685071_annotated_all_DEGs.csv"
+  },
+  "SAID286": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685072",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685072/DEG_results/GSM3685072_annotated_all_DEGs.csv"
+  },
+  "SAID287": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685073",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685073/DEG_results/GSM3685073_annotated_all_DEGs.csv"
+  },
+  "SAID288": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685074",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685074/DEG_results/GSM3685074_annotated_all_DEGs.csv"
+  },
+  "SAID289": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685075",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685075/DEG_results/GSM3685075_annotated_all_DEGs.csv"
+  },
+  "SAID290": {
+    "GSE": "GSE128791",
+    "GSM": "GSM3685076",
+    "csv_path": "SkinDB_New/10X/human/GSE128791/GSM3685076/DEG_results/GSM3685076_annotated_all_DEGs.csv"
+  },
+  "SAID291": {
+    "GSE": "GSE130973",
+    "GSM": "GSM3758115",
+    "csv_path": "SkinDB_New/10X/human/GSE130973/GSM3758115/DEG_results/GSM3758115_annotated_all_DEGs.csv"
+  },
+  "SAID292": {
+    "GSE": "GSE130973",
+    "GSM": "GSM3758116",
+    "csv_path": "SkinDB_New/10X/human/GSE130973/GSM3758116/DEG_results/GSM3758116_annotated_all_DEGs.csv"
+  },
+  "SAID293": {
+    "GSE": "GSE130973",
+    "GSM": "GSM3758117",
+    "csv_path": "SkinDB_New/10X/human/GSE130973/GSM3758117/DEG_results/GSM3758117_annotated_all_DEGs.csv"
+  },
+  "SAID294": {
+    "GSE": "GSE130973",
+    "GSM": "GSM3758118",
+    "csv_path": "SkinDB_New/10X/human/GSE130973/GSM3758118/DEG_results/GSM3758118_annotated_all_DEGs.csv"
+  },
+  "SAID295": {
+    "GSE": "GSE130973",
+    "GSM": "GSM3758119",
+    "csv_path": "SkinDB_New/10X/human/GSE130973/GSM3758119/DEG_results/GSM3758119_annotated_all_DEGs.csv"
+  },
+  "SAID296": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892569",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892569/DEG_results/GSM3892569_annotated_all_DEGs.csv"
+  },
+  "SAID297": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892577",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892577/DEG_results/GSM3892577_annotated_all_DEGs.csv"
+  },
+  "SAID298": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892578",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892578/DEG_results/GSM3892578_annotated_all_DEGs.csv"
+  },
+  "SAID299": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892579",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892579/DEG_results/GSM3892579_annotated_all_DEGs.csv"
+  },
+  "SAID300": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892580",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892580/DEG_results/GSM3892580_annotated_all_DEGs.csv"
+  },
+  "SAID301": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892581",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892581/DEG_results/GSM3892581_annotated_all_DEGs.csv"
+  },
+  "SAID302": {
+    "GSE": "GSE132802",
+    "GSM": "GSM3892582",
+    "csv_path": "SkinDB_New/10X/human/GSE132802/GSM3892582/DEG_results/GSM3892582_annotated_all_DEGs.csv"
+  },
+  "SAID303": {
+    "GSE": "GSE133704",
+    "GSM": "GSM3916589",
+    "csv_path": "SkinDB_New/10X/human/GSE133704/GSM3916589/DEG_results/GSM3916589_annotated_all_DEGs.csv"
+  },
+  "SAID304": {
+    "GSE": "GSE133704",
+    "GSM": "GSM3916590",
+    "csv_path": "SkinDB_New/10X/human/GSE133704/GSM3916590/DEG_results/GSM3916590_annotated_all_DEGs.csv"
+  },
+  "SAID305": {
+    "GSE": "GSE133704",
+    "GSM": "GSM3916592",
+    "csv_path": "SkinDB_New/10X/human/GSE133704/GSM3916592/DEG_results/GSM3916592_annotated_all_DEGs.csv"
+  },
+  "SAID306": {
+    "GSE": "GSE133704",
+    "GSM": "GSM3916594",
+    "csv_path": "SkinDB_New/10X/human/GSE133704/GSM3916594/DEG_results/GSM3916594_annotated_all_DEGs.csv"
+  },
+  "SAID307": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567877",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567877/DEG_results/GSM4567877_annotated_all_DEGs.csv"
+  },
+  "SAID308": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567878",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567878/DEG_results/GSM4567878_annotated_all_DEGs.csv"
+  },
+  "SAID309": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567879",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567879/DEG_results/GSM4567879_annotated_all_DEGs.csv"
+  },
+  "SAID310": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567880",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567880/DEG_results/GSM4567880_annotated_all_DEGs.csv"
+  },
+  "SAID311": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567881",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567881/DEG_results/GSM4567881_annotated_all_DEGs.csv"
+  },
+  "SAID312": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567882",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567882/DEG_results/GSM4567882_annotated_all_DEGs.csv"
+  },
+  "SAID313": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567883",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567883/DEG_results/GSM4567883_annotated_all_DEGs.csv"
+  },
+  "SAID314": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567884",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567884/DEG_results/GSM4567884_annotated_all_DEGs.csv"
+  },
+  "SAID315": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567885",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567885/DEG_results/GSM4567885_annotated_all_DEGs.csv"
+  },
+  "SAID316": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567886",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567886/DEG_results/GSM4567886_annotated_all_DEGs.csv"
+  },
+  "SAID317": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567887",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567887/DEG_results/GSM4567887_annotated_all_DEGs.csv"
+  },
+  "SAID318": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567888",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567888/DEG_results/GSM4567888_annotated_all_DEGs.csv"
+  },
+  "SAID319": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567889",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567889/DEG_results/GSM4567889_annotated_all_DEGs.csv"
+  },
+  "SAID320": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567890",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567890/DEG_results/GSM4567890_annotated_all_DEGs.csv"
+  },
+  "SAID321": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567891",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567891/DEG_results/GSM4567891_annotated_all_DEGs.csv"
+  },
+  "SAID322": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567892",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567892/DEG_results/GSM4567892_annotated_all_DEGs.csv"
+  },
+  "SAID323": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567893",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567893/DEG_results/GSM4567893_annotated_all_DEGs.csv"
+  },
+  "SAID324": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567894",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567894/DEG_results/GSM4567894_annotated_all_DEGs.csv"
+  },
+  "SAID325": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567895",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567895/DEG_results/GSM4567895_annotated_all_DEGs.csv"
+  },
+  "SAID326": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567896",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567896/DEG_results/GSM4567896_annotated_all_DEGs.csv"
+  },
+  "SAID327": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567897",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567897/DEG_results/GSM4567897_annotated_all_DEGs.csv"
+  },
+  "SAID328": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567898",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567898/DEG_results/GSM4567898_annotated_all_DEGs.csv"
+  },
+  "SAID329": {
+    "GSE": "GSE151177",
+    "GSM": "GSM4567899",
+    "csv_path": "SkinDB_New/10X/human/GSE151177/GSM4567899/DEG_results/GSM4567899_annotated_all_DEGs.csv"
+  },
+  "SAID330": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653855",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653855/DEG_results/GSM4653855_annotated_all_DEGs.csv"
+  },
+  "SAID331": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653856",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653856/DEG_results/GSM4653856_annotated_all_DEGs.csv"
+  },
+  "SAID332": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653857",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653857/DEG_results/GSM4653857_annotated_all_DEGs.csv"
+  },
+  "SAID333": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653858",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653858/DEG_results/GSM4653858_annotated_all_DEGs.csv"
+  },
+  "SAID334": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653859",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653859/DEG_results/GSM4653859_annotated_all_DEGs.csv"
+  },
+  "SAID335": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653860",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653860/DEG_results/GSM4653860_annotated_all_DEGs.csv"
+  },
+  "SAID336": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653861",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653861/DEG_results/GSM4653861_annotated_all_DEGs.csv"
+  },
+  "SAID337": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653862",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653862/DEG_results/GSM4653862_annotated_all_DEGs.csv"
+  },
+  "SAID338": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653863",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653863/DEG_results/GSM4653863_annotated_all_DEGs.csv"
+  },
+  "SAID339": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653864",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653864/DEG_results/GSM4653864_annotated_all_DEGs.csv"
+  },
+  "SAID340": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653865",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653865/DEG_results/GSM4653865_annotated_all_DEGs.csv"
+  },
+  "SAID341": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653866",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653866/DEG_results/GSM4653866_annotated_all_DEGs.csv"
+  },
+  "SAID342": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653867",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653867/DEG_results/GSM4653867_annotated_all_DEGs.csv"
+  },
+  "SAID343": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653868",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653868/DEG_results/GSM4653868_annotated_all_DEGs.csv"
+  },
+  "SAID344": {
+    "GSE": "GSE153760",
+    "GSM": "GSM4653869",
+    "csv_path": "SkinDB_New/10X/human/GSE153760/GSM4653869/DEG_results/GSM4653869_annotated_all_DEGs.csv"
+  },
+  "SAID345": {
+    "GSE": "GSE155850",
+    "GSM": "GSM4712969",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM4712969/DEG_results/GSM4712969_annotated_all_DEGs.csv"
+  },
+  "SAID346": {
+    "GSE": "GSE155850",
+    "GSM": "GSM4712970",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM4712970/DEG_results/GSM4712970_annotated_all_DEGs.csv"
+  },
+  "SAID347": {
+    "GSE": "GSE155850",
+    "GSM": "GSM4712971",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM4712971/DEG_results/GSM4712971_annotated_all_DEGs.csv"
+  },
+  "SAID348": {
+    "GSE": "GSE155850",
+    "GSM": "GSM4712972",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM4712972/DEG_results/GSM4712972_annotated_all_DEGs.csv"
+  },
+  "SAID349": {
+    "GSE": "GSE157253",
+    "GSM": "GSM4760235",
+    "csv_path": "SkinDB_New/10X/human/GSE157253/GSM4760235/DEG_results/GSM4760235_annotated_all_DEGs.csv"
+  },
+  "SAID350": {
+    "GSE": "GSE157253",
+    "GSM": "GSM4760236",
+    "csv_path": "SkinDB_New/10X/human/GSE157253/GSM4760236/DEG_results/GSM4760236_annotated_all_DEGs.csv"
+  },
+  "SAID351": {
+    "GSE": "GSE157253",
+    "GSM": "GSM4760237",
+    "csv_path": "SkinDB_New/10X/human/GSE157253/GSM4760237/DEG_results/GSM4760237_annotated_all_DEGs.csv"
+  },
+  "SAID352": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815800",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815800/DEG_results/GSM4815800_annotated_all_DEGs.csv"
+  },
+  "SAID353": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815801",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815801/DEG_results/GSM4815801_annotated_all_DEGs.csv"
+  },
+  "SAID354": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815802",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815802/DEG_results/GSM4815802_annotated_all_DEGs.csv"
+  },
+  "SAID355": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815803",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815803/DEG_results/GSM4815803_annotated_all_DEGs.csv"
+  },
+  "SAID356": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815804",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815804/DEG_results/GSM4815804_annotated_all_DEGs.csv"
+  },
+  "SAID357": {
+    "GSE": "GSE158924",
+    "GSM": "GSM4815805",
+    "csv_path": "SkinDB_New/10X/human/GSE158924/GSM4815805/DEG_results/GSM4815805_annotated_all_DEGs.csv"
+  },
+  "SAID358": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946161",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946161/DEG_results/GSM4946161_annotated_all_DEGs.csv"
+  },
+  "SAID359": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946162",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946162/DEG_results/GSM4946162_annotated_all_DEGs.csv"
+  },
+  "SAID360": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946163",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946163/DEG_results/GSM4946163_annotated_all_DEGs.csv"
+  },
+  "SAID361": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946164",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946164/DEG_results/GSM4946164_annotated_all_DEGs.csv"
+  },
+  "SAID362": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946165",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946165/DEG_results/GSM4946165_annotated_all_DEGs.csv"
+  },
+  "SAID363": {
+    "GSE": "GSE162183",
+    "GSM": "GSM4946166",
+    "csv_path": "SkinDB_New/10X/human/GSE162183/GSM4946166/DEG_results/GSM4946166_annotated_all_DEGs.csv"
+  },
+  "SAID364": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264341",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264341/DEG_results/GSM5264341_annotated_all_DEGs.csv"
+  },
+  "SAID365": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264342",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264342/DEG_results/GSM5264342_annotated_all_DEGs.csv"
+  },
+  "SAID366": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264343",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264343/DEG_results/GSM5264343_annotated_all_DEGs.csv"
+  },
+  "SAID367": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264344",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264344/DEG_results/GSM5264344_annotated_all_DEGs.csv"
+  },
+  "SAID368": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264345",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264345/DEG_results/GSM5264345_annotated_all_DEGs.csv"
+  },
+  "SAID369": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264346",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264346/DEG_results/GSM5264346_annotated_all_DEGs.csv"
+  },
+  "SAID370": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264347",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264347/DEG_results/GSM5264347_annotated_all_DEGs.csv"
+  },
+  "SAID371": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264348",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264348/DEG_results/GSM5264348_annotated_all_DEGs.csv"
+  },
+  "SAID372": {
+    "GSE": "GSE173252",
+    "GSM": "GSM5264349",
+    "csv_path": "SkinDB_New/10X/human/GSE173252/GSM5264349/DEG_results/GSM5264349_annotated_all_DEGs.csv"
+  },
+  "SAID373": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273010",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273010/DEG_results/GSM5273010_annotated_all_DEGs.csv"
+  },
+  "SAID374": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273011",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273011/DEG_results/GSM5273011_annotated_all_DEGs.csv"
+  },
+  "SAID375": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273012",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273012/DEG_results/GSM5273012_annotated_all_DEGs.csv"
+  },
+  "SAID376": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273013",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273013/DEG_results/GSM5273013_annotated_all_DEGs.csv"
+  },
+  "SAID377": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273014",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273014/DEG_results/GSM5273014_annotated_all_DEGs.csv"
+  },
+  "SAID378": {
+    "GSE": "GSE173651",
+    "GSM": "GSM5273015",
+    "csv_path": "SkinDB_New/10X/human/GSE173651/GSM5273015/DEG_results/GSM5273015_annotated_all_DEGs.csv"
+  },
+  "SAID379": {
+    "GSE": "GSE175990",
+    "GSM": "GSM5352392",
+    "csv_path": "SkinDB_New/10X/human/GSE175990/GSM5352392/DEG_results/GSM5352392_annotated_all_DEGs.csv"
+  },
+  "SAID380": {
+    "GSE": "GSE175990",
+    "GSM": "GSM5352393",
+    "csv_path": "SkinDB_New/10X/human/GSE175990/GSM5352393/DEG_results/GSM5352393_annotated_all_DEGs.csv"
+  },
+  "SAID381": {
+    "GSE": "GSE175990",
+    "GSM": "GSM5352394",
+    "csv_path": "SkinDB_New/10X/human/GSE175990/GSM5352394/DEG_results/GSM5352394_annotated_all_DEGs.csv"
+  },
+  "SAID382": {
+    "GSE": "GSE175990",
+    "GSM": "GSM5352395",
+    "csv_path": "SkinDB_New/10X/human/GSE175990/GSM5352395/DEG_results/GSM5352395_annotated_all_DEGs.csv"
+  },
+  "SAID383": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420670",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420670/DEG_results/GSM5420670_annotated_all_DEGs.csv"
+  },
+  "SAID384": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420671",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420671/DEG_results/GSM5420671_annotated_all_DEGs.csv"
+  },
+  "SAID385": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420672",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420672/DEG_results/GSM5420672_annotated_all_DEGs.csv"
+  },
+  "SAID386": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420673",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420673/DEG_results/GSM5420673_annotated_all_DEGs.csv"
+  },
+  "SAID387": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420674",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420674/DEG_results/GSM5420674_annotated_all_DEGs.csv"
+  },
+  "SAID388": {
+    "GSE": "GSE179565",
+    "GSM": "GSM5420675",
+    "csv_path": "SkinDB_New/10X/human/GSE179565/GSM5420675/DEG_results/GSM5420675_annotated_all_DEGs.csv"
+  },
+  "SAID389": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5494438",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5494438/DEG_results/GSM5494438_annotated_all_DEGs.csv"
+  },
+  "SAID390": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5494439",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5494439/DEG_results/GSM5494439_annotated_all_DEGs.csv"
+  },
+  "SAID391": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5494440",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5494440/DEG_results/GSM5494440_annotated_all_DEGs.csv"
+  },
+  "SAID392": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5494441",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5494441/DEG_results/GSM5494441_annotated_all_DEGs.csv"
+  },
+  "SAID409": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538777",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538777/DEG_results/GSM5538777_annotated_all_DEGs.csv"
+  },
+  "SAID410": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538778",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538778/DEG_results/GSM5538778_annotated_all_DEGs.csv"
+  },
+  "SAID411": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538779",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538779/DEG_results/GSM5538779_annotated_all_DEGs.csv"
+  },
+  "SAID412": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538780",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538780/DEG_results/GSM5538780_annotated_all_DEGs.csv"
+  },
+  "SAID413": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538781",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538781/DEG_results/GSM5538781_annotated_all_DEGs.csv"
+  },
+  "SAID414": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538782",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538782/DEG_results/GSM5538782_annotated_all_DEGs.csv"
+  },
+  "SAID415": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538783",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538783/DEG_results/GSM5538783_annotated_all_DEGs.csv"
+  },
+  "SAID416": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538784",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538784/DEG_results/GSM5538784_annotated_all_DEGs.csv"
+  },
+  "SAID417": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538785",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538785/DEG_results/GSM5538785_annotated_all_DEGs.csv"
+  },
+  "SAID418": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5538786",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5538786/DEG_results/GSM5538786_annotated_all_DEGs.csv"
+  },
+  "SAID419": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550101",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550101/DEG_results/GSM5550101_annotated_all_DEGs.csv"
+  },
+  "SAID420": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550102",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550102/DEG_results/GSM5550102_annotated_all_DEGs.csv"
+  },
+  "SAID421": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550103",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550103/DEG_results/GSM5550103_annotated_all_DEGs.csv"
+  },
+  "SAID422": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550104",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550104/DEG_results/GSM5550104_annotated_all_DEGs.csv"
+  },
+  "SAID423": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550105",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550105/DEG_results/GSM5550105_annotated_all_DEGs.csv"
+  },
+  "SAID424": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550106",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550106/DEG_results/GSM5550106_annotated_all_DEGs.csv"
+  },
+  "SAID425": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550107",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550107/DEG_results/GSM5550107_annotated_all_DEGs.csv"
+  },
+  "SAID426": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550108",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550108/DEG_results/GSM5550108_annotated_all_DEGs.csv"
+  },
+  "SAID427": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550109",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550109/DEG_results/GSM5550109_annotated_all_DEGs.csv"
+  },
+  "SAID428": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550110",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550110/DEG_results/GSM5550110_annotated_all_DEGs.csv"
+  },
+  "SAID429": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550111",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550111/DEG_results/GSM5550111_annotated_all_DEGs.csv"
+  },
+  "SAID430": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550112",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550112/DEG_results/GSM5550112_annotated_all_DEGs.csv"
+  },
+  "SAID431": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550113",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550113/DEG_results/GSM5550113_annotated_all_DEGs.csv"
+  },
+  "SAID432": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550114",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550114/DEG_results/GSM5550114_annotated_all_DEGs.csv"
+  },
+  "SAID433": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550115",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550115/DEG_results/GSM5550115_annotated_all_DEGs.csv"
+  },
+  "SAID434": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550116",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550116/DEG_results/GSM5550116_annotated_all_DEGs.csv"
+  },
+  "SAID435": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550117",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550117/DEG_results/GSM5550117_annotated_all_DEGs.csv"
+  },
+  "SAID436": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550118",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550118/DEG_results/GSM5550118_annotated_all_DEGs.csv"
+  },
+  "SAID437": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550119",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550119/DEG_results/GSM5550119_annotated_all_DEGs.csv"
+  },
+  "SAID438": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550120",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550120/DEG_results/GSM5550120_annotated_all_DEGs.csv"
+  },
+  "SAID439": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550121",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550121/DEG_results/GSM5550121_annotated_all_DEGs.csv"
+  },
+  "SAID440": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550122",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550122/DEG_results/GSM5550122_annotated_all_DEGs.csv"
+  },
+  "SAID441": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550123",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550123/DEG_results/GSM5550123_annotated_all_DEGs.csv"
+  },
+  "SAID442": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550124",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550124/DEG_results/GSM5550124_annotated_all_DEGs.csv"
+  },
+  "SAID443": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550125",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550125/DEG_results/GSM5550125_annotated_all_DEGs.csv"
+  },
+  "SAID444": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550126",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550126/DEG_results/GSM5550126_annotated_all_DEGs.csv"
+  },
+  "SAID445": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550127",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550127/DEG_results/GSM5550127_annotated_all_DEGs.csv"
+  },
+  "SAID446": {
+    "GSE": "GSE183047",
+    "GSM": "GSM5550128",
+    "csv_path": "SkinDB_New/10X/human/GSE183047/GSM5550128/DEG_results/GSM5550128_annotated_all_DEGs.csv"
+  },
+  "SAID447": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5610149",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5610149/DEG_results/GSM5610149_annotated_all_DEGs.csv"
+  },
+  "SAID448": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687767",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687767/DEG_results/GSM5687767_annotated_all_DEGs.csv"
+  },
+  "SAID449": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687768",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687768/DEG_results/GSM5687768_annotated_all_DEGs.csv"
+  },
+  "SAID450": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687769",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687769/DEG_results/GSM5687769_annotated_all_DEGs.csv"
+  },
+  "SAID451": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687770",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687770/DEG_results/GSM5687770_annotated_all_DEGs.csv"
+  },
+  "SAID452": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687771",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687771/DEG_results/GSM5687771_annotated_all_DEGs.csv"
+  },
+  "SAID453": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687772",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687772/DEG_results/GSM5687772_annotated_all_DEGs.csv"
+  },
+  "SAID454": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687773",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687773/DEG_results/GSM5687773_annotated_all_DEGs.csv"
+  },
+  "SAID455": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687774",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687774/DEG_results/GSM5687774_annotated_all_DEGs.csv"
+  },
+  "SAID456": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687775",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687775/DEG_results/GSM5687775_annotated_all_DEGs.csv"
+  },
+  "SAID457": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687776",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687776/DEG_results/GSM5687776_annotated_all_DEGs.csv"
+  },
+  "SAID458": {
+    "GSE": "GSE182861",
+    "GSM": "GSM5687777",
+    "csv_path": "SkinDB_New/10X/human/GSE182861/GSM5687777/DEG_results/GSM5687777_annotated_all_DEGs.csv"
+  },
+  "SAID459": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708993",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708993/DEG_results/GSM5708993_annotated_all_DEGs.csv"
+  },
+  "SAID460": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708994",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708994/DEG_results/GSM5708994_annotated_all_DEGs.csv"
+  },
+  "SAID461": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708995",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708995/DEG_results/GSM5708995_annotated_all_DEGs.csv"
+  },
+  "SAID462": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708996",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708996/DEG_results/GSM5708996_annotated_all_DEGs.csv"
+  },
+  "SAID463": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708997",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708997/DEG_results/GSM5708997_annotated_all_DEGs.csv"
+  },
+  "SAID464": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708998",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708998/DEG_results/GSM5708998_annotated_all_DEGs.csv"
+  },
+  "SAID465": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5708999",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5708999/DEG_results/GSM5708999_annotated_all_DEGs.csv"
+  },
+  "SAID466": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5709000",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5709000/DEG_results/GSM5709000_annotated_all_DEGs.csv"
+  },
+  "SAID467": {
+    "GSE": "GSE189889",
+    "GSM": "GSM5709001",
+    "csv_path": "SkinDB_New/10X/human/GSE189889/GSM5709001/DEG_results/GSM5709001_annotated_all_DEGs.csv"
+  },
+  "SAID468": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5772310",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5772310/DEG_results/GSM5772310_annotated_all_DEGs.csv"
+  },
+  "SAID469": {
+    "GSE": "GSE181297",
+    "GSM": "GSM5772311",
+    "csv_path": "SkinDB_New/10X/human/GSE181297/GSM5772311/DEG_results/GSM5772311_annotated_all_DEGs.csv"
+  },
+  "SAID470": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788491",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788491/DEG_results/GSM5788491_annotated_all_DEGs.csv"
+  },
+  "SAID471": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788492",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788492/DEG_results/GSM5788492_annotated_all_DEGs.csv"
+  },
+  "SAID472": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788493",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788493/DEG_results/GSM5788493_annotated_all_DEGs.csv"
+  },
+  "SAID473": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788494",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788494/DEG_results/GSM5788494_annotated_all_DEGs.csv"
+  },
+  "SAID474": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788495",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788495/DEG_results/GSM5788495_annotated_all_DEGs.csv"
+  },
+  "SAID475": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788496",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788496/DEG_results/GSM5788496_annotated_all_DEGs.csv"
+  },
+  "SAID476": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788497",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788497/DEG_results/GSM5788497_annotated_all_DEGs.csv"
+  },
+  "SAID477": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788498",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788498/DEG_results/GSM5788498_annotated_all_DEGs.csv"
+  },
+  "SAID478": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788499",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788499/DEG_results/GSM5788499_annotated_all_DEGs.csv"
+  },
+  "SAID479": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788500",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788500/DEG_results/GSM5788500_annotated_all_DEGs.csv"
+  },
+  "SAID480": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788501",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788501/DEG_results/GSM5788501_annotated_all_DEGs.csv"
+  },
+  "SAID481": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788502",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788502/DEG_results/GSM5788502_annotated_all_DEGs.csv"
+  },
+  "SAID482": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788503",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788503/DEG_results/GSM5788503_annotated_all_DEGs.csv"
+  },
+  "SAID483": {
+    "GSE": "GSE193304",
+    "GSM": "GSM5788504",
+    "csv_path": "SkinDB_New/10X/human/GSE193304/GSM5788504/DEG_results/GSM5788504_annotated_all_DEGs.csv"
+  },
+  "SAID484": {
+    "GSE": "GSE195674",
+    "GSM": "GSM5847946",
+    "csv_path": "SkinDB_New/10X/human/GSE195674/GSM5847946/DEG_results/GSM5847946_annotated_all_DEGs.csv"
+  },
+  "SAID485": {
+    "GSE": "GSE195674",
+    "GSM": "GSM5847947",
+    "csv_path": "SkinDB_New/10X/human/GSE195674/GSM5847947/DEG_results/GSM5847947_annotated_all_DEGs.csv"
+  },
+  "SAID486": {
+    "GSE": "GSE203034",
+    "GSM": "GSM6152838",
+    "csv_path": "SkinDB_New/10X/human/GSE203034/GSM6152838/DEG_results/GSM6152838_annotated_all_DEGs.csv"
+  },
+  "SAID487": {
+    "GSE": "GSE203034",
+    "GSM": "GSM6152839",
+    "csv_path": "SkinDB_New/10X/human/GSE203034/GSM6152839/DEG_results/GSM6152839_annotated_all_DEGs.csv"
+  },
+  "SAID488": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165458",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165458/DEG_results/GSM6165458_annotated_all_DEGs.csv"
+  },
+  "SAID489": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165459",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165459/DEG_results/GSM6165459_annotated_all_DEGs.csv"
+  },
+  "SAID490": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165460",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165460/DEG_results/GSM6165460_annotated_all_DEGs.csv"
+  },
+  "SAID491": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165461",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165461/DEG_results/GSM6165461_annotated_all_DEGs.csv"
+  },
+  "SAID492": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165462",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165462/DEG_results/GSM6165462_annotated_all_DEGs.csv"
+  },
+  "SAID493": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165463",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165463/DEG_results/GSM6165463_annotated_all_DEGs.csv"
+  },
+  "SAID494": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165464",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165464/DEG_results/GSM6165464_annotated_all_DEGs.csv"
+  },
+  "SAID495": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165465",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165465/DEG_results/GSM6165465_annotated_all_DEGs.csv"
+  },
+  "SAID496": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165466",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165466/DEG_results/GSM6165466_annotated_all_DEGs.csv"
+  },
+  "SAID497": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165467",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165467/DEG_results/GSM6165467_annotated_all_DEGs.csv"
+  },
+  "SAID498": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165468",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165468/DEG_results/GSM6165468_annotated_all_DEGs.csv"
+  },
+  "SAID499": {
+    "GSE": "GSE203262",
+    "GSM": "GSM6165469",
+    "csv_path": "SkinDB_New/10X/human/GSE203262/GSM6165469/DEG_results/GSM6165469_annotated_all_DEGs.csv"
+  },
+  "SAID500": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243635",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243635/DEG_results/GSM6243635_annotated_all_DEGs.csv"
+  },
+  "SAID501": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243636",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243636/DEG_results/GSM6243636_annotated_all_DEGs.csv"
+  },
+  "SAID502": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243637",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243637/DEG_results/GSM6243637_annotated_all_DEGs.csv"
+  },
+  "SAID503": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243638",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243638/DEG_results/GSM6243638_annotated_all_DEGs.csv"
+  },
+  "SAID504": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243639",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243639/DEG_results/GSM6243639_annotated_all_DEGs.csv"
+  },
+  "SAID505": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243640",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243640/DEG_results/GSM6243640_annotated_all_DEGs.csv"
+  },
+  "SAID506": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243641",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243641/DEG_results/GSM6243641_annotated_all_DEGs.csv"
+  },
+  "SAID507": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243642",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243642/DEG_results/GSM6243642_annotated_all_DEGs.csv"
+  },
+  "SAID508": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243643",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243643/DEG_results/GSM6243643_annotated_all_DEGs.csv"
+  },
+  "SAID509": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243644",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243644/DEG_results/GSM6243644_annotated_all_DEGs.csv"
+  },
+  "SAID510": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243645",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243645/DEG_results/GSM6243645_annotated_all_DEGs.csv"
+  },
+  "SAID511": {
+    "GSE": "GSE206123",
+    "GSM": "GSM6243646",
+    "csv_path": "SkinDB_New/10X/human/GSE206123/GSM6243646/DEG_results/GSM6243646_annotated_all_DEGs.csv"
+  },
+  "SAID512": {
+    "GSE": "GSE206147",
+    "GSM": "GSM6244285",
+    "csv_path": "SkinDB_New/10X/human/GSE206147/GSM6244285/DEG_results/GSM6244285_annotated_all_DEGs.csv"
+  },
+  "SAID513": {
+    "GSE": "GSE210170",
+    "GSM": "GSM6422963",
+    "csv_path": "SkinDB_New/10X/human/GSE210170/GSM6422963/DEG_results/GSM6422963_annotated_all_DEGs.csv"
+  },
+  "SAID514": {
+    "GSE": "GSE210170",
+    "GSM": "GSM6422964",
+    "csv_path": "SkinDB_New/10X/human/GSE210170/GSM6422964/DEG_results/GSM6422964_annotated_all_DEGs.csv"
+  },
+  "SAID515": {
+    "GSE": "GSE210170",
+    "GSM": "GSM6422965",
+    "csv_path": "SkinDB_New/10X/human/GSE210170/GSM6422965/DEG_results/GSM6422965_annotated_all_DEGs.csv"
+  },
+  "SAID516": {
+    "GSE": "GSE210170",
+    "GSM": "GSM6422966",
+    "csv_path": "SkinDB_New/10X/human/GSE210170/GSM6422966/DEG_results/GSM6422966_annotated_all_DEGs.csv"
+  },
+  "SAID517": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426632",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426632/DEG_results/GSM6426632_annotated_all_DEGs.csv"
+  },
+  "SAID518": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426633",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426633/DEG_results/GSM6426633_annotated_all_DEGs.csv"
+  },
+  "SAID519": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426634",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426634/DEG_results/GSM6426634_annotated_all_DEGs.csv"
+  },
+  "SAID520": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426635",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426635/DEG_results/GSM6426635_annotated_all_DEGs.csv"
+  },
+  "SAID521": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426636",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426636/DEG_results/GSM6426636_annotated_all_DEGs.csv"
+  },
+  "SAID522": {
+    "GSE": "GSE210261",
+    "GSM": "GSM6426637",
+    "csv_path": "SkinDB_New/10X/human/GSE210261/GSM6426637/DEG_results/GSM6426637_annotated_all_DEGs.csv"
+  },
+  "SAID523": {
+    "GSE": "GSE210939",
+    "GSM": "GSM6443131",
+    "csv_path": "SkinDB_New/10X/human/GSE210939/GSM6443131/DEG_results/GSM6443131_annotated_all_DEGs.csv"
+  },
+  "SAID524": {
+    "GSE": "GSE210939",
+    "GSM": "GSM6443132",
+    "csv_path": "SkinDB_New/10X/human/GSE210939/GSM6443132/DEG_results/GSM6443132_annotated_all_DEGs.csv"
+  },
+  "SAID525": {
+    "GSE": "GSE210939",
+    "GSM": "GSM6443133",
+    "csv_path": "SkinDB_New/10X/human/GSE210939/GSM6443133/DEG_results/GSM6443133_annotated_all_DEGs.csv"
+  },
+  "SAID526": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532919",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532919/DEG_results/GSM6532919_annotated_all_DEGs.csv"
+  },
+  "SAID527": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532920",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532920/DEG_results/GSM6532920_annotated_all_DEGs.csv"
+  },
+  "SAID528": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532921",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532921/DEG_results/GSM6532921_annotated_all_DEGs.csv"
+  },
+  "SAID529": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532922",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532922/DEG_results/GSM6532922_annotated_all_DEGs.csv"
+  },
+  "SAID530": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532923",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532923/DEG_results/GSM6532923_annotated_all_DEGs.csv"
+  },
+  "SAID531": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532924",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532924/DEG_results/GSM6532924_annotated_all_DEGs.csv"
+  },
+  "SAID532": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532925",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532925/DEG_results/GSM6532925_annotated_all_DEGs.csv"
+  },
+  "SAID533": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532926",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532926/DEG_results/GSM6532926_annotated_all_DEGs.csv"
+  },
+  "SAID534": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532927",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532927/DEG_results/GSM6532927_annotated_all_DEGs.csv"
+  },
+  "SAID535": {
+    "GSE": "GSE212447",
+    "GSM": "GSM6532928",
+    "csv_path": "SkinDB_New/10X/human/GSE212447/GSM6532928/DEG_results/GSM6532928_annotated_all_DEGs.csv"
+  },
+  "SAID536": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532929",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532929/DEG_results/GSM6532929_annotated_all_DEGs.csv"
+  },
+  "SAID537": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532930",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532930/DEG_results/GSM6532930_annotated_all_DEGs.csv"
+  },
+  "SAID538": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532931",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532931/DEG_results/GSM6532931_annotated_all_DEGs.csv"
+  },
+  "SAID539": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532932",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532932/DEG_results/GSM6532932_annotated_all_DEGs.csv"
+  },
+  "SAID540": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532933",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532933/DEG_results/GSM6532933_annotated_all_DEGs.csv"
+  },
+  "SAID541": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532934",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532934/DEG_results/GSM6532934_annotated_all_DEGs.csv"
+  },
+  "SAID542": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532935",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532935/DEG_results/GSM6532935_annotated_all_DEGs.csv"
+  },
+  "SAID543": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532936",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532936/DEG_results/GSM6532936_annotated_all_DEGs.csv"
+  },
+  "SAID544": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532937",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532937/DEG_results/GSM6532937_annotated_all_DEGs.csv"
+  },
+  "SAID545": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532938",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532938/DEG_results/GSM6532938_annotated_all_DEGs.csv"
+  },
+  "SAID546": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532939",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532939/DEG_results/GSM6532939_annotated_all_DEGs.csv"
+  },
+  "SAID547": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532940",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532940/DEG_results/GSM6532940_annotated_all_DEGs.csv"
+  },
+  "SAID548": {
+    "GSE": "GSE212448",
+    "GSM": "GSM6532941",
+    "csv_path": "SkinDB_New/10X/human/GSE212448/GSM6532941/DEG_results/GSM6532941_annotated_all_DEGs.csv"
+  },
+  "SAID549": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595205",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595205/DEG_results/GSM6595205_annotated_all_DEGs.csv"
+  },
+  "SAID550": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595206",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595206/DEG_results/GSM6595206_annotated_all_DEGs.csv"
+  },
+  "SAID551": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595207",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595207/DEG_results/GSM6595207_annotated_all_DEGs.csv"
+  },
+  "SAID552": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595208",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595208/DEG_results/GSM6595208_annotated_all_DEGs.csv"
+  },
+  "SAID553": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595209",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595209/DEG_results/GSM6595209_annotated_all_DEGs.csv"
+  },
+  "SAID554": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595210",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595210/DEG_results/GSM6595210_annotated_all_DEGs.csv"
+  },
+  "SAID555": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595211",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595211/DEG_results/GSM6595211_annotated_all_DEGs.csv"
+  },
+  "SAID556": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595212",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595212/DEG_results/GSM6595212_annotated_all_DEGs.csv"
+  },
+  "SAID557": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595213",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595213/DEG_results/GSM6595213_annotated_all_DEGs.csv"
+  },
+  "SAID558": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595214",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595214/DEG_results/GSM6595214_annotated_all_DEGs.csv"
+  },
+  "SAID559": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595215",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595215/DEG_results/GSM6595215_annotated_all_DEGs.csv"
+  },
+  "SAID560": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595216",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595216/DEG_results/GSM6595216_annotated_all_DEGs.csv"
+  },
+  "SAID561": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595217",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595217/DEG_results/GSM6595217_annotated_all_DEGs.csv"
+  },
+  "SAID562": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595218",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595218/DEG_results/GSM6595218_annotated_all_DEGs.csv"
+  },
+  "SAID563": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595219",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595219/DEG_results/GSM6595219_annotated_all_DEGs.csv"
+  },
+  "SAID564": {
+    "GSE": "GSE213849",
+    "GSM": "GSM6595220",
+    "csv_path": "SkinDB_New/10X/human/GSE213849/GSM6595220/DEG_results/GSM6595220_annotated_all_DEGs.csv"
+  },
+  "SAID565": {
+    "GSE": "GSE221927",
+    "GSM": "GSM6910166",
+    "csv_path": "SkinDB_New/10X/human/GSE221927/GSM6910166/DEG_results/GSM6910166_annotated_all_DEGs.csv"
+  },
+  "SAID566": {
+    "GSE": "GSE221927",
+    "GSM": "GSM6910167",
+    "csv_path": "SkinDB_New/10X/human/GSE221927/GSM6910167/DEG_results/GSM6910167_annotated_all_DEGs.csv"
+  },
+  "SAID567": {
+    "GSE": "GSE221927",
+    "GSM": "GSM6910168",
+    "csv_path": "SkinDB_New/10X/human/GSE221927/GSM6910168/DEG_results/GSM6910168_annotated_all_DEGs.csv"
+  },
+  "SAID621": {
+    "GSE": "GSE233137",
+    "GSM": "GSM7401927",
+    "csv_path": "SkinDB_New/10X/human/GSE233137/GSM7401927/DEG_results/GSM7401927_annotated_all_DEGs.csv"
+  },
+  "SAID622": {
+    "GSE": "GSE233137",
+    "GSM": "GSM7401928",
+    "csv_path": "SkinDB_New/10X/human/GSE233137/GSM7401928/DEG_results/GSM7401928_annotated_all_DEGs.csv"
+  },
+  "SAID623": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476338",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476338/DEG_results/GSM7476338_annotated_all_DEGs.csv"
+  },
+  "SAID624": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476339",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476339/DEG_results/GSM7476339_annotated_all_DEGs.csv"
+  },
+  "SAID625": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476340",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476340/DEG_results/GSM7476340_annotated_all_DEGs.csv"
+  },
+  "SAID626": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476341",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476341/DEG_results/GSM7476341_annotated_all_DEGs.csv"
+  },
+  "SAID627": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476342",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476342/DEG_results/GSM7476342_annotated_all_DEGs.csv"
+  },
+  "SAID628": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476343",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476343/DEG_results/GSM7476343_annotated_all_DEGs.csv"
+  },
+  "SAID629": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476344",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476344/DEG_results/GSM7476344_annotated_all_DEGs.csv"
+  },
+  "SAID630": {
+    "GSE": "GSE234901",
+    "GSM": "GSM7476345",
+    "csv_path": "SkinDB_New/10X/human/GSE234901/GSM7476345/DEG_results/GSM7476345_annotated_all_DEGs.csv"
+  },
+  "SAID631": {
+    "GSE": "GSE237754",
+    "GSM": "GSM7648532",
+    "csv_path": "SkinDB_New/10X/human/GSE237754/GSM7648532/DEG_results/GSM7648532_annotated_all_DEGs.csv"
+  },
+  "SAID632": {
+    "GSE": "GSE237754",
+    "GSM": "GSM7648533",
+    "csv_path": "SkinDB_New/10X/human/GSE237754/GSM7648533/DEG_results/GSM7648533_annotated_all_DEGs.csv"
+  },
+  "SAID633": {
+    "GSE": "GSE155850",
+    "GSM": "GSM7754887",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM7754887/DEG_results/GSM7754887_annotated_all_DEGs.csv"
+  },
+  "SAID634": {
+    "GSE": "GSE155850",
+    "GSM": "GSM7754888",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM7754888/DEG_results/GSM7754888_annotated_all_DEGs.csv"
+  },
+  "SAID635": {
+    "GSE": "GSE155850",
+    "GSM": "GSM7754889",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM7754889/DEG_results/GSM7754889_annotated_all_DEGs.csv"
+  },
+  "SAID636": {
+    "GSE": "GSE155850",
+    "GSM": "GSM7754890",
+    "csv_path": "SkinDB_New/10X/human/GSE155850/GSM7754890/DEG_results/GSM7754890_annotated_all_DEGs.csv"
+  },
+  "SAID637": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764406",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764406/DEG_results/GSM7764406_annotated_all_DEGs.csv"
+  },
+  "SAID638": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764408",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764408/DEG_results/GSM7764408_annotated_all_DEGs.csv"
+  },
+  "SAID639": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764410",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764410/DEG_results/GSM7764410_annotated_all_DEGs.csv"
+  },
+  "SAID640": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764411",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764411/DEG_results/GSM7764411_annotated_all_DEGs.csv"
+  },
+  "SAID641": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764412",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764412/DEG_results/GSM7764412_annotated_all_DEGs.csv"
+  },
+  "SAID642": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764413",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764413/DEG_results/GSM7764413_annotated_all_DEGs.csv"
+  },
+  "SAID643": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764415",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764415/DEG_results/GSM7764415_annotated_all_DEGs.csv"
+  },
+  "SAID644": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764416",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764416/DEG_results/GSM7764416_annotated_all_DEGs.csv"
+  },
+  "SAID645": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764417",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764417/DEG_results/GSM7764417_annotated_all_DEGs.csv"
+  },
+  "SAID646": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764418",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764418/DEG_results/GSM7764418_annotated_all_DEGs.csv"
+  },
+  "SAID647": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764419",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764419/DEG_results/GSM7764419_annotated_all_DEGs.csv"
+  },
+  "SAID648": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764420",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764420/DEG_results/GSM7764420_annotated_all_DEGs.csv"
+  },
+  "SAID649": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764421",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764421/DEG_results/GSM7764421_annotated_all_DEGs.csv"
+  },
+  "SAID650": {
+    "GSE": "GSE242477",
+    "GSM": "GSM7764422",
+    "csv_path": "SkinDB_New/10X/human/GSE242477/GSM7764422/DEG_results/GSM7764422_annotated_all_DEGs.csv"
+  },
+  "SAID651": {
+    "GSE": "GSE245859",
+    "GSM": "GSM7849996",
+    "csv_path": "SkinDB_New/10X/human/GSE245859/GSM7849996/DEG_results/GSM7849996_annotated_all_DEGs.csv"
+  },
+  "SAID652": {
+    "GSE": "GSE245859",
+    "GSM": "GSM7849997",
+    "csv_path": "SkinDB_New/10X/human/GSE245859/GSM7849997/DEG_results/GSM7849997_annotated_all_DEGs.csv"
+  },
+  "SAID653": {
+    "GSE": "GSE245859",
+    "GSM": "GSM7849998",
+    "csv_path": "SkinDB_New/10X/human/GSE245859/GSM7849998/DEG_results/GSM7849998_annotated_all_DEGs.csv"
+  },
+  "SAID654": {
+    "GSE": "GSE245859",
+    "GSM": "GSM7849999",
+    "csv_path": "SkinDB_New/10X/human/GSE245859/GSM7849999/DEG_results/GSM7849999_annotated_all_DEGs.csv"
+  },
+  "SAID658": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906167",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906167/DEG_results/GSM7906167_annotated_all_DEGs.csv"
+  },
+  "SAID659": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906168",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906168/DEG_results/GSM7906168_annotated_all_DEGs.csv"
+  },
+  "SAID660": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906169",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906169/DEG_results/GSM7906169_annotated_all_DEGs.csv"
+  },
+  "SAID661": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906170",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906170/DEG_results/GSM7906170_annotated_all_DEGs.csv"
+  },
+  "SAID662": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906171",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906171/DEG_results/GSM7906171_annotated_all_DEGs.csv"
+  },
+  "SAID663": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906172",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906172/DEG_results/GSM7906172_annotated_all_DEGs.csv"
+  },
+  "SAID664": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906173",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906173/DEG_results/GSM7906173_annotated_all_DEGs.csv"
+  },
+  "SAID665": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906174",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906174/DEG_results/GSM7906174_annotated_all_DEGs.csv"
+  },
+  "SAID666": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906175",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906175/DEG_results/GSM7906175_annotated_all_DEGs.csv"
+  },
+  "SAID667": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906176",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906176/DEG_results/GSM7906176_annotated_all_DEGs.csv"
+  },
+  "SAID668": {
+    "GSE": "GSE248121",
+    "GSM": "GSM7906177",
+    "csv_path": "SkinDB_New/10X/human/GSE248121/GSM7906177/DEG_results/GSM7906177_annotated_all_DEGs.csv"
+  },
+  "SAID669": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951925",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951925/DEG_results/GSM7951925_annotated_all_DEGs.csv"
+  },
+  "SAID670": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951926",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951926/DEG_results/GSM7951926_annotated_all_DEGs.csv"
+  },
+  "SAID671": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951927",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951927/DEG_results/GSM7951927_annotated_all_DEGs.csv"
+  },
+  "SAID672": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951928",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951928/DEG_results/GSM7951928_annotated_all_DEGs.csv"
+  },
+  "SAID673": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951929",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951929/DEG_results/GSM7951929_annotated_all_DEGs.csv"
+  },
+  "SAID674": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951930",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951930/DEG_results/GSM7951930_annotated_all_DEGs.csv"
+  },
+  "SAID675": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951931",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951931/DEG_results/GSM7951931_annotated_all_DEGs.csv"
+  },
+  "SAID676": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951932",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951932/DEG_results/GSM7951932_annotated_all_DEGs.csv"
+  },
+  "SAID677": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951933",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951933/DEG_results/GSM7951933_annotated_all_DEGs.csv"
+  },
+  "SAID678": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951934",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951934/DEG_results/GSM7951934_annotated_all_DEGs.csv"
+  },
+  "SAID679": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951935",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951935/DEG_results/GSM7951935_annotated_all_DEGs.csv"
+  },
+  "SAID680": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951936",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951936/DEG_results/GSM7951936_annotated_all_DEGs.csv"
+  },
+  "SAID681": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951937",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951937/DEG_results/GSM7951937_annotated_all_DEGs.csv"
+  },
+  "SAID682": {
+    "GSE": "GSE249622",
+    "GSM": "GSM7951938",
+    "csv_path": "SkinDB_New/10X/human/GSE249622/GSM7951938/DEG_results/GSM7951938_annotated_all_DEGs.csv"
+  },
+  "SAID683": {
+    "GSE": "GSE249793",
+    "GSM": "GSM7964420",
+    "csv_path": "SkinDB_New/10X/human/GSE249793/GSM7964420/DEG_results/GSM7964420_annotated_all_DEGs.csv"
+  },
+  "SAID684": {
+    "GSE": "GSE249793",
+    "GSM": "GSM7964421",
+    "csv_path": "SkinDB_New/10X/human/GSE249793/GSM7964421/DEG_results/GSM7964421_annotated_all_DEGs.csv"
+  },
+  "SAID685": {
+    "GSE": "GSE249793",
+    "GSM": "GSM7964422",
+    "csv_path": "SkinDB_New/10X/human/GSE249793/GSM7964422/DEG_results/GSM7964422_annotated_all_DEGs.csv"
+  },
+  "SAID686": {
+    "GSE": "GSE249793",
+    "GSM": "GSM7964423",
+    "csv_path": "SkinDB_New/10X/human/GSE249793/GSM7964423/DEG_results/GSM7964423_annotated_all_DEGs.csv"
+  },
+  "SAID687": {
+    "GSE": "GSE249793",
+    "GSM": "GSM7964424",
+    "csv_path": "SkinDB_New/10X/human/GSE249793/GSM7964424/DEG_results/GSM7964424_annotated_all_DEGs.csv"
+  },
+  "SAID688": {
+    "GSE": "GSE251937",
+    "GSM": "GSM7990295",
+    "csv_path": "SkinDB_New/10X/human/GSE251937/GSM7990295/DEG_results/GSM7990295_annotated_all_DEGs.csv"
+  },
+  "SAID689": {
+    "GSE": "GSE262947",
+    "GSM": "GSM8182076",
+    "csv_path": "SkinDB_New/10X/human/GSE262947/GSM8182076/DEG_results/GSM8182076_annotated_all_DEGs.csv"
+  },
+  "SAID690": {
+    "GSE": "GSE262947",
+    "GSM": "GSM8182077",
+    "csv_path": "SkinDB_New/10X/human/GSE262947/GSM8182077/DEG_results/GSM8182077_annotated_all_DEGs.csv"
+  },
+  "SAID691": {
+    "GSE": "GSE262947",
+    "GSM": "GSM8182078",
+    "csv_path": "SkinDB_New/10X/human/GSE262947/GSM8182078/DEG_results/GSM8182078_annotated_all_DEGs.csv"
+  },
+  "SAID692": {
+    "GSE": "GSE262947",
+    "GSM": "GSM8182079",
+    "csv_path": "SkinDB_New/10X/human/GSE262947/GSM8182079/DEG_results/GSM8182079_annotated_all_DEGs.csv"
+  },
+  "SAID693": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253522",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253522/DEG_results/GSM8253522_annotated_all_DEGs.csv"
+  },
+  "SAID694": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253523",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253523/DEG_results/GSM8253523_annotated_all_DEGs.csv"
+  },
+  "SAID695": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253524",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253524/DEG_results/GSM8253524_annotated_all_DEGs.csv"
+  },
+  "SAID696": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253525",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253525/DEG_results/GSM8253525_annotated_all_DEGs.csv"
+  },
+  "SAID697": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253526",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253526/DEG_results/GSM8253526_annotated_all_DEGs.csv"
+  },
+  "SAID698": {
+    "GSE": "GSE266665",
+    "GSM": "GSM8253527",
+    "csv_path": "SkinDB_New/10X/human/GSE266665/GSM8253527/DEG_results/GSM8253527_annotated_all_DEGs.csv"
+  },
+  "SAID699": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281713",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281713/DEG_results/GSM8281713_annotated_all_DEGs.csv"
+  },
+  "SAID700": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281714",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281714/DEG_results/GSM8281714_annotated_all_DEGs.csv"
+  },
+  "SAID701": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281715",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281715/DEG_results/GSM8281715_annotated_all_DEGs.csv"
+  },
+  "SAID702": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281716",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281716/DEG_results/GSM8281716_annotated_all_DEGs.csv"
+  },
+  "SAID703": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281717",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281717/DEG_results/GSM8281717_annotated_all_DEGs.csv"
+  },
+  "SAID704": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281718",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281718/DEG_results/GSM8281718_annotated_all_DEGs.csv"
+  },
+  "SAID705": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281719",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281719/DEG_results/GSM8281719_annotated_all_DEGs.csv"
+  },
+  "SAID706": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281720",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281720/DEG_results/GSM8281720_annotated_all_DEGs.csv"
+  },
+  "SAID707": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281721",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281721/DEG_results/GSM8281721_annotated_all_DEGs.csv"
+  },
+  "SAID708": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281722",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281722/DEG_results/GSM8281722_annotated_all_DEGs.csv"
+  },
+  "SAID709": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281723",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281723/DEG_results/GSM8281723_annotated_all_DEGs.csv"
+  },
+  "SAID710": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281724",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281724/DEG_results/GSM8281724_annotated_all_DEGs.csv"
+  },
+  "SAID711": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281725",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281725/DEG_results/GSM8281725_annotated_all_DEGs.csv"
+  },
+  "SAID712": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281726",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281726/DEG_results/GSM8281726_annotated_all_DEGs.csv"
+  },
+  "SAID713": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281727",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281727/DEG_results/GSM8281727_annotated_all_DEGs.csv"
+  },
+  "SAID714": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281728",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281728/DEG_results/GSM8281728_annotated_all_DEGs.csv"
+  },
+  "SAID715": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281729",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281729/DEG_results/GSM8281729_annotated_all_DEGs.csv"
+  },
+  "SAID716": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281730",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281730/DEG_results/GSM8281730_annotated_all_DEGs.csv"
+  },
+  "SAID717": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281731",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281731/DEG_results/GSM8281731_annotated_all_DEGs.csv"
+  },
+  "SAID718": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281732",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281732/DEG_results/GSM8281732_annotated_all_DEGs.csv"
+  },
+  "SAID719": {
+    "GSE": "GSE267929",
+    "GSM": "GSM8281733",
+    "csv_path": "SkinDB_New/10X/human/GSE267929/GSM8281733/DEG_results/GSM8281733_annotated_all_DEGs.csv"
+  },
+  "SAID720": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486557",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486557/DEG_results/GSM8486557_annotated_all_DEGs.csv"
+  },
+  "SAID721": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486558",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486558/DEG_results/GSM8486558_annotated_all_DEGs.csv"
+  },
+  "SAID722": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486559",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486559/DEG_results/GSM8486559_annotated_all_DEGs.csv"
+  },
+  "SAID723": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486560",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486560/DEG_results/GSM8486560_annotated_all_DEGs.csv"
+  },
+  "SAID724": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486561",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486561/DEG_results/GSM8486561_annotated_all_DEGs.csv"
+  },
+  "SAID725": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486562",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486562/DEG_results/GSM8486562_annotated_all_DEGs.csv"
+  },
+  "SAID726": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486563",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486563/DEG_results/GSM8486563_annotated_all_DEGs.csv"
+  },
+  "SAID727": {
+    "GSE": "GSE275846",
+    "GSM": "GSM8486564",
+    "csv_path": "SkinDB_New/10X/human/GSE275846/GSM8486564/DEG_results/GSM8486564_annotated_all_DEGs.csv"
+  }
+}

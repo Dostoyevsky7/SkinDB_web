@@ -1,0 +1,230 @@
+.details-box{
+    display: flex;
+    /*-webkit-justify-content: end;*/
+    /*justify-content:end;*/
+    /*-moz-box-pack: end;*/
+    /*-webkit--moz-box-pack: end;*/
+    /*box-pack: end;*/
+    align-items: center;
+    -webkit-align-items: center;
+    box-align: center;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+}
+.sidebar {
+    position: fixed;
+    left: 0;
+    /*top: 60px;*/
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background: #fafafa;
+    border-right: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    padding: 32px 0;
+    /*border-radius: 10px;*/
+    /*padding-top: 30px;*/
+    padding-top: 90px;
+    box-sizing: border-box;
+}
+.sidebar h1 {
+    padding: 0 24px 24px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1e88e5;
+}
+.sidebar .nav-item {
+    display: block;
+    padding: 10px 24px;
+    font-size: 14px;
+    color: #555;
+    transition: color .2s;
+}
+.sidebar .nav-item:hover {
+    color: #1e88e5;
+}
+.sidebar .nav-item.active {
+    color: #1e88e5;
+    font-weight: 500;
+}
+
+
+.basic{
+    /*width: calc(100% - 200px - 30px);*/
+    width: 1300px;
+
+    margin-left: 250px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    display: block;
+    overflow: hidden;
+    /*height: 800px;*/
+    margin-top: 90px;
+    border-radius: 10px;
+    padding: 0 0 20px;
+
+
+}
+.CellClustering{
+    width: 1300px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    display: block;
+    overflow: hidden;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 0 0 20px;
+}
+
+.basic:hover{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.basic .header{
+    height: 60px;
+    width: 100%;
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+    /*box-sizing: border-box;*/
+    color: white;
+    text-align: left;
+    align-content: center;
+    /*padding: 20px;*/
+    font-size: 26px;
+    font-weight: 800;
+    padding: 0 20px;
+}
+
+.general_info{
+    width: 100%;
+    color: rgba(0,0,0,0.95);
+}
+
+.general_info_part{
+    display: flex;
+    width: 100%;
+}
+
+.title_1{
+    display: flex;
+    color: rgba(0,0,0,0.9);
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    padding-right: 16px;
+    align-items: center;
+}
+
+.detail_container_1{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+}
+.detail_container_2{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /*display: flex;*/
+}
+
+.subtitle{
+    font-size: 16px;
+    color: rgba(0,0,0,0.6);
+
+}
+
+.text_2{
+    font-size: 16px;
+    color: rgba(0,0,0,0.8);
+    display: inline;
+}
+
+
+
+.separator{
+    /*border-bottom-style: solid;*/
+    /*border-bottom-color: rgba(0,0,0,0.12);*/
+    /*border-top-style: solid;*/
+    /*border-top-color: rgba(0,0,0,0.12);*/
+    /*height: 0.6667px;*/
+    /*width: auto;*/
+    /*margin-left: 8px;*/
+    /*margin-right: 8px;*/
+    flex-grow: 1;              /* 分隔线占满剩余宽度 */
+    height: 2px;               /* 分隔线高度为 1px，可根据需要调整 */
+    /*background-color: rgba(0, 0, 0, 0.12);*/
+    background: linear-gradient(to right, rgba(135, 206, 235, 1) 50%, rgba(135, 206, 235, 0) 100%);
+    margin-left: 8px;          /* 左侧距离文本8px */
+    /* 如果不在容器上设置 padding-right，可以在这里设置右侧8px */
+    margin-right: 8px;
+}
+.dash-container{
+    bottom: 20px;
+}
+
+
+
+.cluster{
+
+}
+
+.cluster .original{
+
+}
+
+.deg{
+    margin-left: 5%;
+    display: flex;
+}
+
+.deg .filter{
+    display: block;
+
+}
+
+.deg .table{
+
+}
+.v_divider {
+    position: absolute;
+    top: 5px;              /* 上边距60px */
+    bottom: 5px;           /* 下边距60px */
+    left: 50%;                  /* 水平居中 */
+    transform: translateX(-50%);
+    width: 2px;             /* 分割线宽度，可根据需要调整 */
+    background: linear-gradient(to bottom, #d3d3d3, #808080, #d3d3d3);
+    /* 线条从顶部渐变到中间深色再渐变到底部淡色 */
+}
+
+input[type="number"],
+textarea {
+
+    width: 100px;         /* 最大宽度 */
+    padding: 10px;            /* 内边距，增加舒适感 */
+    border: 1px solid #ccc;   /* 边框颜色，简单干净 */
+    border-radius: 5px;       /* 圆角效果，柔化视觉感受 */
+    font-size: 16px;          /* 合适的字体大小 */
+    color: #333;              /* 文字颜色 */
+    background-color: #fff;   /* 背景颜色 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 内阴影，增加层次感 */
+    transition: border-color 0.3s, box-shadow 0.3s;  /* 平滑过渡效果 */
+}
+
+/* 聚焦状态样式 */
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #66afe9;    /* 聚焦时改变边框颜色 */
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* 外阴影效果 */
+    outline: none;            /* 去掉默认的外部轮廓 */
+}
+
+
+.pagination { margin-top:10px; text-align:center; }
+.pagination button {
+    margin:0 3px; padding:4px 8px;
+    border:1px solid #ccc; background:#fff;
+}
+.pagination button.active { background:#007bff; color:#fff; }
+.pagination button:disabled { opacity:0.5; }

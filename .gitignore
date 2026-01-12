@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 数据文件（不要进 Git）
+*.csv
+*.tsv
+*.h5ad
+
+# scRNA-seq 数据目录
+src/main/webapp/**/10X/
+src/main/webapp/**/DEG_results/

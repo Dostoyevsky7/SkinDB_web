@@ -1,0 +1,38 @@
+{
+  "dataId": "sample123",
+  "GSM": "GSM1234567",
+  "GSE": "GSE188648",
+  "dataset": [
+    {
+      "ari_score": 0.75,
+      "silhouette_score": 0.45
+    }
+  ],
+  "dimension": [
+    {
+      "umap_1": 1.23,
+      "umap_2": 4.56,
+      "cell_type": "Neuron",
+      "subcluster": "sub1",
+      "expression": {
+        "A1BG": 0.1,
+        "ABCC1": 0
+      }
+    },
+    {
+      "umap_1": -2.34,
+      "umap_2": 5.67,
+      "cell_name": "Cell_002",
+      "cell_type": "Astrocyte",
+      "subcluster": "sub2"
+    },
+    {
+      "umap_1": 3.45,
+      "umap_2": -6.78,
+      "cell_name": "Cell_003",
+      "cell_type": "Oligodendrocyte precursor cells",
+      "subcluster": "sub3"
+    }
+  ]
+}
+

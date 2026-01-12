@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>Details</title>
+    <style> dl { width: 80%; } dt { font-weight: bold; } dd { margin: 0 0 10px 20px; } </style>
+</head>
+<body>
+<h1>记录详情</h1>
+<div id="detailContainer">正在加载…</div>
+
+<script>
+    (function(){
+        // 1) 从 URL 取 said
+        const params = new URLSearchParams(location.search);
+        const said = params.get('said');
+        if (!said) {
+            document.getElementById('detailContainer').innerText = '未指定 SAID';
+            return;
+        }
+
+        // 2) 从 sessionStorage 读整张表
+        const data = JSON.parse(sessionStorage.getItem('tableData')||'[]');
+        const record = data.find(r => String(r.SAID) === said);
+        if (!record) {
+            document.getElementById('detailContainer').innerText = '记录未找到';
+            return;
+        }
+
+        // 3) 渲染详情
+        let html = '<dl>';
+        for (let key in record) {
+            html += `<dt>${key}</dt><dd>${record[key]}</dd>`;
+        }
+        html += '</dl>';
+        document.getElementById('detailContainer').innerHTML = html;
+    })();
+</script>
+</body>
+</html>
