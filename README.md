@@ -1,12 +1,10 @@
 # scSAID: <u>S</u>ingle-<u>C</u>ell <u>S</u>kin & <u>A</u>ppendages <u>I</u>ntegrated <u>D</u>atabase <img src="./src/main/webapp/images/scSAID_LOGO.png" align="right" width="120"/>
 
-A comprehensive web platform for exploring single-cell RNA sequencing data from skin and appendage tissues.
+> A comprehensive web platform for exploring single-cell RNA sequencing data from skin and appendage tissues.
 
-------------------------------------------------------------------------
+> The database contains data from over **1,000,000 cells** across **600+ samples** from human and mouse skin tissues in both healthy and disease conditions.
 
-## Overview
 
-scSAID provides researchers with tools to browse, search, and analyze scRNA-seq datasets. The database contains data from over **1,000,000 cells** across **600+ samples** from human and mouse skin tissues.
 
 ## Features
 
