@@ -1,92 +1,83 @@
-.browse_title{
-    width: 90%;
-    margin-left: 5%;
-    height: 60px;
-    font-size: 40px;
-    font-weight: 300;
-    display: grid;
-    place-items: center;
+/* ==========================================================================
+   Browse Page Styles - Editorial Scientific Aesthetic
+   ========================================================================== */
+
+/* Page Title */
+.browse_title {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #1a2332;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Content Container */
+.browse_main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: block;
+}
+
+/* Table Card Wrapper */
+.browse_main .table-wrapper {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
     overflow: hidden;
 }
 
-.browse_main{
-    width: 94%;
-    margin-left: 3%;
-    height: auto;
-    display: block;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    overflow: hidden;
+/* Table Links */
+td a:link,
+td a:visited {
+    color: #e8927c;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+td a:hover {
+    color: #d4755d;
+    text-decoration: underline;
+}
+
+/* Species Badge */
+.species-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     border-radius: 20px;
 }
 
-td a:link a:visited{
-    color: #00BFFF;
+.species-badge--human {
+    background: rgba(232, 146, 124, 0.15);
+    color: #d4755d;
 }
 
-td a:hover{
-    color: #008CFF;
+.species-badge--mouse {
+    background: rgba(212, 165, 116, 0.2);
+    color: #b8864a;
 }
 
-/*.browse_main .select_filter{*/
-/*    display: flex;*/
-/*    width: 100%;*/
-/*    height: 60px;*/
-/*    float: left;*/
-/*    margin-left: 30px;*/
-/*    font-size: 30px;*/
-/*    font-weight: 400;*/
-/*    align-items: center;*/
-/*    justify-content: flex-start;*/
-/*    color: rgba(0,0,0,0.7);*/
-/*}*/
+/* Responsive */
+@media (max-width: 768px) {
+    .browse_title {
+        font-size: 2rem;
+        padding: 1.5rem 1rem;
+    }
 
-/*.browse_main .filters{*/
-/*    display: flex;*/
-/*    width: 100%;*/
-/*    height: 120px;*/
-/*    margin-left: 30px;*/
-/*    align-items: center;*/
-/*    justify-content: flex-start;*/
-/*}*/
-
-/*.browse_main .filters .item{*/
-/*    display: block;*/
-/*    color: rgba(0,0,0,0.7);*/
-/*    font-size: 20px;*/
-/*}*/
-
-/*.browse_main .filters .item .title{*/
-/*    width: 100%;*/
-/*    height: 28px;*/
-/*    float: left;*/
-/*}*/
-
-/*.browse_main .filters .item .combobox{*/
-/*    width: 100%;*/
-/*    height: 66px;*/
-/*    float: left;*/
-
-/*}*/
-
-/*.browse_main table{*/
-/*    width: 100%;*/
-/*    border-collapse: collapse;*/
-/*}*/
-
-/*.browse_main th, td{*/
-/*    border: 1px solid #ddd;*/
-/*    padding: 8px;*/
-/*    text-align: left;*/
-/*}*/
-
-/*.browse_main th{*/
-/*    background-color: #f2f2f2;*/
-/*}*/
-
-/*.browse_main tr:nth-child(even){*/
-/*    background-color: #f9f9f9;*/
-/*}*/
-
-/*.browse_main tr:hover{*/
-/*    background-color: #e2e2e2;*/
-/*}*/
+    .browse_main {
+        padding: 0 1rem 3rem;
+    }
+}

@@ -46,12 +46,6 @@
 
         String cpdbPath = getCpdbPath(saidParamForAction, gseForAction, gsmForAction);
 
-        // 调试行: 打印生成的路径
-        System.out.println("DEBUG: Generated CPDB Path: " + cpdbPath);
-
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
         if (cpdbPath == null || !new File(cpdbPath).exists()) {
             jsonOut.print("{\"error\": \"CPDB data path not found for the given sample. Path was: " + (cpdbPath == null ? "null" : cpdbPath.replace("\\", "\\\\")) + "\"}");
             jsonOut.flush();
@@ -243,53 +237,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details-SR001</title>
+    <title>Dataset Details - scSAID</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/details.css">
-    <link rel="stylesheet" href="CSS/degtest.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-    <style>
-        select#groupSelect, select#cpdbCellTypeSelect { min-width: 180px; font-size: 14px; padding: 6px; }
-        .deg-controls, .cpdb-controls { display: flex; justify-content: space-between; align-items: stretch; margin-bottom: 10px; gap: 20px; }
-        .filter-controls, .cpdb-filter-controls { display: flex; gap: 20px; align-items: center; flex: 1; }
-        .export-button-wrapper { display: flex; align-items: center; justify-content: center; padding: 0 20px; min-width: 180px; }
-        #exportExcelBtn, .cpdb-generate-btn { padding: 12px 24px; font-size: 16px; border: none; background-color: #007BFF; color: white; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background-color 0.3s ease; width: 100%; }
-        #exportExcelBtn:hover, .cpdb-generate-btn:hover { background-color: #0056b3; }
-        .cpdb-plot-container { text-align: center; margin-top: 20px; padding: 10px; border: 1px solid #ddd; min-height: 400px; }
-        .cpdb-plot-container img { max-width: 100%; height: auto; }
-        .loader { border: 8px solid #f3f3f3; border-top: 8px solid #3498db; border-radius: 50%; width: 60px; height: 60px; animation: spin 2s linear infinite; margin: 50px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
 </head>
-<body>
-<header>
-    <nav>
-        <ul>
-            <db_logo><a href="#">sDSSA</a></db_logo>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="browse.jsp">Browse</a></li>
-            <li><a href="search.jsp">Search</a><div class="top_list"><lib><a href="#">Gene</a></lib><lib><a href="#">Cell</a></lib></div></li>
-            <li><a href="#">Help</a><div class="top_list"><lib><a href="#">Method</a></lib><lib><a href="#">Tutorial</a></lib></div></li>
+<body style="background: #faf8f5;">
 
-            <li><a href="#">Download</a></li>
-            <un_logo><img src="https://www.zju.edu.cn/_upload/tpl/0b/bf/3007/template3007/static/js/../../static/media/mlogo.80e02913954185729616ab6a1c6ae12d.svg" alt="" width="196" height="54"></un_logo>
-        </ul>
-    </nav>
+<!-- Header -->
+<header class="site-header">
+    <div class="container">
+        <a href="index.jsp" class="site-logo">scSAID</a>
+        <nav class="main-nav">
+            <a href="index.jsp" class="main-nav__link">Home</a>
+            <a href="browse.jsp" class="main-nav__link">Browse</a>
+            <a href="search.jsp" class="main-nav__link">Search</a>
+            <a href="#" class="main-nav__link">Help</a>
+            <a href="#" class="main-nav__link">Download</a>
+        </nav>
+        <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
+            <img src="images/ZJE_Logo.png"
+                 alt="ZJE - Zhejiang University" class="university-logo">
+        </a>
+    </div>
 </header>
 <div class="details-box">
-    <!-- 侧边栏 -->
+    <!-- Sidebar Navigation -->
     <aside class="sidebar">
-        <h1>Navigation Bar</h1>
-        <a href="#ExperimentInformation" class="nav-item active">Experiment Information</a>
-        <a href="#CellClustering" class="nav-item">Cell Clustering</a>
-        <a href="#DEGResults" class="nav-item">DEG results</a>
-        <a href="#CellPhoneDBAnalysis" class="nav-item">CellPhoneDB
-            Analysis</a>
-
+        <h1 class="sidebar__title">Dataset Navigation</h1>
+        <nav class="sidebar__nav">
+            <a href="#ExperimentInformation" class="nav-item active">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4M12 8h.01"></path>
+                </svg>
+                General Information
+            </a>
+            <a href="#CellClustering" class="nav-item">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <circle cx="19" cy="12" r="2"></circle>
+                    <circle cx="5" cy="12" r="2"></circle>
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <circle cx="12" cy="19" r="2"></circle>
+                </svg>
+                Cell Clustering
+            </a>
+            <a href="#DEGResults" class="nav-item">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3v18h18"></path>
+                    <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path>
+                </svg>
+                DEG Results
+            </a>
+            <a href="#CellPhoneDBAnalysis" class="nav-item">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                CellPhoneDB Analysis
+            </a>
+        </nav>
     </aside>
     <div class="basic"  id="ExperimentInformation">
         <div class="general_info" style="height: 600px;">

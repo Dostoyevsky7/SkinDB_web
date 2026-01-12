@@ -4,434 +4,710 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scSAID - Single-Cell Skin & Appendages Integrated Database</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="CSS/design-system.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+        /* ==========================================================================
+           Homepage Specific Styles
+           ========================================================================== */
 
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* 导航栏样式 */
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
-            color: white;
-            padding: 0;
-            position: sticky;
+        /* Header / Navigation */
+        .site-header {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-dark);
+            height: var(--header-height);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            list-style: none;
-            padding: 0 5%;
+            box-shadow: var(--shadow-md);
         }
 
-        nav ul li {
-            position: relative;
-            padding: 15px 0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        db_logo a {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffd700 !important;
-        }
-
-        un_logo img {
-            filter: brightness(0) invert(1);
-        }
-
-        /* 欢迎区域样式 */
-        .index_welcome {
-            position: relative;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .index_welcome img {
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
-            height: 490px;
-            object-fit: cover;
-            display: block;
         }
 
-        .welcome {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        .site-logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            letter-spacing: -0.02em;
+            text-decoration: none;
         }
 
-        .description {
-            position: absolute;
-            top: 65%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        .site-logo:hover {
+            color: var(--color-accent-light);
         }
 
-        /* 主要内容区域样式 */
-        .basic {
-            background-color: white;
-            padding: 40px 5%;
-            margin: 30px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
         }
 
-        .header {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #2c3e50;
+        .main-nav__link {
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .main-nav__link:hover {
+            color: var(--text-inverse);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-nav__link--active {
+            color: var(--text-inverse);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .university-logo {
+            height: 22px;
+            opacity: 0.9;
+            transition: opacity var(--transition-fast);
+        }
+
+        .university-logo:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
             position: relative;
-            padding-bottom: 15px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--bg-dark);
+            margin-top: var(--header-height);
         }
 
-        .header:after {
-            content: '';
+        .hero__background {
             position: absolute;
-            bottom: 0;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero__background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-dark);
+            opacity: 0.6;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: var(--space-xl);
+        }
+
+        .hero__eyebrow {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            margin-bottom: var(--space-lg);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            border-radius: var(--radius-full);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 400;
+            color: var(--text-inverse);
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: var(--space-lg);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero__title span {
+            display: block;
+            font-size: 0.35em;
+            font-family: var(--font-body);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-top: var(--space-md);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hero__description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto var(--space-2xl);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero__actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero__btn {
+            padding: var(--space-md) var(--space-2xl);
+            font-size: 0.9rem;
+        }
+
+        .hero__scroll-indicator {
+            position: absolute;
+            bottom: var(--space-2xl);
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        .content-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
         }
 
-        .image-column {
-            flex: 1;
-            min-width: 300px;
+        .hero__scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            margin-top: var(--space-sm);
+            animation: scrollBounce 2s ease infinite;
         }
 
-        .text-column {
-            flex: 1;
-            min-width: 300px;
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(10px); opacity: 0.5; }
         }
 
-        .image-card {
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        /* Quick Navigation Section */
+        .quick-nav {
+            padding: var(--space-4xl) 0;
+            background: var(--bg-body);
         }
 
-        .image-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .image-card img {
-            width: 100%;
-            height: 296px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .image-caption {
-            padding: 15px;
-            background-color: white;
-        }
-
-        .image-caption h3 {
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .image-caption p {
-            color: #7f8c8d;
-            font-size: 14px;
-        }
-
-        .text_1 {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #34495e;
-        }
-
-        .text_1 b {
-            color: #2c3e50;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-            }
-
-            .welcome {
-                font-size: 36px;
-            }
-
-            .description {
-                font-size: 16px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav ul li {
-                padding: 10px 5px;
-            }
-        }
-
-        /* 页脚样式 */
-        footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
-            color: white;
-            text-align: center;
-            padding: 30px 5%;
-            margin-top: 50px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
+        .quick-nav__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .counter {
-            background-color: white;
-            color: #2c3e50;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
+        .quick-nav__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .quick-nav__item:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-nav__icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-muted);
+            border-radius: var(--radius-md);
+            color: var(--color-secondary);
+            transition: all var(--transition-base);
+        }
+
+        .quick-nav__item:hover .quick-nav__icon {
+            background: var(--color-secondary);
+            color: var(--text-inverse);
+        }
+
+        .quick-nav__label {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Data Overview Section */
+        .overview {
+            padding: var(--space-4xl) 0;
+            background: var(--bg-surface);
+        }
+
+        .overview__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: start;
+        }
+
+        .overview__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+
+        .overview__image-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: all var(--transition-base);
+        }
+
+        .overview__image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-secondary);
+        }
+
+        .overview__image-card:first-child {
+            grid-column: span 2;
+        }
+
+        .overview__image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .overview__image-card:first-child img {
+            height: 280px;
+        }
+
+        .overview__image-caption {
+            padding: var(--space-lg);
+        }
+
+        .overview__image-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .overview__image-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .overview__content {
+            padding: var(--space-xl) 0;
+        }
+
+        .overview__section-label {
             display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-md);
         }
-        .circles-container {
+
+        .overview__heading {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xl);
+            line-height: 1.2;
+        }
+
+        .overview__text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .overview__text strong {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        /* Statistics Section */
+        .stats {
+            padding: var(--space-4xl) 0;
+            background: var(--bg-dark);
+        }
+
+        .stats__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .stats__item {
+            text-align: center;
+            padding: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .stats__item:hover {
+            border-color: var(--color-secondary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .stats__number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--color-secondary);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stats__label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--bg-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-3xl) 0;
+        }
+
+        .site-footer__content {
+            text-align: center;
+        }
+
+        .site-footer__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+
+        .site-footer__text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: var(--space-sm);
+        }
+
+        .site-footer__links {
             display: flex;
+            gap: var(--space-lg);
             justify-content: center;
-            gap: 150px;
-            flex-wrap: wrap;
-            margin: 60px 0;
-            --blue-1: #e6f2ff;
-            /* 最浅 */
-            --blue-2: #cce5ff;
-            --blue-3: #66b3ff;
-            --blue-4: #0066cc;
-            /* 主蓝 */
-            --blue-5: #004d99;
-            /* 最深 */
+            margin-top: var(--space-lg);
+        }
 
-            .circles-container {
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                flex-wrap: wrap;
+        .site-footer__link {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color var(--transition-fast);
+        }
+
+        .site-footer__link:hover {
+            color: var(--color-secondary);
+        }
+
+        .site-footer__counter {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            padding: var(--space-md) var(--space-xl);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .site-footer__counter-divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .overview__grid {
+                grid-template-columns: 1fr;
             }
 
-            .circle {
-                width: 130px;
-                height: 130px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, .35);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border: 1.5px solid rgba(255, 255, 255, .6);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--blue-5);
-                font-size: 18px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all .3s ease;
-                box-shadow: 0 8px 24px rgba(0, 102, 204, .12);
-                position: relative;
-                overflow: hidden;
-            }
-
-            /* 蓝→白渐变外圈 */
-            .circle::before {
-                content: "";
-                position: absolute;
-                inset: -3px;
-                /* 比原来大 3px */
-                border-radius: 50%;
-                /*background: linear-gradient(135deg, var(--blue-4) 0%, #ffffff 100%);*/
-                z-index: -1;
-            }
-
-            .circle:hover {
-                transform: translateY(-6px) scale(1.05);
-                box-shadow: 0 12px 32px rgba(0, 102, 204, .2);
-                background: rgba(255, 255, 255, .5);
+            .stats__grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-        .block-container {
-            --blue-1: #e6f2ff;
-            /* 背景浅蓝 */
-            --blue-4: #0066cc;
-            /* 主蓝 */
-            --blue-5: #004d99;
-            /* 文字深蓝 */
-            /*background: linear-gradient(135deg, var(--blue-1) 0%, #fff 100%);*/
-            padding: 30px 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
 
-            .block {
-                width: 160px;
-                height: 90px;
-                background: #fff;
-                border: 1.5px solid var(--blue-4);
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--blue-4);
-                font-size: 18px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all .3s ease;
-                box-shadow: 0 4px 16px rgba(0, 102, 204, .1);
+        @media (max-width: 768px) {
+            .quick-nav__grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .block:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 24px rgba(0, 102, 204, .2);
-                background: var(--blue-1);
+            .overview__images {
+                grid-template-columns: 1fr;
+            }
+
+            .overview__image-card:first-child {
+                grid-column: span 1;
+            }
+
+            .main-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero__title {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <db_logo>
-                <a href="#">scSAID</a>
-            </db_logo>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="browse.jsp">Browse</a></li>
-            <li><a href="search.jsp">Search</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Download</a></li>
-            <un_logo>
-                <img src="https://www.zju.edu.cn/_upload/tpl/0b/bf/3007/template3007/static/js/../../static/media/mlogo.80e02913954185729616ab6a1c6ae12d.svg" alt="University Logo" width="196" height="54">
-            </un_logo>
-        </ul>
-    </nav>
+<!-- Header -->
+<header class="site-header">
+    <div class="container">
+        <a href="index.jsp" class="site-logo">scSAID</a>
+
+        <nav class="main-nav">
+            <a href="index.jsp" class="main-nav__link main-nav__link--active">Home</a>
+            <a href="browse.jsp" class="main-nav__link">Browse</a>
+            <a href="search.jsp" class="main-nav__link">Search</a>
+            <a href="#" class="main-nav__link">Help</a>
+            <a href="#" class="main-nav__link">Download</a>
+        </nav>
+
+        <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
+            <img src="images/ZJE_Logo.png"
+                 alt="ZJE - Zhejiang University"
+                 class="university-logo">
+        </a>
+    </div>
 </header>
 
-<div class="index_welcome">
-    <img src="images/campus.png" alt="Banner">
-    <div class="welcome">
-        scSAID
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero__background">
+        <img src="images/campus.png" alt="">
+        <div class="hero__overlay"></div>
     </div>
-    <div class="description">
-        Single-Cell <B>S</B>kin & <B>A</B>ppendages <B>I</B>ntegrated <B>D</B>atabase
-    </div>
-</div>
-<div class="circles-container">
-    <div class="circle">Browse</div>
-    <div class="circle">Search</div>
-    <div class="circle">Help</div>
-    <div class="circle">Download</div>
-</div>
 
-<%--<div class="block-container">--%>
-<%--    <div class="block">Browse</div>--%>
-<%--    <div class="block">Search</div>--%>
-<%--    <div class="block">Help</div>--%>
-<%--    <div class="block">Download</div>--%>
-<%--</div>--%>
-<div class="basic">
-    <div class="header">Data Overview</div>
-    <div class="content-container">
-        <!-- 左侧图片列 -->
-        <div class="image-column">
-            <div class="image-card">
-                <img src="images/proportion.png" alt="Description">
-                <div class="image-caption">
-                    <h3>Sample Distribution</h3>
-                    <p>Overview of samples by species and tissue type</p>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <img src="images/date.png" alt="Date">
-                <div class="image-caption">
-                    <h3>Data Date</h3>
-                    <p>Collected data are mainly from 2020 to 2025</p>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <img src="images/tissue.png" alt="Tissue Sources">
-                <div class="image-caption">
-                    <h3>Tissue Sources</h3>
-                    <p>Multiple tissues of skin and appendages are included</p>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <img src="images/disease.png" alt="Disease type">
-                <div class="image-caption">
-                    <h3>Disease type</h3>
-                    <p>Multiple types of disease are included</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 右侧文本列 -->
-        <div class="text-column">
-            <div class="text_1">
-                Welcome to our comprehensive scRNA-seq database dedicated to skin and its appendages. This database contains data from over <b>1,000,000</b> cells derived from more than <b>600</b> samples across <b>100</b> independent experiments, including both human and mouse datasets. As one of the most extensive collections available to date, our database provides a platform for exploring the complex cellular landscapes and molecular mechanisms underlying skin biology and its associated structures.
-                <br><br>
-                The database includes detailed annotations for each sample, including species, gender, age, anatomical region, and experimental conditions. All data has been processed through a standardized pipeline to ensure consistency and comparability across studies.
-                <br><br>
-            </div>
+    <div class="hero__content">
+        <span class="hero__eyebrow">Single-Cell RNA Sequencing Database</span>
+        <h1 class="hero__title">
+            scSAID
+            <span>Single-Cell <strong>S</strong>kin & <strong>A</strong>ppendages <strong>I</strong>ntegrated <strong>D</strong>atabase</span>
+        </h1>
+        <p class="hero__description">
+            Explore the comprehensive cellular landscape of human and mouse skin through our curated single-cell transcriptomics repository.
+        </p>
+        <div class="hero__actions">
+            <a href="browse.jsp" class="btn btn--primary hero__btn">Browse Datasets</a>
+            <a href="search.jsp" class="btn btn--outline hero__btn" style="border-color: rgba(255,255,255,0.3); color: white;">Search Genes</a>
         </div>
     </div>
-</div>
+</section>
 
-<footer>
-    <div class="footer-content">
-        <p>© 2023 scSAID - Single-Cell Skin & Appendages Integrated Database</p>
-        <p>Contact: info@scsaid.org | Privacy Policy | Terms of Use</p>
-        <div class="counter">
-            Total Visits: 12,487 | Today: 143
+<!-- Quick Navigation -->
+<section class="quick-nav">
+    <div class="container">
+        <div class="quick-nav__grid">
+            <a href="browse.jsp" class="quick-nav__item">
+                <div class="quick-nav__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                </div>
+                <span class="quick-nav__label">Browse</span>
+            </a>
+            <a href="search.jsp" class="quick-nav__item">
+                <div class="quick-nav__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                </div>
+                <span class="quick-nav__label">Search</span>
+            </a>
+            <a href="#" class="quick-nav__item">
+                <div class="quick-nav__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <path d="M12 17h.01"></path>
+                    </svg>
+                </div>
+                <span class="quick-nav__label">Help</span>
+            </a>
+            <a href="#" class="quick-nav__item">
+                <div class="quick-nav__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7,10 12,15 17,10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                <span class="quick-nav__label">Download</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics -->
+<section class="stats">
+    <div class="container">
+        <div class="stats__grid">
+            <div class="stats__item">
+                <div class="stats__number">1M+</div>
+                <div class="stats__label">Total Cells</div>
+            </div>
+            <div class="stats__item">
+                <div class="stats__number">600+</div>
+                <div class="stats__label">Samples</div>
+            </div>
+            <div class="stats__item">
+                <div class="stats__number">100+</div>
+                <div class="stats__label">Experiments</div>
+            </div>
+            <div class="stats__item">
+                <div class="stats__number">2</div>
+                <div class="stats__label">Species</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Data Overview Section -->
+<section class="overview">
+    <div class="container">
+        <div class="overview__grid">
+            <div class="overview__images">
+                <div class="overview__image-card">
+                    <img src="images/proportion.png" alt="Sample Distribution">
+                    <div class="overview__image-caption">
+                        <h3 class="overview__image-title">Sample Distribution</h3>
+                        <p class="overview__image-desc">Overview of samples by species and tissue type</p>
+                    </div>
+                </div>
+                <div class="overview__image-card">
+                    <img src="images/date.png" alt="Collection Timeline">
+                    <div class="overview__image-caption">
+                        <h3 class="overview__image-title">Data Timeline</h3>
+                        <p class="overview__image-desc">2020 - 2025</p>
+                    </div>
+                </div>
+                <div class="overview__image-card">
+                    <img src="images/tissue.png" alt="Tissue Sources">
+                    <div class="overview__image-caption">
+                        <h3 class="overview__image-title">Tissue Sources</h3>
+                        <p class="overview__image-desc">Multiple tissues included</p>
+                    </div>
+                </div>
+                <div class="overview__image-card">
+                    <img src="images/disease.png" alt="Disease Types">
+                    <div class="overview__image-caption">
+                        <h3 class="overview__image-title">Disease Types</h3>
+                        <p class="overview__image-desc">Various conditions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview__content">
+                <span class="overview__section-label">About the Database</span>
+                <h2 class="overview__heading">Comprehensive scRNA-seq Repository for Skin Research</h2>
+                <p class="overview__text">
+                    Welcome to our comprehensive scRNA-seq database dedicated to skin and its appendages. This database contains data from over <strong>1,000,000</strong> cells derived from more than <strong>600</strong> samples across <strong>100</strong> independent experiments, including both human and mouse datasets.
+                </p>
+                <p class="overview__text">
+                    As one of the most extensive collections available to date, our database provides a platform for exploring the complex cellular landscapes and molecular mechanisms underlying skin biology and its associated structures.
+                </p>
+                <p class="overview__text">
+                    The database includes detailed annotations for each sample, including species, gender, age, anatomical region, and experimental conditions. All data has been processed through a standardized pipeline to ensure consistency and comparability across studies.
+                </p>
+                <a href="browse.jsp" class="btn btn--primary">Explore Datasets</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__content">
+            <div class="site-footer__logo">scSAID</div>
+            <p class="site-footer__text">Single-Cell Skin & Appendages Integrated Database</p>
+            <p class="site-footer__text">Zhejiang University</p>
+
+            <div class="site-footer__links">
+                <a href="mailto:info@scsaid.org" class="site-footer__link">Contact</a>
+                <a href="#" class="site-footer__link">Privacy Policy</a>
+                <a href="#" class="site-footer__link">Terms of Use</a>
+            </div>
+
+            <div class="site-footer__counter">
+                <span>Total Visits: 12,487</span>
+                <span class="site-footer__counter-divider"></span>
+                <span>Today: 143</span>
+            </div>
         </div>
     </div>
 </footer>

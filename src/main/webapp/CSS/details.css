@@ -1,230 +1,747 @@
-.details-box{
-    display: flex;
-    /*-webkit-justify-content: end;*/
-    /*justify-content:end;*/
-    /*-moz-box-pack: end;*/
-    /*-webkit--moz-box-pack: end;*/
-    /*box-pack: end;*/
-    align-items: center;
-    -webkit-align-items: center;
-    box-align: center;
-    -moz-box-align: center;
-    -webkit-box-align: center;
+/* ==========================================================================
+   Details Page Styles - Editorial Scientific Aesthetic
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Layout Container
+   -------------------------------------------------------------------------- */
+.details-page {
+    min-height: 100vh;
+    background: #faf8f5;
+    padding-top: 72px;
 }
+
+.details-layout {
+    display: flex;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Navigation
+   -------------------------------------------------------------------------- */
 .sidebar {
     position: fixed;
     left: 0;
-    /*top: 60px;*/
-    top: 0;
-    width: 200px;
-    height: 100vh;
-    background: #fafafa;
-    border-right: 1px solid #e5e5e5;
-    border-top: 1px solid #e5e5e5;
-    padding: 32px 0;
-    /*border-radius: 10px;*/
-    /*padding-top: 30px;*/
-    padding-top: 90px;
-    box-sizing: border-box;
+    top: 72px;
+    width: 260px;
+    height: calc(100vh - 72px);
+    background: #ffffff;
+    border-right: 1px solid #e5e0d8;
+    padding: 2rem 0;
+    overflow-y: auto;
+    z-index: 100;
 }
-.sidebar h1 {
-    padding: 0 24px 24px;
-    font-size: 18px;
+
+.sidebar__title {
+    padding: 0 1.5rem 1.5rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a2332;
+    border-bottom: 1px solid #e5e0d8;
+    margin-bottom: 1rem;
+}
+
+.sidebar__nav {
+    padding: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #1e88e5;
+    color: #5a6473;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
 }
-.sidebar .nav-item {
-    display: block;
-    padding: 10px 24px;
-    font-size: 14px;
-    color: #555;
-    transition: color .2s;
+
+.nav-item:hover {
+    color: #e8927c;
+    background: #faf8f5;
 }
-.sidebar .nav-item:hover {
-    color: #1e88e5;
+
+.nav-item.active {
+    color: #e8927c;
+    background: rgba(232, 146, 124, 0.08);
+    border-left-color: #e8927c;
+    font-weight: 600;
 }
-.sidebar .nav-item.active {
-    color: #1e88e5;
+
+.nav-item__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   Main Content Area
+   -------------------------------------------------------------------------- */
+.details-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 2rem 3rem 4rem;
+    max-width: calc(100% - 260px);
+}
+
+/* --------------------------------------------------------------------------
+   Section Cards
+   -------------------------------------------------------------------------- */
+.section-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.section-card:hover {
+    box-shadow: 0 8px 24px rgba(26, 35, 50, 0.12);
+}
+
+.section-card__header {
+    background: #1a2332;
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-card__title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
     font-weight: 500;
+    color: #ffffff;
+    margin: 0;
 }
 
+.section-card__body {
+    padding: 2rem;
+}
 
-.basic{
-    /*width: calc(100% - 200px - 30px);*/
-    width: 1300px;
+/* --------------------------------------------------------------------------
+   General Information Section
+   -------------------------------------------------------------------------- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+}
 
-    margin-left: 250px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+.info-column {
+    min-width: 0;
+}
+
+.info-section {
+    margin-bottom: 2rem;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+.info-section__title {
+    display: flex;
+    align-items: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e8927c;
+}
+
+.info-section__title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e0d8;
+    margin-left: 1rem;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.info-row__label {
+    flex-shrink: 0;
+    width: 100px;
+    font-weight: 600;
+    color: #5a6473;
+}
+
+.info-row__value {
+    color: #1a2332;
+    word-break: break-word;
+}
+
+.info-row__value--mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+/* Experiment Information - Scrollable */
+.experiment-info {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.experiment-info::-webkit-scrollbar {
+    width: 6px;
+}
+
+.experiment-info::-webkit-scrollbar-track {
+    background: #f5f2ed;
+    border-radius: 3px;
+}
+
+.experiment-info::-webkit-scrollbar-thumb {
+    background: #d1c9bd;
+    border-radius: 3px;
+}
+
+.experiment-info::-webkit-scrollbar-thumb:hover {
+    background: #b8afa0;
+}
+
+.info-block {
+    margin-bottom: 1.5rem;
+}
+
+.info-block__label {
+    font-weight: 600;
+    color: #5a6473;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.info-block__text {
+    color: #1a2332;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Cell Clustering Section
+   -------------------------------------------------------------------------- */
+.cluster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    background: #faf8f5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cluster-container iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+}
+
+/* --------------------------------------------------------------------------
+   DEG Results Section
+   -------------------------------------------------------------------------- */
+.deg-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e0d8;
+}
+
+.filter-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-item__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #5a6473;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filter-item__value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #e8927c;
+    font-weight: 600;
+}
+
+/* Range Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 150px;
+    height: 4px;
+    background: #e5e0d8;
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #e8927c;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Select Dropdown */
+select#groupSelect,
+select#cpdbCellTypeSelect {
+    min-width: 180px;
+    padding: 0.625rem 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    color: #1a2332;
+    background: #ffffff;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+}
+
+select#groupSelect:focus,
+select#cpdbCellTypeSelect:focus {
+    outline: none;
+    border-color: #e8927c;
+    box-shadow: 0 0 0 3px rgba(232, 146, 124, 0.15);
+}
+
+/* Export Button */
+#exportExcelBtn,
+.cpdb-generate-btn {
+    padding: 0.75rem 1.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: #e8927c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(232, 146, 124, 0.3);
+}
+
+#exportExcelBtn:hover,
+.cpdb-generate-btn:hover {
+    background: #d4755d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 146, 124, 0.4);
+}
+
+/* DEG Table */
+#degTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+}
+
+#degTable thead {
+    background: #1a2332;
+}
+
+#degTable th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+}
+
+#degTable td {
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid #e5e0d8;
+    color: #5a6473;
+}
+
+#degTable tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+#degTable tbody tr:hover {
+    background-color: #faf8f5;
+}
+
+#degTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* DataTables Override */
+.dataTables_wrapper {
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    padding: 1rem 0;
+    color: #5a6473;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: 6px;
+    border: 1px solid #e5e0d8 !important;
+    background: #ffffff !important;
+    color: #5a6473 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border-color: #e8927c !important;
+    color: #e8927c !important;
+    background: #ffffff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #e8927c !important;
+    border-color: #e8927c !important;
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   CellPhoneDB Analysis Section
+   -------------------------------------------------------------------------- */
+.cpdb-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e0d8;
+}
+
+.cpdb-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.cpdb-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cpdb-controls__text {
+    font-size: 0.95rem;
+    color: #5a6473;
+}
+
+.cpdb-filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cpdb-plot-container {
+    min-height: 400px;
+    background: #faf8f5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    color: #8b95a5;
+}
+
+.cpdb-plot-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Loading Spinner */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #e5e0d8;
+    border-top-color: #e8927c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-content {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .details-content {
+        margin-left: 220px;
+        max-width: calc(100% - 220px);
+    }
+
+    .deg-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .details-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .section-card__body {
+        padding: 1.5rem;
+    }
+
+    .cpdb-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Legacy Support (for backward compatibility)
+   -------------------------------------------------------------------------- */
+.details-box {
+    display: flex;
+}
+
+.basic {
+    width: 100%;
+    max-width: 1300px;
+    margin-left: 260px;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
     display: block;
     overflow: hidden;
-    /*height: 800px;*/
     margin-top: 90px;
-    border-radius: 10px;
-    padding: 0 0 20px;
-
-
+    border-radius: 16px;
+    padding: 0 0 2rem;
+    background: #ffffff;
 }
-.CellClustering{
-    width: 1300px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+.CellClustering {
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
     display: block;
     overflow: hidden;
-    margin-top: 30px;
-    border-radius: 10px;
-    padding: 0 0 20px;
+    margin-top: 2rem;
+    border-radius: 16px;
+    padding: 0 0 2rem;
+    background: #ffffff;
 }
 
-.basic:hover{
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+.basic:hover,
+.CellClustering:hover {
+    box-shadow: 0 8px 24px rgba(26, 35, 50, 0.12);
 }
 
-.basic .header{
+.basic .header,
+.cluster .header {
     height: 60px;
     width: 100%;
-    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
-    /*box-sizing: border-box;*/
+    background: #1a2332;
     color: white;
     text-align: left;
     align-content: center;
-    /*padding: 20px;*/
-    font-size: 26px;
-    font-weight: 800;
-    padding: 0 20px;
-}
-
-.general_info{
-    width: 100%;
-    color: rgba(0,0,0,0.95);
-}
-
-.general_info_part{
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 2rem;
     display: flex;
-    width: 100%;
-}
-
-.title_1{
-    display: flex;
-    color: rgba(0,0,0,0.9);
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    padding-left: 20px;
-    padding-right: 16px;
     align-items: center;
 }
 
-.detail_container_1{
-    margin-top: 6px;
-    margin-bottom: 6px;
-    margin-left: 20px;
-    margin-right: 20px;
+.general_info {
+    width: 100%;
+    color: #1a2332;
+}
+
+.general_info_part {
     display: flex;
-}
-.detail_container_2{
-    margin-top: 6px;
-    margin-bottom: 6px;
-    margin-left: 20px;
-    margin-right: 20px;
-    /*display: flex;*/
+    width: 100%;
+    padding: 1.5rem;
+    gap: 2rem;
 }
 
-.subtitle{
-    font-size: 16px;
-    color: rgba(0,0,0,0.6);
-
+.title_1 {
+    display: flex;
+    color: #1a2332;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1rem;
+    align-items: center;
 }
 
-.text_2{
-    font-size: 16px;
-    color: rgba(0,0,0,0.8);
+.detail_container_1 {
+    margin: 0.5rem 1.25rem;
+    display: flex;
+    font-size: 0.95rem;
+}
+
+.detail_container_2 {
+    margin: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #5a6473;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.text_2 {
+    font-size: 0.95rem;
+    color: #1a2332;
     display: inline;
+    line-height: 1.6;
 }
 
-
-
-.separator{
-    /*border-bottom-style: solid;*/
-    /*border-bottom-color: rgba(0,0,0,0.12);*/
-    /*border-top-style: solid;*/
-    /*border-top-color: rgba(0,0,0,0.12);*/
-    /*height: 0.6667px;*/
-    /*width: auto;*/
-    /*margin-left: 8px;*/
-    /*margin-right: 8px;*/
-    flex-grow: 1;              /* 分隔线占满剩余宽度 */
-    height: 2px;               /* 分隔线高度为 1px，可根据需要调整 */
-    /*background-color: rgba(0, 0, 0, 0.12);*/
-    background: linear-gradient(to right, rgba(135, 206, 235, 1) 50%, rgba(135, 206, 235, 0) 100%);
-    margin-left: 8px;          /* 左侧距离文本8px */
-    /* 如果不在容器上设置 padding-right，可以在这里设置右侧8px */
-    margin-right: 8px;
-}
-.dash-container{
-    bottom: 20px;
+.separator {
+    flex-grow: 1;
+    height: 2px;
+    background: #e8927c;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    opacity: 0.5;
 }
 
-
-
-.cluster{
-
+.cluster {
+    background: #ffffff;
+    border-radius: 16px;
+    margin-top: 2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
 }
 
-.cluster .original{
-
-}
-
-.deg{
+.deg {
     margin-left: 5%;
     display: flex;
 }
 
-.deg .filter{
-    display: block;
-
-}
-
-.deg .table{
-
-}
 .v_divider {
     position: absolute;
-    top: 5px;              /* 上边距60px */
-    bottom: 5px;           /* 下边距60px */
-    left: 50%;                  /* 水平居中 */
+    top: 5px;
+    bottom: 5px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 2px;             /* 分割线宽度，可根据需要调整 */
-    background: linear-gradient(to bottom, #d3d3d3, #808080, #d3d3d3);
-    /* 线条从顶部渐变到中间深色再渐变到底部淡色 */
+    width: 1px;
+    background: #e5e0d8;
 }
 
 input[type="number"],
 textarea {
-
-    width: 100px;         /* 最大宽度 */
-    padding: 10px;            /* 内边距，增加舒适感 */
-    border: 1px solid #ccc;   /* 边框颜色，简单干净 */
-    border-radius: 5px;       /* 圆角效果，柔化视觉感受 */
-    font-size: 16px;          /* 合适的字体大小 */
-    color: #333;              /* 文字颜色 */
-    background-color: #fff;   /* 背景颜色 */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 内阴影，增加层次感 */
-    transition: border-color 0.3s, box-shadow 0.3s;  /* 平滑过渡效果 */
+    width: 100px;
+    padding: 0.625rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: #1a2332;
+    background-color: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* 聚焦状态样式 */
 input[type="number"]:focus,
 textarea:focus {
-    border-color: #66afe9;    /* 聚焦时改变边框颜色 */
-    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* 外阴影效果 */
-    outline: none;            /* 去掉默认的外部轮廓 */
+    border-color: #e8927c;
+    box-shadow: 0 0 0 3px rgba(232, 146, 124, 0.15);
+    outline: none;
 }
 
+.pagination {
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
-.pagination { margin-top:10px; text-align:center; }
 .pagination button {
-    margin:0 3px; padding:4px 8px;
-    border:1px solid #ccc; background:#fff;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e0d8;
+    background: #fff;
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s ease;
 }
-.pagination button.active { background:#007bff; color:#fff; }
-.pagination button:disabled { opacity:0.5; }
+
+.pagination button:hover:not(:disabled) {
+    border-color: #e8927c;
+    color: #e8927c;
+}
+
+.pagination button.active {
+    background: #e8927c;
+    color: #fff;
+    border-color: #e8927c;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

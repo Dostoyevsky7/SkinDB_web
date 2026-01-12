@@ -1,151 +1,475 @@
-*{
+/* ==========================================================================
+   Global Header & Navigation Styles
+   Shared across all pages (browse, search, details)
+   ========================================================================== */
+
+/* Reset */
+* {
     list-style: none;
     text-decoration: none;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-header nav{
+/* --------------------------------------------------------------------------
+   Site Header
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--bg-dark, #1a2332);
+    height: var(--header-height, 72px);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.1);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 60px;
-    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    /*overflow-y: auto;*/
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Logo */
+.site-logo {
+    font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #d4a574;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.site-logo:hover {
+    color: #e8c9a8;
+}
+
+/* Main Navigation */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.main-nav__link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.main-nav__link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav__link--active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Menu */
+.main-nav__item {
+    position: relative;
+}
+
+.main-nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(26, 35, 50, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.main-nav__item:hover .main-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-nav__dropdown-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    color: #5a6473;
+    transition: all 0.15s ease;
+}
+
+.main-nav__dropdown-link:hover {
+    color: #e8927c;
+    background: #faf8f5;
+}
+
+/* University Logo */
+.university-logo {
+    height: 22px;
+    opacity: 0.9;
+    transition: opacity 0.15s ease;
+}
+
+.university-logo:hover {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Legacy Header Support (for pages not yet updated)
+   -------------------------------------------------------------------------- */
+header nav {
+    width: 100%;
+    height: 72px;
+    background: #1a2332;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.1);
     flex-wrap: wrap;
     position: fixed;
     z-index: 999;
     top: 0;
 }
 
-header db_logo{
+header db_logo {
     width: 150px;
     float: left;
-    line-height: 60px;
-    /*background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);*/
-    font-size: 34px;
-    font-weight: 400;
+    line-height: 72px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 600;
 }
 
-header un_logo{
-    display: grid;               /* 启用 Grid 布局 */
+header db_logo a {
+    color: #d4a574 !important;
+}
+
+header un_logo {
+    display: grid;
     place-items: center;
     width: 200px;
-    height: 60px;
+    height: 72px;
     float: right;
     margin-right: 20px;
-    /*background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);*/
     text-align: center;
     justify-content: center;
 }
 
-header li{
-    width: 130px;
+header un_logo img {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+header li {
+    width: 110px;
     float: left;
-    /* 设置文本行高 */
-    line-height: 60px;
-    /*background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);*/
-    font-size: 20px;
+    line-height: 72px;
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
     position: relative;
 }
-header lib{
+
+header lib {
     display: block;
-    width: 200px;
+    width: 180px;
     float: left;
-    /* 设置文本行高 */
-    line-height: 60px;
+    line-height: 48px;
     background-color: white;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+    box-shadow: 0 8px 30px rgba(26, 35, 50, 0.15);
+    border-radius: 4px;
 }
-header a{
-    color: white;
+
+header a {
+    color: rgba(255, 255, 255, 0.75);
     display: block;
     text-align: center;
+    transition: all 0.15s ease;
 }
 
+header a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
-header lib a{
-    color: #767676;
+header lib a {
+    color: #5a6473;
     display: block;
-    text-align: center;
-    width: 200px;
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
 }
 
-header a:hover{
-    background-color:#0886ed;
+header lib a:hover {
+    color: #e8927c;
+    background-color: #faf8f5;
 }
-header b:hover{
-    background-color:#d5d5d5;
-    width: 200px;
-}
-/* 下拉菜单隐藏 */
-header .top_list{
+
+/* Dropdown menu hidden */
+header .top_list {
     display: none;
     position: absolute;
     z-index: 10;
-
+    margin-top: 0;
+    border-radius: 8px;
+    overflow: hidden;
 }
-/* 下拉菜单显示 */
-header li:hover .top_list{
+
+/* Dropdown menu visible on hover */
+header li:hover .top_list {
     display: block;
 }
-.main{
-    margin: 60px 20px 0;
 
+/* --------------------------------------------------------------------------
+   Main Content Area
+   -------------------------------------------------------------------------- */
+.main {
+    margin-top: calc(72px + 2rem);
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.title-div{
+
+/* Page Title */
+.title-div {
     display: flex;
-    -webkit-justify-content: space-between;
     justify-content: space-between;
-    -moz-box-pack: space-between;
-    -webkit--moz-box-pack: space-between;
-    box-pack: space-between;
     align-items: center;
-    -webkit-align-items: center;
-    box-align: center;
-    -moz-box-align: center;
-    -webkit-box-align: center;
+    margin-bottom: 2rem;
 }
-.theme-btn{
+
+.page-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #1a2332;
+    margin: 0;
+}
+
+/* Theme Button */
+.theme-btn {
     cursor: pointer;
-    padding: 13px 20px;
+    padding: 0.875rem 1.5rem;
     color: #fff;
-    border-radius: 8px;
-    background: #0886ed;
+    border-radius: 6px;
+    background: #e8927c;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(232, 146, 124, 0.3);
 }
-.page-title{
-    margin: 35px 0;
+
+.theme-btn:hover {
+    background: #d4755d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 146, 124, 0.4);
 }
-.table-style-1{
-    width:100%; border-collapse: collapse;
-    th, td {
-        /*border:1px solid #ccc; */
-        padding:16px 6px;
-    }
-    th { background-color:#f4f4f4; }
-    td a{
-        color: #0886ed;
-    }
-    .selected-row{
-        background-color:#f4f4f4;
+
+/* --------------------------------------------------------------------------
+   Data Table Styles
+   -------------------------------------------------------------------------- */
+.table-style-1 {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(26, 35, 50, 0.08);
+}
+
+.table-style-1 thead {
+    background-color: #1a2332;
+    color: #ffffff;
+}
+
+.table-style-1 th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-style-1 td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e5e0d8;
+    vertical-align: middle;
+    color: #5a6473;
+}
+
+.table-style-1 tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table-style-1 tbody tr:hover {
+    background-color: #faf8f5;
+}
+
+.table-style-1 tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-style-1 td a {
+    color: #e8927c;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.table-style-1 td a:hover {
+    color: #d4755d;
+    text-decoration: underline;
+}
+
+/* Selected row state */
+.table-style-1 .selected-row {
+    background-color: rgba(232, 146, 124, 0.08) !important;
+    border-left: 3px solid #e8927c;
+}
+
+/* Checkbox styling */
+.table-style-1 input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #e8927c;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Pagination
+   -------------------------------------------------------------------------- */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.pagination a,
+.pagination span,
+.pagination button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #5a6473;
+    background: #ffffff;
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.pagination a:hover,
+.pagination button:hover:not(:disabled) {
+    color: #e8927c;
+    border-color: #e8927c;
+}
+
+.pagination span.disabled,
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination button.active {
+    background: #e8927c;
+    color: #ffffff;
+    border-color: #e8927c;
+}
+
+.pagination input[type="number"] {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.pagination input[type="number"]:focus {
+    border-color: #e8927c;
+    box-shadow: 0 0 0 3px rgba(232, 146, 124, 0.15);
+}
+
+.pagination form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    header li {
+        width: 100px;
     }
 }
 
-@media (max-width: 1020px) {
-    header li{
+@media (max-width: 768px) {
+    header li {
         display: none;
     }
 
+    .main-nav {
+        display: none;
+    }
+
+    .main {
+        padding: 0 1rem;
+    }
+
+    .title-div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
 }
+
 @media (max-width: 387px) {
-    header un_logo{
+    header un_logo {
         display: none;
     }
 
+    .university-logo {
+        display: none;
+    }
 }
-
-
-
-
-
-
