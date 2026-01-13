@@ -425,8 +425,8 @@
             <a href="index.jsp" class="main-nav__link">Home</a>
             <a href="browse.jsp" class="main-nav__link">Browse</a>
             <a href="search.jsp" class="main-nav__link main-nav__link--active">Search</a>
-            <a href="#" class="main-nav__link">Help</a>
-            <a href="#" class="main-nav__link">Download</a>
+            <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="download.jsp" class="main-nav__link">Download</a>
         </nav>
         <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
             <img src="images/ZJE_Logo.png"

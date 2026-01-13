@@ -1,0 +1,568 @@
+<%@ page language="java"
+         contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Center - scSAID</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="CSS/design-system.css">
+    <link rel="stylesheet" href="CSS/header.css">
+
+    <style>
+        body {
+            background-color: #faf8f5;
+        }
+
+        .download-page {
+            min-height: 100vh;
+            padding-top: 72px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: #1a2332;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .page-header__content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header__eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #d4a574;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header__title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0 0 1rem;
+        }
+
+        .page-header__description {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Download Section */
+        .download-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #1a2332;
+            margin: 0 0 2rem;
+        }
+
+        /* Download Cards Grid */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Download Card */
+        .download-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(26, 35, 50, 0.12);
+        }
+
+        .download-card__header {
+            padding: 1.5rem;
+            background: #f5f3f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .download-card__icon {
+            width: 56px;
+            height: 56px;
+            background: #1a2332;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .download-card__icon svg {
+            width: 28px;
+            height: 28px;
+            color: #d4a574;
+        }
+
+        .download-card__meta {
+            flex: 1;
+        }
+
+        .download-card__title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a2332;
+            margin: 0 0 0.25rem;
+        }
+
+        .download-card__format {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5a6473;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .download-card__body {
+            padding: 1.5rem;
+        }
+
+        .download-card__description {
+            font-size: 0.95rem;
+            color: #5a6473;
+            line-height: 1.6;
+            margin: 0 0 1.5rem;
+        }
+
+        .download-card__details {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e0d8;
+        }
+
+        .download-card__detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .download-card__detail-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #9ca3af;
+        }
+
+        .download-card__detail-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a2332;
+        }
+
+        .download-card__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: #e8927c;
+            color: #ffffff;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .download-card__btn:hover {
+            background: #d4755d;
+        }
+
+        .download-card__btn--disabled {
+            background: #e5e0d8;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .download-card__btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+        }
+
+        .info-section__title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a2332;
+            margin: 0 0 1.5rem;
+        }
+
+        .info-section__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .info-item__icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(232, 146, 124, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-item__icon svg {
+            width: 22px;
+            height: 22px;
+            color: #e8927c;
+        }
+
+        .info-item__text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a2332;
+            margin: 0 0 0.25rem;
+        }
+
+        .info-item__text p {
+            font-size: 0.9rem;
+            color: #5a6473;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Loading State */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 0;
+            }
+
+            .download-section {
+                padding: 2rem 1rem;
+            }
+
+            .download-card__details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .info-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+    <div class="container">
+        <a href="index.jsp" class="site-logo">scSAID</a>
+        <nav class="main-nav">
+            <a href="index.jsp" class="main-nav__link">Home</a>
+            <a href="browse.jsp" class="main-nav__link">Browse</a>
+            <a href="search.jsp" class="main-nav__link">Search</a>
+            <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="download.jsp" class="main-nav__link main-nav__link--active">Download</a>
+        </nav>
+        <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
+            <img src="images/ZJE_Logo.png" alt="ZJE - Zhejiang University" class="university-logo">
+        </a>
+    </div>
+</header>
+
+<main class="download-page">
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header__content">
+            <span class="page-header__eyebrow">Data Export</span>
+            <h1 class="page-header__title">Download Center</h1>
+            <p class="page-header__description">
+                Download curated datasets from scSAID for offline analysis and integration with your research workflows.
+            </p>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <h2 class="section-title">Available Downloads</h2>
+
+        <div class="download-grid" id="download-grid">
+            <!-- Browse Data Card -->
+            <div class="download-card">
+                <div class="download-card__header">
+                    <div class="download-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3h18v18H3z"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                    </div>
+                    <div class="download-card__meta">
+                        <h3 class="download-card__title">Browse Data</h3>
+                        <span class="download-card__format">Excel (.xlsx)</span>
+                    </div>
+                </div>
+                <div class="download-card__body">
+                    <p class="download-card__description">
+                        Dataset overview with key metadata including SAID identifiers, GSE/GSM accessions, species, disease status, and tissue types.
+                    </p>
+                    <div class="download-card__details">
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Format</span>
+                            <span class="download-card__detail-value">Excel Workbook</span>
+                        </div>
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Size</span>
+                            <span class="download-card__detail-value" id="browse-size">Loading...</span>
+                        </div>
+                    </div>
+                    <a href="download-file?file=browse" class="download-card__btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- All Data Card -->
+            <div class="download-card">
+                <div class="download-card__header">
+                    <div class="download-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                        </svg>
+                    </div>
+                    <div class="download-card__meta">
+                        <h3 class="download-card__title">Complete Dataset</h3>
+                        <span class="download-card__format">Excel (.xlsx)</span>
+                    </div>
+                </div>
+                <div class="download-card__body">
+                    <p class="download-card__description">
+                        Comprehensive dataset containing all metadata, experimental details, and sample information across the entire database.
+                    </p>
+                    <div class="download-card__details">
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Format</span>
+                            <span class="download-card__detail-value">Excel Workbook</span>
+                        </div>
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Size</span>
+                            <span class="download-card__detail-value" id="all-size">Loading...</span>
+                        </div>
+                    </div>
+                    <a href="download-file?file=all" class="download-card__btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Integration Table Card -->
+            <div class="download-card">
+                <div class="download-card__header">
+                    <div class="download-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v12M6 12h12"/>
+                        </svg>
+                    </div>
+                    <div class="download-card__meta">
+                        <h3 class="download-card__title">Integration Table</h3>
+                        <span class="download-card__format">Excel (.xlsx)</span>
+                    </div>
+                </div>
+                <div class="download-card__body">
+                    <p class="download-card__description">
+                        Pre-computed integration analysis data for cross-dataset comparisons and UMAP visualizations.
+                    </p>
+                    <div class="download-card__details">
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Format</span>
+                            <span class="download-card__detail-value">Excel Workbook</span>
+                        </div>
+                        <div class="download-card__detail">
+                            <span class="download-card__detail-label">Size</span>
+                            <span class="download-card__detail-value" id="integrate-size">Loading...</span>
+                        </div>
+                    </div>
+                    <a href="download-file?file=integrate" class="download-card__btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3 class="info-section__title">Usage Guidelines</h3>
+            <div class="info-section__content">
+                <div class="info-item">
+                    <div class="info-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14,2 14,8 20,8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10,9 9,9 8,9"/>
+                        </svg>
+                    </div>
+                    <div class="info-item__text">
+                        <h4>Data Format</h4>
+                        <p>All files are provided in Excel format (.xlsx) compatible with Microsoft Excel, Google Sheets, and R/Python libraries.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <div class="info-item__text">
+                        <h4>Citation</h4>
+                        <p>Please cite scSAID when using downloaded data in your publications or presentations.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <div class="info-item__text">
+                        <h4>License</h4>
+                        <p>Data is provided for academic and research purposes. Please review the license terms before redistribution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Format file size
+    function formatSize(bytes) {
+        if (bytes === 0) return 'N/A';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    // Fetch file info and update sizes
+    $.ajax({
+        url: 'download-file',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.files) {
+                response.files.forEach(function(file) {
+                    const $sizeEl = $('#' + file.key + '-size');
+                    if ($sizeEl.length) {
+                        if (file.available) {
+                            $sizeEl.text(formatSize(file.size));
+                        } else {
+                            $sizeEl.text('Unavailable');
+                            // Disable download button
+                            $sizeEl.closest('.download-card__body')
+                                   .find('.download-card__btn')
+                                   .addClass('download-card__btn--disabled')
+                                   .removeAttr('href')
+                                   .on('click', function(e) { e.preventDefault(); });
+                        }
+                    }
+                });
+            }
+        },
+        error: function() {
+            $('#browse-size, #all-size, #integrate-size').text('Error');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

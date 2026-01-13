@@ -123,15 +123,34 @@
     background: #faf8f5;
 }
 
-/* University Logo */
-.university-logo {
-    height: 22px;
-    opacity: 0.9;
+/* Header Right Icons */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-icon-link {
+    display: flex;
+    align-items: center;
+    opacity: 0.85;
     transition: opacity 0.15s ease;
 }
 
-.university-logo:hover {
+.header-icon-link:hover {
     opacity: 1;
+}
+
+/* University Logo */
+.university-logo {
+    height: 32px;
+}
+
+/* GitHub Icon */
+.github-icon {
+    width: 26px;
+    height: 26px;
+    color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------

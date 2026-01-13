@@ -377,6 +377,100 @@
             text-align: center;
         }
 
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: #f5f3f0;
+            border-bottom: 1px solid #e5e0d8;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .filter-group__label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #5a6473;
+        }
+
+        .filter-group__select {
+            min-width: 160px;
+            padding: 0.65rem 2.5rem 0.65rem 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            color: #1a2332;
+            background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6473' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 1rem center;
+            border: 1px solid #e5e0d8;
+            border-radius: 8px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: all 0.15s ease;
+        }
+
+        .filter-group__select:hover {
+            border-color: #d4a574;
+        }
+
+        .filter-group__select:focus {
+            outline: none;
+            border-color: #e8927c;
+            box-shadow: 0 0 0 3px rgba(232, 146, 124, 0.15);
+        }
+
+        .filter-bar__actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-left: auto;
+            align-items: flex-end;
+        }
+
+        .filter-bar__btn {
+            padding: 0.65rem 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-bar__btn--clear {
+            background: transparent;
+            color: #5a6473;
+            border: 1px solid #e5e0d8;
+        }
+
+        .filter-bar__btn--clear:hover {
+            color: #1a2332;
+            border-color: #5a6473;
+        }
+
+        .filter-count {
+            font-size: 0.9rem;
+            color: #5a6473;
+            padding: 0.65rem 0;
+        }
+
+        .filter-count strong {
+            color: #e8927c;
+            font-weight: 600;
+        }
+
+        /* Hidden row (filtered out) */
+        .browse-table tbody tr.filtered-out {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .page-header {
@@ -402,6 +496,20 @@
             .browse-table td:first-child {
                 padding-left: 1rem;
             }
+
+            .filter-bar {
+                padding: 1rem;
+            }
+
+            .filter-group__select {
+                min-width: 140px;
+            }
+
+            .filter-bar__actions {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -415,13 +523,19 @@
             <a href="index.jsp" class="main-nav__link">Home</a>
             <a href="browse.jsp" class="main-nav__link main-nav__link--active">Browse</a>
             <a href="search.jsp" class="main-nav__link">Search</a>
-            <a href="#" class="main-nav__link">Help</a>
-            <a href="#" class="main-nav__link">Download</a>
+            <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="download.jsp" class="main-nav__link">Download</a>
         </nav>
-        <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
-            <img src="images/ZJE_Logo.png"
-                 alt="ZJE - Zhejiang University" class="university-logo">
-        </a>
+        <div class="header-icons">
+            <a href="https://github.com/Dostoyevsky7/SkinDB_web" target="_blank" class="header-icon-link" title="View on GitHub">
+                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank" class="header-icon-link" title="ZJE - Zhejiang University">
+                <img src="images/ZJE_Logo.png" alt="ZJE - Zhejiang University" class="university-logo">
+            </a>
+        </div>
     </div>
 </header>
 
@@ -476,6 +590,39 @@
                 </div>
             </div>
 
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label class="filter-group__label">Species</label>
+                    <select id="filter-species" class="filter-group__select">
+                        <option value="">All Species</option>
+                        <option value="human">Human</option>
+                        <option value="mouse">Mouse</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-group__label">Disease Status</label>
+                    <select id="filter-disease" class="filter-group__select">
+                        <option value="">All Status</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="disease">Disease</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-group__label">Tissue</label>
+                    <select id="filter-tissue" class="filter-group__select">
+                        <option value="">All Tissues</option>
+                    </select>
+                </div>
+
+                <div class="filter-bar__actions">
+                    <span id="filter-count" class="filter-count"></span>
+                    <button id="clear-filters" class="filter-bar__btn filter-bar__btn--clear">Clear Filters</button>
+                </div>
+            </div>
+
             <div class="data-table-wrapper">
                 <table class="browse-table">
                     <thead>
@@ -502,8 +649,10 @@
                             String disease = row.getCell(4, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
                             String tissue = row.getCell(5, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
                             String speciesLower = species.toLowerCase();
+                            String diseaseLower = disease.toLowerCase();
+                            String tissueLower = tissue.toLowerCase().trim();
                     %>
-                    <tr>
+                    <tr data-species="<%= speciesLower %>" data-disease="<%= diseaseLower %>" data-tissue="<%= tissueLower %>">
                         <td><input type="checkbox" name="dataset_checkbox" value="<%= gsm_value %>"></td>
                         <td class="cell-id"><%= said_display %></td>
                         <td><%= gse %></td>
@@ -602,6 +751,93 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+    // ===== Filter Functionality =====
+    const $filterSpecies = $('#filter-species');
+    const $filterDisease = $('#filter-disease');
+    const $filterTissue = $('#filter-tissue');
+    const $filterCount = $('#filter-count');
+    const $clearFilters = $('#clear-filters');
+    const $tableRows = $('.browse-table tbody tr');
+
+    // Populate tissue options from table data
+    const tissues = new Set();
+    $tableRows.each(function() {
+        const tissue = $(this).data('tissue');
+        if (tissue) tissues.add(tissue);
+    });
+
+    // Sort and add tissue options
+    Array.from(tissues).sort().forEach(function(tissue) {
+        if (tissue.trim()) {
+            $filterTissue.append('<option value="' + tissue + '">' + capitalizeFirst(tissue) + '</option>');
+        }
+    });
+
+    function capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function applyFilters() {
+        const speciesVal = $filterSpecies.val().toLowerCase();
+        const diseaseVal = $filterDisease.val().toLowerCase();
+        const tissueVal = $filterTissue.val().toLowerCase();
+
+        let visibleCount = 0;
+        const totalCount = $tableRows.length;
+
+        $tableRows.each(function() {
+            const $row = $(this);
+            const rowSpecies = ($row.data('species') || '').toLowerCase();
+            const rowDisease = ($row.data('disease') || '').toLowerCase();
+            const rowTissue = ($row.data('tissue') || '').toLowerCase();
+
+            let show = true;
+
+            // Species filter
+            if (speciesVal && !rowSpecies.includes(speciesVal)) {
+                show = false;
+            }
+
+            // Disease filter
+            if (diseaseVal) {
+                if (diseaseVal === 'healthy' && !rowDisease.includes('healthy') && !rowDisease.includes('normal')) {
+                    show = false;
+                } else if (diseaseVal === 'disease' && (rowDisease.includes('healthy') || rowDisease.includes('normal') || rowDisease === '')) {
+                    show = false;
+                }
+            }
+
+            // Tissue filter
+            if (tissueVal && rowTissue !== tissueVal) {
+                show = false;
+            }
+
+            $row.toggleClass('filtered-out', !show);
+            if (show) visibleCount++;
+        });
+
+        // Update count
+        if (speciesVal || diseaseVal || tissueVal) {
+            $filterCount.html('Showing <strong>' + visibleCount + '</strong> of ' + totalCount);
+        } else {
+            $filterCount.html('');
+        }
+    }
+
+    // Filter event listeners
+    $filterSpecies.on('change', applyFilters);
+    $filterDisease.on('change', applyFilters);
+    $filterTissue.on('change', applyFilters);
+
+    // Clear filters
+    $clearFilters.on('click', function() {
+        $filterSpecies.val('');
+        $filterDisease.val('');
+        $filterTissue.val('');
+        applyFilters();
+    });
+
+    // ===== Row Selection =====
     // Row selection highlighting
     document.querySelector('#select-all').closest('table').addEventListener('change', function (e) {
         const cb = e.target;
@@ -610,12 +846,15 @@ $(document).ready(function() {
         tr.classList.toggle('selected-row', cb.checked);
     });
 
-    // Select all checkbox
+    // Select all checkbox (only select visible rows)
     $('#select-all').on('click', function() {
         const flag = this.checked;
         $('input[name="dataset_checkbox"]').each(function () {
-            this.checked = flag;
-            $(this).closest('tr').toggleClass('selected-row', flag);
+            const $row = $(this).closest('tr');
+            if (!$row.hasClass('filtered-out')) {
+                this.checked = flag;
+                $row.toggleClass('selected-row', flag);
+            }
         });
     });
 
