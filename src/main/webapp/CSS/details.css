@@ -1128,6 +1128,35 @@
     line-height: 1.6;
 }
 
+/* GEO Database Links */
+.geo-link {
+    color: #e8927c;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-bottom: 1px;
+}
+
+.geo-link:hover {
+    color: #d4755d;
+    border-bottom-color: #e8927c;
+}
+
+.geo-link::after {
+    content: '↗';
+    font-size: 0.75em;
+    margin-left: 0.25em;
+    opacity: 0.6;
+    vertical-align: super;
+}
+
+.geo-link:active {
+    transform: translateY(1px);
+}
+
 .separator {
     flex-grow: 1;
     height: 2px;

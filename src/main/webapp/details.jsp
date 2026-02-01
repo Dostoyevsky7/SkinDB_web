@@ -333,8 +333,8 @@
                     <div class="title_1">Overview<div class="separator"></div></div>
 
                     <div class="detail_container_1"><div class="subtitle">Data ID: </div><div class="text_2"><%= saidVal %></div></div>
-                    <div class="detail_container_1"><div class="subtitle">GSE: </div><div class="text_2"><%= gseVal %></div></div>
-                    <div class="detail_container_1"><div class="subtitle">GSM: </div><div class="text_2"><%= gsmVal %></div></div>
+                    <div class="detail_container_1"><div class="subtitle">GSE: </div><div class="text_2"><% if (gseVal != null && !gseVal.trim().isEmpty()) { %><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=<%= gseVal %>" target="_blank" rel="noopener noreferrer" class="geo-link"><%= gseVal %></a><% } else { %><%= gseVal %><% } %></div></div>
+                    <div class="detail_container_1"><div class="subtitle">GSM: </div><div class="text_2"><% if (gsmVal != null && !gsmVal.trim().isEmpty()) { %><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=<%= gsmVal %>" target="_blank" rel="noopener noreferrer" class="geo-link"><%= gsmVal %></a><% } else { %><%= gsmVal %><% } %></div></div>
                     <div class="detail_container_1"><div class="subtitle">Species: </div><div class="text_2"><%= speciesVal %></div></div>
                     <div class="detail_container_1"><div class="subtitle">Disease: </div><div class="text_2"><%= diseaseVal %></div></div>
 
