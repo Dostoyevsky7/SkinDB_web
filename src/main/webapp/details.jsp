@@ -359,7 +359,10 @@
             <div class="cluster">
                 <div class="header">Cell Clustering</div>
                 <div id="dash-container" style="width:1000px; height:800px;">
-                    <iframe src="http://localhost:8050/dash/?sample_id=${sid}" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
+                    <iframe
+                            src="/dash/?saids=<%= java.net.URLEncoder.encode(saidVal, "UTF-8") %>"
+                            style="width:100%; height:100%; border:0;"
+                    ></iframe>
                 </div>
             </div>
 
