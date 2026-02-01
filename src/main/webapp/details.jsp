@@ -312,6 +312,15 @@
                 </svg>
                 CellPhoneDB Analysis
             </a>
+            <a href="visualization?dataset=<%= saidVal %>" class="nav-item nav-item--highlight">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                Interactive Visualizations
+                <span class="nav-badge">NEW</span>
+            </a>
         </nav>
     </aside>
     <div class="basic"  id="ExperimentInformation">
@@ -328,7 +337,15 @@
                     <div class="detail_container_1"><div class="subtitle">Disease: </div><div class="text_2"><%= diseaseVal %></div></div>
 
                     <div class="detail_container_1"><div class="subtitle">Tissue: </div><div class="text_2"><%= tissueVal %></div></div>
-                    <div class="title_1">Characteristics<div class="separator"></div></div>
+
+                    <div class="title_1">Quick Actions<div class="separator"></div></div>
+                    <div style="margin-top: 15px;">
+                        <a href="visualization?dataset=<%= saidVal %>" class="viz-quick-btn">
+                            🎨 Open Interactive Visualizations
+                        </a>
+                    </div>
+
+                    <div class="title_1" style="margin-top: 20px;">Characteristics<div class="separator"></div></div>
                     <% String[] charItems = charVal != null ? charVal.split("\\s*;\\s*") : new String[0]; for (String item : charItems) { if (item == null || item.trim().isEmpty()) continue; %>
                     <div class="detail_container_1"><div class="subtitle"></div><div class="text_2"><%= item.trim() %></div></div>
                     <% } %>

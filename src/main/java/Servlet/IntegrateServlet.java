@@ -28,7 +28,10 @@ public class IntegrateServlet extends HttpServlet {
         // or a completely different domain if deployed separately.
         // For simplicity, let's assume it's accessible via /dash on the same server.
         // You might need to adjust the port (8050) if your Dash app runs on a different one.
-        StringBuilder dashAppUrl = new StringBuilder("http://localhost:8050/dash?"); // Or your server's actual IP/domain
+        String scheme = request.getScheme();
+        String host = request.getServerName();
+        StringBuilder dashAppUrl = new StringBuilder();
+        dashAppUrl.append(scheme).append("://").append(host).append(":8050/dash?");
         dashAppUrl.append("saids=");
         for (int i = 0; i < saids.length; i++) {
             dashAppUrl.append(URLEncoder.encode(saids[i], "UTF-8"));

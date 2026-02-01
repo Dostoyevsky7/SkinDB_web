@@ -64,7 +64,7 @@ public class DataFilter {
             // 筛选条件：
             // 1. p_vals_adj 小于用户输入的 pAdjThreshold
             // 2. logfoldchanges 大于用户输入的 logfcThreshold
-            if (pAdjValue >= pAdjThreshold && logfcValue <= logfcThreshold) {
+            if (pAdjValue >= pAdjThreshold || logfcValue <= logfcThreshold) {
                 continue;
             }
 

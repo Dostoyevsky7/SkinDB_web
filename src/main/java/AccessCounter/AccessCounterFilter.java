@@ -24,8 +24,13 @@ public class AccessCounterFilter implements Filter {
         // 从 web.xml 配置中获取保存文件的路径（可以在 web.xml 中配置 <init-param>），否则使用默认路径
         counterFilePath = filterConfig.getInitParameter("counterFile");
         if (counterFilePath == null || counterFilePath.trim().isEmpty()) {
-            // 注意：这里的默认路径需要根据你的服务器环境设置，确保有写权限
-            counterFilePath = "D:/counterFilter/counter.properties";
+            String realPath = context.getRealPath("/WEB-INF/counter.properties");
+            if (realPath != null && !realPath.trim().isEmpty()) {
+                counterFilePath = realPath;
+            } else {
+                counterFilePath = System.getProperty("java.io.tmpdir")
+                        + File.separator + "counter.properties";
+            }
         }
         context.setAttribute("counterFile", counterFilePath);
 
@@ -122,6 +127,10 @@ public class AccessCounterFilter implements Filter {
             props.setProperty("destory?", "yes");
             System.out.println("destroy: totalCount=" + totalCount.get() + ", dailyCount=" + dailyCount.get());
 
+            File parent = new File(counterFile).getParentFile();
+            if (parent != null && !parent.exists()) {
+                parent.mkdirs();
+            }
             try (FileOutputStream fos = new FileOutputStream(counterFile)) {
                 props.store(fos, "Access Counter Properties");
             } catch (IOException e) {

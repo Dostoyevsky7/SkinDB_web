@@ -6,16 +6,15 @@ import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.util.Date;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.model.CityResponse;
 
 import java.net.InetAddress;
+import java.time.Instant;
 
 @WebServlet("/track")
 public class GeoIPServlet extends HttpServlet {
-    public static final URI LOG_PATH = URI.create("/var/log/tomcat/access_geo.log");
+    private String logPath;
     private DatabaseReader geoDBReader;
 
     @Override
@@ -24,6 +23,18 @@ public class GeoIPServlet extends HttpServlet {
             // 从WEB-INF目录加载数据库
             String dbPath = getServletContext().getRealPath("/WEB-INF/GeoLite2-City.mmdb");
             geoDBReader = new DatabaseReader.Builder(new File(dbPath)).build();
+            String configuredPath = getServletContext().getInitParameter("geoLogPath");
+            if (configuredPath != null && !configuredPath.trim().isEmpty()) {
+                logPath = configuredPath;
+            } else {
+                String realPath = getServletContext().getRealPath("/WEB-INF/access_geo.log");
+                if (realPath != null && !realPath.trim().isEmpty()) {
+                    logPath = realPath;
+                } else {
+                    logPath = System.getProperty("java.io.tmpdir")
+                            + File.separator + "access_geo.log";
+                }
+            }
         } catch (IOException e) {
             throw new ServletException("Failed to load GeoIP database", e);
         }
@@ -45,17 +56,21 @@ public class GeoIPServlet extends HttpServlet {
         }
 
         // 记录日志
-        String logEntry = String.format("%s [%s] %s %s\n",
-                new Date(),
+        String userAgent = request.getHeader("User-Agent");
+        if (userAgent == null) {
+            userAgent = "-";
+        }
+        String logEntry = String.format("%s\t[%s]\t%s\t%s%n",
+                Instant.now().toString(),
                 ip,
                 location,
-                request.getHeader("User-Agent"));
+                userAgent);
 
         writeLog(logEntry);
     }
 
     private synchronized void writeLog(String content) {
-        try (FileWriter fw = new FileWriter(String.valueOf(LOG_PATH), true)) {
+        try (FileWriter fw = new FileWriter(logPath, true)) {
             fw.write(content);
         } catch (IOException e) {
             e.printStackTrace();

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class details extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("details.jsp").forward(request, response);
     }
 
     @Override

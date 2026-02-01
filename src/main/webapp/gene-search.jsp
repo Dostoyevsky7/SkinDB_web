@@ -245,6 +245,32 @@
             border-radius: 2px;
         }
 
+        /* Gene link */
+        .gene-link {
+            color: #1a2332;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .gene-link:hover {
+            color: #e8927c;
+            border-bottom-color: #e8927c;
+        }
+
+        .gene-link-icon {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-size: 0.8rem;
+        }
+
+        .gene-link:hover .gene-link-icon {
+            opacity: 1;
+        }
+
         /* Dataset link */
         .cell-link {
             color: #e8927c;
@@ -557,13 +583,13 @@ $(document).ready(function() {
             const geneName = highlightMatch(row.gene, currentQuery);
 
             html += '<tr>';
-            html += '<td class="cell-gene">' + geneName + '</td>';
+            html += '<td class="cell-gene"><a href="gene-details?gene=' + encodeURIComponent(row.gene) + '&species=human" class="gene-link">' + geneName + '<span class="gene-link-icon">→</span></a></td>';
             html += '<td><a href="details.jsp?said=' + encodeURIComponent(row.said) + '" class="cell-link">' + row.said + '</a></td>';
             html += '<td>' + row.gse + '</td>';
             html += '<td><span class="group-badge">' + escapeHtml(row.group) + '</span></td>';
             html += '<td><span class="expression-badge ' + fcClass + '">' + fcSign + row.logfc + '</span></td>';
             html += '<td class="cell-pval">' + row.pval + '</td>';
-            html += '<td><a href="details.jsp?said=' + encodeURIComponent(row.said) + '#DEG" class="cell-link">View DEG</a></td>';
+            html += '<td><a href="details.jsp?said=' + encodeURIComponent(row.said) + '#DEG" class="cell-link">Dataset</a> | <a href="gene-details?gene=' + encodeURIComponent(row.gene) + '&species=human" class="cell-link">Gene Info</a></td>';
             html += '</tr>';
         });
 

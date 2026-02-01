@@ -1,0 +1,367 @@
+/* Visualization Page Styles */
+
+.visualization-container {
+    min-height: 100vh;
+    background: #faf8f5;
+    padding-top: 80px;
+}
+
+/* Page Header */
+.viz-page-header {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #e8927c;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: #d4755d;
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    color: #999;
+}
+
+.breadcrumb .current {
+    color: #1a2332;
+    font-weight: 600;
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin: 0 0 12px;
+}
+
+.page-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Status Banner */
+.status-banner {
+    max-width: 1400px;
+    margin: 0 auto 24px;
+    padding: 0 40px;
+}
+
+.status-content {
+    background: linear-gradient(135deg, #e8927c 0%, #d4755d 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(232, 146, 124, 0.3);
+}
+
+.status-banner.error .status-content {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#status-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Visualization Frame Section */
+.viz-frame-section {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+}
+
+.viz-toolbar {
+    background: white;
+    border: 1px solid #e5e0d8;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar-left,
+.toolbar-right {
+    display: flex;
+    gap: 12px;
+}
+
+.toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #e5e0d8;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2332;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.toolbar-btn:hover {
+    background: #faf8f5;
+    border-color: #d4a574;
+    color: #d4a574;
+}
+
+.toolbar-btn svg {
+    flex-shrink: 0;
+}
+
+.viz-frame-wrapper {
+    background: white;
+    border: 1px solid #e5e0d8;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.viz-frame-wrapper:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.viz-frame-wrapper:-moz-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.viz-frame-wrapper:-ms-fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+.viz-frame-wrapper:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+#viz-frame {
+    width: 100%;
+    height: 800px;
+    display: block;
+    background: #faf8f5;
+}
+
+.viz-frame-wrapper:fullscreen #viz-frame {
+    height: 100vh;
+}
+
+/* Instructions Panel */
+.instructions-panel {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+}
+
+.instructions-panel h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin: 0 0 24px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: white;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #d4a574;
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.tool-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin: 0 0 8px;
+}
+
+.tool-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Tips Section */
+.tips-section {
+    max-width: 1400px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+}
+
+.tips-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin: 0 0 24px;
+}
+
+.tips-list {
+    background: white;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    padding: 32px 40px;
+    list-style: none;
+}
+
+.tips-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.tips-list li:last-child {
+    margin-bottom: 0;
+}
+
+.tips-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #d4a574;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.tips-list li strong {
+    color: #1a2332;
+    font-weight: 600;
+}
+
+/* Footer */
+.main-footer {
+    background: #1a2332;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.footer-content p {
+    margin: 8px 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .visualization-container {
+        padding-top: 60px;
+    }
+
+    .viz-page-header,
+    .status-banner,
+    .viz-frame-section,
+    .instructions-panel,
+    .tips-section {
+        padding: 0 20px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .viz-toolbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #viz-frame {
+        height: 600px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tips-list {
+        padding: 24px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .main-header,
+    .viz-toolbar,
+    .instructions-panel,
+    .tips-section,
+    .main-footer {
+        display: none;
+    }
+
+    .visualization-container {
+        padding-top: 0;
+    }
+
+    .viz-frame-wrapper {
+        border: none;
+        box-shadow: none;
+    }
+}

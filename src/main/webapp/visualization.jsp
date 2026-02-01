@@ -1,0 +1,267 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Visualization - scSAID</title>
+    <link rel="stylesheet" href="CSS/design-system.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/visualization.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="home">scSAID</a>
+            </div>
+            <nav class="main-nav">
+                <a href="home">Home</a>
+                <a href="browse">Browse</a>
+                <a href="SearchServlet">Search & Integrate</a>
+                <a href="gene-search.jsp">Gene Search</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="visualization-container">
+        <%
+            String datasetId = (String) request.getAttribute("datasetId");
+            String vizUrl = (String) request.getAttribute("vizUrl");
+            Integer vizPort = (Integer) request.getAttribute("vizPort");
+        %>
+
+        <!-- Page Header -->
+        <section class="viz-page-header">
+            <div class="breadcrumb">
+                <a href="browse">Browse</a>
+                <span class="separator">›</span>
+                <a href="details?said=<%= datasetId %>"><%= datasetId %></a>
+                <span class="separator">›</span>
+                <span class="current">Interactive Visualization</span>
+            </div>
+
+            <h1 class="page-title">Interactive Visualization Suite</h1>
+            <p class="page-description">
+                Explore dataset <strong><%= datasetId %></strong> with advanced interactive visualizations
+            </p>
+        </section>
+
+        <!-- Status Banner -->
+        <div id="status-banner" class="status-banner">
+            <div class="status-content">
+                <div class="spinner"></div>
+                <span id="status-text">Initializing visualization server...</span>
+            </div>
+        </div>
+
+        <!-- Visualization Frame Container -->
+        <section class="viz-frame-section">
+            <div class="viz-toolbar">
+                <div class="toolbar-left">
+                    <button id="refresh-btn" class="toolbar-btn" title="Refresh">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6"/>
+                            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                        </svg>
+                        Refresh
+                    </button>
+
+                    <button id="fullscreen-btn" class="toolbar-btn" title="Fullscreen">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+                        </svg>
+                        Fullscreen
+                    </button>
+                </div>
+
+                <div class="toolbar-right">
+                    <a href="details?said=<%= datasetId %>" class="toolbar-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Details
+                    </a>
+                </div>
+            </div>
+
+            <div class="viz-frame-wrapper" id="viz-frame-wrapper">
+                <iframe
+                    id="viz-frame"
+                    src="<%= vizUrl %>"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Instructions Panel -->
+        <section class="instructions-panel">
+            <h2>Visualization Tools Available</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3>3D UMAP</h3>
+                    <p>Explore your data in 3D space with interactive rotation and zoom controls</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🧭</div>
+                    <h3>3D tSNE</h3>
+                    <p>Alternative dimensionality reduction for exploring complex manifolds in 3D</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">⚫</div>
+                    <h3>Dot Plot</h3>
+                    <p>Visualize gene expression levels and percentage of expressing cells across groups</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🎻</div>
+                    <h3>Violin Plot</h3>
+                    <p>Display gene expression distributions with box plots and density curves</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🎼</div>
+                    <h3>Split Violin</h3>
+                    <p>Compare two subgroups within each group using mirrored violin plots</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🧵</div>
+                    <h3>Stacked Violin</h3>
+                    <p>Stack gene expression distributions for multiple genes in a compact view</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🔥</div>
+                    <h3>Heatmap</h3>
+                    <p>Show hierarchical clustering and average expression patterns across cell types</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🗺️</div>
+                    <h3>Feature Plot</h3>
+                    <p>Overlay gene expression on UMAP coordinates to identify spatial patterns</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Gene Expression</h3>
+                    <p>Compare mean expression levels of selected genes across different groups</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🔀</div>
+                    <h3>Sankey</h3>
+                    <p>Visualize cell type proportions across datasets or metadata categories</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h3>Correlation</h3>
+                    <p>Explore pairwise gene expression relationships with interactive scatter plots</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <h2>Tips for Using the Visualization Suite</h2>
+            <ul class="tips-list">
+                <li><strong>Color by:</strong> Change the coloring scheme to highlight different aspects of your data (cell type, cluster, sample, etc.)</li>
+                <li><strong>Gene Selection:</strong> Use the gene dropdown to search and select genes of interest for dot plots, violin plots, and heatmaps</li>
+                <li><strong>Point Size & Opacity:</strong> Adjust these settings for better visualization of dense or sparse regions</li>
+                <li><strong>Export:</strong> Save your visualizations as PNG or SVG for publications</li>
+                <li><strong>3D Navigation:</strong> Click and drag to rotate, scroll to zoom, shift+drag to pan</li>
+                <li><strong>Hover Info:</strong> Hover over data points to see detailed information</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 scSAID - Single-Cell Skin & Appendages Integrated Database</p>
+            <p>Zhejiang University · ZJE</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const datasetId = '<%= datasetId %>';
+            const vizUrl = '<%= vizUrl %>';
+            let checkInterval;
+            let checkAttempts = 0;
+            const maxAttempts = 30;
+
+            // Check server status
+            function checkServerStatus() {
+                $.ajax({
+                    url: 'visualization',
+                    type: 'POST',
+                    data: { action: 'status', dataset: datasetId },
+                    success: function(response) {
+                        if (response.running) {
+                            $('#status-text').text('Visualization server is running');
+                            setTimeout(function() {
+                                $('#status-banner').fadeOut();
+                            }, 2000);
+                            clearInterval(checkInterval);
+                        } else {
+                            checkAttempts++;
+                            if (checkAttempts >= maxAttempts) {
+                                $('#status-text').text('Failed to start visualization server. Please refresh the page.');
+                                $('#status-banner').addClass('error');
+                                clearInterval(checkInterval);
+                            }
+                        }
+                    },
+                    error: function() {
+                        checkAttempts++;
+                        if (checkAttempts >= maxAttempts) {
+                            $('#status-text').text('Error checking server status');
+                            $('#status-banner').addClass('error');
+                            clearInterval(checkInterval);
+                        }
+                    }
+                });
+            }
+
+            // Start checking status
+            checkInterval = setInterval(checkServerStatus, 1000);
+            checkServerStatus();
+
+            // Refresh button
+            $('#refresh-btn').on('click', function() {
+                $('#viz-frame').attr('src', $('#viz-frame').attr('src'));
+            });
+
+            // Fullscreen button
+            $('#fullscreen-btn').on('click', function() {
+                const elem = document.getElementById('viz-frame-wrapper');
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            });
+
+            // Handle iframe load
+            $('#viz-frame').on('load', function() {
+                console.log('Visualization loaded');
+            });
+        });
+    </script>
+</body>
+</html>
