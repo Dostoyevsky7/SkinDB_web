@@ -248,14 +248,16 @@
     <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/details.css">
+    <link rel="stylesheet" href="CSS/animations.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="JS/micro-interactions.js"></script>
 </head>
-<body style="background: #faf8f5;">
+<body style="background: #faf8f5;" class="content-fade-in">
 
 <!-- Header -->
 <header class="site-header">
@@ -323,7 +325,7 @@
             </a>
         </nav>
     </aside>
-    <div class="basic"  id="ExperimentInformation">
+    <div class="basic" id="ExperimentInformation" data-panel-enter>
         <div class="general_info" style="height: 600px;">
             <div class="header">General Information</div>
             <div class="general_info_part">
@@ -355,7 +357,7 @@
                 </div>
             </div>
         </div>
-        <div class="CellClustering" id="CellClustering">
+        <div class="CellClustering" id="CellClustering" data-panel-enter>
             <div class="cluster">
                 <div class="header">Cell Clustering</div>
                 <div id="dash-container" style="width:1000px; height:800px;">
@@ -366,13 +368,13 @@
                 </div>
             </div>
 
-            <div class="cluster" id="DEGResults">
+            <div class="cluster" id="DEGResults" data-panel-enter>
                 <div class="header">
                     <div class="header-content">
                         <div>
                             <div class="header-title">Differentially Expressed Genes</div>
                         </div>
-                        <button id="exportExcelBtn" class="export-btn">
+                        <button id="exportExcelBtn" class="export-btn" data-btn-morph>
                             <svg class="export-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -429,7 +431,7 @@
                 </div>
             </div>
 
-            <div class="cluster" id="CellPhoneDBAnalysis">
+            <div class="cluster" id="CellPhoneDBAnalysis" data-panel-enter>
                 <div class="header">
                     <div class="header-content">
                         <div>
@@ -445,7 +447,7 @@
                                 <h3 class="cpdb-section-title">Interaction Overview</h3>
                                 <p class="cpdb-section-desc">Heatmap of significant ligand-receptor interactions across cell types</p>
                             </div>
-                            <button id="cpdbSummaryBtn" class="generate-btn">
+                            <button id="cpdbSummaryBtn" class="generate-btn" data-btn-morph>
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="23 4 23 10 17 10"></polyline>
                                     <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
@@ -483,7 +485,7 @@
                                     <option value="">Loading cell types...</option>
                                 </select>
                             </div>
-                            <button id="cpdbReceiverBtn" class="generate-btn">
+                            <button id="cpdbReceiverBtn" class="generate-btn" data-btn-morph>
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="23 4 23 10 17 10"></polyline>
                                     <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
@@ -577,17 +579,35 @@
 
                             data.forEach(r => table.row.add([r.gene, r.logfoldchanges, r.pvals_adj, r.scores, r.group]));
                             table.draw();
+
+                            // Animate table rows after draw
+                            setTimeout(() => {
+                                MicroInteractions.animateTableRows(document.getElementById('degTable'));
+                            }, 100);
                         })
                         .fail(function(xhr){ console.error("❌ DEG data loading failed:", xhr.status, xhr.statusText); });
                 }
 
                 function exportTableToExcel() {
-                    const exportData = [["Gene", "logFC", "p-value", "Score", "Group"]];
-                    table.rows({ search: 'applied' }).every(function () { exportData.push(this.data()); });
-                    const ws = XLSX.utils.aoa_to_sheet(exportData);
-                    const wb = XLSX.utils.book_new();
-                    XLSX.utils.book_append_sheet(wb, ws, "Filtered_DEG");
-                    XLSX.writeFile(wb, "filtered_DEG_results.xlsx");
+                    const btn = document.getElementById('exportExcelBtn');
+                    MicroInteractions.setButtonState(btn, 'processing');
+
+                    setTimeout(() => {
+                        try {
+                            const exportData = [["Gene", "logFC", "p-value", "Score", "Group"]];
+                            table.rows({ search: 'applied' }).every(function () { exportData.push(this.data()); });
+                            const ws = XLSX.utils.aoa_to_sheet(exportData);
+                            const wb = XLSX.utils.book_new();
+                            XLSX.utils.book_append_sheet(wb, ws, "Filtered_DEG");
+                            XLSX.writeFile(wb, "filtered_DEG_results.xlsx");
+
+                            MicroInteractions.setButtonState(btn, 'success');
+                            MicroInteractions.showFeedback('success', 'Excel file exported successfully!');
+                        } catch (error) {
+                            MicroInteractions.setButtonState(btn, 'error');
+                            MicroInteractions.showFeedback('error', 'Export failed. Please try again.');
+                        }
+                    }, 300);
                 }
 
                 initGroupOptions();
@@ -629,7 +649,11 @@
                 function generateCpdbPlot(plotType, cellType, containerId) {
                     // 修改：确保 id 匹配
                     const container = $('#' + containerId);
-                    container.html('<div class="loader"></div>'); // Show loader
+                    container.html('<div class="spinner-precision"></div>'); // Show loader
+
+                    const btnId = plotType === 'summary' ? 'cpdbSummaryBtn' : 'cpdbReceiverBtn';
+                    const btn = document.getElementById(btnId);
+                    MicroInteractions.setButtonState(btn, 'processing');
 
                     const params = {
                         action: 'generate_plot',
@@ -648,23 +672,31 @@
                             if (data.error) {
                                 console.error(`❌ CPDB plot generation failed: ${data.error}`);
                                 container.html('<p style="color:red;"><strong>Error:</strong> ' + data.error + '</p>');
+                                MicroInteractions.setButtonState(btn, 'error');
+                                MicroInteractions.showFeedback('error', 'Plot generation failed: ' + data.error);
                                 return;
                             }
 
                             if (data.imageUrl) {
                                 console.log(`✅ CPDB plot generated. URL: ${data.imageUrl}`);
                                 // 修改：使用传统字符串拼接以提高兼容性，并添加日志
-                                const imgHtml = '<img src="' + data.imageUrl + '" alt="Generated ' + plotType + ' plot">';
+                                const imgHtml = '<img src="' + data.imageUrl + '" alt="Generated ' + plotType + ' plot" class="chart-enter">';
                                 console.log('Generated image HTML:', imgHtml);
                                 container.html(imgHtml);
+                                MicroInteractions.setButtonState(btn, 'success');
+                                MicroInteractions.showFeedback('success', 'Plot generated successfully!');
                             } else {
                                 console.error("❌ No imageUrl found in server response:", data);
                                 container.html('<p style="color:red;"><strong>Error:</strong> Server response did not contain an image URL.</p>');
+                                MicroInteractions.setButtonState(btn, 'error');
+                                MicroInteractions.showFeedback('error', 'Plot generation failed.');
                             }
                         })
                         .fail(function(xhr) {
                             console.error(`❌ CPDB plot request failed: ${xhr.status} ${xhr.statusText}`);
                             container.html('<p style="color:red;"><strong>Request Failed:</strong> Server returned an error.</p>');
+                            MicroInteractions.setButtonState(btn, 'error');
+                            MicroInteractions.showFeedback('error', 'Server error. Please try again.');
                         });
                 }
 

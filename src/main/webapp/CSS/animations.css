@@ -1,0 +1,590 @@
+/* ==========================================================================
+   scSAID Global Animation System
+   Refined Scientific Micro-Interactions
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Animation Variables & Timing System
+   -------------------------------------------------------------------------- */
+:root {
+    /* Timing */
+    --anim-duration-fast: 300ms;
+    --anim-duration-base: 450ms;
+    --anim-duration-slow: 600ms;
+    --anim-duration-slowest: 900ms;
+
+    /* Easing Functions */
+    --anim-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --anim-ease-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
+    --anim-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+    --anim-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Stagger Delays */
+    --anim-stagger-1: 80ms;
+    --anim-stagger-2: 160ms;
+    --anim-stagger-3: 240ms;
+    --anim-stagger-4: 320ms;
+    --anim-stagger-5: 400ms;
+}
+
+/* --------------------------------------------------------------------------
+   1. Skeleton Screen Shimmer - Loading States
+   -------------------------------------------------------------------------- */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f5f2ed 0%,
+        #e5e0d8 20%,
+        #f5f2ed 40%,
+        #f5f2ed 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 100%
+    );
+    animation: shimmer-highlight 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes shimmer-highlight {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+/* Skeleton Variants */
+.skeleton-text {
+    height: 1em;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-title {
+    height: 2em;
+    width: 60%;
+    margin-bottom: 1em;
+}
+
+.skeleton-card {
+    height: 200px;
+    border-radius: 16px;
+}
+
+.skeleton-button {
+    height: 44px;
+    width: 120px;
+    border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Staggered Entrance Animations - Lists, Cards, Panels
+   -------------------------------------------------------------------------- */
+
+/* Base entrance state - elements start hidden */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: staggerFadeInUp var(--anim-duration-base) var(--anim-ease-standard) forwards;
+}
+
+/* Entrance animation */
+@keyframes staggerFadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger delays - apply to sequential items */
+.stagger-item:nth-child(1) { animation-delay: 0ms; }
+.stagger-item:nth-child(2) { animation-delay: var(--anim-stagger-1); }
+.stagger-item:nth-child(3) { animation-delay: var(--anim-stagger-2); }
+.stagger-item:nth-child(4) { animation-delay: var(--anim-stagger-3); }
+.stagger-item:nth-child(5) { animation-delay: var(--anim-stagger-4); }
+.stagger-item:nth-child(6) { animation-delay: var(--anim-stagger-5); }
+.stagger-item:nth-child(7) { animation-delay: 480ms; }
+.stagger-item:nth-child(8) { animation-delay: 560ms; }
+.stagger-item:nth-child(9) { animation-delay: 640ms; }
+.stagger-item:nth-child(10) { animation-delay: 720ms; }
+
+/* For items beyond 10, use modulo pattern */
+.stagger-item:nth-child(n+11) {
+    animation-delay: 800ms;
+}
+
+/* Alternative: Slide from left */
+.stagger-slide-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    animation: staggerSlideLeft var(--anim-duration-base) var(--anim-ease-standard) forwards;
+}
+
+@keyframes staggerSlideLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Alternative: Scale in */
+.stagger-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    animation: staggerScale var(--anim-duration-base) var(--anim-ease-decelerate) forwards;
+}
+
+@keyframes staggerScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Panel-specific entrance (for details page) */
+.panel-enter {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    animation: panelEnter var(--anim-duration-slow) var(--anim-ease-standard) forwards;
+}
+
+@keyframes panelEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. Button Scale Morphing - Submit/Action Buttons
+   -------------------------------------------------------------------------- */
+
+/* Button press animation - triggered by JS on click */
+.btn-morph {
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--anim-duration-fast) var(--anim-ease-standard);
+}
+
+.btn-morph.is-pressing {
+    transform: scale(0.95);
+}
+
+.btn-morph.is-processing {
+    pointer-events: none;
+    animation: buttonPulse 1.5s var(--anim-ease-standard) infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.98);
+        opacity: 0.85;
+    }
+}
+
+/* Success morph */
+.btn-morph.is-success {
+    animation: buttonSuccess var(--anim-duration-base) var(--anim-ease-spring) forwards;
+}
+
+@keyframes buttonSuccess {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Error shake */
+.btn-morph.is-error {
+    animation: buttonError var(--anim-duration-base) var(--anim-ease-standard) forwards;
+}
+
+@keyframes buttonError {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-4px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(4px);
+    }
+}
+
+/* Ripple effect on click */
+.btn-morph::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width var(--anim-duration-base) var(--anim-ease-standard),
+                height var(--anim-duration-base) var(--anim-ease-standard),
+                opacity var(--anim-duration-base) var(--anim-ease-standard);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-morph.is-rippling::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Outcome Feedback Animations
+   -------------------------------------------------------------------------- */
+
+/* Toast/Alert notification entrance */
+.feedback-toast {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.9);
+    animation: toastEnter var(--anim-duration-base) var(--anim-ease-spring) forwards;
+}
+
+@keyframes toastEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.feedback-toast.is-exiting {
+    animation: toastExit var(--anim-duration-fast) var(--anim-ease-accelerate) forwards;
+}
+
+@keyframes toastExit {
+    to {
+        opacity: 0;
+        transform: translateY(-100%) scale(0.9);
+    }
+}
+
+/* Success checkmark animation */
+.feedback-check {
+    display: inline-block;
+    animation: checkmarkDraw var(--anim-duration-slow) var(--anim-ease-decelerate) forwards;
+}
+
+@keyframes checkmarkDraw {
+    0% {
+        stroke-dasharray: 0, 100;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dasharray: 100, 0;
+        opacity: 1;
+    }
+}
+
+/* Error icon shake */
+.feedback-error {
+    animation: errorShake var(--anim-duration-base) var(--anim-ease-standard);
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+/* Progress indicator */
+.feedback-progress {
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #e8927c 0%, #d4a574 100%);
+    animation: progressGrow var(--anim-duration-slowest) var(--anim-ease-standard) forwards;
+}
+
+@keyframes progressGrow {
+    to {
+        width: 100%;
+    }
+}
+
+/* Success glow pulse */
+.feedback-glow-success {
+    animation: glowSuccess 1.2s var(--anim-ease-standard);
+}
+
+@keyframes glowSuccess {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(232, 146, 124, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 24px rgba(232, 146, 124, 0.6);
+    }
+}
+
+/* Error glow pulse */
+.feedback-glow-error {
+    animation: glowError 1.2s var(--anim-ease-standard);
+}
+
+@keyframes glowError {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(220, 60, 60, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 24px rgba(220, 60, 60, 0.6);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. Page Transition - Blur & Scale
+   -------------------------------------------------------------------------- */
+
+/* Page entering */
+.page-transition {
+    animation: pageEnter var(--anim-duration-slow) var(--anim-ease-standard) forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* Page exiting */
+.page-transition-exit {
+    animation: pageExit var(--anim-duration-fast) var(--anim-ease-accelerate) forwards;
+}
+
+@keyframes pageExit {
+    to {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(1.02);
+    }
+}
+
+/* Content fade in (for initial page load) */
+.content-fade-in {
+    opacity: 0;
+    animation: contentFadeIn var(--anim-duration-slow) var(--anim-ease-standard) forwards;
+    animation-delay: 150ms;
+}
+
+@keyframes contentFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. Utility Classes
+   -------------------------------------------------------------------------- */
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .skeleton,
+    .skeleton::after {
+        animation: none !important;
+    }
+}
+
+/* Animation state utilities */
+.is-animating {
+    pointer-events: none;
+}
+
+.animation-paused {
+    animation-play-state: paused !important;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 100ms !important; }
+.delay-200 { animation-delay: 200ms !important; }
+.delay-300 { animation-delay: 300ms !important; }
+.delay-400 { animation-delay: 400ms !important; }
+.delay-500 { animation-delay: 500ms !important; }
+
+/* --------------------------------------------------------------------------
+   7. Specialized Animations for Data Visualization
+   -------------------------------------------------------------------------- */
+
+/* Table row reveal */
+.table-row-enter {
+    opacity: 0;
+    transform: translateX(-8px);
+    animation: tableRowEnter var(--anim-duration-fast) var(--anim-ease-standard) forwards;
+}
+
+@keyframes tableRowEnter {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Chart/plot fade in with scale */
+.chart-enter {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: chartEnter var(--anim-duration-slow) var(--anim-ease-decelerate) forwards;
+}
+
+@keyframes chartEnter {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Number count-up effect (CSS-only placeholder) */
+.number-countup {
+    animation: numberPulse var(--anim-duration-base) var(--anim-ease-standard);
+}
+
+@keyframes numberPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Badge pop-in */
+.badge-pop {
+    animation: badgePop var(--anim-duration-fast) var(--anim-ease-spring);
+}
+
+@keyframes badgePop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. Loading Spinner - Scientific Precision
+   -------------------------------------------------------------------------- */
+.spinner-precision {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #e5e0d8;
+    border-top-color: #e8927c;
+    border-right-color: #d4a574;
+    border-radius: 50%;
+    animation: spinnerRotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    position: relative;
+}
+
+.spinner-precision::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border: 2px solid transparent;
+    border-top-color: #e8927c;
+    border-radius: 50%;
+    animation: spinnerRotate 0.8s linear infinite reverse;
+}
+
+@keyframes spinnerRotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. Card Interactions (Non-Hover)
+   -------------------------------------------------------------------------- */
+
+/* Card subtle entrance on view */
+.card-appear {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    animation: cardAppear var(--anim-duration-base) var(--anim-ease-standard) forwards;
+}
+
+@keyframes cardAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Active/selected state animation */
+.card-selected {
+    animation: cardSelect var(--anim-duration-fast) var(--anim-ease-standard) forwards;
+}
+
+@keyframes cardSelect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.98);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

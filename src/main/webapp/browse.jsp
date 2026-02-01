@@ -17,6 +17,7 @@
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/animations.css">
 
     <style>
         /* ==========================================================================
@@ -512,8 +513,9 @@
             }
         }
     </style>
+    <script src="JS/micro-interactions.js"></script>
 </head>
-<body>
+<body class="content-fade-in">
 
 <!-- Header -->
 <header class="site-header">
@@ -576,11 +578,11 @@
                 int endRow = Math.min(startRow + rowsPerPage - 1, totalRows);
         %>
 
-        <div class="table-card">
+        <div class="table-card" data-panel-enter>
             <div class="table-card__header">
                 <h2 class="table-card__title">Dataset Preview</h2>
                 <div class="table-card__actions">
-                    <button id="integrate-button" class="btn btn--primary">
+                    <button id="integrate-button" class="btn btn--primary" data-btn-morph>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v12M6 12h12"></path>
@@ -637,7 +639,7 @@
                         <th>Details</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-stagger-group data-stagger-type="fade-up">
                     <%
                         for (int r = startRow; r <= endRow; r++) {
                             Row row = sheet.getRow(r);
@@ -652,7 +654,7 @@
                             String diseaseLower = disease.toLowerCase();
                             String tissueLower = tissue.toLowerCase().trim();
                     %>
-                    <tr data-species="<%= speciesLower %>" data-disease="<%= diseaseLower %>" data-tissue="<%= tissueLower %>">
+                    <tr data-species="<%= speciesLower %>" data-disease="<%= diseaseLower %>" data-tissue="<%= tissueLower %>" data-stagger-item>
                         <td><input type="checkbox" name="dataset_checkbox" value="<%= gsm_value %>"></td>
                         <td class="cell-id"><%= said_display %></td>
                         <td><%= gse %></td>
