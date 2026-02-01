@@ -1132,7 +1132,6 @@
 .geo-link {
     color: #e8927c;
     text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
     border-bottom: 1px solid transparent;
     transition: all 0.2s ease;
