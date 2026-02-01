@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AccessCounterFilter implements Filter {
     private String counterFilePath;
     private FilterConfig filterConfig;
+    private final Object counterLock = new Object();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -61,6 +62,46 @@ public class AccessCounterFilter implements Filter {
         System.out.println("init: totalCount=" + total + ", dailyCount=" + daily);
     }
 
+    private boolean isStaticAsset(String uri) {
+        if (uri == null) {
+            return false;
+        }
+        String lower = uri.toLowerCase();
+        return lower.endsWith(".css")
+                || lower.endsWith(".js")
+                || lower.endsWith(".png")
+                || lower.endsWith(".jpg")
+                || lower.endsWith(".jpeg")
+                || lower.endsWith(".gif")
+                || lower.endsWith(".svg")
+                || lower.endsWith(".ico")
+                || lower.endsWith(".woff")
+                || lower.endsWith(".woff2")
+                || lower.endsWith(".ttf")
+                || lower.endsWith(".map")
+                || lower.contains("favicon");
+    }
+
+    private void persistCounts(AtomicInteger totalCount, AtomicInteger dailyCount, LocalDate currentDate) {
+        if (counterFilePath == null || counterFilePath.trim().isEmpty()) {
+            return;
+        }
+        Properties props = new Properties();
+        props.setProperty("totalCount", String.valueOf(totalCount.get()));
+        props.setProperty("dailyCount", String.valueOf(dailyCount.get()));
+        props.setProperty("currentDate", currentDate.toString());
+
+        File parent = new File(counterFilePath).getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+        try (FileOutputStream fos = new FileOutputStream(counterFilePath)) {
+            props.store(fos, "Access Counter Properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -74,14 +115,17 @@ public class AccessCounterFilter implements Filter {
         LocalDate today = LocalDate.now();
 
         String uri = req.getRequestURI();
-        if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".png") || uri.endsWith(".jpg") || uri.endsWith(".gif") || uri.contains("favicon")) {
+        if (isStaticAsset(uri)) {
             chain.doFilter(request, response);
             return;
         }
         // 如果日期变了，则重置dailyCount并更新当前日期
         if (!today.equals(currentDate)) {
-            dailyCount.set(0);
-            context.setAttribute("currentDate", today);
+            synchronized (counterLock) {
+                dailyCount.set(0);
+                context.setAttribute("currentDate", today);
+                persistCounts(totalCount, dailyCount, today);
+            }
         }
         Cookie[] cookies = req.getCookies();
         Cookie countCookie = null;
@@ -95,15 +139,24 @@ public class AccessCounterFilter implements Filter {
         }
 
         // 如果不存在则认为是新访问，进行计数，并创建Cookie
-        if (countCookie == null) {
-            totalCount.incrementAndGet();
-            dailyCount.incrementAndGet();
-            System.out.println("doFilter: totalCount=" + totalCount.get() + ", dailyCount=" + dailyCount.get());
+        String todayValue = today.toString();
+        boolean isNewVisitor = countCookie == null;
+        boolean isNewDayForVisitor = countCookie != null && !todayValue.equals(countCookie.getValue());
+        if (isNewVisitor || isNewDayForVisitor) {
+            synchronized (counterLock) {
+                if (isNewVisitor) {
+                    totalCount.incrementAndGet();
+                }
+                dailyCount.incrementAndGet();
+                System.out.println("doFilter: totalCount=" + totalCount.get() + ", dailyCount=" + dailyCount.get());
+                persistCounts(totalCount, dailyCount, today);
+            }
 
-            // 创建 Cookie（例如设置值为 "1" 表示已计数过）
-            countCookie = new Cookie("count_cookie", "1");
+            // 创建/更新 Cookie（值为日期，用于每日去重）
+            countCookie = new Cookie("count_cookie", todayValue);
             countCookie.setPath(req.getContextPath());
-            // 不设置 maxAge 则为 session Cookie（浏览器关闭后失效）
+            // 1 year so returning visitors aren't re-counted as total
+            countCookie.setMaxAge(60 * 60 * 24 * 365);
             res.addCookie(countCookie);
         }
         // 将请求继续传递到下一个过滤器或目标资源
@@ -117,27 +170,13 @@ public class AccessCounterFilter implements Filter {
         AtomicInteger totalCount = (AtomicInteger) context.getAttribute("totalCount");
         AtomicInteger dailyCount = (AtomicInteger) context.getAttribute("dailyCount");
         LocalDate currentDate = (LocalDate) context.getAttribute("currentDate");
-        String counterFile = (String) context.getAttribute("counterFile");
-
-        if (totalCount.get() != 0 && dailyCount.get() != 0){
-            Properties props = new Properties();
-            props.setProperty("totalCount", String.valueOf(totalCount.get()));
-            props.setProperty("dailyCount", String.valueOf(dailyCount.get()));
-            props.setProperty("currentDate", currentDate.toString());
-            props.setProperty("destory?", "yes");
-            System.out.println("destroy: totalCount=" + totalCount.get() + ", dailyCount=" + dailyCount.get());
-
-            File parent = new File(counterFile).getParentFile();
-            if (parent != null && !parent.exists()) {
-                parent.mkdirs();
-            }
-            try (FileOutputStream fos = new FileOutputStream(counterFile)) {
-                props.store(fos, "Access Counter Properties");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (totalCount == null || dailyCount == null || currentDate == null) {
+            return;
         }
-
+        synchronized (counterLock) {
+            System.out.println("destroy: totalCount=" + totalCount.get() + ", dailyCount=" + dailyCount.get());
+            persistCounts(totalCount, dailyCount, currentDate);
+        }
 
     }
 }

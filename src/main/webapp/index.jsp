@@ -737,9 +737,19 @@
             </div>
 
             <div class="site-footer__counter">
-                <span>Total Visits: 12,487</span>
+                <%
+                    Object totalObj = application.getAttribute("totalCount");
+                    Object dailyObj = application.getAttribute("dailyCount");
+                    int totalCountValue = (totalObj instanceof java.util.concurrent.atomic.AtomicInteger)
+                            ? ((java.util.concurrent.atomic.AtomicInteger) totalObj).get()
+                            : 0;
+                    int dailyCountValue = (dailyObj instanceof java.util.concurrent.atomic.AtomicInteger)
+                            ? ((java.util.concurrent.atomic.AtomicInteger) dailyObj).get()
+                            : 0;
+                %>
+                <span>Total Visits: <%= totalCountValue %></span>
                 <span class="site-footer__counter-divider"></span>
-                <span>Today: 143</span>
+                <span>Today: <%= dailyCountValue %></span>
             </div>
         </div>
     </div>

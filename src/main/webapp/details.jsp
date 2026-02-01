@@ -338,13 +338,6 @@
 
                     <div class="detail_container_1"><div class="subtitle">Tissue: </div><div class="text_2"><%= tissueVal %></div></div>
 
-                    <div class="title_1">Quick Actions<div class="separator"></div></div>
-                    <div style="margin-top: 15px;">
-                        <a href="visualization?dataset=<%= saidVal %>" class="viz-quick-btn">
-                            🎨 Open Interactive Visualizations
-                        </a>
-                    </div>
-
                     <div class="title_1" style="margin-top: 20px;">Characteristics<div class="separator"></div></div>
                     <% String[] charItems = charVal != null ? charVal.split("\\s*;\\s*") : new String[0]; for (String item : charItems) { if (item == null || item.trim().isEmpty()) continue; %>
                     <div class="detail_container_1"><div class="subtitle"></div><div class="text_2"><%= item.trim() %></div></div>
@@ -371,63 +364,141 @@
             </div>
 
             <div class="cluster" id="DEGResults">
-                <div class="header">DEG Results</div>
-                <div class="deg-controls">
-                    <div class="filter-controls">
+                <div class="header">
+                    <div class="header-content">
                         <div>
-                            <label for="pvalSlider">p-value ≤ <span id="pvalLabel">0.05</span></label><br>
-                            <input type="range" id="pvalSlider" min="0" max="0.1" step="0.001" value="0.05">
+                            <div class="header-title">Differentially Expressed Genes</div>
                         </div>
-                        <div>
-                            <label for="fcSlider">logFC ≥ <span id="fcLabel">1.0</span></label><br>
-                            <input type="range" id="fcSlider" min="0" max="10" step="0.1" value="1.0">
-                        </div>
-                        <div>
-                            <label for="groupSelect">Group</label><br>
-                            <select id="groupSelect"><option value="">All</option></select>
-                        </div>
-                    </div>
-                    <div class="export-button-wrapper">
-                        <button id="exportExcelBtn">Export as Excel</button>
+                        <button id="exportExcelBtn" class="export-btn">
+                            <svg class="export-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Export Excel
+                        </button>
                     </div>
                 </div>
-                <table id="degTable" class="display" style="width:100%">
-                    <thead><tr><th>Gene</th><th>logFC</th><th>p-value</th><th>Score</th><th>Group</th></tr></thead>
-                    <tbody></tbody>
-
-                </table>
+                <div class="panel-body">
+                    <div class="deg-controls">
+                        <div class="filter-grid">
+                            <div class="filter-card">
+                                <div class="filter-label">
+                                    <span class="filter-name">p-value threshold</span>
+                                    <span class="filter-value" id="pvalLabel">0.05</span>
+                                </div>
+                                <input type="range" id="pvalSlider" class="elegant-slider" min="0" max="0.1" step="0.001" value="0.05">
+                                <div class="filter-hint">Maximum adjusted p-value</div>
+                            </div>
+                            <div class="filter-card">
+                                <div class="filter-label">
+                                    <span class="filter-name">Log fold change</span>
+                                    <span class="filter-value" id="fcLabel">1.0</span>
+                                </div>
+                                <input type="range" id="fcSlider" class="elegant-slider" min="0" max="10" step="0.1" value="1.0">
+                                <div class="filter-hint">Minimum log₂ fold change</div>
+                            </div>
+                            <div class="filter-card">
+                                <div class="filter-label">
+                                    <span class="filter-name">Cell type group</span>
+                                </div>
+                                <select id="groupSelect" class="elegant-select">
+                                    <option value="">All groups</option>
+                                </select>
+                                <div class="filter-hint">Filter by cell type</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="degTable" class="elegant-table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Gene</th>
+                                    <th>logFC</th>
+                                    <th>p-value</th>
+                                    <th>Score</th>
+                                    <th>Group</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="cluster" id="CellPhoneDBAnalysis">
-                <div class="header">CellPhoneDB Analysis</div>
-
-                <div class="cpdb-controls">
-                    <div class="cpdb-filter-controls" style="justify-content: space-between;">
-                        <span>Generate a summary plot of significant interactions.</span>
-                        <button id="cpdbSummaryBtn" class="cpdb-generate-btn" style="width: 250px;">Generate Summary Plot</button>
-                    </div>
-                </div>
-                <div id="cpdbSummaryPlotContainer" class="cpdb-plot-container">
-                    Click the button above to generate the summary plot.
-                </div>
-
-                <hr style="margin: 40px 0;">
-
-                <div class="cpdb-controls">
-                    <div class="cpdb-filter-controls">
+                <div class="header">
+                    <div class="header-content">
                         <div>
-                            <label for="cpdbCellTypeSelect">Select Cell Type (Receiver)</label><br>
-                            <select id="cpdbCellTypeSelect">
-                                <option value="">Loading cell types...</option>
-                            </select>
+                            <div class="header-title">CellPhoneDB Cell-Cell Communication Inference</div>
                         </div>
                     </div>
-                    <div class="export-button-wrapper">
-                        <button id="cpdbReceiverBtn" class="cpdb-generate-btn">Generate Receiver Plot</button>
-                    </div>
                 </div>
-                <div id="cpdbReceiverPlotContainer" class="cpdb-plot-container">
-                    Select a cell type and click the button to generate the plot.
+                <div class="panel-body">
+                    <!-- Summary Plot Section -->
+                    <div class="cpdb-section">
+                        <div class="cpdb-section-header">
+                            <div class="cpdb-section-info">
+                                <h3 class="cpdb-section-title">Interaction Overview</h3>
+                                <p class="cpdb-section-desc">Heatmap of significant ligand-receptor interactions across cell types</p>
+                            </div>
+                            <button id="cpdbSummaryBtn" class="generate-btn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                                </svg>
+                                Generate Plot
+                            </button>
+                        </div>
+                        <div id="cpdbSummaryPlotContainer" class="plot-container">
+                            <div class="plot-placeholder">
+                                <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                <p class="placeholder-text">Click "Generate Plot" to visualize interaction summary</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Receiver Plot Section -->
+                    <div class="cpdb-section">
+                        <div class="cpdb-section-header">
+                            <div class="cpdb-section-info">
+                                <h3 class="cpdb-section-title">Top Receptor Interactions</h3>
+                                <p class="cpdb-section-desc">Most significant interactions for a specific receiving cell type</p>
+                            </div>
+                        </div>
+                        <div class="cpdb-receiver-controls">
+                            <div class="receiver-select-wrapper">
+                                <label for="cpdbCellTypeSelect" class="receiver-label">Receiving cell type</label>
+                                <select id="cpdbCellTypeSelect" class="elegant-select receiver-select">
+                                    <option value="">Loading cell types...</option>
+                                </select>
+                            </div>
+                            <button id="cpdbReceiverBtn" class="generate-btn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                                </svg>
+                                Generate Plot
+                            </button>
+                        </div>
+                        <div id="cpdbReceiverPlotContainer" class="plot-container">
+                            <div class="plot-placeholder">
+                                <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6M1 12h6m6 0h6"></path>
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                </svg>
+                                <p class="placeholder-text">Select a cell type and generate to view top interactions</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
