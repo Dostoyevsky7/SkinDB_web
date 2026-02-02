@@ -321,6 +321,14 @@
                 </svg>
                 Enrichment Analysis
             </a>
+            <a href="#GeneSetScoring" class="nav-item">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                Gene Set Scoring
+            </a>
             <a href="visualization?dataset=<%= saidVal %>" class="nav-item nav-item--highlight">
                 <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -530,6 +538,27 @@
                             src="http://localhost:8051/enrichment/"
                             style="width: 100%; height: 1200px; border: none; border-radius: 8px;"
                             title="Enrichment Analysis">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cluster" id="GeneSetScoring" data-panel-enter>
+                <div class="header">
+                    <div class="header-content">
+                        <div>
+                            <div class="header-title">Gene Set Scoring Analysis</div>
+                            <div class="header-subtitle">Score cell types using Reactome pathways with AUCell, GSVA, or Mean Expression</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="scoring-iframe-container">
+                        <iframe
+                            id="scoringFrame"
+                            src="http://localhost:8052/gene-scoring/?dataset=<%= saidVal %>"
+                            style="width: 100%; height: 1400px; border: none; border-radius: 8px;"
+                            title="Gene Set Scoring">
                         </iframe>
                     </div>
                 </div>
