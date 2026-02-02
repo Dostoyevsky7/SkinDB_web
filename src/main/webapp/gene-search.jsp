@@ -378,6 +378,164 @@
             color: #5a6473;
         }
 
+        /* Checkbox column */
+        .cell-checkbox {
+            text-align: center;
+            width: 40px;
+        }
+
+        .gene-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #e8927c;
+        }
+
+        /* Visualization Panel */
+        .viz-panel {
+            margin-top: 2rem;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+            overflow: hidden;
+            display: none;
+        }
+
+        .viz-panel.active {
+            display: block;
+        }
+
+        .viz-panel__header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #1a2332 0%, #2a3342 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e8927c;
+        }
+
+        .viz-panel__title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .viz-panel__count {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        .viz-panel__controls {
+            padding: 1.5rem 2rem;
+            background: #faf8f5;
+            border-bottom: 1px solid #e5e0d8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .viz-panel__selected {
+            font-size: 0.9rem;
+            color: #5a6473;
+            flex: 1;
+        }
+
+        .viz-panel__selected strong {
+            color: #1a2332;
+            font-weight: 600;
+        }
+
+        .viz-panel__genes {
+            display: inline;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #e8927c;
+        }
+
+        .viz-panel__actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .viz-btn {
+            padding: 0.65rem 1.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .viz-btn--primary {
+            background: #e8927c;
+            color: #ffffff;
+        }
+
+        .viz-btn--primary:hover {
+            background: #d4755d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(232, 146, 124, 0.3);
+        }
+
+        .viz-btn--primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .viz-btn--secondary {
+            background: #ffffff;
+            color: #5a6473;
+            border: 1px solid #e5e0d8;
+        }
+
+        .viz-btn--secondary:hover {
+            background: #faf8f5;
+            border-color: #d4a574;
+            color: #1a2332;
+        }
+
+        .viz-panel__iframe-container {
+            position: relative;
+            width: 100%;
+            height: 900px;
+            background: #faf8f5;
+        }
+
+        .viz-panel__iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .viz-panel__loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(250, 248, 245, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .viz-panel__loading.hidden {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .search-hero {
@@ -401,6 +559,24 @@
             .results-table th,
             .results-table td {
                 padding: 0.75rem 1rem;
+            }
+
+            .viz-panel__controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .viz-panel__actions {
+                width: 100%;
+            }
+
+            .viz-btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .viz-panel__iframe-container {
+                height: 700px;
             }
         }
     </style>
@@ -477,6 +653,9 @@
                     <table class="results-table">
                         <thead>
                             <tr>
+                                <th class="cell-checkbox">
+                                    <input type="checkbox" id="select-all" class="gene-checkbox" title="Select all">
+                                </th>
                                 <th>Gene</th>
                                 <th>Dataset</th>
                                 <th>GSE</th>
@@ -489,6 +668,46 @@
                         <tbody id="results-body">
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- Visualization Panel -->
+            <div id="viz-panel" class="viz-panel">
+                <div class="viz-panel__header">
+                    <h3 class="viz-panel__title">Gene Expression on Integrated UMAP</h3>
+                    <span id="viz-gene-count" class="viz-panel__count"></span>
+                </div>
+
+                <div class="viz-panel__controls">
+                    <div class="viz-panel__selected">
+                        <strong>Selected Genes:</strong>
+                        <span id="selected-genes-display" class="viz-panel__genes">None</span>
+                    </div>
+
+                    <div class="viz-panel__actions">
+                        <button id="clear-selection-btn" class="viz-btn viz-btn--secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            Clear Selection
+                        </button>
+                        <button id="visualize-btn" class="viz-btn viz-btn--primary" disabled>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Visualize on UMAP
+                        </button>
+                    </div>
+                </div>
+
+                <div id="viz-iframe-container" class="viz-panel__iframe-container" style="display: none;">
+                    <div id="viz-loading" class="viz-panel__loading">
+                        <div class="loading-spinner"></div>
+                        <p class="loading-state__text">Loading visualization...</p>
+                    </div>
+                    <iframe id="viz-iframe" class="viz-panel__iframe" src=""></iframe>
                 </div>
             </div>
         </div>
@@ -529,14 +748,30 @@ $(document).ready(function() {
     const $noResultsState = $('#no-results-state');
     const $resultsBody = $('#results-body');
     const $resultsCount = $('#results-count');
+    const $selectAll = $('#select-all');
+
+    // Visualization elements
+    const $vizPanel = $('#viz-panel');
+    const $vizBtn = $('#visualize-btn');
+    const $clearSelectionBtn = $('#clear-selection-btn');
+    const $selectedGenesDisplay = $('#selected-genes-display');
+    const $vizGeneCount = $('#viz-gene-count');
+    const $vizIframeContainer = $('#viz-iframe-container');
+    const $vizIframe = $('#viz-iframe');
+    const $vizLoading = $('#viz-loading');
 
     let currentQuery = '';
+    let selectedGenes = new Set();
 
     function performSearch(query) {
         if (!query || query.trim() === '') return;
 
         query = query.trim();
         currentQuery = query.toLowerCase();
+
+        // Reset selection
+        selectedGenes.clear();
+        updateSelectionUI();
 
         // Show loading
         $emptyState.hide();
@@ -572,7 +807,13 @@ $(document).ready(function() {
     function renderResults(results, count) {
         $resultsCount.html('Found <strong>' + count + '</strong> results' + (count >= 500 ? ' (showing top 500)' : ''));
 
+        // Get unique genes for selection
+        const uniqueGenes = new Set();
+        results.forEach(row => uniqueGenes.add(row.gene));
+
         let html = '';
+        let processedGenes = new Set();
+
         results.forEach(function(row) {
             const logfc = parseFloat(row.logfc);
             const isUp = logfc > 0;
@@ -582,7 +823,15 @@ $(document).ready(function() {
             // Highlight matching text
             const geneName = highlightMatch(row.gene, currentQuery);
 
+            // Add checkbox only for first occurrence of each gene
+            let checkboxHtml = '';
+            if (!processedGenes.has(row.gene)) {
+                checkboxHtml = '<input type="checkbox" class="gene-checkbox gene-select" data-gene="' + escapeHtml(row.gene) + '">';
+                processedGenes.add(row.gene);
+            }
+
             html += '<tr>';
+            html += '<td class="cell-checkbox">' + checkboxHtml + '</td>';
             html += '<td class="cell-gene"><a href="gene-details?gene=' + encodeURIComponent(row.gene) + '&species=human" class="gene-link">' + geneName + '<span class="gene-link-icon">→</span></a></td>';
             html += '<td><a href="details.jsp?said=' + encodeURIComponent(row.said) + '" class="cell-link">' + row.said + '</a></td>';
             html += '<td>' + row.gse + '</td>';
@@ -594,6 +843,77 @@ $(document).ready(function() {
         });
 
         $resultsBody.html(html);
+
+        // Attach checkbox handlers
+        $('.gene-select').on('change', function() {
+            const gene = $(this).data('gene');
+            if ($(this).prop('checked')) {
+                selectedGenes.add(gene);
+            } else {
+                selectedGenes.delete(gene);
+            }
+            updateSelectionUI();
+        });
+
+        // Update select all state
+        $selectAll.prop('checked', false);
+    }
+
+    function updateSelectionUI() {
+        const count = selectedGenes.size;
+
+        if (count === 0) {
+            $selectedGenesDisplay.text('None');
+            $vizBtn.prop('disabled', true);
+            $vizGeneCount.text('');
+        } else {
+            const genesList = Array.from(selectedGenes).join(', ');
+            $selectedGenesDisplay.text(genesList);
+            $vizBtn.prop('disabled', false);
+            $vizGeneCount.text(count + ' gene' + (count > 1 ? 's' : '') + ' selected');
+        }
+
+        // Show/hide viz panel based on selection
+        if (count > 0) {
+            $vizPanel.addClass('active');
+        }
+    }
+
+    function visualizeGenes() {
+        if (selectedGenes.size === 0) return;
+
+        const genesList = Array.from(selectedGenes).join(',');
+        const vizUrl = 'http://localhost:8053/gene-viz/?genes=' + encodeURIComponent(genesList);
+
+        // Show iframe container and loading
+        $vizIframeContainer.show();
+        $vizLoading.removeClass('hidden');
+        $vizBtn.prop('disabled', true);
+
+        // Set iframe source
+        $vizIframe.attr('src', vizUrl);
+
+        // Hide loading after iframe loads
+        $vizIframe.on('load', function() {
+            setTimeout(function() {
+                $vizLoading.addClass('hidden');
+                $vizBtn.prop('disabled', false);
+            }, 500);
+        });
+
+        // Scroll to visualization
+        setTimeout(function() {
+            $vizPanel[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+
+    function clearSelection() {
+        selectedGenes.clear();
+        $('.gene-select').prop('checked', false);
+        $selectAll.prop('checked', false);
+        updateSelectionUI();
+        $vizIframeContainer.hide();
+        $vizIframe.attr('src', '');
     }
 
     function highlightMatch(text, query) {
@@ -629,6 +949,27 @@ $(document).ready(function() {
         $input.val(gene);
         performSearch(gene);
     });
+
+    // Select all checkbox
+    $selectAll.on('change', function() {
+        const isChecked = $(this).prop('checked');
+        $('.gene-select').each(function() {
+            $(this).prop('checked', isChecked);
+            const gene = $(this).data('gene');
+            if (isChecked) {
+                selectedGenes.add(gene);
+            } else {
+                selectedGenes.delete(gene);
+            }
+        });
+        updateSelectionUI();
+    });
+
+    // Visualize button
+    $vizBtn.on('click', visualizeGenes);
+
+    // Clear selection button
+    $clearSelectionBtn.on('click', clearSelection);
 });
 </script>
 
