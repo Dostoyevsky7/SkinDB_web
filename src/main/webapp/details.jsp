@@ -314,6 +314,13 @@
                 </svg>
                 CellPhoneDB Analysis
             </a>
+            <a href="#EnrichmentAnalysis" class="nav-item">
+                <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Enrichment Analysis
+            </a>
             <a href="visualization?dataset=<%= saidVal %>" class="nav-item nav-item--highlight">
                 <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -503,6 +510,27 @@
                                 <p class="placeholder-text">Select a cell type and generate to view top interactions</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cluster" id="EnrichmentAnalysis" data-panel-enter>
+                <div class="header">
+                    <div class="header-content">
+                        <div>
+                            <div class="header-title">Cell Type Enrichment Analysis</div>
+                            <div class="header-subtitle">Gene set enrichment using MSigDB databases</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="enrichment-iframe-container">
+                        <iframe
+                            id="enrichmentFrame"
+                            src="http://localhost:8051/enrichment/"
+                            style="width: 100%; height: 1200px; border: none; border-radius: 8px;"
+                            title="Enrichment Analysis">
+                        </iframe>
                     </div>
                 </div>
             </div>
