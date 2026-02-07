@@ -13,6 +13,9 @@
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
 
+    <!-- Under Construction Modal -->
+    <link rel="stylesheet" href="CSS/construction-modal.css">
+
     <style>
         /* ==========================================================================
            Homepage Specific Styles
@@ -754,6 +757,9 @@
         </div>
     </div>
 </footer>
+
+<!-- Under Construction Modal Script -->
+<script src="JS/construction-modal.js"></script>
 
 </body>
 </html>

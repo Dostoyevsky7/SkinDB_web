@@ -249,6 +249,7 @@
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/details.css">
     <link rel="stylesheet" href="CSS/animations.css">
+    <link rel="stylesheet" href="CSS/construction-modal.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <!-- Scripts -->
@@ -535,7 +536,7 @@
                     <div class="enrichment-iframe-container">
                         <iframe
                             id="enrichmentFrame"
-                            src="http://localhost:8051/enrichment/"
+                            src="/enrichment/"
                             style="width: 100%; height: 1200px; border: none; border-radius: 8px;"
                             title="Enrichment Analysis">
                         </iframe>
@@ -556,7 +557,7 @@
                     <div class="scoring-iframe-container">
                         <iframe
                             id="scoringFrame"
-                            src="http://localhost:8052/gene-scoring/?dataset=<%= saidVal %>"
+                            src="/gene-scoring/?dataset=<%= saidVal %>"
                             style="width: 100%; height: 1400px; border: none; border-radius: 8px;"
                             title="Gene Set Scoring">
                         </iframe>
@@ -775,6 +776,9 @@
         </script>
     </div>
 </div>
+
+<!-- Under Construction Modal Script -->
+<script src="JS/construction-modal.js"></script>
 
 </body>
 </html>
