@@ -1,0 +1,362 @@
+/* ==========================================================================
+   Under Construction Modal - scSAID Design System
+   Warm Scientific Aesthetic
+   ========================================================================== */
+
+/* Modal Overlay */
+.construction-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 35, 50, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl, 2rem);
+    opacity: 0;
+    animation: modalOverlayFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalOverlayFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Container */
+.construction-modal {
+    position: relative;
+    max-width: 560px;
+    width: 100%;
+    background: var(--bg-surface, #ffffff);
+    border-radius: var(--radius-xl, 20px);
+    box-shadow: 0 20px 60px rgba(26, 35, 50, 0.3);
+    border: 1px solid var(--border-light, #e5e0d8);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    animation: modalEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+}
+
+@keyframes modalEnter {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Exit Animation */
+.construction-modal-overlay.is-closing {
+    animation: modalOverlayFadeOut 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.construction-modal-overlay.is-closing .construction-modal {
+    animation: modalExit 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes modalOverlayFadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes modalExit {
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+}
+
+/* Modal Header with Decorative Accent */
+.construction-modal__header {
+    position: relative;
+    padding: var(--space-2xl, 3rem) var(--space-xl, 2rem) var(--space-lg, 1.5rem);
+    background: linear-gradient(135deg, #faf8f5 0%, #f5f2ed 100%);
+    border-bottom: 1px solid var(--border-light, #e5e0d8);
+}
+
+.construction-modal__accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e8927c 0%, #d4a574 100%);
+    animation: accentSlide 1.5s ease infinite;
+}
+
+@keyframes accentSlide {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Icon Container */
+.construction-modal__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto var(--space-lg, 1.5rem);
+    background: linear-gradient(135deg, rgba(232, 146, 124, 0.15) 0%, rgba(212, 165, 116, 0.15) 100%);
+    border-radius: var(--radius-full, 9999px);
+    border: 2px solid var(--color-secondary, #e8927c);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(232, 146, 124, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(232, 146, 124, 0);
+    }
+}
+
+.construction-modal__icon {
+    width: 36px;
+    height: 36px;
+    color: var(--color-secondary, #e8927c);
+    animation: iconSpin 3s linear infinite;
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Modal Title */
+.construction-modal__title {
+    font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary, #1a2332);
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Modal Body */
+.construction-modal__body {
+    padding: var(--space-xl, 2rem);
+}
+
+.construction-modal__message {
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary, #5a6473);
+    text-align: center;
+    margin-bottom: var(--space-lg, 1.5rem);
+}
+
+.construction-modal__message strong {
+    color: var(--color-secondary, #e8927c);
+    font-weight: 600;
+}
+
+/* Feature List */
+.construction-modal__features {
+    background: var(--bg-muted, #f5f2ed);
+    border-radius: var(--radius-md, 8px);
+    padding: var(--space-lg, 1.5rem);
+    margin-bottom: var(--space-xl, 2rem);
+}
+
+.construction-modal__features-title {
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent, #d4a574);
+    margin-bottom: var(--space-md, 1rem);
+    text-align: center;
+}
+
+.construction-modal__features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.construction-modal__features-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm, 0.5rem);
+    padding: var(--space-sm, 0.5rem) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #5a6473);
+}
+
+.construction-modal__features-item::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--color-secondary, #e8927c);
+    border-radius: 50%;
+    animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+.construction-modal__features-item:nth-child(2)::before {
+    animation-delay: 0.2s;
+}
+
+.construction-modal__features-item:nth-child(3)::before {
+    animation-delay: 0.4s;
+}
+
+.construction-modal__features-item:nth-child(4)::before {
+    animation-delay: 0.6s;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
+}
+
+/* Modal Footer / Actions */
+.construction-modal__footer {
+    padding: 0 var(--space-xl, 2rem) var(--space-xl, 2rem);
+    text-align: center;
+}
+
+.construction-modal__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm, 0.5rem);
+    padding: var(--space-md, 1rem) var(--space-2xl, 3rem);
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-inverse, #ffffff);
+    background: linear-gradient(135deg, #e8927c 0%, #d4755d 100%);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm, 4px);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(232, 146, 124, 0.3);
+}
+
+.construction-modal__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 146, 124, 0.4);
+}
+
+.construction-modal__button:active {
+    transform: translateY(0);
+}
+
+/* Close Button (X) */
+.construction-modal__close {
+    position: absolute;
+    top: var(--space-md, 1rem);
+    right: var(--space-md, 1rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm, 4px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-muted, #8b95a5);
+}
+
+.construction-modal__close:hover {
+    background: rgba(232, 146, 124, 0.1);
+    color: var(--color-secondary, #e8927c);
+}
+
+.construction-modal__close-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Disclaimer */
+.construction-modal__disclaimer {
+    margin-top: var(--space-lg, 1.5rem);
+    padding-top: var(--space-lg, 1.5rem);
+    border-top: 1px solid var(--border-light, #e5e0d8);
+    font-size: 0.8rem;
+    color: var(--text-muted, #8b95a5);
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .construction-modal {
+        max-width: 100%;
+        margin: var(--space-md, 1rem);
+        border-radius: var(--radius-lg, 12px);
+    }
+
+    .construction-modal__header {
+        padding: var(--space-xl, 2rem) var(--space-lg, 1.5rem) var(--space-md, 1rem);
+    }
+
+    .construction-modal__title {
+        font-size: 1.5rem;
+    }
+
+    .construction-modal__body {
+        padding: var(--space-lg, 1.5rem);
+    }
+
+    .construction-modal__message {
+        font-size: 0.95rem;
+    }
+
+    .construction-modal__button {
+        width: 100%;
+        padding: var(--space-md, 1rem) var(--space-xl, 2rem);
+    }
+}
+
+/* Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .construction-modal-overlay,
+    .construction-modal,
+    .construction-modal__icon,
+    .construction-modal__icon-wrapper,
+    .construction-modal__accent,
+    .construction-modal__features-item::before {
+        animation: none !important;
+    }
+
+    .construction-modal-overlay {
+        opacity: 1;
+    }
+
+    .construction-modal {
+        opacity: 1;
+        transform: none;
+    }
+}

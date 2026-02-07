@@ -16,6 +16,7 @@
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/construction-modal.css">
 
     <style>
         body {
@@ -972,6 +973,9 @@ $(document).ready(function() {
     $clearSelectionBtn.on('click', clearSelection);
 });
 </script>
+
+<!-- Under Construction Modal Script -->
+<script src="JS/construction-modal.js"></script>
 
 </body>
 </html>
