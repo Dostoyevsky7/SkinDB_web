@@ -63,6 +63,51 @@ src/main/
 -   Java 11+
 -   Maven 3.6+
 
+## Production Deployment Notes (Enrichment & Gene Scoring)
+
+The enrichment and gene set scoring sections in `details.jsp` are embedded via iframes that expect
+same-origin paths:
+
+-   `/enrichment/` (Dash app on localhost:8051)
+-   `/gene-scoring/` (Dash app on localhost:8052)
+
+To make these work on `https://skin-scsaid.com`, configure your HTTPS reverse proxy (nginx) to
+forward these paths to the local Dash services. Example nginx blocks:
+
+```nginx
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+location /enrichment/ {
+    proxy_pass http://127.0.0.1:8051/enrichment/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_redirect off;
+}
+
+location /gene-scoring/ {
+    proxy_pass http://127.0.0.1:8052/gene-scoring/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_redirect off;
+}
+```
+
+Ensure both Dash apps are running on the server and kept alive with a process manager (systemd,
+supervisor, pm2, etc.).
+
 ## License
 
 Zhejiang University · ZJE

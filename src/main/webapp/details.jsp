@@ -536,7 +536,7 @@
                     <div class="enrichment-iframe-container">
                         <iframe
                             id="enrichmentFrame"
-                            src="http://localhost:8051/enrichment/"
+                            src="/enrichment/"
                             style="width: 100%; height: 1200px; border: none; border-radius: 8px;"
                             title="Enrichment Analysis">
                         </iframe>
@@ -557,7 +557,7 @@
                     <div class="scoring-iframe-container">
                         <iframe
                             id="scoringFrame"
-                            src="http://localhost:8052/gene-scoring/?dataset=<%= saidVal %>"
+                            src="/gene-scoring/?dataset=<%= saidVal %>"
                             style="width: 100%; height: 1400px; border: none; border-radius: 8px;"
                             title="Gene Set Scoring">
                         </iframe>
