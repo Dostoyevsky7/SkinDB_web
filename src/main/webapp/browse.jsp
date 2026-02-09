@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/animations.css">
-    <link rel="stylesheet" href="CSS/construction-modal.css">
+    <link rel="stylesheet" href="CSS/construction-modal-simple.css">
 
     <style>
         /* ==========================================================================
@@ -901,7 +901,7 @@ $(document).ready(function() {
 </script>
 
 <!-- Under Construction Modal Script -->
-<script src="JS/construction-modal.js"></script>
+<script src="JS/construction-modal-simple.js"></script>
 
 </body>
 </html>

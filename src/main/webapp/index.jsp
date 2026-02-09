@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="CSS/design-system.css">
 
     <!-- Under Construction Modal -->
-    <link rel="stylesheet" href="CSS/construction-modal.css">
+    <link rel="stylesheet" href="CSS/construction-modal-simple.css">
 
     <style>
         /* ==========================================================================
@@ -759,7 +759,7 @@
 </footer>
 
 <!-- Under Construction Modal Script -->
-<script src="JS/construction-modal.js"></script>
+<script src="JS/construction-modal-simple.js"></script>
 
 </body>
 </html>
