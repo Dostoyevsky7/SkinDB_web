@@ -25,6 +25,8 @@
                 <a href="browse">Browse</a>
                 <a href="SearchServlet">Search & Integrate</a>
                 <a href="gene-search.jsp">Gene Search</a>
+                <a href="enrichment-analysis.jsp">Enrichment Analysis</a>
+                <a href="gene-set-scoring.jsp">Gene Set Scoring</a>
             </nav>
         </div>
     </header>

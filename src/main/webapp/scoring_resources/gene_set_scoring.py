@@ -14,7 +14,7 @@ from scipy.sparse import issparse
 from sklearn.metrics.pairwise import cosine_similarity
 
 from flask import Flask
-from dash import Dash, html, dcc, dash_table, Input, Output, State
+from dash import Dash, html, dcc, dash_table, Input, Output, State, ALL
 import plotly.graph_objects as go
 
 # ============ Configuration ============
@@ -531,8 +531,8 @@ def update_search_results(search_term):
 
 @app.callback(
     Output("plot-container", "children"),
-    Input({"type": "rec-card", "index": dash.dependencies.ALL}, "n_clicks"),
-    Input({"type": "search-result", "index": dash.dependencies.ALL}, "n_clicks"),
+    Input({"type": "rec-card", "index": ALL}, "n_clicks"),
+    Input({"type": "search-result", "index": ALL}, "n_clicks"),
     State("current-dataset-id", "data"),
     State("method-select", "value"),
     prevent_initial_call=True,

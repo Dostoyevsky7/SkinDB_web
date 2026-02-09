@@ -561,6 +561,8 @@
             <a href="browse.jsp" class="main-nav__link">Browse</a>
             <a href="search.jsp" class="main-nav__link">Search</a>
             <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="enrichment-analysis.jsp" class="main-nav__link">Enrichment Analysis</a>
+            <a href="gene-set-scoring.jsp" class="main-nav__link">Gene Set Scoring</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
         </nav>
 

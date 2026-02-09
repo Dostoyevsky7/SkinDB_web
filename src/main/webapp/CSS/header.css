@@ -77,7 +77,8 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-.main-nav__link--active {
+.main-nav__link--active,
+.main-nav__link.active {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
 }
