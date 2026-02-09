@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="CSS/design-system.css">
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/gene-details.css">
-    <link rel="stylesheet" href="CSS/construction-modal.css">
+    <link rel="stylesheet" href="CSS/construction-modal-simple.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -186,7 +186,7 @@
     </script>
 
     <!-- Under Construction Modal Script -->
-    <script src="JS/construction-modal.js"></script>
+    <script src="JS/construction-modal-simple.js"></script>
 </body>
 </html>
 
