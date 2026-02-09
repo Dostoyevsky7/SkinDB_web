@@ -249,7 +249,7 @@
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/details.css">
     <link rel="stylesheet" href="CSS/animations.css">
-    <link rel="stylesheet" href="CSS/construction-modal.css">
+    <link rel="stylesheet" href="CSS/construction-modal-simple.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <!-- Scripts -->
@@ -778,7 +778,7 @@
 </div>
 
 <!-- Under Construction Modal Script -->
-<script src="JS/construction-modal.js"></script>
+<script src="JS/construction-modal-simple.js"></script>
 
 </body>
 </html>
