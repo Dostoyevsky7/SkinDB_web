@@ -591,7 +591,7 @@
             <span>Single-Cell <strong>S</strong>kin & <strong>A</strong>ppendages <strong>I</strong>ntegrated <strong>D</strong>atabase</span>
         </h1>
         <p class="hero__description">
-            Explore the comprehensive cellular landscape of human and mouse skin through our curated single-cell transcriptomics repository.
+            Explore the comprehensive cellular map of human and mouse skin through our curated single-cell transcriptomics repository.
         </p>
         <div class="hero__actions">
             <a href="browse.jsp" class="btn btn--primary hero__btn">Browse Datasets</a>
