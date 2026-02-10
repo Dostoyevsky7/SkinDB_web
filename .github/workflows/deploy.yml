@@ -40,4 +40,4 @@ jobs:
             rm -rf /opt/tomcat/webapps/ROOT /opt/tomcat/webapps/ROOT.war
             mv "$WAR" /opt/tomcat/webapps/ROOT.war
             chown tomcat:tomcat /opt/tomcat/webapps/ROOT.war
-            systemctl restart tomcat
+            /opt/tomcat/bin/startup.sh
