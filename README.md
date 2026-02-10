@@ -2,6 +2,8 @@
 
 https://skin-scsaid.com/
 
+[![Deploy](https://github.com/Dostoyevsky7/SkinDB_web/actions/workflows/deploy.yml/badge.svg)](https://github.com/Dostoyevsky7/SkinDB_web/actions/workflows/deploy.yml)
+
 > A comprehensive web platform for exploring single-cell RNA sequencing data from skin and appendage tissues.
 
 > The database contains data from over **1,000,000 cells** across **600+ samples** from human and mouse skin tissues in both healthy and disease conditions.
