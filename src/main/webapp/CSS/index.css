@@ -45,10 +45,10 @@
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
 }
 
-.basic:hover{
+/* .basic:hover{
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transform: translateY(-5px);  /* 上升效果 */
-}
+/* } */
 
 .basic .header{
     height: 60px;

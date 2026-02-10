@@ -51,9 +51,9 @@
             text-decoration: none;
         }
 
-        .site-logo:hover {
+        /* .site-logo:hover {
             color: var(--color-accent-light);
-        }
+        } */
 
         .main-nav {
             display: flex;
@@ -71,10 +71,10 @@
             transition: all var(--transition-fast);
         }
 
-        .main-nav__link:hover {
+        /* .main-nav__link:hover {
             color: var(--text-inverse);
             background: rgba(255, 255, 255, 0.1);
-        }
+        } */
 
         .main-nav__link--active {
             color: var(--text-inverse);
@@ -98,10 +98,10 @@
             transition: opacity var(--transition-fast), transform var(--transition-fast);
         }
 
-        .header-icon-link:hover {
+        /* .header-icon-link:hover {
             opacity: 1;
             transform: translateY(-1px);
-        }
+        } */
 
         .github-icon {
             width: 36px;
@@ -115,9 +115,9 @@
             transition: opacity var(--transition-fast);
         }
 
-        .university-logo:hover {
+        /* .university-logo:hover {
             opacity: 1;
-        }
+        } */
 
         /* Hero Section */
         .hero {
@@ -275,7 +275,7 @@
             transition: all var(--transition-base);
         }
 
-        .quick-nav__item:hover {
+        /* .quick-nav__item:hover {
             border-color: var(--color-secondary);
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
@@ -294,10 +294,10 @@
             transition: all var(--transition-base);
         }
 
-        .quick-nav__item:hover .quick-nav__icon {
+        /* .quick-nav__item:hover .quick-nav__icon {
             background: var(--color-secondary);
             color: var(--text-inverse);
-        }
+        } */
 
         .quick-nav__label {
             font-family: var(--font-display);
@@ -333,11 +333,11 @@
             transition: all var(--transition-base);
         }
 
-        .overview__image-card:hover {
+        /* .overview__image-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
             border-color: var(--color-secondary);
-        }
+        } */
 
         .overview__image-card:first-child {
             grid-column: span 2;
@@ -427,10 +427,10 @@
             transition: all var(--transition-base);
         }
 
-        .stats__item:hover {
+        /* .stats__item:hover {
             border-color: var(--color-secondary);
             background: rgba(255, 255, 255, 0.03);
-        }
+        } */
 
         .stats__number {
             font-family: var(--font-display);
@@ -487,9 +487,9 @@
             transition: color var(--transition-fast);
         }
 
-        .site-footer__link:hover {
+        /* .site-footer__link:hover {
             color: var(--color-secondary);
-        }
+        } */
 
         .site-footer__counter {
             display: inline-flex;

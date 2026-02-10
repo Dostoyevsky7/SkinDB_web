@@ -124,9 +124,9 @@ a {
     transition: color var(--transition-fast);
 }
 
-a:hover {
+/* a:hover {
     color: var(--color-secondary-dark);
-}
+} */
 
 /* --------------------------------------------------------------------------
    Layout Components
@@ -159,10 +159,10 @@ a:hover {
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.card:hover {
+/* .card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-}
+} */
 
 .card__image {
     width: 100%;
@@ -214,12 +214,12 @@ a:hover {
     border-color: var(--color-secondary);
 }
 
-.btn--primary:hover {
+/* .btn--primary:hover {
     background-color: var(--color-secondary-dark);
     border-color: var(--color-secondary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
-}
+} */
 
 .btn--outline {
     background-color: transparent;
@@ -227,10 +227,10 @@ a:hover {
     border-color: var(--color-primary);
 }
 
-.btn--outline:hover {
+/* .btn--outline:hover {
     background-color: var(--color-primary);
     color: var(--text-inverse);
-}
+} */
 
 .btn--ghost {
     background-color: transparent;
@@ -238,10 +238,10 @@ a:hover {
     border-color: var(--border-light);
 }
 
-.btn--ghost:hover {
+/* .btn--ghost:hover {
     border-color: var(--color-secondary);
     color: var(--color-secondary);
-}
+} */
 
 /* --------------------------------------------------------------------------
    Table Component
@@ -280,9 +280,9 @@ a:hover {
     transition: background-color var(--transition-fast);
 }
 
-.data-table tbody tr:hover {
+/* .data-table tbody tr:hover {
     background-color: var(--bg-muted);
-}
+} */
 
 .data-table tbody tr:last-child td {
     border-bottom: none;
@@ -293,9 +293,9 @@ a:hover {
     font-weight: 600;
 }
 
-.data-table a:hover {
+/* .data-table a:hover {
     text-decoration: underline;
-}
+} */
 
 /* Selected row state */
 .data-table tbody tr.selected-row {
@@ -406,10 +406,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     transition: all var(--transition-fast);
 }
 
-.pagination__btn:hover:not(.pagination__btn--disabled) {
+/* .pagination__btn:hover:not(.pagination__btn--disabled) {
     color: var(--color-secondary);
     border-color: var(--color-secondary);
-}
+} */
 
 .pagination__btn--active {
     background: var(--color-secondary);
@@ -442,10 +442,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     transition: all var(--transition-base);
 }
 
-.stat-badge:hover {
+/* .stat-badge:hover {
     border-color: var(--color-secondary);
     box-shadow: var(--shadow-md);
-}
+} */
 
 .stat-badge__number {
     font-family: var(--font-display);
@@ -492,7 +492,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     cursor: pointer;
 }
 
-.nav-pill:hover {
+/* .nav-pill:hover {
     color: var(--color-secondary);
     border-color: var(--color-secondary);
     transform: translateY(-3px);
@@ -501,7 +501,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .nav-pill:active {
     transform: translateY(-1px);
-}
+} */
 
 /* --------------------------------------------------------------------------
    Section Header
