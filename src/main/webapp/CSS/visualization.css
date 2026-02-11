@@ -348,6 +348,7 @@
 
 /* Print Styles */
 @media print {
+    .site-header,
     .main-header,
     .viz-toolbar,
     .instructions-panel,

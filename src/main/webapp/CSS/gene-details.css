@@ -312,6 +312,7 @@
 
 /* Print Styles */
 @media print {
+    .site-header,
     .main-header,
     .main-footer,
     .quick-actions {
