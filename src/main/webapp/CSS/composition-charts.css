@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Data Composition Charts Section
+   ========================================================================== */
+
+.composition {
+    padding: var(--space-4xl) 0;
+    background: var(--bg-body);
+}
+
+.composition__header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.composition__section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.composition__heading {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+}
+
+.composition__subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+}
+
+/* Species Toggle */
+.composition__toggle {
+    display: inline-flex;
+    background: var(--bg-muted);
+    border-radius: var(--radius-full);
+    padding: 4px;
+    gap: 4px;
+}
+
+.composition__toggle-btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.composition__toggle-btn--active {
+    background: var(--color-secondary);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Chart Grid */
+.composition__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "gross     condition"
+        "sex       age"
+        "skin      skin"
+        "fine      fine"
+        "batch     batch";
+    gap: var(--space-lg);
+}
+
+.composition__chart-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.composition__chart-card--gross     { grid-area: gross; }
+.composition__chart-card--condition { grid-area: condition; }
+.composition__chart-card--sex       { grid-area: sex; }
+.composition__chart-card--age       { grid-area: age; }
+.composition__chart-card--skin      { grid-area: skin; }
+.composition__chart-card--fine      { grid-area: fine; min-height: 600px; }
+.composition__chart-card--batch     { grid-area: batch; min-height: 500px; }
+
+.composition__chart-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.composition__chart-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+}
+
+.composition__chart-container {
+    flex: 1;
+    min-height: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .composition__grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "gross"
+            "condition"
+            "sex"
+            "age"
+            "skin"
+            "fine"
+            "batch";
+    }
+
+    .composition__chart-card {
+        min-height: 350px;
+    }
+
+    .composition__chart-card--fine {
+        min-height: 550px;
+    }
+
+    .composition__chart-card--batch {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .composition__heading {
+        font-size: 1.75rem;
+    }
+
+    .composition__chart-card {
+        padding: var(--space-lg);
+        min-height: 320px;
+    }
+
+    .composition__chart-card--fine {
+        min-height: 500px;
+    }
+
+    .composition__chart-card--batch {
+        min-height: 420px;
+    }
+}

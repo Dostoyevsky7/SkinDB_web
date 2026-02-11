@@ -16,6 +16,12 @@
     <!-- Under Construction Modal -->
     <link rel="stylesheet" href="CSS/construction-modal-simple.css">
 
+    <!-- Composition Charts -->
+    <link rel="stylesheet" href="CSS/composition-charts.css">
+
+    <!-- ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+
     <style>
         /* ==========================================================================
            Homepage Specific Styles
@@ -672,6 +678,70 @@
     </div>
 </section>
 
+<!-- Data Composition Section -->
+<section class="composition">
+    <div class="container">
+        <div class="composition__header">
+            <span class="composition__section-label">Data Composition</span>
+            <h2 class="composition__heading">Explore the Database</h2>
+            <p class="composition__subtitle">
+                Interactive breakdown of cell counts across cell types, conditions, demographics, and batches.
+            </p>
+            <div class="composition__toggle">
+                <button class="composition__toggle-btn composition__toggle-btn--active" data-species="human">Human</button>
+                <button class="composition__toggle-btn" data-species="mouse">Mouse</button>
+            </div>
+        </div>
+
+        <div class="composition__grid">
+            <!-- Row 1 -->
+            <div class="composition__chart-card composition__chart-card--gross">
+                <h3 class="composition__chart-title">Cell Type Overview</h3>
+                <p class="composition__chart-desc">Major cell type categories</p>
+                <div class="composition__chart-container" id="chart-gross-map"></div>
+            </div>
+            <div class="composition__chart-card composition__chart-card--condition">
+                <h3 class="composition__chart-title">Condition</h3>
+                <p class="composition__chart-desc">Disease and experimental conditions</p>
+                <div class="composition__chart-container" id="chart-condition"></div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="composition__chart-card composition__chart-card--sex">
+                <h3 class="composition__chart-title">Sex</h3>
+                <p class="composition__chart-desc">Sample sex distribution</p>
+                <div class="composition__chart-container" id="chart-sex"></div>
+            </div>
+            <div class="composition__chart-card composition__chart-card--age">
+                <h3 class="composition__chart-title">Age</h3>
+                <p class="composition__chart-desc">Age distribution of samples</p>
+                <div class="composition__chart-container" id="chart-age"></div>
+            </div>
+
+            <!-- Skin Location -->
+            <div class="composition__chart-card composition__chart-card--skin">
+                <h3 class="composition__chart-title">Skin Location</h3>
+                <p class="composition__chart-desc">Anatomical source locations</p>
+                <div class="composition__chart-container" id="chart-skin-location"></div>
+            </div>
+
+            <!-- Fine Map -->
+            <div class="composition__chart-card composition__chart-card--fine">
+                <h3 class="composition__chart-title">Fine Cell Types</h3>
+                <p class="composition__chart-desc">Detailed cell subtype classification — scroll to explore all types</p>
+                <div class="composition__chart-container" id="chart-fine-map"></div>
+            </div>
+
+            <!-- Batch -->
+            <div class="composition__chart-card composition__chart-card--batch">
+                <h3 class="composition__chart-title">Top 25 Batches</h3>
+                <p class="composition__chart-desc">Largest sample batches by cell count</p>
+                <div class="composition__chart-container" id="chart-batch"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Data Overview Section -->
 <section class="overview">
     <div class="container">
@@ -760,6 +830,17 @@
 
 <!-- Under Construction Modal Script -->
 <script src="JS/construction-modal-simple.js"></script>
+
+<!-- Composition Charts -->
+<script src="JS/cell-count-data.js"></script>
+<script src="JS/composition-charts.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof CompositionCharts !== 'undefined') {
+            CompositionCharts.init();
+        }
+    });
+</script>
 
 </body>
 </html>
