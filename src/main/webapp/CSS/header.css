@@ -86,6 +86,7 @@
 /* Dropdown Menu */
 .main-nav__item {
     position: relative;
+    padding: 0.5rem 0;
 }
 
 .main-nav__dropdown {
@@ -102,7 +103,7 @@
     transition: all 0.2s ease;
     z-index: 100;
     padding: 0.5rem 0;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
 .main-nav__item:hover .main-nav__dropdown {

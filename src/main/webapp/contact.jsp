@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback - scSAID</title>
+    <title>Contact - scSAID</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
             background-color: #faf8f5;
         }
 
-        .feedback-page {
+        .contact-page {
             min-height: 100vh;
             padding-top: 72px;
         }
@@ -65,29 +65,28 @@
             line-height: 1.7;
         }
 
-        .feedback-content {
-            max-width: 1200px;
+        .contact-content {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 3rem 2rem 4rem;
         }
 
-        .feedback-card {
+        .contact-card {
             background: #ffffff;
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
             padding: 2rem;
         }
 
-        .feedback-iframe {
-            width: 100%;
-            height: 1100px;
-            border: 0;
-            border-radius: 12px;
+        .contact-card p {
+            margin: 0 0 1rem;
+            line-height: 1.7;
+            color: #4b5563;
         }
 
-        .feedback-fallback {
-            margin-top: 1.5rem;
-            text-align: center;
+        .contact-email {
+            font-family: 'JetBrains Mono', monospace;
+            color: #1a2332;
         }
 
         @media (max-width: 768px) {
@@ -95,16 +94,12 @@
                 padding: 3.5rem 0;
             }
 
-            .feedback-content {
+            .contact-content {
                 padding: 2.5rem 1.25rem 3rem;
             }
 
-            .feedback-card {
-                padding: 1.25rem;
-            }
-
-            .feedback-iframe {
-                height: 1350px;
+            .contact-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -130,8 +125,8 @@
                     <a href="help?topic=usage" class="main-nav__dropdown-link">Usage</a>
                 </div>
             </div>
-            <a href="feedback" class="main-nav__link main-nav__link--active">Feedback</a>
-            <a href="contact" class="main-nav__link">Contact</a>
+            <a href="feedback" class="main-nav__link">Feedback</a>
+            <a href="contact" class="main-nav__link main-nav__link--active">Contact</a>
         </nav>
         <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
             <img src="images/ZJE_Logo.png" alt="ZJE - Zhejiang University" class="university-logo">
@@ -139,36 +134,23 @@
     </div>
 </header>
 
-<main class="feedback-page">
+<main class="contact-page">
     <div class="page-header">
         <div class="page-header__content">
-            <span class="page-header__eyebrow">Community</span>
-            <h1 class="page-header__title">Feedback</h1>
+            <span class="page-header__eyebrow">Get in Touch</span>
+            <h1 class="page-header__title">Contact</h1>
             <p class="page-header__description">
-                Tell us what you think. Your feedback helps us improve.
+                Reach out for dataset questions, collaborations, or publication guidance.
             </p>
         </div>
     </div>
 
-    <div class="feedback-content">
-        <div class="feedback-card">
-            <iframe
-                    class="feedback-iframe"
-                    title="Feedback form"
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSflIMVjxnvApZ7I0uUwPdvt9_C7self4p-a3K2NoC6T8YLgLg/viewform?embedded=true"
-                    loading="lazy"
-            ></iframe>
-
-            <div class="feedback-fallback">
-                <a
-                        class="btn btn--outline"
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSflIMVjxnvApZ7I0uUwPdvt9_C7self4p-a3K2NoC6T8YLgLg/viewform?usp=dialog"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                >
-                    Open the feedback form in a new tab
-                </a>
-            </div>
+    <div class="contact-content">
+        <div class="contact-card">
+            <p>Contact our active developer (contact one and cc another):</p>
+            <p class="contact-email">ethanshen111 [at] gmail [dot] com</p>
+            <p class="contact-email">yixiangren99 [at] gmail [dot] com</p>
+            <p>For publication-related matters contact our correspondence author.</p>
         </div>
     </div>
 </main>

@@ -26,7 +26,19 @@
                 <a href="home">Home</a>
                 <a href="browse">Browse</a>
                 <a href="gene-search.jsp" class="active">Search</a>
+                <a href="download.jsp">Download</a>
+                <div class="main-nav__item">
+                    <a href="help?topic=faq">Help</a>
+                    <div class="main-nav__dropdown">
+                        <a href="help?topic=faq" class="main-nav__dropdown-link">FAQ</a>
+                        <a href="help?topic=methods" class="main-nav__dropdown-link">Methods</a>
+                        <a href="help?topic=markers" class="main-nav__dropdown-link">Markers</a>
+                        <a href="help?topic=pipeline" class="main-nav__dropdown-link">Pipeline</a>
+                        <a href="help?topic=usage" class="main-nav__dropdown-link">Usage</a>
+                    </div>
+                </div>
                 <a href="feedback">Feedback</a>
+                <a href="contact">Contact</a>
             </nav>
         </div>
     </header>

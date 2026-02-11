@@ -157,6 +157,29 @@
         <url-pattern>/feedback</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>help</servlet-name>
+        <servlet-class>Servlet.help</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>help</servlet-name>
+        <url-pattern>/help</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>contact</servlet-name>
+        <servlet-class>Servlet.contact</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>contact</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+
+    <mime-mapping>
+        <extension>md</extension>
+        <mime-type>text/markdown</mime-type>
+    </mime-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

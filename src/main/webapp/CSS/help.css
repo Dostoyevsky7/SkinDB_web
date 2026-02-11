@@ -1,0 +1,236 @@
+body {
+    background-color: #faf8f5;
+}
+
+.help-page {
+    min-height: 100vh;
+    padding-top: 72px;
+}
+
+.page-header {
+    background: #1a2332;
+    padding: 4.5rem 0;
+    text-align: center;
+}
+
+.page-header__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.page-header__eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 1.5rem;
+}
+
+.page-header__title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 1rem;
+}
+
+.page-header__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    line-height: 1.7;
+}
+
+.help-content-section {
+    padding: 3rem 2rem 4rem;
+}
+
+.help-layout {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.help-sidebar {
+    width: 260px;
+    flex: 0 0 260px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+    padding: 1.5rem;
+    position: sticky;
+    top: calc(72px + 2rem);
+    max-height: calc(100vh - 72px - 4rem);
+    overflow-y: auto;
+}
+
+.help-sidebar__heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #1a2332;
+}
+
+.help-sidebar__topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.help-sidebar__topic-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.help-sidebar__topic {
+    display: block;
+    padding: 0.6rem 0.85rem;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #1a2332;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.help-sidebar__topic:hover {
+    background: rgba(26, 35, 50, 0.06);
+}
+
+.help-sidebar__topic--active {
+    background: rgba(232, 146, 124, 0.15);
+    color: #e8927c;
+}
+
+.help-sidebar__subheadings {
+    padding-left: 0.75rem;
+    margin-left: 0.4rem;
+    border-left: 1px solid #f0e7de;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.help-sidebar__sublink {
+    font-size: 0.9rem;
+    color: #6b7280;
+    transition: color 0.2s ease;
+}
+
+.help-sidebar__sublink:hover {
+    color: #1a2332;
+}
+
+.help-sidebar__sublink--active {
+    color: #e8927c;
+    font-weight: 600;
+}
+
+.help-sidebar__empty {
+    font-size: 0.85rem;
+    color: #9aa1ad;
+}
+
+.help-content {
+    flex: 1;
+    min-width: 0;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(26, 35, 50, 0.08);
+    padding: 2.5rem;
+    color: #1f2937;
+}
+
+.help-content__loading,
+.help-content__error {
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+.help-content h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.6rem;
+    margin: 2rem 0 0.75rem;
+    color: #1a2332;
+    scroll-margin-top: calc(72px + 1.5rem);
+}
+
+.help-content h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.5rem;
+    color: #374151;
+}
+
+.help-content p {
+    margin: 0 0 1.25rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+.help-content ul,
+.help-content ol {
+    margin: 0 0 1.5rem 1.5rem;
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+.help-content a {
+    color: #e8927c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.help-content a:hover {
+    text-decoration: underline;
+}
+
+.help-content code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    background: #f4efe9;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+}
+
+.help-content pre {
+    background: #1a2332;
+    color: #f8fafc;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.help-content pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 3.5rem 0;
+    }
+
+    .help-content-section {
+        padding: 2.5rem 1.25rem 3rem;
+    }
+
+    .help-layout {
+        flex-direction: column;
+    }
+
+    .help-sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+
+    .help-content {
+        padding: 2rem 1.5rem;
+    }
+}

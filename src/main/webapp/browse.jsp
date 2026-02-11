@@ -527,7 +527,18 @@
             <a href="browse.jsp" class="main-nav__link main-nav__link--active">Browse</a>
             <a href="gene-search.jsp" class="main-nav__link">Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
+            <div class="main-nav__item">
+                <a href="help?topic=faq" class="main-nav__link">Help</a>
+                <div class="main-nav__dropdown">
+                    <a href="help?topic=faq" class="main-nav__dropdown-link">FAQ</a>
+                    <a href="help?topic=methods" class="main-nav__dropdown-link">Methods</a>
+                    <a href="help?topic=markers" class="main-nav__dropdown-link">Markers</a>
+                    <a href="help?topic=pipeline" class="main-nav__dropdown-link">Pipeline</a>
+                    <a href="help?topic=usage" class="main-nav__dropdown-link">Usage</a>
+                </div>
+            </div>
             <a href="feedback" class="main-nav__link">Feedback</a>
+            <a href="contact" class="main-nav__link">Contact</a>
         </nav>
         <div class="header-icons">
             <a href="https://github.com/Dostoyevsky7/SkinDB_web" target="_blank" class="header-icon-link" title="View on GitHub">

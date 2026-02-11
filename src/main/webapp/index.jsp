@@ -567,7 +567,18 @@
             <a href="browse.jsp" class="main-nav__link">Browse</a>
             <a href="gene-search.jsp" class="main-nav__link">Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
+            <div class="main-nav__item">
+                <a href="help?topic=faq" class="main-nav__link">Help</a>
+                <div class="main-nav__dropdown">
+                    <a href="help?topic=faq" class="main-nav__dropdown-link">FAQ</a>
+                    <a href="help?topic=methods" class="main-nav__dropdown-link">Methods</a>
+                    <a href="help?topic=markers" class="main-nav__dropdown-link">Markers</a>
+                    <a href="help?topic=pipeline" class="main-nav__dropdown-link">Pipeline</a>
+                    <a href="help?topic=usage" class="main-nav__dropdown-link">Usage</a>
+                </div>
+            </div>
             <a href="feedback" class="main-nav__link">Feedback</a>
+            <a href="contact" class="main-nav__link">Contact</a>
         </nav>
 
         <div class="header-icons">
@@ -630,7 +641,7 @@
                 </div>
                 <span class="quick-nav__label">Search</span>
             </a>
-            <a href="#" class="quick-nav__item">
+            <a href="help?topic=faq" class="quick-nav__item">
                 <div class="quick-nav__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -640,7 +651,7 @@
                 </div>
                 <span class="quick-nav__label">Help</span>
             </a>
-            <a href="#" class="quick-nav__item">
+            <a href="download.jsp" class="quick-nav__item">
                 <div class="quick-nav__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
