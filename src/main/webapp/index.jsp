@@ -43,9 +43,10 @@
         }
 
         .site-header .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-lg);
             align-items: center;
-            justify-content: space-between;
             width: 100%;
         }
 
@@ -66,6 +67,7 @@
             display: flex;
             align-items: center;
             gap: var(--space-xs);
+            justify-self: center;
         }
 
         .main-nav__link {
@@ -92,6 +94,7 @@
             display: flex;
             align-items: center;
             gap: 0rem;
+            justify-self: end;
         }
 
         .header-icon-link {

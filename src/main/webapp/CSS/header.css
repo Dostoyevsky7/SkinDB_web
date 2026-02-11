@@ -29,9 +29,10 @@
 }
 
 .site-header .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -58,6 +59,7 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    justify-self: center;
 }
 
 .main-nav__link {
@@ -141,6 +143,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    justify-self: end;
 }
 
 .header-icon-link {
