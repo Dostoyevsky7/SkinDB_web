@@ -12,6 +12,7 @@
 
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
+    <link rel="stylesheet" href="CSS/header.css">
 
     <!-- Under Construction Modal -->
     <link rel="stylesheet" href="CSS/construction-modal-simple.css">
