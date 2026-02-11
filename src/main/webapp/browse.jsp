@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
@@ -118,7 +118,7 @@
         .browse-table {
             width: 100%;
             border-collapse: collapse;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
         }
 
@@ -267,7 +267,7 @@
             min-width: 40px;
             height: 40px;
             padding: 0 1rem;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
             font-weight: 500;
             color: #5a6473;
@@ -305,7 +305,7 @@
             width: 60px;
             height: 40px;
             text-align: center;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
             border: 1px solid #e5e0d8;
             border-radius: 8px;
@@ -407,7 +407,7 @@
         .filter-group__select {
             min-width: 160px;
             padding: 0.65rem 2.5rem 0.65rem 1rem;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
             color: #1a2332;
             background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6473' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 1rem center;
@@ -438,7 +438,7 @@
 
         .filter-bar__btn {
             padding: 0.65rem 1.25rem;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.85rem;
             font-weight: 600;
             border-radius: 8px;

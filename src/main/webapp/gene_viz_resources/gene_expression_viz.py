@@ -151,14 +151,14 @@ def create_umap_plot(data, gene_names):
             colorbar=dict(
                 title=dict(
                     text="Expression",
-                    font=dict(family='Source Sans 3', size=14, color=COLORS['navy'])
+                    font=dict(family='Urbanist', size=14, color=COLORS['navy'])
                 ),
                 thickness=15,
                 len=0.7,
                 bgcolor='rgba(255,255,255,0.8)',
                 bordercolor=COLORS['taupe'],
                 borderwidth=1,
-                tickfont=dict(family='Source Sans 3', size=11, color=COLORS['navy'])
+                tickfont=dict(family='Urbanist', size=11, color=COLORS['navy'])
             ),
             line=dict(width=0),
             opacity=0.6
@@ -183,22 +183,22 @@ def create_umap_plot(data, gene_names):
             showgrid=False,
             zeroline=False,
             showticklabels=True,
-            tickfont=dict(family='Source Sans 3', size=11, color=COLORS['navy']),
-            titlefont=dict(family='Source Sans 3', size=13, color=COLORS['navy'])
+            tickfont=dict(family='Urbanist', size=11, color=COLORS['navy']),
+            titlefont=dict(family='Urbanist', size=13, color=COLORS['navy'])
         ),
         yaxis=dict(
             title="UMAP 2",
             showgrid=False,
             zeroline=False,
             showticklabels=True,
-            tickfont=dict(family='Source Sans 3', size=11, color=COLORS['navy']),
-            titlefont=dict(family='Source Sans 3', size=13, color=COLORS['navy'])
+            tickfont=dict(family='Urbanist', size=11, color=COLORS['navy']),
+            titlefont=dict(family='Urbanist', size=13, color=COLORS['navy'])
         ),
         plot_bgcolor=COLORS['beige'],
         paper_bgcolor='white',
         margin=dict(l=60, r=60, t=80, b=60),
         hovermode='closest',
-        font=dict(family='Source Sans 3', color=COLORS['navy']),
+        font=dict(family='Urbanist', color=COLORS['navy']),
         height=700
     )
 
@@ -221,7 +221,7 @@ app.layout = html.Div([
                    }),
             html.P("Visualize gene expression patterns on integrated UMAP",
                   style={
-                      'fontFamily': 'Source Sans 3',
+                      'fontFamily': 'Urbanist',
                       'color': COLORS['navy'],
                       'opacity': '0.7',
                       'fontSize': '1rem'
@@ -266,7 +266,7 @@ app.layout = html.Div([
             'padding': '1rem',
             'backgroundColor': COLORS['light_gray'],
             'borderRadius': '8px',
-            'fontFamily': 'Source Sans 3',
+            'fontFamily': 'Urbanist',
             'fontSize': '0.9rem',
             'color': COLORS['navy']
         })
@@ -282,7 +282,7 @@ app.layout = html.Div([
     # Hidden div for storing data
     dcc.Store(id='gene-data', data=None)
 
-], style={'fontFamily': 'Source Sans 3'})
+], style={'fontFamily': 'Urbanist'})
 
 @app.callback(
     [Output('umap-plot', 'figure'),
@@ -306,7 +306,7 @@ def update_plot(search):
         text="Select genes from the search results to visualize",
         xref="paper", yref="paper",
         x=0.5, y=0.5, showarrow=False,
-        font=dict(size=16, color=COLORS['navy'], family='Source Sans 3')
+        font=dict(size=16, color=COLORS['navy'], family='Urbanist')
     )
 
     default_status_style = {'display': 'none'}

@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
@@ -196,7 +196,7 @@
             padding: 1rem 1.5rem;
             background: #e8927c;
             color: #ffffff;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
             border: none;

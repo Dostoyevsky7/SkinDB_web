@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Design System -->
     <link rel="stylesheet" href="CSS/design-system.css">
@@ -80,7 +80,7 @@
         .search-box__input {
             flex: 1;
             padding: 1.25rem 1.5rem;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 1.1rem;
             border: none;
             outline: none;
@@ -95,7 +95,7 @@
             padding: 1.25rem 2rem;
             background: #e8927c;
             color: #ffffff;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 1rem;
             font-weight: 600;
             border: none;
@@ -193,7 +193,7 @@
         .results-table {
             width: 100%;
             border-collapse: collapse;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
         }
 
@@ -426,7 +426,7 @@
         .viz-panel__count {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
         }
 
         .viz-panel__controls {
@@ -465,7 +465,7 @@
 
         .viz-btn {
             padding: 0.65rem 1.5rem;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Urbanist', sans-serif;
             font-size: 0.9rem;
             font-weight: 600;
             border: none;

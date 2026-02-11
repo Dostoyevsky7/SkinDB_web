@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     padding: 0.875rem 1.5rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
     color: #5a6473;
@@ -291,7 +291,7 @@
 }
 
 .header-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 0.25rem;
@@ -331,7 +331,7 @@
 }
 
 .filter-name {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     color: #5a6473;
@@ -349,7 +349,7 @@
 }
 
 .filter-hint {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.75rem;
     color: #8b95a5;
     margin-top: 0.5rem;
@@ -414,7 +414,7 @@
 .elegant-select {
     width: 100%;
     padding: 0.75rem 1rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     color: #1a2332;
     background: #ffffff;
@@ -445,7 +445,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.625rem 1.25rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     color: #ffffff;
@@ -481,7 +481,7 @@
 .elegant-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
 }
 
@@ -532,7 +532,7 @@
 
 /* DataTables Override - Refined */
 .dataTables_wrapper {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     padding: 1.5rem;
     background: #ffffff;
 }
@@ -562,7 +562,7 @@
     border-radius: 6px;
     background: #ffffff;
     color: #1a2332;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     cursor: pointer;
 }
 
@@ -573,7 +573,7 @@
     border-radius: 8px;
     background: #faf8f5;
     color: #1a2332;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     transition: all 0.3s ease;
 }
 
@@ -681,7 +681,7 @@
 }
 
 .cpdb-section-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.875rem;
     color: #8b95a5;
     margin: 0;
@@ -694,7 +694,7 @@
     align-items: center;
     gap: 0.625rem;
     padding: 0.875rem 1.75rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     color: #ffffff;
@@ -755,7 +755,7 @@
 
 .receiver-label {
     display: block;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     color: #5a6473;
@@ -850,7 +850,7 @@
 }
 
 .placeholder-text {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     color: #8b95a5;
     margin: 0;
@@ -1224,7 +1224,7 @@ textarea {
     padding: 0.625rem;
     border: 1px solid #e5e0d8;
     border-radius: 8px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.95rem;
     color: #1a2332;
     background-color: #fff;
@@ -1252,7 +1252,7 @@ textarea:focus {
     border: 1px solid #e5e0d8;
     background: #fff;
     border-radius: 6px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     cursor: pointer;
     transition: all 0.15s ease;
 }
@@ -1279,7 +1279,7 @@ textarea:focus {
 .viz-quick-btn {
     display: inline-block;
     padding: 0.875rem 1.5rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     color: #ffffff;

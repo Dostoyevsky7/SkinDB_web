@@ -63,7 +63,7 @@
 .main-nav__link {
     position: relative;
     padding: 0.5rem 1rem;
-    font-family: var(--font-body, 'Source Sans 3', sans-serif);
+    font-family: var(--font-body, 'Urbanist', sans-serif);
     font-size: 0.95rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.75);
@@ -213,7 +213,7 @@ header li {
     width: 110px;
     float: left;
     line-height: 72px;
-    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    font-family: 'Urbanist', -apple-system, sans-serif;
     font-size: 0.95rem;
     font-weight: 500;
     position: relative;
@@ -304,7 +304,7 @@ header li:hover .top_list {
     color: #fff;
     border-radius: 6px;
     background: #e8927c;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -326,7 +326,7 @@ header li:hover .top_list {
 .table-style-1 {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     background: #ffffff;
     border-radius: 12px;
@@ -414,7 +414,7 @@ header li:hover .top_list {
     min-width: 40px;
     height: 40px;
     padding: 0 1rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
     color: #5a6473;
@@ -448,7 +448,7 @@ header li:hover .top_list {
     width: 60px;
     height: 40px;
     text-align: center;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 0.9rem;
     border: 1px solid #e5e0d8;
     border-radius: 6px;

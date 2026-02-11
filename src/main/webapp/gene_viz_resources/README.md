@@ -186,7 +186,7 @@ Server starts on: `http://localhost:8053/gene-viz/`
 
 **Typography**:
 - Headers: Cormorant Garamond (serif)
-- Body: Source Sans 3 (sans-serif)
+- Body: Urbanist (sans-serif)
 
 **Components**:
 - Rounded corners (8-12px)
