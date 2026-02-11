@@ -679,6 +679,28 @@
     </div>
 </section>
 
+<!-- Data Overview Section -->
+<section class="overview">
+    <div class="container">
+        <div class="overview__grid">
+            <div class="overview__content">
+                <span class="overview__section-label">About the Database</span>
+                <h2 class="overview__heading">Comprehensive scRNA-seq Repository for Skin Research</h2>
+                <p class="overview__text">
+                    Welcome to our comprehensive scRNA-seq database dedicated to skin and its appendages. This database contains data from over <strong>1,000,000</strong> cells derived from more than <strong>600</strong> samples across <strong>100</strong> independent experiments, including both human and mouse datasets.
+                </p>
+                <p class="overview__text">
+                    As one of the most extensive collections available to date, our database provides a platform for exploring the complex cellular landscapes and molecular mechanisms underlying skin biology and its associated structures.
+                </p>
+                <p class="overview__text">
+                    The database includes detailed annotations for each sample, including species, gender, age, anatomical region, and experimental conditions. All data has been processed through a standardized pipeline to ensure consistency and comparability across studies.
+                </p>
+                <a href="browse.jsp" class="btn btn--primary">Explore Datasets</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Data Composition Section -->
 <section class="composition">
     <div class="container">
@@ -738,28 +760,6 @@
                 <h3 class="composition__chart-title">Top 25 Batches</h3>
                 <p class="composition__chart-desc">Largest sample batches by cell count</p>
                 <div class="composition__chart-container" id="chart-batch"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Data Overview Section -->
-<section class="overview">
-    <div class="container">
-        <div class="overview__grid">
-            <div class="overview__content">
-                <span class="overview__section-label">About the Database</span>
-                <h2 class="overview__heading">Comprehensive scRNA-seq Repository for Skin Research</h2>
-                <p class="overview__text">
-                    Welcome to our comprehensive scRNA-seq database dedicated to skin and its appendages. This database contains data from over <strong>1,000,000</strong> cells derived from more than <strong>600</strong> samples across <strong>100</strong> independent experiments, including both human and mouse datasets.
-                </p>
-                <p class="overview__text">
-                    As one of the most extensive collections available to date, our database provides a platform for exploring the complex cellular landscapes and molecular mechanisms underlying skin biology and its associated structures.
-                </p>
-                <p class="overview__text">
-                    The database includes detailed annotations for each sample, including species, gender, age, anatomical region, and experimental conditions. All data has been processed through a standardized pipeline to ensure consistency and comparability across studies.
-                </p>
-                <a href="browse.jsp" class="btn btn--primary">Explore Datasets</a>
             </div>
         </div>
     </div>
