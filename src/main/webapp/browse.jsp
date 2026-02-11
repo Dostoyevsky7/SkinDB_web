@@ -528,6 +528,7 @@
             <a href="search.jsp" class="main-nav__link">Search</a>
             <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
+            <a href="feedback" class="main-nav__link">Feedback</a>
         </nav>
         <div class="header-icons">
             <a href="https://github.com/Dostoyevsky7/SkinDB_web" target="_blank" class="header-icon-link" title="View on GitHub">

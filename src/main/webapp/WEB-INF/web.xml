@@ -157,6 +157,15 @@
         <url-pattern>/api/geo</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>feedback</servlet-name>
+        <servlet-class>Servlet.feedback</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>feedback</servlet-name>
+        <url-pattern>/feedback</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

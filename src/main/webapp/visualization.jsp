@@ -25,6 +25,7 @@
                 <a href="browse">Browse</a>
                 <a href="SearchServlet">Search & Integrate</a>
                 <a href="gene-search.jsp">Gene Search</a>
+                <a href="feedback">Feedback</a>
             </nav>
         </div>
     </header>

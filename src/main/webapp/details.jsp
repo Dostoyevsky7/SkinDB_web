@@ -270,6 +270,7 @@
             <a href="search.jsp" class="main-nav__link">Search</a>
             <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
+            <a href="feedback" class="main-nav__link">Feedback</a>
         </nav>
         <a href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">
             <img src="images/ZJE_Logo.png"
