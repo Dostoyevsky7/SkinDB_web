@@ -320,7 +320,7 @@
 
         .overview__grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: var(--space-3xl);
             align-items: start;
         }
@@ -747,37 +747,6 @@
 <section class="overview">
     <div class="container">
         <div class="overview__grid">
-            <div class="overview__images">
-                <div class="overview__image-card">
-                    <img src="images/proportion.png" alt="Sample Distribution">
-                    <div class="overview__image-caption">
-                        <h3 class="overview__image-title">Sample Distribution</h3>
-                        <p class="overview__image-desc">Overview of samples by species and tissue type</p>
-                    </div>
-                </div>
-                <div class="overview__image-card">
-                    <img src="images/date.png" alt="Collection Timeline">
-                    <div class="overview__image-caption">
-                        <h3 class="overview__image-title">Data Timeline</h3>
-                        <p class="overview__image-desc">2020 - 2025</p>
-                    </div>
-                </div>
-                <div class="overview__image-card">
-                    <img src="images/tissue.png" alt="Tissue Sources">
-                    <div class="overview__image-caption">
-                        <h3 class="overview__image-title">Tissue Sources</h3>
-                        <p class="overview__image-desc">Multiple tissues included</p>
-                    </div>
-                </div>
-                <div class="overview__image-card">
-                    <img src="images/disease.png" alt="Disease Types">
-                    <div class="overview__image-caption">
-                        <h3 class="overview__image-title">Disease Types</h3>
-                        <p class="overview__image-desc">Various conditions</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="overview__content">
                 <span class="overview__section-label">About the Database</span>
                 <h2 class="overview__heading">Comprehensive scRNA-seq Repository for Skin Research</h2>
