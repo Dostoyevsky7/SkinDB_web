@@ -21,6 +21,9 @@ Thumbs.db
 *.tsv
 *.h5ad
 
+# Allow cell count stats CSVs (needed for composition charts)
+!data/cell_count_stats/**/*.csv
+
 # scRNA-seq 数据目录
 src/main/webapp/**/10X/
 src/main/webapp/**/DEG_results/
