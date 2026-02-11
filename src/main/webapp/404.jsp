@@ -27,8 +27,7 @@
             <nav class="main-nav">
                 <a href="index.jsp" class="main-nav__link">Home</a>
                 <a href="browse.jsp" class="main-nav__link">Browse</a>
-                <a href="search.jsp" class="main-nav__link">Search</a>
-                <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+                <a href="gene-search.jsp" class="main-nav__link">Search</a>
                 <a href="download.jsp" class="main-nav__link">Download</a>
                 <a href="feedback" class="main-nav__link">Feedback</a>
             </nav>
@@ -168,7 +167,7 @@
                             <span class="error-nav__hint">Explore all datasets</span>
                         </div>
                     </a>
-                    <a href="search.jsp" class="error-nav__link">
+                    <a href="gene-search.jsp" class="error-nav__link">
                         <div class="error-nav__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>

@@ -565,8 +565,7 @@
         <nav class="main-nav">
             <a href="index.jsp" class="main-nav__link main-nav__link--active">Home</a>
             <a href="browse.jsp" class="main-nav__link">Browse</a>
-            <a href="search.jsp" class="main-nav__link">Search</a>
-            <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="gene-search.jsp" class="main-nav__link">Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
             <a href="feedback" class="main-nav__link">Feedback</a>
         </nav>
@@ -602,7 +601,7 @@
         </p>
         <div class="hero__actions">
             <a href="browse.jsp" class="btn btn--primary hero__btn">Browse Datasets</a>
-            <a href="search.jsp" class="btn btn--outline hero__btn" style="border-color: rgba(255,255,255,0.3); color: white;">Search Genes</a>
+            <a href="gene-search.jsp" class="btn btn--outline hero__btn" style="border-color: rgba(255,255,255,0.3); color: white;">Search Genes</a>
         </div>
     </div>
 </section>
@@ -622,7 +621,7 @@
                 </div>
                 <span class="quick-nav__label">Browse</span>
             </a>
-            <a href="search.jsp" class="quick-nav__item">
+            <a href="gene-search.jsp" class="quick-nav__item">
                 <div class="quick-nav__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>

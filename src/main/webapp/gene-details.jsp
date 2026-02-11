@@ -25,8 +25,7 @@
             <nav class="main-nav">
                 <a href="home">Home</a>
                 <a href="browse">Browse</a>
-                <a href="SearchServlet">Search & Integrate</a>
-                <a href="gene-search.jsp" class="active">Gene Search</a>
+                <a href="gene-search.jsp" class="active">Search</a>
                 <a href="feedback">Feedback</a>
             </nav>
         </div>

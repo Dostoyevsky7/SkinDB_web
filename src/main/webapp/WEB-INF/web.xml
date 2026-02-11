@@ -68,15 +68,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>Servlet.SearchServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SearchServlet</servlet-name>
-        <url-pattern>/SearchServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>DEGServlet</servlet-name>
         <servlet-class>Servlet.DEGServlet</servlet-class>
     </servlet>

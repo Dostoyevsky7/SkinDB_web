@@ -525,8 +525,7 @@
         <nav class="main-nav">
             <a href="index.jsp" class="main-nav__link">Home</a>
             <a href="browse.jsp" class="main-nav__link main-nav__link--active">Browse</a>
-            <a href="search.jsp" class="main-nav__link">Search</a>
-            <a href="gene-search.jsp" class="main-nav__link">Gene Search</a>
+            <a href="gene-search.jsp" class="main-nav__link">Search</a>
             <a href="download.jsp" class="main-nav__link">Download</a>
             <a href="feedback" class="main-nav__link">Feedback</a>
         </nav>
