@@ -353,7 +353,7 @@
                 }
 
                 .feedback-toast__message {
-                    font-family: 'Urbanist', sans-serif;
+                    font-family: 'Source Sans 3', sans-serif;
                     font-size: 0.9rem;
                     color: #1a2332;
                     line-height: 1.5;

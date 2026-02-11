@@ -156,7 +156,7 @@
 }
 
 .construction-modal__message {
-    font-family: var(--font-body, 'Urbanist', sans-serif);
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--text-secondary, #5a6473);
@@ -178,7 +178,7 @@
 }
 
 .construction-modal__features-title {
-    font-family: var(--font-body, 'Urbanist', sans-serif);
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -248,7 +248,7 @@
     justify-content: center;
     gap: var(--space-sm, 0.5rem);
     padding: var(--space-md, 1rem) var(--space-2xl, 3rem);
-    font-family: var(--font-body, 'Urbanist', sans-serif);
+    font-family: var(--font-body, 'Source Sans 3', sans-serif);
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.02em;

@@ -9,7 +9,7 @@
 :root {
     /* Typography */
     --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
     /* Color Palette - Warm Scientific */

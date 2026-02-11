@@ -185,7 +185,7 @@ Server starts on: `http://localhost:8052/gene-scoring/`
 
 **Typography**:
 - Headers: Cormorant Garamond (serif)
-- Body: Urbanist (sans-serif)
+- Body: Source Sans 3 (sans-serif)
 - Monospace: JetBrains Mono
 
 **Components**:

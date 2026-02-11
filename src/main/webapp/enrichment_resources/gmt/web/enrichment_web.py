@@ -66,7 +66,7 @@ app.layout = html.Div(
         "width": "100%",
         "minHeight": "100vh",
         "backgroundColor": "#faf8f5",
-        "fontFamily": "'Urbanist', sans-serif",
+        "fontFamily": "'Source Sans 3', sans-serif",
         "color": "#1a2332",
         "padding": "0",
         "margin": "0",
@@ -445,7 +445,7 @@ def update_content(celltype, library):
             'backgroundColor': '#ffffff',
             'color': '#1a2332',
             'border': '1px solid #e5e0d8',
-            'fontFamily': "'Urbanist', sans-serif",
+            'fontFamily': "'Source Sans 3', sans-serif",
         },
         style_header={
             'backgroundColor': '#f5f2ed',
@@ -474,12 +474,12 @@ def update_content(celltype, library):
         marker_color=[get_sig_color(r['adjPvalue']) for r in top_results][::-1],
         text=[f"{r['combinedScore']:.1f}" for r in top_results][::-1],
         textposition='outside',
-        textfont=dict(color='#5a6473', size=10, family="'Urbanist', sans-serif"),
+        textfont=dict(color='#5a6473', size=10, family="'Source Sans 3', sans-serif"),
     ))
     bar_fig.update_layout(
         paper_bgcolor='#ffffff',
         plot_bgcolor='#ffffff',
-        font=dict(color='#1a2332', family="'Urbanist', sans-serif"),
+        font=dict(color='#1a2332', family="'Source Sans 3', sans-serif"),
         margin=dict(l=10, r=60, t=10, b=40),
         xaxis=dict(
             title="Combined Score",

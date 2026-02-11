@@ -88,7 +88,7 @@ The enrichment interface uses the scSAID warm scientific aesthetic:
 
 ### Typography
 - Headers: Cormorant Garamond (serif)
-- Body: Urbanist (sans-serif)
+- Body: Source Sans 3 (sans-serif)
 - Mono: JetBrains Mono (code/genes)
 
 ### Components
