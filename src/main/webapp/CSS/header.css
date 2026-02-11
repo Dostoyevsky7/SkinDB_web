@@ -99,17 +99,28 @@
     box-shadow: 0 8px 30px rgba(26, 35, 50, 0.15);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.2s ease;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 100;
     padding: 0.5rem 0;
     margin-top: 0;
+    pointer-events: none;
+}
+
+.main-nav__dropdown::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    height: 8px;
 }
 
 .main-nav__item:hover .main-nav__dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 .main-nav__dropdown-link {
