@@ -112,7 +112,7 @@ supervisor, pm2, etc.).
 
 ## License
 
-Zhejiang University · ZJE (University of Edinburgh)
+Zhejiang University · ZJE
 
 ------------------------------------------------------------------------
 
