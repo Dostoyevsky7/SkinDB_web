@@ -254,6 +254,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
 </head>
 <body style="background: #faf8f5;">
 
@@ -430,72 +431,97 @@
                 <div class="header">
                     <div class="header-content">
                         <div>
-                            <div class="header-title">CellPhoneDB Cell-Cell Communication Inference</div>
+                            <div class="header-title">CellPhoneDB Cell-Cell Communication Analysis</div>
                         </div>
+                        <span class="cpdb-badge">Dynamic Analysis</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <!-- Summary Plot Section -->
-                    <div class="cpdb-section">
-                        <div class="cpdb-section-header">
-                            <div class="cpdb-section-info">
-                                <h3 class="cpdb-section-title">Interaction Overview</h3>
-                                <p class="cpdb-section-desc">Heatmap of significant ligand-receptor interactions across cell types</p>
-                            </div>
-                            <button id="cpdbSummaryBtn" class="generate-btn">
-                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="23 4 23 10 17 10"></polyline>
-                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                                </svg>
-                                Generate Plot
-                            </button>
+                    <!-- Cell Type Selection -->
+                    <div class="cpdb-config-section">
+                        <h3 class="cpdb-section-title">Select Cell Types</h3>
+                        <p class="cpdb-section-desc">Choose 2 or more cell types to analyze ligand-receptor interactions</p>
+
+                        <div class="cpdb-cell-selector">
+                            <select id="cpdbCellTypeMultiSelect" multiple class="cpdb-multiselect">
+                                <option value="">Loading cell types...</option>
+                            </select>
                         </div>
-                        <div id="cpdbSummaryPlotContainer" class="plot-container">
-                            <div class="plot-placeholder">
-                                <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="14" width="7" height="7"></rect>
-                                    <rect x="3" y="14" width="7" height="7"></rect>
-                                </svg>
-                                <p class="placeholder-text">Click "Generate Plot" to visualize interaction summary</p>
+
+                        <div class="cpdb-mode-toggle">
+                            <label class="cpdb-radio">
+                                <input type="radio" name="cpdbMode" value="all" checked>
+                                <span>All Combinations</span>
+                            </label>
+                            <label class="cpdb-radio">
+                                <input type="radio" name="cpdbMode" value="directed">
+                                <span>Sender → Receiver</span>
+                            </label>
+                        </div>
+
+                        <!-- Sender/Receiver (shown when directed mode selected) -->
+                        <div id="cpdbDirectedControls" style="display:none;">
+                            <div class="cpdb-directed-row">
+                                <div class="cpdb-directed-col">
+                                    <label>Sender Cell Types</label>
+                                    <select id="cpdbSenderTypes" multiple></select>
+                                </div>
+                                <div class="cpdb-directed-arrow">→</div>
+                                <div class="cpdb-directed-col">
+                                    <label>Receiver Cell Types</label>
+                                    <select id="cpdbReceiverTypes" multiple></select>
+                                </div>
                             </div>
                         </div>
+
+                        <button id="runCpdbAnalysisBtn" class="generate-btn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            Run Analysis
+                        </button>
                     </div>
 
-                    <div class="section-divider"></div>
+                    <!-- Progress Section -->
+                    <div id="cpdbProgressSection" class="cpdb-progress" style="display:none;">
+                        <div class="cpdb-progress-bar">
+                            <div class="cpdb-progress-fill"></div>
+                        </div>
+                        <p class="cpdb-progress-text">Running CellPhoneDB analysis...</p>
+                        <p class="cpdb-progress-hint">This may take several minutes for large datasets</p>
+                    </div>
 
-                    <!-- Receiver Plot Section -->
-                    <div class="cpdb-section">
-                        <div class="cpdb-section-header">
-                            <div class="cpdb-section-info">
-                                <h3 class="cpdb-section-title">Top Receptor Interactions</h3>
-                                <p class="cpdb-section-desc">Most significant interactions for a specific receiving cell type</p>
-                            </div>
+                    <!-- Results Section -->
+                    <div id="cpdbResultsSection" style="display:none;">
+                        <div class="cpdb-results-tabs">
+                            <button class="cpdb-tab active" data-tab="heatmap">Interaction Heatmap</button>
+                            <button class="cpdb-tab" data-tab="dotplot">Dot Plot</button>
+                            <button class="cpdb-tab" data-tab="table">Results Table</button>
                         </div>
-                        <div class="cpdb-receiver-controls">
-                            <div class="receiver-select-wrapper">
-                                <label for="cpdbCellTypeSelect" class="receiver-label">Receiving cell type</label>
-                                <select id="cpdbCellTypeSelect" class="elegant-select receiver-select">
-                                    <option value="">Loading cell types...</option>
-                                </select>
-                            </div>
-                            <button id="cpdbReceiverBtn" class="generate-btn">
-                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="23 4 23 10 17 10"></polyline>
-                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                                </svg>
-                                Generate Plot
-                            </button>
+
+                        <div id="cpdbHeatmapTab" class="cpdb-tab-content active">
+                            <div id="cpdbHeatmapPlot" class="cpdb-plot-container"></div>
                         </div>
-                        <div id="cpdbReceiverPlotContainer" class="plot-container">
-                            <div class="plot-placeholder">
-                                <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                    <path d="M12 1v6m0 6v6M1 12h6m6 0h6"></path>
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                                <p class="placeholder-text">Select a cell type and generate to view top interactions</p>
+
+                        <div id="cpdbDotplotTab" class="cpdb-tab-content">
+                            <div id="cpdbDotplot" class="cpdb-plot-container"></div>
+                        </div>
+
+                        <div id="cpdbTableTab" class="cpdb-tab-content">
+                            <div class="table-wrapper">
+                                <table id="cpdbResultsTable" class="elegant-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Interaction</th>
+                                            <th>Ligand</th>
+                                            <th>Receptor</th>
+                                            <th>Sender</th>
+                                            <th>Receiver</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -593,92 +619,306 @@
                 $('#exportExcelBtn').on('click', exportTableToExcel);
 
                 // =========================================================================
-                // SECTION D: NEW JAVASCRIPT FOR CELLPHONEDB
+                // SECTION D: CELLPHONEDB DYNAMIC ANALYSIS
                 // =========================================================================
-                console.log("🌟 CellPhoneDB script start");
-                function initCpdb() {
-                    console.log("🔍 Initializing CellPhoneDB cell type dropdown");
-                    // Use the gse and gsm values fetched by the main JSP logic
-                    $.getJSON('', { action: 'get_cell_types', said: said, gse: gse, gsm: gsm })
-                        .done(function(data) {
-                            if (data.error) {
-                                console.error("❌ CPDB Error:", data.error);
-                                $('#cpdbCellTypeSelect').empty().append('<option value="">Error loading types</option>');
-                                alert("Could not load CellPhoneDB cell types: " + data.error);
-                                return;
-                            }
-                            console.log("✅ CPDB cell types fetched:", data.cell_types);
-                            const select = $('#cpdbCellTypeSelect');
-                            select.empty().append('<option value="">-- Select a Cell Type --</option>');
-                            data.cell_types.forEach(ct => {
-                                const optionHtml = '<option value="' + ct + '">' + ct + '</option>';
-                                select.append(optionHtml);
+                console.log("🌟 CellPhoneDB Dynamic Analysis script start");
+
+                // Initialize cell type multi-select
+                function initCpdbCellTypes() {
+                    console.log("🔍 Loading cell types for CellPhoneDB");
+                    $.getJSON('/scrna_website_test_war/cpdb-api', {
+                        action: 'cell-types',
+                        said: said
+                    }).done(function(data) {
+                        if (data.error) {
+                            console.error('CPDB cell types error:', data.error);
+                            $('#cpdbCellTypeMultiSelect').html('<option value="">Error: ' + data.error + '</option>');
+                            return;
+                        }
+                        console.log("✅ CPDB cell types loaded:", data.cell_types);
+                        const select = $('#cpdbCellTypeMultiSelect');
+                        select.empty();
+                        data.cell_types.forEach(function(ct) {
+                            const count = data.cell_counts ? data.cell_counts[ct] || '' : '';
+                            const label = count ? ct + ' (' + count + ' cells)' : ct;
+                            select.append('<option value="' + ct + '">' + label + '</option>');
+                        });
+                    }).fail(function(xhr) {
+                        console.error("❌ CPDB cell type request failed:", xhr.status, xhr.statusText);
+                        $('#cpdbCellTypeMultiSelect').html('<option value="">Failed to load cell types</option>');
+                    });
+                }
+
+                // Toggle directed mode controls
+                $('input[name="cpdbMode"]').change(function() {
+                    const isDirected = $(this).val() === 'directed';
+                    $('#cpdbDirectedControls').toggle(isDirected);
+
+                    if (isDirected) {
+                        // Copy selected types to sender/receiver
+                        const selected = $('#cpdbCellTypeMultiSelect').val() || [];
+                        ['#cpdbSenderTypes', '#cpdbReceiverTypes'].forEach(function(sel) {
+                            $(sel).empty();
+                            selected.forEach(function(ct) {
+                                $(sel).append('<option value="' + ct + '">' + ct + '</option>');
                             });
-                            console.log("✅ CPDB cell type dropdown populated");
-                        })
-                        .fail(function(xhr) {
-                            console.error("❌ CPDB cell type request failed:", xhr.status, xhr.statusText);
-                            $('#cpdbCellTypeSelect').empty().append('<option value="">Request failed</option>');
-                            alert('Server error while loading Cell Types: ' + xhr.status + ' ' + xhr.statusText);
                         });
-                }
-
-                function generateCpdbPlot(plotType, cellType, containerId) {
-                    // 修改：确保 id 匹配
-                    const container = $('#' + containerId);
-                    container.html('<div class="loader"></div>'); // Show loader
-
-                    const params = {
-                        action: 'generate_plot',
-                        plot_type: plotType,
-                        said: said,
-                        gse: gse,
-                        gsm: gsm
-                    };
-                    if (cellType) {
-                        params.cell_type = cellType;
                     }
-
-                    console.log(`📡 Requesting CPDB plot '${plotType}':`, params);
-                    $.getJSON('', params)
-                        .done(function(data) {
-                            if (data.error) {
-                                console.error(`❌ CPDB plot generation failed: ${data.error}`);
-                                container.html('<p style="color:red;"><strong>Error:</strong> ' + data.error + '</p>');
-                                return;
-                            }
-
-                            if (data.imageUrl) {
-                                console.log(`✅ CPDB plot generated. URL: ${data.imageUrl}`);
-                                // 修改：使用传统字符串拼接以提高兼容性，并添加日志
-                                const imgHtml = '<img src="' + data.imageUrl + '" alt="Generated ' + plotType + ' plot">';
-                                console.log('Generated image HTML:', imgHtml);
-                                container.html(imgHtml);
-                            } else {
-                                console.error("❌ No imageUrl found in server response:", data);
-                                container.html('<p style="color:red;"><strong>Error:</strong> Server response did not contain an image URL.</p>');
-                            }
-                        })
-                        .fail(function(xhr) {
-                            console.error(`❌ CPDB plot request failed: ${xhr.status} ${xhr.statusText}`);
-                            container.html('<p style="color:red;"><strong>Request Failed:</strong> Server returned an error.</p>');
-                        });
-                }
-
-                // Bind events
-                $('#cpdbSummaryBtn').on('click', function() {
-                    generateCpdbPlot('summary', null, 'cpdbSummaryPlotContainer');
                 });
-                $('#cpdbReceiverBtn').on('click', function() {
-                    const selectedCellType = $('#cpdbCellTypeSelect').val();
-                    if (!selectedCellType) {
-                        alert("Please select a cell type first.");
+
+                // Update sender/receiver when main selection changes
+                $('#cpdbCellTypeMultiSelect').change(function() {
+                    const selected = $(this).val() || [];
+                    if ($('input[name="cpdbMode"]:checked').val() === 'directed') {
+                        ['#cpdbSenderTypes', '#cpdbReceiverTypes'].forEach(function(sel) {
+                            const current = $(sel).val() || [];
+                            $(sel).empty();
+                            selected.forEach(function(ct) {
+                                const isSelected = current.indexOf(ct) !== -1;
+                                $(sel).append('<option value="' + ct + '"' + (isSelected ? ' selected' : '') + '>' + ct + '</option>');
+                            });
+                        });
+                    }
+                });
+
+                // Run analysis
+                $('#runCpdbAnalysisBtn').click(function() {
+                    const selectedTypes = $('#cpdbCellTypeMultiSelect').val();
+
+                    if (!selectedTypes || selectedTypes.length < 2) {
+                        alert('Please select at least 2 cell types');
                         return;
                     }
-                    generateCpdbPlot('receiver', selectedCellType, 'cpdbReceiverPlotContainer');
+
+                    const mode = $('input[name="cpdbMode"]:checked').val();
+                    const params = {
+                        action: 'run-analysis',
+                        said: said,
+                        cell_types: JSON.stringify(selectedTypes)
+                    };
+
+                    if (mode === 'directed') {
+                        const senders = $('#cpdbSenderTypes').val();
+                        const receivers = $('#cpdbReceiverTypes').val();
+                        if (senders && senders.length > 0) {
+                            params.senders = JSON.stringify(senders);
+                        }
+                        if (receivers && receivers.length > 0) {
+                            params.receivers = JSON.stringify(receivers);
+                        }
+                    }
+
+                    // Show progress
+                    $('#cpdbProgressSection').show();
+                    $('#cpdbResultsSection').hide();
+                    $('.cpdb-progress-fill').css('width', '10%');
+
+                    console.log("📡 Starting CPDB analysis:", params);
+
+                    $.post('/scrna_website_test_war/cpdb-api', params)
+                        .done(function(response) {
+                            console.log("✅ CPDB analysis started:", response);
+                            if (response.job_id) {
+                                pollCpdbStatus(response.job_id);
+                            } else if (response.error) {
+                                showCpdbError(response.error);
+                            }
+                        })
+                        .fail(function(xhr) {
+                            console.error("❌ CPDB analysis request failed:", xhr.status, xhr.statusText);
+                            showCpdbError('Request failed: ' + xhr.statusText);
+                        });
                 });
-                // Initialize the CellPhoneDB section
-                initCpdb();
+
+                // Poll job status
+                function pollCpdbStatus(jobId) {
+                    const poll = setInterval(function() {
+                        $.getJSON('/scrna_website_test_war/cpdb-api', {
+                            action: 'status',
+                            job_id: jobId
+                        }).done(function(data) {
+                            console.log("📊 CPDB job status:", data);
+                            if (data.status === 'completed') {
+                                clearInterval(poll);
+                                loadCpdbResults(jobId);
+                            } else if (data.status === 'failed') {
+                                clearInterval(poll);
+                                showCpdbError(data.error || 'Analysis failed');
+                            } else {
+                                // Update progress bar if available
+                                if (data.progress) {
+                                    $('.cpdb-progress-fill').css('width', data.progress + '%');
+                                }
+                            }
+                        }).fail(function() {
+                            clearInterval(poll);
+                            showCpdbError('Failed to check job status');
+                        });
+                    }, 3000);
+                }
+
+                // Load and display results
+                function loadCpdbResults(jobId) {
+                    $.getJSON('/scrna_website_test_war/cpdb-api', {
+                        action: 'results',
+                        job_id: jobId
+                    }).done(function(data) {
+                        console.log("✅ CPDB results loaded:", data);
+                        $('#cpdbProgressSection').hide();
+                        $('#cpdbResultsSection').show();
+
+                        // Render heatmap
+                        renderCpdbHeatmap(data.heatmap_data);
+
+                        // Render dot plot
+                        renderCpdbDotplot(data.dotplot_data);
+
+                        // Populate table
+                        populateCpdbTable(data.interactions);
+                    }).fail(function(xhr) {
+                        console.error("❌ Failed to load CPDB results:", xhr.status);
+                        showCpdbError('Failed to load results');
+                    });
+                }
+
+                // Render heatmap using Plotly
+                function renderCpdbHeatmap(heatmapData) {
+                    if (!heatmapData || !heatmapData.z || heatmapData.z.length === 0) {
+                        $('#cpdbHeatmapPlot').html('<div class="cpdb-error"><p class="cpdb-error-text">No interaction data to display</p></div>');
+                        return;
+                    }
+
+                    const trace = {
+                        z: heatmapData.z,
+                        x: heatmapData.x,
+                        y: heatmapData.y,
+                        type: 'heatmap',
+                        colorscale: [
+                            [0, '#faf8f5'],
+                            [0.5, '#e8927c'],
+                            [1, '#8B0000']
+                        ],
+                        hoverongaps: false
+                    };
+
+                    const layout = {
+                        title: 'Ligand-Receptor Interaction Scores',
+                        font: { family: 'Montserrat, sans-serif' },
+                        xaxis: {
+                            title: 'Cell Type Pairs (Sender|Receiver)',
+                            tickangle: -45,
+                            tickfont: { size: 10 }
+                        },
+                        yaxis: {
+                            title: 'Interactions',
+                            tickfont: { size: 10 }
+                        },
+                        margin: { l: 150, r: 50, t: 80, b: 150 }
+                    };
+
+                    Plotly.newPlot('cpdbHeatmapPlot', [trace], layout, { responsive: true });
+                }
+
+                // Render dot plot using Plotly
+                function renderCpdbDotplot(dotplotData) {
+                    if (!dotplotData || !dotplotData.interactions || dotplotData.interactions.length === 0) {
+                        $('#cpdbDotplot').html('<div class="cpdb-error"><p class="cpdb-error-text">No interaction data to display</p></div>');
+                        return;
+                    }
+
+                    const trace = {
+                        x: dotplotData.cell_pairs,
+                        y: dotplotData.interactions,
+                        mode: 'markers',
+                        marker: {
+                            size: dotplotData.sizes.map(function(s) { return Math.min(30, Math.max(5, s * 10)); }),
+                            color: dotplotData.scores,
+                            colorscale: 'RdBu',
+                            reversescale: true,
+                            showscale: true,
+                            colorbar: { title: 'Score' }
+                        },
+                        type: 'scatter',
+                        text: dotplotData.scores.map(function(s) { return 'Score: ' + s.toFixed(3); }),
+                        hoverinfo: 'text+x+y'
+                    };
+
+                    const layout = {
+                        title: 'Top Ligand-Receptor Interactions',
+                        font: { family: 'Montserrat, sans-serif' },
+                        xaxis: {
+                            title: 'Cell Type Pairs',
+                            tickangle: -45,
+                            tickfont: { size: 10 }
+                        },
+                        yaxis: {
+                            title: 'Interactions',
+                            tickfont: { size: 10 }
+                        },
+                        margin: { l: 150, r: 100, t: 80, b: 150 }
+                    };
+
+                    Plotly.newPlot('cpdbDotplot', [trace], layout, { responsive: true });
+                }
+
+                // Populate results table
+                function populateCpdbTable(interactions) {
+                    const tbody = $('#cpdbResultsTable tbody');
+                    tbody.empty();
+
+                    if (!interactions || interactions.length === 0) {
+                        tbody.append('<tr><td colspan="6" style="text-align:center;">No interactions found</td></tr>');
+                        return;
+                    }
+
+                    interactions.forEach(function(int) {
+                        tbody.append(
+                            '<tr>' +
+                            '<td>' + int.interaction + '</td>' +
+                            '<td>' + int.ligand + '</td>' +
+                            '<td>' + int.receptor + '</td>' +
+                            '<td>' + int.cell_type_sender + '</td>' +
+                            '<td>' + int.cell_type_receiver + '</td>' +
+                            '<td>' + int.score.toFixed(4) + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                }
+
+                // Show error
+                function showCpdbError(message) {
+                    $('#cpdbProgressSection').hide();
+                    $('#cpdbResultsSection').show();
+                    $('#cpdbHeatmapPlot').html(
+                        '<div class="cpdb-error">' +
+                        '<svg class="cpdb-error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+                        '<circle cx="12" cy="12" r="10"></circle>' +
+                        '<line x1="12" y1="8" x2="12" y2="12"></line>' +
+                        '<line x1="12" y1="16" x2="12.01" y2="16"></line>' +
+                        '</svg>' +
+                        '<p class="cpdb-error-text">' + message + '</p>' +
+                        '</div>'
+                    );
+                }
+
+                // Tab switching
+                $('.cpdb-tab').click(function() {
+                    const tab = $(this).data('tab');
+                    $('.cpdb-tab').removeClass('active');
+                    $(this).addClass('active');
+                    $('.cpdb-tab-content').removeClass('active');
+                    $('#cpdb' + tab.charAt(0).toUpperCase() + tab.slice(1) + 'Tab').addClass('active');
+
+                    // Resize Plotly charts when tab becomes visible
+                    if (tab === 'heatmap') {
+                        Plotly.Plots.resize('cpdbHeatmapPlot');
+                    } else if (tab === 'dotplot') {
+                        Plotly.Plots.resize('cpdbDotplot');
+                    }
+                });
+
+                // Initialize
+                initCpdbCellTypes();
             });
         </script>
     </div>
