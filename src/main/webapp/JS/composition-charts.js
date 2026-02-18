@@ -124,7 +124,7 @@
                             textAlign: 'center',
                             fill: '#8b95a5',
                             fontSize: 12,
-                            fontFamily: 'Source Sans 3, sans-serif'
+                            fontFamily: 'Montserrat, sans-serif'
                         }
                     }
                 ]
