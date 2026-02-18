@@ -1,8 +1,9 @@
+package Servlet;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-
-
 import java.util.*;
 
 import com.google.gson.Gson;
@@ -23,11 +24,8 @@ public class DEGServlet extends HttpServlet {
                     reader,
                     new TypeToken<Map<String, Map<String, String>>>() {}.getType()
             );
-
-
         } catch (Exception e) {
             throw new ExceptionInInitializerError("加载 mapping.csv.json 失败: " + e.getMessage());
-
         }
     }
 
@@ -39,14 +37,12 @@ public class DEGServlet extends HttpServlet {
         String said = request.getParameter("said");
         if (said == null || said.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "缺少参数: said");
-
             return;
         }
 
         Map<String, String> meta = mapping.get(said);
         if (meta == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "未找到 SAID 映射: " + said);
-
             return;
         }
 
@@ -62,16 +58,19 @@ public class DEGServlet extends HttpServlet {
             return;
         }
 
-
         List<Map<String,String>> outList = new ArrayList<>();
-
 
         try (
                 Reader in = new FileReader(csvFile);
                 CSVParser parser = CSVFormat.DEFAULT
                         .withFirstRecordAsHeader()
                         .withIgnoreSurroundingSpaces()
-@@ -73,61 +111,129 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
+                        .withTrim()
+                        .parse(in)
+        ) {
+            // 建立列名映射（忽略大小写）
+            Map<String,String> lowerToOrig = new HashMap<>();
+            for (String orig : parser.getHeaderMap().keySet()) {
                 lowerToOrig.put(orig.trim().toLowerCase(), orig);
             }
 
@@ -83,8 +82,6 @@ public class DEGServlet extends HttpServlet {
                             "CSV 表头缺少列: " + key);
                     return;
                 }
-
-
             }
 
             String namesCol = lowerToOrig.get("names");
@@ -101,7 +98,6 @@ public class DEGServlet extends HttpServlet {
                     String score = rec.get(scoreCol);
                     String group = groupCol != null ? rec.get(groupCol) : "Unknown";
 
-
                     if (pval <= pvalThreshold && logfc >= fcThreshold) {
                         if (filterGroup == null || filterGroup.isEmpty() || group.equals(filterGroup)) {
                             Map<String,String> row = new HashMap<>();
@@ -115,31 +111,24 @@ public class DEGServlet extends HttpServlet {
                     }
                 } catch (NumberFormatException ignore) {
                     // 忽略格式错误的行
-
-
                 }
             }
 
         } catch (IOException e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "读取 CSV 出错: " + e.getMessage());
-
-
             return;
         }
 
         // 输出 JSON
-
-
         response.setContentType("application/json;charset=UTF-8");
         new Gson().toJson(outList, response.getWriter());
     }
 
-
     private double parseDouble(String s, double def) {
         try {
-
             return Double.parseDouble(s);
         } catch (Exception e) {
             return def;
         }
     }
+}
