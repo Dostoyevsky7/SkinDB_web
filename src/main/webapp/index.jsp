@@ -601,7 +601,7 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero__background">
-        <img src="images/campus.png" alt="">
+        <img src="images/campus.jpg" alt="">
         <div class="hero__overlay"></div>
     </div>
 
