@@ -136,7 +136,7 @@
     }
 
     /* ---- Horizontal bar chart ---- */
-    function createHorizontalBar(containerId, data, gradientStart, gradientEnd) {
+    function createHorizontalBar(containerId, data, barColor) {
         var chart = initChart(containerId);
         if (!chart) return;
 
@@ -198,10 +198,7 @@
                 barMaxWidth: 20,
                 itemStyle: {
                     borderRadius: [0, 3, 3, 0],
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                        { offset: 0, color: gradientStart || '#e8927c' },
-                        { offset: 1, color: gradientEnd || '#d4a574' }
-                    ])
+                    color: barColor || '#e8927c'
                 },
                 emphasis: {
                     itemStyle: { shadowBlur: 6, shadowColor: 'rgba(0,0,0,0.15)' }
@@ -214,7 +211,7 @@
     }
 
     /* ---- Horizontal bar with dataZoom slider ---- */
-    function createScrollableBar(containerId, data, visibleCount, gradientStart, gradientEnd) {
+    function createScrollableBar(containerId, data, visibleCount, barColor) {
         var chart = initChart(containerId);
         if (!chart) return;
 
@@ -289,10 +286,7 @@
                 barMaxWidth: 18,
                 itemStyle: {
                     borderRadius: [0, 3, 3, 0],
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                        { offset: 0, color: gradientStart || '#7c9eb8' },
-                        { offset: 1, color: gradientEnd || '#a3c4bc' }
-                    ])
+                    color: barColor || '#7c9eb8'
                 },
                 emphasis: {
                     itemStyle: { shadowBlur: 6, shadowColor: 'rgba(0,0,0,0.15)' }
@@ -314,21 +308,21 @@
 
         // Row 1
         createDoughnut('chart-gross-map', d.Gross_Map, true);
-        createHorizontalBar('chart-condition', d.Condition, '#e8927c', '#d4a574');
+        createHorizontalBar('chart-condition', d.Condition, '#e8927c');
 
         // Row 2
         createDoughnut('chart-sex', d.Sex, false);
-        createHorizontalBar('chart-age', d.Age, '#7c9eb8', '#a3c4bc');
+        createHorizontalBar('chart-age', d.Age, '#7c9eb8');
 
         // Skin location — doughnut since it has ≤12 entries
         createDoughnut('chart-skin-location', d.Skin_location, false);
 
         // Row 3 — Fine Map: scrollable bar with 20 visible
-        createScrollableBar('chart-fine-map', d.Fine_Map, 20, '#d4a574', '#e8c9a8');
+        createScrollableBar('chart-fine-map', d.Fine_Map, 20, '#d4a574');
 
         // Row 4 — Batch: top 25 with scrollable bar
         var batchTop25 = d.Batch.slice(0, 25);
-        createScrollableBar('chart-batch', batchTop25, 15, '#c4725e', '#d4b896');
+        createScrollableBar('chart-batch', batchTop25, 15, '#c4725e');
     }
 
     /* ---- Public API ---- */
