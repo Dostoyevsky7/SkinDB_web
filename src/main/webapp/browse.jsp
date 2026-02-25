@@ -585,8 +585,18 @@
             Set<String> allTissues = new TreeSet<String>(); // For populating dropdown
             Set<String> allConditions = new TreeSet<String>(); // For populating dropdown
             BufferedReader reader = null;
+            String dataLoadError = null;
 
-            try {
+            // Check if CSV files exist
+            java.io.File humanFile = new java.io.File(humanCsvPath);
+            java.io.File mouseFile = new java.io.File(mouseCsvPath);
+
+            if (!humanFile.exists() || !humanFile.canRead()) {
+                dataLoadError = "Human dataset file not accessible: " + humanCsvPath;
+            } else if (!mouseFile.exists() || !mouseFile.canRead()) {
+                dataLoadError = "Mouse dataset file not accessible: " + mouseCsvPath;
+            } else {
+                try {
                 // Load human data
                 reader = new BufferedReader(new FileReader(humanCsvPath));
                 String headerLine = reader.readLine(); // Skip header
@@ -872,13 +882,21 @@
 
         <%
             } catch (Exception e) {
-        %>
-        <div class="error-message">
-            <strong>Error loading data:</strong> <%= e.getMessage() %>
-        </div>
-        <%
+                dataLoadError = "Error loading data: " + e.getMessage();
             } finally {
                 if (reader != null) try { reader.close(); } catch(Exception ignore){}
+            }
+            } // end else (files exist)
+
+            // Show error message if data couldn't be loaded
+            if (dataLoadError != null) {
+        %>
+        <div class="error-message" style="background: #fff3cd; border: 1px solid #ffc107; color: #856404; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <strong>Data Loading Notice:</strong> <%= dataLoadError %>
+            <br><br>
+            <em>The data files may not be available on this deployment. This feature requires the CSV data files to be present on the server.</em>
+        </div>
+        <%
             }
         %>
     </div>

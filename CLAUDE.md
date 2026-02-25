@@ -1,0 +1,1 @@
+This directory is a project directly deployed using GitHub actions to the website "https://skin-scsaid.com/". Keep that in mind. Never use. When they have matured, non-errorous changes, git add and git push to GitHub without asking me.

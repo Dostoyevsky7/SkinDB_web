@@ -172,7 +172,16 @@
     String h5adPath = "";
 
     BufferedReader csvReader = null;
-    try {
+    String csvError = null;
+
+    // Check if CSV files exist
+    java.io.File humanCsvFile = new java.io.File(HUMAN_CSV_PATH);
+    java.io.File mouseCsvFile = new java.io.File(MOUSE_CSV_PATH);
+
+    if (!humanCsvFile.exists() || !mouseCsvFile.exists()) {
+        csvError = "CSV data files not found. Human exists: " + humanCsvFile.exists() + ", Mouse exists: " + mouseCsvFile.exists();
+    } else {
+        try {
         // 3) Search in human CSV first
         boolean found = false;
         csvReader = new BufferedReader(new FileReader(HUMAN_CSV_PATH));
