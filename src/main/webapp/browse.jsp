@@ -1,7 +1,7 @@
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="java.io.BufferedReader, java.io.FileReader, java.util.ArrayList, java.util.List, java.util.Map, java.util.HashMap" %>
+<%@ page import="java.io.BufferedReader, java.io.FileReader, java.util.ArrayList, java.util.List, java.util.Map, java.util.HashMap, java.util.Set, java.util.TreeSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -582,8 +582,8 @@
 
             // Load all data from CSV files
             List<Map<String, String>> allData = new ArrayList<Map<String, String>>();
-            Set<String> allTissues = new java.util.TreeSet<String>(); // For populating dropdown
-            Set<String> allConditions = new java.util.TreeSet<String>(); // For populating dropdown
+            Set<String> allTissues = new TreeSet<String>(); // For populating dropdown
+            Set<String> allConditions = new TreeSet<String>(); // For populating dropdown
             BufferedReader reader = null;
 
             try {
