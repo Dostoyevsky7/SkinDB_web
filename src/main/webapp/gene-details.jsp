@@ -19,10 +19,10 @@
     <!-- Header -->
     <header class="site-header">
         <div class="container">
-            <a href="home" class="site-logo">scSAID</a>
+            <a href="index.jsp" class="site-logo">scSAID</a>
             <nav class="main-nav">
-                <a href="home" class="main-nav__link">Home</a>
-                <a href="browse" class="main-nav__link">Browse</a>
+                <a href="index.jsp" class="main-nav__link">Home</a>
+                <a href="browse.jsp" class="main-nav__link">Browse</a>
                 <a href="gene-search.jsp" class="main-nav__link main-nav__link--active">Search</a>
                 <a href="download.jsp" class="main-nav__link">Download</a>
                 <div class="main-nav__item">

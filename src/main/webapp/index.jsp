@@ -28,106 +28,7 @@
            Homepage Specific Styles
            ========================================================================== */
 
-        /* Header / Navigation */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--bg-dark);
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            box-shadow: var(--shadow-md);
-        }
-
-        .site-header .container {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: var(--space-lg);
-            align-items: center;
-            width: 100%;
-        }
-
-        .site-logo {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--color-accent);
-            letter-spacing: -0.02em;
-            text-decoration: none;
-        }
-
-        /* .site-logo:hover {
-            color: var(--color-accent-light);
-        } */
-
-        .main-nav {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-            justify-self: center;
-        }
-
-        .main-nav__link {
-            padding: var(--space-sm) var(--space-md);
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            transition: all var(--transition-fast);
-        }
-
-        /* .main-nav__link:hover {
-            color: var(--text-inverse);
-            background: rgba(255, 255, 255, 0.1);
-        } */
-
-        .main-nav__link--active {
-            color: var(--text-inverse);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .header-icons {
-            display: flex;
-            align-items: center;
-            gap: 0rem;
-            justify-self: end;
-        }
-
-        .header-icon-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.35rem 0.5rem;
-            border-radius: var(--radius-full);
-            color: var(--text-inverse);
-            opacity: 0.85;
-            transition: opacity var(--transition-fast), transform var(--transition-fast);
-        }
-
-        /* .header-icon-link:hover {
-            opacity: 1;
-            transform: translateY(-1px);
-        } */
-
-        .github-icon {
-            width: 36px;
-            height: 36px;
-            color: var(--text-inverse);
-        }
-
-        .university-logo {
-            height: 90px;
-            opacity: 1;
-            transition: opacity var(--transition-fast);
-        }
-
-        /* .university-logo:hover {
-            opacity: 1;
-        } */
+        /* Header styles are shared globally in CSS/header.css */
 
         /* Hero Section */
         .hero {
@@ -543,9 +444,6 @@
                 grid-column: span 1;
             }
 
-            .main-nav {
-                display: none;
-            }
         }
 
         @media (max-width: 480px) {
