@@ -109,12 +109,13 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='color-by-dropdown',
                 options=[
+                    {'label': 'Cell Type (Gross)', 'value': 'Gross_Map'},
                     {'label': 'Cell Type', 'value': 'cell_type'},
                     {'label': 'Cluster', 'value': 'leiden'},
                     {'label': 'Dataset', 'value': 'dataset'},
                     {'label': 'Sample', 'value': 'sample'}
                 ],
-                value='cell_type',
+                value='Gross_Map',
                 className='control-dropdown'
             )
         ], className="control-group"),

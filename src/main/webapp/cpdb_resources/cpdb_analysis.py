@@ -35,7 +35,7 @@ MAPPING_PATHS = [
 ]
 
 # Cell type column name in h5ad obs
-CELL_TYPE_COL = "scanvi_pred"
+CELL_TYPE_COL = "Gross_Map"
 
 # Cache duration in seconds (24 hours)
 CACHE_DURATION = 86400

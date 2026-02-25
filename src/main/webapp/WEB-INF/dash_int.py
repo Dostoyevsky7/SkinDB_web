@@ -7,6 +7,7 @@ from dash.dependencies import Input, Output
 from urllib.parse import parse_qs
 import plotly.express as px
 import plotly.colors as pcolors
+from functools import lru_cache
 
 # Flask + Dash 初始化
 server = Flask(__name__)
@@ -16,7 +17,39 @@ app = Dash(__name__, server=server, url_base_pathname="/dash/")
 # 你需要根据你的实际部署环境来设置这个路径
 H5AD_PATH = "SkinDB_combined_human_integrated.h5ad"
 
-def load_integrated_adata(saids: list):
+# Cache size for processed datasets (32 unique sample combinations)
+CACHE_MAXSIZE = 32
+
+# Downsampling thresholds
+MAX_CELLS_THRESHOLD = 8000
+TARGET_CELLS_AFTER_DOWNSAMPLE = 5000
+
+
+def downsample_if_needed(adata, max_cells=MAX_CELLS_THRESHOLD, target_cells=TARGET_CELLS_AFTER_DOWNSAMPLE):
+    """
+    Downsample large datasets to improve rendering performance.
+    Uses uniform sampling to preserve cell type distribution.
+    """
+    n_cells = adata.n_obs
+    if n_cells > max_cells:
+        step = int(n_cells / target_cells)
+        indices = list(range(0, n_cells, step))[:target_cells]
+        return adata[indices].copy(), True
+    return adata, False
+
+
+@lru_cache(maxsize=CACHE_MAXSIZE)
+def load_and_process_adata_cached(saids_tuple):
+    """
+    Cached version of data loading and processing.
+    Uses tuple for saids since lists are not hashable.
+    Returns processed AnnData object.
+    """
+    saids = list(saids_tuple)
+    return _load_integrated_adata_impl(saids)
+
+
+def _load_integrated_adata_impl(saids: list):
     """
     Loads the master .h5ad file, selects specified SAIDs, and performs integration and UMAP.
     """
@@ -52,7 +85,7 @@ def load_integrated_adata(saids: list):
 
     return adata_filtered
 
-# Dash 应用布局
+# Dash 应用布局 with loading indicator
 app.layout = html.Div(
     style={
         'width': '100%',
@@ -62,36 +95,58 @@ app.layout = html.Div(
     },
     children=[
         dcc.Location(id="url", refresh=False),
+        # Store for tracking downsampling status
+        dcc.Store(id="downsample-info"),
         html.Div(
             style={
                 'padding': '10px',
-                'textAlign': 'right', # 让按钮靠右
+                'textAlign': 'right',
                 'background': '#f8f8f8',
-                'borderBottom': '1px solid #eee'
+                'borderBottom': '1px solid #eee',
+                'display': 'flex',
+                'justifyContent': 'space-between',
+                'alignItems': 'center'
             },
             children=[
-                # 返回整合页面按钮
+                # Status message (shows downsampling info)
+                html.Div(id="status-message", style={
+                    'fontSize': '12px',
+                    'color': '#666',
+                    'paddingLeft': '10px'
+                }),
+                # Back button
                 html.A(
                     html.Button('Back', style={'marginRight': '10px'}),
-                    # 确保这里的 href 路径是正确的，替换为你的实际应用上下文路径
-                    href="http://localhost:8080/scrna_website_test_war/search.jsp", # 根据你的实际上下文路径调整
+                    href="http://localhost:8080/scrna_website_test_war/search.jsp",
                     target="_self"
                 ),
-                # 导出为PNG功能通过 dcc.Graph 的 config 属性实现，无需额外按钮
-                # 用户可以通过图表右上角的相机图标下载
             ]
         ),
-        html.Div(
-            style={
-                'flex': 1,
-                'display': 'flex'
-            },
+        # Loading wrapper for the graph
+        dcc.Loading(
+            id="loading-indicator",
+            type="circle",
+            color="#e8927c",
             children=[
-                dcc.Graph(
-                    id='umap-plot',
-                    style={'width': '100%', 'height': '100%'},
-                    # 启用 modebar 使得用户可以通过图表右上角的相机图标下载PNG
-                    config={'responsive': True, 'displayModeBar': True, 'toImageButtonOptions': {'format': 'png', 'filename': 'integrated_umap_plot'}}
+                html.Div(
+                    style={
+                        'flex': 1,
+                        'display': 'flex'
+                    },
+                    children=[
+                        dcc.Graph(
+                            id='umap-plot',
+                            style={'width': '100%', 'height': '100%'},
+                            config={
+                                'responsive': True,
+                                'displayModeBar': True,
+                                'toImageButtonOptions': {
+                                    'format': 'png',
+                                    'filename': 'integrated_umap_plot'
+                                }
+                            }
+                        )
+                    ]
                 )
             ]
         )
@@ -99,7 +154,8 @@ app.layout = html.Div(
 )
 
 @app.callback(
-    Output("umap-plot", "figure"),
+    [Output("umap-plot", "figure"),
+     Output("status-message", "children")],
     [Input("url", "search")]
 )
 def update_umap(search):
@@ -108,86 +164,102 @@ def update_umap(search):
     saids_str = params.get("saids", [None])[0]
 
     if not saids_str:
-        return px.scatter(title="Error: No SAIDs (GSMs) provided in URL.")
+        return px.scatter(title="Error: No SAIDs (GSMs) provided in URL."), ""
 
     selected_saids = saids_str.split(',')
 
     if len(selected_saids) < 2:
-        return px.scatter(title="Error: Please select at least two datasets for integration.")
+        return px.scatter(title="Error: Please select at least two datasets for integration."), ""
 
-    # 加载并集成 AnnData
+    # Load and process data using cached function
     try:
-        adata = load_integrated_adata(selected_saids)
+        # Convert to tuple for caching (lists are not hashable)
+        saids_tuple = tuple(sorted(selected_saids))
+        adata = load_and_process_adata_cached(saids_tuple)
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+        return px.scatter(title="Error: Data file not found. Please contact administrator."), "Error: Data file not found"
+    except ValueError as e:
+        print(f"Value error: {e}")
+        return px.scatter(title=f"Error: {str(e)[:100]}"), f"Error: {str(e)[:50]}"
     except Exception as e:
         print(f"Error loading or processing data: {e}")
-        return px.scatter(title=f"Error loading or processing data: {e}. Please check server logs.")
+        return px.scatter(title="Error: Failed to process data. Please try again."), "Processing error"
 
-    # ----------------------------------------------------------------------
-    # 新的着色和图例逻辑
-    # ----------------------------------------------------------------------
-    REQUIRED_COLS_FOR_COLORING = ['GSM', 'scanvi_pred']
+    # Apply downsampling for large datasets
+    adata_display, was_downsampled = downsample_if_needed(adata)
+
+    # Generate status message
+    status_msg = ""
+    if was_downsampled:
+        status_msg = f"Showing {adata_display.n_obs:,} of {adata.n_obs:,} cells (downsampled for performance)"
+    else:
+        status_msg = f"Showing {adata_display.n_obs:,} cells"
+
+    # Check required columns for coloring
+    REQUIRED_COLS_FOR_COLORING = ['GSM', 'Gross_Map']
     for col in REQUIRED_COLS_FOR_COLORING:
-        if col not in adata.obs.columns:
-            raise ValueError(
-                f"Required column '{col}' for coloring is missing in adata.obs. "
-                f"Available columns: {adata.obs.columns.tolist()}"
-            )
+        if col not in adata_display.obs.columns:
+            return px.scatter(
+                title=f"Error: Required column '{col}' not found in data."
+            ), f"Missing column: {col}"
 
-    # 构造 UMAP DataFrame
+    # Build UMAP DataFrame from downsampled data
     df_umap = pd.DataFrame(
-        adata.obsm["X_umap"],
-        index=adata.obs.index,
+        adata_display.obsm["X_umap"],
+        index=adata_display.obs.index,
         columns=["UMAP1", "UMAP2"]
     )
 
-    # 将需要的元数据列添加到 df_umap 中
-    df_umap['GSM'] = adata.obs['GSM']
-    df_umap['scanvi_pred'] = adata.obs['scanvi_pred']
+    # Add metadata columns
+    df_umap['GSM'] = adata_display.obs['GSM'].values
+    df_umap['Gross_Map'] = adata_display.obs['Gross_Map'].values
 
-    # 如果存在 integrated_clusters，也将其添加到 df_umap 以便悬停显示
-    if 'integrated_clusters' in adata.obs.columns:
-        df_umap['integrated_clusters'] = adata.obs['integrated_clusters'].astype(str)
+    # Add integrated_clusters if available
+    if 'integrated_clusters' in adata_display.obs.columns:
+        df_umap['integrated_clusters'] = adata_display.obs['integrated_clusters'].astype(str).values
 
-    # ----------------------------------------------------------------------
-    # 生成一个包含足够多独特颜色的颜色序列
-    # 拼接多个 Plotly 内置颜色序列以确保有足够多的颜色
-    color_sequence = pcolors.qualitative.Alphabet + pcolors.qualitative.Light24 + pcolors.qualitative.Plotly + pcolors.qualitative.Bold
-    # ----------------------------------------------------------------------
+    # Generate color sequence with enough unique colors
+    color_sequence = (
+        pcolors.qualitative.Alphabet +
+        pcolors.qualitative.Light24 +
+        pcolors.qualitative.Plotly +
+        pcolors.qualitative.Bold
+    )
 
-    # 准备悬停数据显示的列
+    # Prepare hover data columns
     hover_data_cols = {
-        "GSM": True,          # 鼠标悬停时显示原始 GSM
-        "scanvi_pred": True   # 鼠标悬停时显示 scanvi_pred 细胞类型
+        "GSM": True,
+        "Gross_Map": True
     }
-    # 如果有集成聚类结果，也添加到悬停信息
     if 'integrated_clusters' in df_umap.columns:
         hover_data_cols['integrated_clusters'] = True
 
-    # 创建散点图
+    # Create scatter plot
     fig = px.scatter(
         df_umap,
         x="UMAP1",
         y="UMAP2",
-        color="scanvi_pred",  # 仅根据 'scanvi_pred' 着色
+        color="Gross_Map",
         title=f"Integrated UMAP Plot for GSMs: {', '.join(selected_saids)}",
-        hover_data=hover_data_cols,  # 设置悬停信息
-        labels={"color": "Cell Type"}, # 设置图例标题
-        color_discrete_sequence=color_sequence # 使用自定义的颜色序列
+        hover_data=hover_data_cols,
+        labels={"color": "Cell Type"},
+        color_discrete_sequence=color_sequence
     )
 
     fig.update_layout(
         autosize=True,
         margin=dict(l=10, r=10, t=40, b=10),
         legend=dict(
-            orientation="v", # 垂直排列图例项
+            orientation="v",
             yanchor="top",
             y=1,
             xanchor="left",
-            x=1.02 # 将图例放置在图表右侧，稍微超出一点以避免覆盖数据
+            x=1.02
         )
     )
 
-    return fig
+    return fig, status_msg
 
 if __name__ == "__main__":
     server.run(debug=True, host="0.0.0.0", port=8050)

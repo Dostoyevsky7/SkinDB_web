@@ -4,19 +4,18 @@
 <%@ page import="
     java.io.*,
     java.util.*,
-    java.nio.file.Paths,
-    org.apache.poi.ss.usermodel.*" %>
+    java.nio.file.Paths" %>
 <%!
     // =========================================================================
-    // CONFIGURATION: PLEASE SET THESE PATHS
+    // CONFIGURATION: PATHS FOR LINUX DEPLOYMENT
     // =========================================================================
-    // 1. Set the absolute base path to your main data directory
-    private static final String DATA_BASE_PATH = "D:\\web\\web_application\\scrna_website_test\\src\\main\\webapp\\SkinDB_New";
-    // 2. Set the command for your python executable
-    // WARNING: If you are using a virtual environment (like dash_env),
-    // you MUST set this to the absolute path of the python.exe file.
-    // Example: private static final String PYTHON_COMMAND = "D:\\path\\to\\your\\virtual\\env\\Scripts\\python.exe";
-    private static final String PYTHON_COMMAND = "C:\\Anaconda3\\envs\\dash_env\\python.exe";
+    // 1. Base path to the main data directory
+    private static final String DATA_BASE_PATH = "/root/SkinDB/download_data";
+    // 2. Python command using conda environment
+    private static final String PYTHON_COMMAND = "/root/miniconda3/envs/scrna/bin/python";
+    // 3. CSV file paths
+    private static final String HUMAN_CSV_PATH = "/root/SkinDB/human/human_obs_by_batch.csv";
+    private static final String MOUSE_CSV_PATH = "/root/SkinDB/mouse/mouse_obs_by_batch.csv";
     // =========================================================================
 
 
@@ -165,70 +164,72 @@
     String gseVal = "";
     String gsmVal = "";
     String speciesVal = "";
-    String diseaseVal = "";
+    String n_cellsVal = "";
+    String conditionVal = "";
+    String ageVal = "";
+    String sexVal = "";
     String tissueVal = "";
-    String charVal = "";
-    String titleVal = "";
-    String summaryVal = "";
-    String designVal = "";
+    String h5adPath = "";
 
-    DataFormatter fmt = new DataFormatter();
-    Workbook workbook = null;
-    InputStream fis = null;
+    BufferedReader csvReader = null;
     try {
-        // 3) 打开 Excel
-        String excelPath = application.getRealPath("/WEB-INF/AllData.xlsx");
-        fis = new FileInputStream(excelPath);
-        workbook = WorkbookFactory.create(fis);
-        Sheet sheet = workbook.getSheetAt(0);
-        // 4) 构建表头映射
-        Row headerRow = sheet.getRow(0);
-        Map<String,Integer> colIdx = new HashMap<String,Integer>();
-        for (Cell c : headerRow) {
-            colIdx.put(fmt.formatCellValue(c).trim(), c.getColumnIndex());
-        }
-
-        // 5) 各列索引
-        Integer idxSAID    = colIdx.get("SAID");
-        Integer idxGSE     = colIdx.get("GSE");
-        Integer idxGSM     = colIdx.get("GSM");
-        Integer idxSpecies = colIdx.get("species");
-        Integer idxDisease = colIdx.get("disease information");
-        Integer idxTissue  = colIdx.get("tissue information");
-        Integer idxChar    = colIdx.get("Characteristics");
-        Integer idxTitle   = colIdx.get("Title");
-        Integer idxSummary = colIdx.get("Summary");
-        Integer idxDesign  = colIdx.get("Overall Design");
-        if (idxSAID == null) {
-            out.println("<h2 style='color:red;'>Error: SAID column not found.</h2>");
-            return;
-        }
-
-        // 6) 查找对应行
-        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-            Row row = sheet.getRow(i);
-            if (row == null) continue;
-            String v = fmt.formatCellValue(row.getCell(idxSAID));
-            if (saidParam.equals(v)) {
-                saidVal    = v;
-                if (idxGSE     != null) gseVal     = fmt.formatCellValue(row.getCell(idxGSE));
-                if (idxGSM     != null) gsmVal     = fmt.formatCellValue(row.getCell(idxGSM));
-                if (idxSpecies != null) speciesVal = fmt.formatCellValue(row.getCell(idxSpecies));
-                if (idxDisease != null) diseaseVal = fmt.formatCellValue(row.getCell(idxDisease));
-                if (idxTissue  != null) tissueVal  = fmt.formatCellValue(row.getCell(idxTissue));
-                if (idxChar    != null) charVal    = fmt.formatCellValue(row.getCell(idxChar));
-                if (idxTitle   != null) titleVal   = fmt.formatCellValue(row.getCell(idxTitle));
-                if (idxSummary != null) summaryVal = fmt.formatCellValue(row.getCell(idxSummary));
-                if (idxDesign  != null) designVal  = fmt.formatCellValue(row.getCell(idxDesign));
+        // 3) Search in human CSV first
+        boolean found = false;
+        csvReader = new BufferedReader(new FileReader(HUMAN_CSV_PATH));
+        String headerLine = csvReader.readLine(); // Skip header
+        String line;
+        while ((line = csvReader.readLine()) != null) {
+            String[] parts = line.split(",", -1);
+            if (parts.length >= 11 && saidParam.equals(parts[10])) {
+                saidVal = parts[10];
+                gseVal = parts[9];
+                gsmVal = parts[5];
+                speciesVal = "Human";
+                n_cellsVal = parts[1];
+                conditionVal = parts[2];
+                ageVal = parts[3];
+                sexVal = parts[4];
+                tissueVal = parts[6];
+                h5adPath = DATA_BASE_PATH + "/human/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
+                found = true;
                 break;
             }
         }
+        csvReader.close();
+
+        // 4) If not found in human CSV, search in mouse CSV
+        if (!found) {
+            csvReader = new BufferedReader(new FileReader(MOUSE_CSV_PATH));
+            csvReader.readLine(); // Skip header
+            while ((line = csvReader.readLine()) != null) {
+                String[] parts = line.split(",", -1);
+                if (parts.length >= 11 && saidParam.equals(parts[10])) {
+                    saidVal = parts[10];
+                    gseVal = parts[9];
+                    gsmVal = parts[5];
+                    speciesVal = "Mouse";
+                    n_cellsVal = parts[1];
+                    conditionVal = parts[2];
+                    ageVal = parts[3];
+                    sexVal = parts[4];
+                    tissueVal = parts[6];
+                    h5adPath = DATA_BASE_PATH + "/mouse/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
+                    found = true;
+                    break;
+                }
+            }
+            csvReader.close();
+        }
+
+        if (!found) {
+            out.println("<h2 style='color:red;'>Error: SAID '" + saidParam + "' not found in database.</h2>");
+            return;
+        }
     } catch (Exception e) {
-        out.println("<h2 style='color:red;'>Error loading Excel: " + e.getMessage() + "</h2>");
+        out.println("<h2 style='color:red;'>Error loading CSV: " + e.getMessage() + "</h2>");
         return;
     } finally {
-        if (workbook != null) try { workbook.close(); } catch (Exception ignore) {}
-        if (fis      != null) try { fis.close(); } catch (Exception ignore) {}
+        if (csvReader != null) try { csvReader.close(); } catch (Exception ignore) {}
     }
 %>
 
@@ -335,22 +336,17 @@
                     <div class="detail_container_1"><div class="subtitle">GSE: </div><div class="text_2"><%= gseVal %></div></div>
                     <div class="detail_container_1"><div class="subtitle">GSM: </div><div class="text_2"><%= gsmVal %></div></div>
                     <div class="detail_container_1"><div class="subtitle">Species: </div><div class="text_2"><%= speciesVal %></div></div>
-                    <div class="detail_container_1"><div class="subtitle">Disease: </div><div class="text_2"><%= diseaseVal %></div></div>
-
+                    <div class="detail_container_1"><div class="subtitle">Condition: </div><div class="text_2"><%= conditionVal %></div></div>
                     <div class="detail_container_1"><div class="subtitle">Tissue: </div><div class="text_2"><%= tissueVal %></div></div>
-
-                    <div class="title_1" style="margin-top: 20px;">Characteristics<div class="separator"></div></div>
-                    <% String[] charItems = charVal != null ? charVal.split("\\s*;\\s*") : new String[0]; for (String item : charItems) { if (item == null || item.trim().isEmpty()) continue; %>
-                    <div class="detail_container_1"><div class="subtitle"></div><div class="text_2"><%= item.trim() %></div></div>
-                    <% } %>
+                    <div class="detail_container_1"><div class="subtitle">Cells: </div><div class="text_2"><%= n_cellsVal %></div></div>
+                    <div class="detail_container_1"><div class="subtitle">Age: </div><div class="text_2"><%= ageVal %></div></div>
+                    <div class="detail_container_1"><div class="subtitle">Sex: </div><div class="text_2"><%= sexVal %></div></div>
                 </div>
                 <div style="width: 60%">
-                    <div class="title_1">Experiment Information<div class="separator"></div></div>
+                    <div class="title_1">Dataset Path<div class="separator"></div></div>
 
                     <div style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
-                        <div class="detail_container_2"><div class="subtitle">Title: </div><div class="text_2"><%= titleVal %></div></div>
-                        <div class="detail_container_2"><div class="subtitle">Summary: </div><div class="text_2"><%= summaryVal %></div></div>
-                        <div class="detail_container_2"><div class="subtitle">Overall Design: </div><div class="text_2"><%= designVal %></div></div>
+                        <div class="detail_container_2"><div class="subtitle">H5AD File: </div><div class="text_2" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><%= h5adPath %></div></div>
 
                     </div>
                 </div>
@@ -360,7 +356,7 @@
             <div class="cluster">
                 <div class="header">Cell Clustering</div>
                 <div id="dash-container" style="width:1000px; height:800px;">
-                    <iframe src="http://localhost:8050/dash/?sample_id=${sid}" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
+                    <iframe src="/dash/?sample_id=<%= saidVal %>" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
                 </div>
             </div>
 
@@ -530,6 +526,9 @@
         </div>
 
         <script>
+            // Dynamic context path for AJAX requests
+            const contextPath = '<%= request.getContextPath() %>';
+
             $(document).ready(function() {
                 document.querySelectorAll('a[href^="#"]').forEach(a => {
                     a.addEventListener('click', function (e) {
@@ -572,7 +571,7 @@
                 function initGroupOptions() {
                     console.log("🔍 Initializing DEG group dropdown");
 
-                    $.getJSON('/scrna_website_test_war/deg', { said: said, pval: 1.0, fc: 0.0 })
+                    $.getJSON(contextPath + '/deg', { said: said, pval: 1.0, fc: 0.0 })
                         .done(function(data){
                             console.log("✅ DEG group data fetched");
                             const groups = Array.from(new Set(data.map(r => typeof r.group === "string" ? r.group.trim() : null).filter(g => g)));
@@ -593,7 +592,7 @@
                     const params = { said: said, pval: pval, fc: fc };
                     if (group) params.group = group;
                     console.log("📡 Requesting DEG data:", params);
-                    $.getJSON('/scrna_website_test_war/deg', params)
+                    $.getJSON(contextPath + '/deg', params)
                         .done(function(data){
                             console.log("✅ DEG data received");
                             table.clear();
@@ -626,8 +625,7 @@
                 // Initialize cell type multi-select
                 function initCpdbCellTypes() {
                     console.log("🔍 Loading cell types for CellPhoneDB");
-                    $.getJSON('/scrna_website_test_war/cpdb-api', {
-                        action: 'cell-types',
+                    $.getJSON(contextPath + '/cpdb-api?action=cell-types', {
                         said: said
                     }).done(function(data) {
                         if (data.error) {
@@ -715,26 +713,34 @@
 
                     console.log("📡 Starting CPDB analysis:", params);
 
-                    $.post('/scrna_website_test_war/cpdb-api', params)
-                        .done(function(response) {
+                    $.ajax({
+                        url: contextPath + '/cpdb-api?action=run-analysis',
+                        type: 'POST',
+                        data: {
+                            said: said,
+                            cell_types: JSON.stringify(selectedTypes),
+                            senders: mode === 'directed' ? JSON.stringify($('#cpdbSenderTypes').val()) : null,
+                            receivers: mode === 'directed' ? JSON.stringify($('#cpdbReceiverTypes').val()) : null
+                        },
+                        success: function(response) {
                             console.log("✅ CPDB analysis started:", response);
                             if (response.job_id) {
                                 pollCpdbStatus(response.job_id);
                             } else if (response.error) {
                                 showCpdbError(response.error);
                             }
-                        })
-                        .fail(function(xhr) {
+                        },
+                        error: function(xhr) {
                             console.error("❌ CPDB analysis request failed:", xhr.status, xhr.statusText);
                             showCpdbError('Request failed: ' + xhr.statusText);
-                        });
+                        }
+                    });
                 });
 
                 // Poll job status
                 function pollCpdbStatus(jobId) {
                     const poll = setInterval(function() {
-                        $.getJSON('/scrna_website_test_war/cpdb-api', {
-                            action: 'status',
+                        $.getJSON(contextPath + '/cpdb-api?action=status', {
                             job_id: jobId
                         }).done(function(data) {
                             console.log("📊 CPDB job status:", data);
@@ -759,8 +765,7 @@
 
                 // Load and display results
                 function loadCpdbResults(jobId) {
-                    $.getJSON('/scrna_website_test_war/cpdb-api', {
-                        action: 'results',
+                    $.getJSON(contextPath + '/cpdb-api?action=results', {
                         job_id: jobId
                     }).done(function(data) {
                         console.log("✅ CPDB results loaded:", data);

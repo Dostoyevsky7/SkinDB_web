@@ -1,7 +1,7 @@
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="java.io.FileInputStream, java.io.InputStream, org.apache.poi.ss.usermodel.*" %>
+<%@ page import="java.io.BufferedReader, java.io.FileReader, java.util.ArrayList, java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -568,26 +568,71 @@
     <!-- Main Content -->
     <div class="browse-content">
         <%
-            String excelPath = application.getRealPath("/WEB-INF/BrowseShow.xlsx");
-            InputStream input = null;
-            Workbook workbook = null;
-            try {
-                input = new FileInputStream(excelPath);
-                workbook = WorkbookFactory.create(input);
-                Sheet sheet = workbook.getSheetAt(0);
+            // CSV file paths
+            String humanCsvPath = "/root/SkinDB/human/human_obs_by_batch.csv";
+            String mouseCsvPath = "/root/SkinDB/mouse/mouse_obs_by_batch.csv";
 
-                int rowsPerPage = 10;
-                int totalRows = sheet.getLastRowNum();
+            // Load all data from CSV files
+            List<Map<String, String>> allData = new ArrayList<Map<String, String>>();
+            BufferedReader reader = null;
+
+            try {
+                // Load human data
+                reader = new BufferedReader(new FileReader(humanCsvPath));
+                String headerLine = reader.readLine(); // Skip header
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 11) {
+                        Map<String, String> row = new HashMap<String, String>();
+                        row.put("said", parts[10]);      // said column
+                        row.put("gse", parts[9]);        // GSE column
+                        row.put("gsm", parts[5]);        // GSM column
+                        row.put("species", "Human");
+                        row.put("n_cells", parts[1]);    // n_cells column
+                        row.put("condition", parts[2]);  // condition column
+                        row.put("age", parts[3]);        // Age column
+                        row.put("sex", parts[4]);        // sex column
+                        row.put("tissue", parts[6]);     // Skin_location column
+                        allData.add(row);
+                    }
+                }
+                reader.close();
+
+                // Load mouse data
+                reader = new BufferedReader(new FileReader(mouseCsvPath));
+                reader.readLine(); // Skip header
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 11) {
+                        Map<String, String> row = new HashMap<String, String>();
+                        row.put("said", parts[10]);      // said column
+                        row.put("gse", parts[9]);        // GSE column
+                        row.put("gsm", parts[5]);        // GSM column
+                        row.put("species", "Mouse");
+                        row.put("n_cells", parts[1]);    // n_cells column
+                        row.put("condition", parts[2]);  // condition column
+                        row.put("age", parts[3]);        // Age column
+                        row.put("sex", parts[4]);        // sex column
+                        row.put("tissue", parts[6]);     // Skin_location column
+                        allData.add(row);
+                    }
+                }
+                reader.close();
+                reader = null;
+
+                int rowsPerPage = 15;
+                int totalRows = allData.size();
                 int totalPages = (int) Math.ceil((double) totalRows / rowsPerPage);
 
                 String pageParam = request.getParameter("page");
                 int pageNum = 1;
                 try { pageNum = Integer.parseInt(pageParam); } catch(Exception ignore){}
                 if (pageNum < 1) pageNum = 1;
-                if (pageNum > totalPages) pageNum = totalPages;
+                if (totalPages > 0 && pageNum > totalPages) pageNum = totalPages;
 
-                int startRow = (pageNum - 1) * rowsPerPage + 1;
-                int endRow = Math.min(startRow + rowsPerPage - 1, totalRows);
+                int startRow = (pageNum - 1) * rowsPerPage;
+                int endRow = Math.min(startRow + rowsPerPage, totalRows);
         %>
 
         <div class="table-card" data-panel-enter>
@@ -646,28 +691,29 @@
                         <th>GSE</th>
                         <th>GSM</th>
                         <th>Species</th>
-                        <th>Disease</th>
+                        <th>Cells</th>
+                        <th>Condition</th>
                         <th>Tissue</th>
                         <th>Details</th>
                     </tr>
                     </thead>
                     <tbody data-stagger-group data-stagger-type="fade-up">
                     <%
-                        for (int r = startRow; r <= endRow; r++) {
-                            Row row = sheet.getRow(r);
-                            if (row == null) continue;
-                            String said_display = row.getCell(0, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
-                            String gse = row.getCell(1, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
-                            String gsm_value = row.getCell(2, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
-                            String species = row.getCell(3, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
-                            String disease = row.getCell(4, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
-                            String tissue = row.getCell(5, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK).toString();
+                        for (int r = startRow; r < endRow; r++) {
+                            Map<String, String> rowData = allData.get(r);
+                            String said_display = rowData.get("said");
+                            String gse = rowData.get("gse");
+                            String gsm_value = rowData.get("gsm");
+                            String species = rowData.get("species");
+                            String n_cells = rowData.get("n_cells");
+                            String condition = rowData.get("condition");
+                            String tissue = rowData.get("tissue");
                             String speciesLower = species.toLowerCase();
-                            String diseaseLower = disease.toLowerCase();
+                            String conditionLower = condition.toLowerCase();
                             String tissueLower = tissue.toLowerCase().trim();
                     %>
-                    <tr data-species="<%= speciesLower %>" data-disease="<%= diseaseLower %>" data-tissue="<%= tissueLower %>" data-stagger-item>
-                        <td><input type="checkbox" name="dataset_checkbox" value="<%= gsm_value %>"></td>
+                    <tr data-species="<%= speciesLower %>" data-disease="<%= conditionLower %>" data-tissue="<%= tissueLower %>" data-stagger-item>
+                        <td><input type="checkbox" name="dataset_checkbox" value="<%= said_display %>"></td>
                         <td class="cell-id"><%= said_display %></td>
                         <td><%= gse %></td>
                         <td><%= gsm_value %></td>
@@ -676,7 +722,8 @@
                                 <%= species %>
                             </span>
                         </td>
-                        <td><%= disease %></td>
+                        <td><%= n_cells %></td>
+                        <td><%= condition %></td>
                         <td><%= tissue %></td>
                         <td>
                             <a href="details.jsp?said=<%= java.net.URLEncoder.encode(said_display, "UTF-8") %>" class="cell-link">
@@ -755,8 +802,7 @@
         </div>
         <%
             } finally {
-                if (workbook != null) try { workbook.close(); } catch(Exception ignore){}
-                if (input != null) try { input.close(); } catch(Exception ignore){}
+                if (reader != null) try { reader.close(); } catch(Exception ignore){}
             }
         %>
     </div>
