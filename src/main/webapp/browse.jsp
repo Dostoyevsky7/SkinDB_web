@@ -677,7 +677,7 @@
                 reader.close();
                 reader = null;
 
-                int rowsPerPage = 15;
+                int rowsPerPage = 10;
                 int totalRows = allData.size();
                 int totalPages = (int) Math.ceil((double) totalRows / rowsPerPage);
                 if (totalPages == 0) totalPages = 1;
