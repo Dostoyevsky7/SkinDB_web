@@ -572,8 +572,18 @@
             String humanCsvPath = "/root/SkinDB/human/human_obs_by_batch.csv";
             String mouseCsvPath = "/root/SkinDB/mouse/mouse_obs_by_batch.csv";
 
+            // Get filter parameters from URL
+            String filterSpecies = request.getParameter("species");
+            String filterCondition = request.getParameter("condition");
+            String filterTissue = request.getParameter("tissue");
+            if (filterSpecies == null) filterSpecies = "";
+            if (filterCondition == null) filterCondition = "";
+            if (filterTissue == null) filterTissue = "";
+
             // Load all data from CSV files
             List<Map<String, String>> allData = new ArrayList<Map<String, String>>();
+            Set<String> allTissues = new java.util.TreeSet<String>(); // For populating dropdown
+            Set<String> allConditions = new java.util.TreeSet<String>(); // For populating dropdown
             BufferedReader reader = null;
 
             try {
@@ -594,7 +604,30 @@
                         row.put("age", parts[3]);        // Age column
                         row.put("sex", parts[4]);        // sex column
                         row.put("tissue", parts[6]);     // Skin_location column
-                        allData.add(row);
+
+                        // Collect all tissues and conditions for dropdown
+                        if (parts[6] != null && !parts[6].trim().isEmpty()) {
+                            allTissues.add(parts[6].trim());
+                        }
+                        if (parts[2] != null && !parts[2].trim().isEmpty()) {
+                            allConditions.add(parts[2].trim());
+                        }
+
+                        // Apply filters
+                        boolean include = true;
+                        if (!filterSpecies.isEmpty() && !filterSpecies.equalsIgnoreCase("Human")) {
+                            include = false;
+                        }
+                        if (include && !filterCondition.isEmpty() && !parts[2].equalsIgnoreCase(filterCondition)) {
+                            include = false;
+                        }
+                        if (include && !filterTissue.isEmpty() && !parts[6].equalsIgnoreCase(filterTissue)) {
+                            include = false;
+                        }
+
+                        if (include) {
+                            allData.add(row);
+                        }
                     }
                 }
                 reader.close();
@@ -615,7 +648,30 @@
                         row.put("age", parts[3]);        // Age column
                         row.put("sex", parts[4]);        // sex column
                         row.put("tissue", parts[6]);     // Skin_location column
-                        allData.add(row);
+
+                        // Collect all tissues and conditions for dropdown
+                        if (parts[6] != null && !parts[6].trim().isEmpty()) {
+                            allTissues.add(parts[6].trim());
+                        }
+                        if (parts[2] != null && !parts[2].trim().isEmpty()) {
+                            allConditions.add(parts[2].trim());
+                        }
+
+                        // Apply filters
+                        boolean include = true;
+                        if (!filterSpecies.isEmpty() && !filterSpecies.equalsIgnoreCase("Mouse")) {
+                            include = false;
+                        }
+                        if (include && !filterCondition.isEmpty() && !parts[2].equalsIgnoreCase(filterCondition)) {
+                            include = false;
+                        }
+                        if (include && !filterTissue.isEmpty() && !parts[6].equalsIgnoreCase(filterTissue)) {
+                            include = false;
+                        }
+
+                        if (include) {
+                            allData.add(row);
+                        }
                     }
                 }
                 reader.close();
@@ -624,6 +680,7 @@
                 int rowsPerPage = 15;
                 int totalRows = allData.size();
                 int totalPages = (int) Math.ceil((double) totalRows / rowsPerPage);
+                if (totalPages == 0) totalPages = 1;
 
                 String pageParam = request.getParameter("page");
                 int pageNum = 1;
@@ -633,6 +690,12 @@
 
                 int startRow = (pageNum - 1) * rowsPerPage;
                 int endRow = Math.min(startRow + rowsPerPage, totalRows);
+
+                // Build filter query string for pagination links
+                String filterQueryString = "";
+                if (!filterSpecies.isEmpty()) filterQueryString += "&species=" + java.net.URLEncoder.encode(filterSpecies, "UTF-8");
+                if (!filterCondition.isEmpty()) filterQueryString += "&condition=" + java.net.URLEncoder.encode(filterCondition, "UTF-8");
+                if (!filterTissue.isEmpty()) filterQueryString += "&tissue=" + java.net.URLEncoder.encode(filterTissue, "UTF-8");
         %>
 
         <div class="table-card" data-panel-enter>
@@ -651,35 +714,45 @@
 
             <!-- Filter Bar -->
             <div class="filter-bar">
-                <div class="filter-group">
-                    <label class="filter-group__label">Species</label>
-                    <select id="filter-species" class="filter-group__select">
-                        <option value="">All Species</option>
-                        <option value="human">Human</option>
-                        <option value="mouse">Mouse</option>
-                    </select>
-                </div>
+                <form id="filter-form" method="get" style="display: contents;">
+                    <div class="filter-group">
+                        <label class="filter-group__label">Species</label>
+                        <select name="species" id="filter-species" class="filter-group__select" onchange="this.form.submit()">
+                            <option value="">All Species</option>
+                            <option value="Human" <%= "Human".equalsIgnoreCase(filterSpecies) ? "selected" : "" %>>Human</option>
+                            <option value="Mouse" <%= "Mouse".equalsIgnoreCase(filterSpecies) ? "selected" : "" %>>Mouse</option>
+                        </select>
+                    </div>
 
-                <div class="filter-group">
-                    <label class="filter-group__label">Disease Status</label>
-                    <select id="filter-disease" class="filter-group__select">
-                        <option value="">All Status</option>
-                        <option value="healthy">Healthy</option>
-                        <option value="disease">Disease</option>
-                    </select>
-                </div>
+                    <div class="filter-group">
+                        <label class="filter-group__label">Condition</label>
+                        <select name="condition" id="filter-condition" class="filter-group__select" onchange="this.form.submit()">
+                            <option value="">All Conditions</option>
+                            <% for (String cond : allConditions) { %>
+                            <option value="<%= cond %>" <%= cond.equalsIgnoreCase(filterCondition) ? "selected" : "" %>><%= cond %></option>
+                            <% } %>
+                        </select>
+                    </div>
 
-                <div class="filter-group">
-                    <label class="filter-group__label">Tissue</label>
-                    <select id="filter-tissue" class="filter-group__select">
-                        <option value="">All Tissues</option>
-                    </select>
-                </div>
+                    <div class="filter-group">
+                        <label class="filter-group__label">Tissue</label>
+                        <select name="tissue" id="filter-tissue" class="filter-group__select" onchange="this.form.submit()">
+                            <option value="">All Tissues</option>
+                            <% for (String tis : allTissues) { %>
+                            <option value="<%= tis %>" <%= tis.equalsIgnoreCase(filterTissue) ? "selected" : "" %>><%= tis %></option>
+                            <% } %>
+                        </select>
+                    </div>
 
-                <div class="filter-bar__actions">
-                    <span id="filter-count" class="filter-count"></span>
-                    <button id="clear-filters" class="filter-bar__btn filter-bar__btn--clear">Clear Filters</button>
-                </div>
+                    <div class="filter-bar__actions">
+                        <span id="filter-count" class="filter-count">
+                            <% if (!filterSpecies.isEmpty() || !filterCondition.isEmpty() || !filterTissue.isEmpty()) { %>
+                            Showing <strong><%= totalRows %></strong> filtered results
+                            <% } %>
+                        </span>
+                        <a href="browse.jsp" class="filter-bar__btn filter-bar__btn--clear">Clear Filters</a>
+                    </div>
+                </form>
             </div>
 
             <div class="data-table-wrapper">
@@ -742,7 +815,7 @@
             <div class="table-card__footer">
                 <div class="pagination">
                     <% if (pageNum > 1) { %>
-                    <a href="?page=<%= pageNum - 1 %>" class="pagination__btn">
+                    <a href="?page=<%= pageNum - 1 %><%= filterQueryString %>" class="pagination__btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 18l-6-6 6-6"></path>
                         </svg>
@@ -760,6 +833,9 @@
                     <div class="pagination__input-group">
                         <span class="pagination__label">Page</span>
                         <form method="get" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <input type="hidden" name="species" value="<%= filterSpecies %>">
+                            <input type="hidden" name="condition" value="<%= filterCondition %>">
+                            <input type="hidden" name="tissue" value="<%= filterTissue %>">
                             <input type="number" name="page" min="1" max="<%= totalPages %>" value="<%= pageNum %>" class="pagination__input">
                             <span class="pagination__label">of <%= totalPages %></span>
                             <button type="submit" class="pagination__btn">Go</button>
@@ -767,7 +843,7 @@
                     </div>
 
                     <% if (pageNum < totalPages) { %>
-                    <a href="?page=<%= pageNum + 1 %>" class="pagination__btn">
+                    <a href="?page=<%= pageNum + 1 %><%= filterQueryString %>" class="pagination__btn">
                         Next
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 18l6-6-6-6"></path>
@@ -811,92 +887,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    // ===== Filter Functionality =====
-    const $filterSpecies = $('#filter-species');
-    const $filterDisease = $('#filter-disease');
-    const $filterTissue = $('#filter-tissue');
-    const $filterCount = $('#filter-count');
-    const $clearFilters = $('#clear-filters');
-    const $tableRows = $('.browse-table tbody tr');
-
-    // Populate tissue options from table data
-    const tissues = new Set();
-    $tableRows.each(function() {
-        const tissue = $(this).data('tissue');
-        if (tissue) tissues.add(tissue);
-    });
-
-    // Sort and add tissue options
-    Array.from(tissues).sort().forEach(function(tissue) {
-        if (tissue.trim()) {
-            $filterTissue.append('<option value="' + tissue + '">' + capitalizeFirst(tissue) + '</option>');
-        }
-    });
-
-    function capitalizeFirst(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    function applyFilters() {
-        const speciesVal = $filterSpecies.val().toLowerCase();
-        const diseaseVal = $filterDisease.val().toLowerCase();
-        const tissueVal = $filterTissue.val().toLowerCase();
-
-        let visibleCount = 0;
-        const totalCount = $tableRows.length;
-
-        $tableRows.each(function() {
-            const $row = $(this);
-            const rowSpecies = ($row.data('species') || '').toLowerCase();
-            const rowDisease = ($row.data('disease') || '').toLowerCase();
-            const rowTissue = ($row.data('tissue') || '').toLowerCase();
-
-            let show = true;
-
-            // Species filter
-            if (speciesVal && !rowSpecies.includes(speciesVal)) {
-                show = false;
-            }
-
-            // Disease filter
-            if (diseaseVal) {
-                if (diseaseVal === 'healthy' && !rowDisease.includes('healthy') && !rowDisease.includes('normal')) {
-                    show = false;
-                } else if (diseaseVal === 'disease' && (rowDisease.includes('healthy') || rowDisease.includes('normal') || rowDisease === '')) {
-                    show = false;
-                }
-            }
-
-            // Tissue filter
-            if (tissueVal && rowTissue !== tissueVal) {
-                show = false;
-            }
-
-            $row.toggleClass('filtered-out', !show);
-            if (show) visibleCount++;
-        });
-
-        // Update count
-        if (speciesVal || diseaseVal || tissueVal) {
-            $filterCount.html('Showing <strong>' + visibleCount + '</strong> of ' + totalCount);
-        } else {
-            $filterCount.html('');
-        }
-    }
-
-    // Filter event listeners
-    $filterSpecies.on('change', applyFilters);
-    $filterDisease.on('change', applyFilters);
-    $filterTissue.on('change', applyFilters);
-
-    // Clear filters
-    $clearFilters.on('click', function() {
-        $filterSpecies.val('');
-        $filterDisease.val('');
-        $filterTissue.val('');
-        applyFilters();
-    });
-
     // ===== Row Selection =====
     // Row selection highlighting
     document.querySelector('#select-all').closest('table').addEventListener('change', function (e) {
