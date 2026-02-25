@@ -4,36 +4,35 @@
 <%@ page import="
     java.io.*,
     java.util.*,
-    java.nio.file.Paths" %>
+    java.nio.file.Paths,
+    Utils.DataPathResolver" %>
 <%!
-    // =========================================================================
-    // CONFIGURATION: PATHS FOR LINUX DEPLOYMENT
-    // =========================================================================
-    // 1. Base path to the main data directory
-    private static final String DATA_BASE_PATH = "/root/SkinDB/download_data";
-    // 2. Python command using conda environment
-    private static final String PYTHON_COMMAND = "/root/miniconda3/envs/scrna/bin/python";
-    // 3. CSV file paths
-    private static final String HUMAN_CSV_PATH = "/root/SkinDB/human/human_obs_by_batch.csv";
-    private static final String MOUSE_CSV_PATH = "/root/SkinDB/mouse/mouse_obs_by_batch.csv";
-    // =========================================================================
+    private static final String DOWNLOAD_DATA_RELATIVE_PATH = "download_data";
+    private static final String HUMAN_CSV_RELATIVE_PATH = "human/human_obs_by_batch.csv";
+    private static final String MOUSE_CSV_RELATIVE_PATH = "mouse/mouse_obs_by_batch.csv";
 
 
     // Helper method to build the path to the cpdb_out directory for a given sample
-    private String getCpdbPath(String said, String gse, String gsm) {
+    private String getCpdbPath(String dataRoot, String gse, String gsm) {
         // This logic assumes a path structure like /SkinDB_New/10X/human/GSE.../GSM.../
         // You MUST adjust this to match your actual directory structure.
-        if (gse == null || gsm == null || gse.isEmpty() || gsm.isEmpty()) {
+        if (dataRoot == null || dataRoot.isEmpty() || gse == null || gsm == null || gse.isEmpty() || gsm.isEmpty()) {
             return null;
         }
-        // This is an example, please update it to match your structure.
-        return Paths.get(DATA_BASE_PATH, "10X", "human", gse, gsm, "cpdb_out").toString();
+        return Paths.get(dataRoot, DOWNLOAD_DATA_RELATIVE_PATH, "10X", "human", gse, gsm, "cpdb_out").toString();
     }
 %>
 <%
     // =========================================================================
     // SECTION A: NEW BACKEND LOGIC FOR HANDLING AJAX REQUESTS FOR CELLPHONEDB
     // =========================================================================
+    String dataRoot = DataPathResolver.resolveDataRoot(application);
+    String pythonCommand = DataPathResolver.resolvePythonCommand(application);
+    File humanCsvFile = DataPathResolver.resolveReadableFile(application, HUMAN_CSV_RELATIVE_PATH);
+    File mouseCsvFile = DataPathResolver.resolveReadableFile(application, MOUSE_CSV_RELATIVE_PATH);
+    String humanCsvPath = humanCsvFile.getAbsolutePath();
+    String mouseCsvPath = mouseCsvFile.getAbsolutePath();
+
     String action = request.getParameter("action");
     if (action != null) {
         response.setContentType("application/json");
@@ -43,7 +42,7 @@
         String gseForAction = request.getParameter("gse");
         String gsmForAction = request.getParameter("gsm");
 
-        String cpdbPath = getCpdbPath(saidParamForAction, gseForAction, gsmForAction);
+        String cpdbPath = getCpdbPath(dataRoot, gseForAction, gsmForAction);
 
         if (cpdbPath == null || !new File(cpdbPath).exists()) {
             jsonOut.print("{\"error\": \"CPDB data path not found for the given sample. Path was: " + (cpdbPath == null ? "null" : cpdbPath.replace("\\", "\\\\")) + "\"}");
@@ -55,7 +54,7 @@
             if ("get_cell_types".equals(action)) {
                 // 调用 Python 脚本 --list 模式
                 String pythonScriptPath = Paths.get(cpdbPath, "plot_cpdb_receiver_top15.py").toString();
-                ProcessBuilder pb = new ProcessBuilder(PYTHON_COMMAND, pythonScriptPath, "--list");
+                ProcessBuilder pb = new ProcessBuilder(pythonCommand, pythonScriptPath, "--list");
                 pb.directory(new File(cpdbPath));
                 pb.redirectErrorStream(true);
                 try {
@@ -83,7 +82,7 @@
                 String plotType = request.getParameter("plot_type");
                 String scriptName = "";
                 List<String> command = new ArrayList<String>();
-                command.add(PYTHON_COMMAND);
+                command.add(pythonCommand);
                 String outputFileName = "";
                 // 定义输出文件名变量
 
@@ -175,16 +174,15 @@
     String csvError = null;
 
     // Check if CSV files exist
-    java.io.File humanCsvFile = new java.io.File(HUMAN_CSV_PATH);
-    java.io.File mouseCsvFile = new java.io.File(MOUSE_CSV_PATH);
-
     if (!humanCsvFile.exists() || !mouseCsvFile.exists()) {
-        csvError = "CSV data files not found. Human exists: " + humanCsvFile.exists() + ", Mouse exists: " + mouseCsvFile.exists();
+        csvError = "CSV data files not found. Human path: " + humanCsvPath + ", Mouse path: " + mouseCsvPath;
+        out.println("<h2 style='color:red;'>Error loading CSV: " + csvError + "</h2>");
+        return;
     } else {
         try {
         // 3) Search in human CSV first
         boolean found = false;
-        csvReader = new BufferedReader(new FileReader(HUMAN_CSV_PATH));
+        csvReader = new BufferedReader(new FileReader(humanCsvPath));
         String headerLine = csvReader.readLine(); // Skip header
         String line;
         while ((line = csvReader.readLine()) != null) {
@@ -199,7 +197,7 @@
                 ageVal = parts[3];
                 sexVal = parts[4];
                 tissueVal = parts[6];
-                h5adPath = DATA_BASE_PATH + "/human/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
+                h5adPath = dataRoot + "/" + DOWNLOAD_DATA_RELATIVE_PATH + "/human/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
                 found = true;
                 break;
             }
@@ -208,7 +206,7 @@
 
         // 4) If not found in human CSV, search in mouse CSV
         if (!found) {
-            csvReader = new BufferedReader(new FileReader(MOUSE_CSV_PATH));
+            csvReader = new BufferedReader(new FileReader(mouseCsvPath));
             csvReader.readLine(); // Skip header
             while ((line = csvReader.readLine()) != null) {
                 String[] parts = line.split(",", -1);
@@ -222,7 +220,7 @@
                     ageVal = parts[3];
                     sexVal = parts[4];
                     tissueVal = parts[6];
-                    h5adPath = DATA_BASE_PATH + "/mouse/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
+                    h5adPath = dataRoot + "/" + DOWNLOAD_DATA_RELATIVE_PATH + "/mouse/" + gseVal + "/" + gsmVal + "/" + gseVal + "_" + gsmVal + ".h5ad";
                     found = true;
                     break;
                 }

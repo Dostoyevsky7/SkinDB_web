@@ -1,7 +1,7 @@
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="java.io.BufferedReader, java.io.FileReader, java.util.ArrayList, java.util.List, java.util.Map, java.util.HashMap, java.util.Set, java.util.TreeSet" %>
+<%@ page import="java.io.BufferedReader, java.io.File, java.io.FileReader, java.util.ArrayList, java.util.List, java.util.Map, java.util.HashMap, java.util.Set, java.util.TreeSet, Utils.DataPathResolver" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -568,9 +568,11 @@
     <!-- Main Content -->
     <div class="browse-content">
         <%
-            // CSV file paths
-            String humanCsvPath = "/root/SkinDB/human/human_obs_by_batch.csv";
-            String mouseCsvPath = "/root/SkinDB/mouse/mouse_obs_by_batch.csv";
+            // Resolve CSV paths from configured data roots. Defaults: /opt/SkinDB, /root/SkinDB
+            File humanFile = DataPathResolver.resolveReadableFile(application, "human/human_obs_by_batch.csv");
+            File mouseFile = DataPathResolver.resolveReadableFile(application, "mouse/mouse_obs_by_batch.csv");
+            String humanCsvPath = humanFile.getAbsolutePath();
+            String mouseCsvPath = mouseFile.getAbsolutePath();
 
             // Get filter parameters from URL
             String filterSpecies = request.getParameter("species");
@@ -587,14 +589,12 @@
             BufferedReader reader = null;
             String dataLoadError = null;
 
-            // Check if CSV files exist
-            java.io.File humanFile = new java.io.File(humanCsvPath);
-            java.io.File mouseFile = new java.io.File(mouseCsvPath);
-
             if (!humanFile.exists() || !humanFile.canRead()) {
-                dataLoadError = "Human dataset file not accessible: " + humanCsvPath;
+                dataLoadError = "Human dataset file not accessible: " + humanCsvPath
+                        + " (tried: " + String.join(", ", DataPathResolver.getCandidateFilePaths(application, "human/human_obs_by_batch.csv")) + ")";
             } else if (!mouseFile.exists() || !mouseFile.canRead()) {
-                dataLoadError = "Mouse dataset file not accessible: " + mouseCsvPath;
+                dataLoadError = "Mouse dataset file not accessible: " + mouseCsvPath
+                        + " (tried: " + String.join(", ", DataPathResolver.getCandidateFilePaths(application, "mouse/mouse_obs_by_batch.csv")) + ")";
             } else {
                 try {
                 // Load human data

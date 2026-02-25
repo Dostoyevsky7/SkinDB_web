@@ -4,6 +4,11 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0"
          metadata-complete="true">
+    <context-param>
+        <param-name>skindbDataRoot</param-name>
+        <param-value>/opt/SkinDB</param-value>
+    </context-param>
+
     <filter>
         <filter-name>AccessCounterFilter</filter-name>
         <filter-class>AccessCounter.AccessCounterFilter</filter-class>
