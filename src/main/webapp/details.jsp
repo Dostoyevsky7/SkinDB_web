@@ -240,6 +240,7 @@
     } finally {
         if (csvReader != null) try { csvReader.close(); } catch (Exception ignore) {}
     }
+    }
 %>
 
 <!DOCTYPE html>
