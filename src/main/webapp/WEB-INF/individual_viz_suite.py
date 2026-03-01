@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Interactive Visualization Suite for scSAID
-Provides comprehensive visualization tools for single-cell RNA-seq data
+Individual Dataset Visualization Suite for scSAID
+Provides visualization tools for individual single-cell RNA-seq datasets
 """
 
 import sys
@@ -30,54 +30,17 @@ app = dash.Dash(
     suppress_callback_exceptions=True
 )
 
-app.title = "scSAID Visualization Suite"
+app.title = "scSAID Individual Visualization Suite"
 
 # Global variables
 current_adata = None
 dataset_id = None
-viz_type = "integrated"  # Can be "integrated" or "individual"
+viz_type = "individual"
 MAX_GENE_OPTIONS = 5000
 MAX_PLOT_CELLS = 8000
 
 
-
-def _to_dense(matrix):
-    if sparse.issparse(matrix):
-        return matrix.toarray()
-    return np.asarray(matrix)
-
-
-def _flatten_expr(matrix):
-    return np.ravel(_to_dense(matrix))
-
-
-def _resolve_groupby(adata, requested):
-    if requested in adata.obs.columns:
-        return requested
-    if len(adata.obs.columns) == 0:
-        return None
-    return adata.obs.columns[0]
-
-
-def _get_obs_options(adata, max_unique=50):
-    options = []
-    for col in adata.obs.columns:
-        try:
-            unique = adata.obs[col].nunique()
-        except Exception:
-            continue
-        if unique <= max_unique:
-            options.append({'label': col, 'value': col})
-    return options
-
-
-def _sample_indices(n_obs, max_points):
-    if n_obs <= max_points:
-        return np.arange(n_obs)
-    return np.random.choice(n_obs, size=max_points, replace=False)
-
-
-def load_dataset(dataset_path, dataset_type="integrated"):
+def load_dataset(dataset_path, dataset_type="individual"):
     """
     Load dataset from H5AD file and preprocess if needed for individual datasets
     """
@@ -128,11 +91,47 @@ def load_dataset(dataset_path, dataset_type="integrated"):
         return False
 
 
+def _to_dense(matrix):
+    if sparse.issparse(matrix):
+        return matrix.toarray()
+    return np.asarray(matrix)
+
+
+def _flatten_expr(matrix):
+    return np.ravel(_to_dense(matrix))
+
+
+def _resolve_groupby(adata, requested):
+    if requested in adata.obs.columns:
+        return requested
+    if len(adata.obs.columns) == 0:
+        return None
+    return adata.obs.columns[0]
+
+
+def _get_obs_options(adata, max_unique=50):
+    options = []
+    for col in adata.obs.columns:
+        try:
+            unique = adata.obs[col].nunique()
+        except Exception:
+            continue
+        if unique <= max_unique:
+            options.append({'label': col, 'value': col})
+    return options
+
+
+def _sample_indices(n_obs, max_points):
+    if n_obs <= max_points:
+        return np.arange(n_obs)
+    return np.random.choice(n_obs, size=max_points, replace=False)
+
+
 # Main layout
 app.layout = html.Div([
     html.Div([
-        html.H1("Interactive Visualization Suite", className="viz-title"),
-        html.P("Explore your single-cell RNA-seq data with advanced interactive visualizations",
+        html.H1("Individual Dataset Visualization Suite", className="viz-title"),
+        html.P("Explore your individual single-cell RNA-seq data with advanced interactive visualizations",
                className="viz-subtitle")
     ], className="viz-header"),
 
@@ -970,10 +969,10 @@ def create_correlation_plot(adata, genes, color_by='cell_type'):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Interactive Visualization Suite for scSAID')
+    parser = argparse.ArgumentParser(description='Individual Dataset Visualization Suite for scSAID')
     parser.add_argument('--dataset', type=str, help='Path to H5AD dataset file')
     parser.add_argument('--dataset-id', type=str, help='Dataset ID (SAID)')
-    parser.add_argument('--type', type=str, default="integrated", help='Visualization type (integrated/individual)')
+    parser.add_argument('--type', type=str, default="individual", help='Visualization type (integrated/individual)')
     parser.add_argument('--port', type=int, default=8050, help='Port to run the server')
     parser.add_argument('--debug', action='store_true', help='Run in debug mode')
 

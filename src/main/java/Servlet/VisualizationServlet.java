@@ -134,7 +134,7 @@ public class VisualizationServlet extends HttpServlet {
         }
     }
 
-    private void startVisualizationServer(String datasetId, String datasetPath, String vizType) throws IOException {
+    private void startVisualizationServer(String processKey, String datasetPath, String vizType) throws IOException {
         String pythonScript = getServletContext().getRealPath("/WEB-INF/visualization_suite.py");
 
         // If individual visualization is requested, use a different script
@@ -156,7 +156,7 @@ public class VisualizationServlet extends HttpServlet {
             "python3",
             pythonScript,
             "--dataset", datasetPath,
-            "--dataset-id", datasetId,
+            "--dataset-id", datasetId,  // Pass the actual dataset ID
             "--type", vizType,
             "--port", String.valueOf(VIZ_PORT_BASE)
         );
@@ -167,7 +167,7 @@ public class VisualizationServlet extends HttpServlet {
         Process process = pb.start();
 
         // Store process
-        runningProcesses.put(datasetId, process);
+        runningProcesses.put(processKey, process);
 
         // Monitor output in separate thread
         new Thread(() -> {
@@ -175,14 +175,14 @@ public class VisualizationServlet extends HttpServlet {
                     new InputStreamReader(process.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println("[Viz " + datasetId + "] " + line);
+                    System.out.println("[Viz " + processKey + "] " + line);
                 }
             } catch (IOException e) {
                 System.err.println("Error reading visualization output: " + e.getMessage());
             }
         }).start();
 
-        System.out.println("Started visualization server for dataset: " + datasetId + " (type: " + vizType + ")");
+        System.out.println("Started visualization server for dataset: " + processKey + " (type: " + vizType + ")");
 
         // Wait a moment for server to start
         try {
@@ -195,8 +195,8 @@ public class VisualizationServlet extends HttpServlet {
     /**
      * Stop visualization server for a dataset
      */
-    private void stopVisualizationServer(String datasetId) {
-        Process process = runningProcesses.remove(datasetId);
+    private void stopVisualizationServer(String processKey) {
+        Process process = runningProcesses.remove(processKey);
         if (process != null && process.isAlive()) {
             process.destroy();
             try {
@@ -204,101 +204,12 @@ public class VisualizationServlet extends HttpServlet {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            System.out.println("Stopped visualization server for dataset: " + datasetId);
+            System.out.println("Stopped visualization server for dataset: " + processKey);
         }
     }
 
     /**
-<<<<<<< HEAD
-     * Get individual dataset file path from CSV mapping
-     */
-    private String getIndividualDatasetPath(String datasetId) {
-        try {
-            // First find the GSE and GSM from the CSV files based on SAID
-            String humanCsvPath = getServletContext().getRealPath("/WEB-INF/classes/human/human_obs_by_batch.csv");
-            String mouseCsvPath = getServletContext().getRealPath("/WEB-INF/classes/mouse/mouse_obs_by_batch.csv");
-
-            // Check the data path resolver configuration for actual paths
-            String dataRoot = Utils.DataPathResolver.resolveDataRoot(getServletContext());
-            String downloadDataPath = "download_data";
-
-            // We need to parse the CSV files to find the GSE/GSM for the given SAID
-            java.io.BufferedReader reader = null;
-            String gse = null;
-            String gsm = null;
-            String species = null;
-
-            // Check human CSV first
-            java.io.File humanFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "human/human_obs_by_batch.csv");
-            if (humanFile.exists()) {
-                reader = new java.io.BufferedReader(new java.io.FileReader(humanFile));
-                String headerLine = reader.readLine(); // Skip header
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",", -1);
-                    if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
-                        gse = parts[9];  // GSE column
-                        gsm = parts[5];  // GSM column
-                        species = "human";
-                        break;
-                    }
-                }
-                reader.close();
-            }
-
-            // If not found in human, check mouse
-            if (gse == null && gsm == null) {
-                java.io.File mouseFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "mouse/mouse_obs_by_batch.csv");
-                if (mouseFile.exists()) {
-                    reader = new java.io.BufferedReader(new java.io.FileReader(mouseFile));
-                    reader.readLine(); // Skip header
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        String[] parts = line.split(",", -1);
-                        if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
-                            gse = parts[9];  // GSE column
-                            gsm = parts[5];  // GSM column
-                            species = "mouse";
-                            break;
-                        }
-                    }
-                    reader.close();
-                }
-            }
-
-            if (gse != null && gsm != null && species != null) {
-                // Build expected H5AD path: /opt/SkinDB/download_data/10X/[species]/[GSE]/[GSM]/[GSE]_[GSM].h5ad
-                String h5adFilename = gse + "_" + gsm + ".h5ad";
-                String h5adPath = Paths.get(dataRoot, downloadDataPath, "10X", species, gse, gsm, h5adFilename).toString();
-
-                // Check if file exists
-                if (Files.exists(Paths.get(h5adPath))) {
-                    return h5adPath;
-                } else {
-                    System.err.println("H5AD file not found at: " + h5adPath);
-                    // Try alternative naming convention
-                    String altH5adPath = Paths.get(dataRoot, "download_data", "10X", species, gse, gsm, gsm + ".h5ad").toString();
-                    if (Files.exists(Paths.get(altH5adPath))) {
-                        return altH5adPath;
-                    } else {
-                        System.err.println("Alternative H5AD file not found at: " + altH5adPath);
-                    }
-                }
-            } else {
-                System.err.println("Could not find GSE/GSM for SAID: " + datasetId);
-            }
-        } catch (Exception e) {
-            System.err.println("Error finding individual dataset path: " + e.getMessage());
-        }
-
-        return null;
-    }
-
-    /**
-     * Get dataset file path from mapping.json (for integrated datasets)
-=======
      * Get dataset file path from mapping.json or find individual dataset file
->>>>>>> e377376 (Fix Cell Clustering visualization to show individual dataset UMAPs)
      */
     private String getDatasetPath(String datasetId) {
         try {
