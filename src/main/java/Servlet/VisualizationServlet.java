@@ -34,32 +34,49 @@ public class VisualizationServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String datasetId = request.getParameter("dataset");
+        String vizType = request.getParameter("type"); // Added to distinguish between integrated and individual
 
         if (datasetId == null || datasetId.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Dataset ID is required");
             return;
         }
 
+        // Default to individual visualization if not specified
+        if (vizType == null || vizType.isEmpty()) {
+            vizType = "individual";
+        }
+
         try {
-            // Get dataset path from mapping.json
-            String datasetPath = getDatasetPath(datasetId);
+            String datasetPath = null;
+
+            if ("individual".equals(vizType)) {
+                // Get individual dataset path
+                datasetPath = getIndividualDatasetPath(datasetId);
+            } else {
+                // For integrated visualization, get path from mapping.json
+                datasetPath = getDatasetPath(datasetId);
+            }
 
             if (datasetPath == null || !Files.exists(Paths.get(datasetPath))) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Dataset file not found");
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Dataset file not found: " + datasetPath);
                 return;
             }
 
+            // Create a unique key for this dataset and visualization type
+            String processKey = vizType + "_" + datasetId;
+
             // Check if visualization server is already running for this dataset
-            if (!runningProcesses.containsKey(datasetId)) {
-                startVisualizationServer(datasetId, datasetPath);
+            if (!runningProcesses.containsKey(processKey)) {
+                startVisualizationServer(processKey, datasetPath, vizType);
             }
 
             // Set attributes for JSP
             request.setAttribute("datasetId", datasetId);
+            request.setAttribute("vizType", vizType);
             request.setAttribute("vizPort", VIZ_PORT_BASE);
             String scheme = request.getScheme();
             String host = request.getServerName();
-            request.setAttribute("vizUrl", scheme + "://" + host + ":" + VIZ_PORT_BASE + "/viz/");
+            request.setAttribute("vizUrl", scheme + "://" + host + ":" + VIZ_PORT_BASE + "/viz/?dataset=" + datasetId + "&type=" + vizType);
 
             // Forward to JSP
             request.getRequestDispatcher("visualization.jsp").forward(request, response);
@@ -82,7 +99,13 @@ public class VisualizationServlet extends HttpServlet {
 
         if ("status".equals(action)) {
             String datasetId = request.getParameter("dataset");
-            boolean isRunning = runningProcesses.containsKey(datasetId);
+            String vizType = request.getParameter("type");
+            if (vizType == null || vizType.isEmpty()) {
+                vizType = "individual";
+            }
+
+            String processKey = vizType + "_" + datasetId;
+            boolean isRunning = runningProcesses.containsKey(processKey);
 
             Map<String, Object> result = new HashMap<>();
             result.put("running", isRunning);
@@ -94,7 +117,13 @@ public class VisualizationServlet extends HttpServlet {
 
         } else if ("stop".equals(action)) {
             String datasetId = request.getParameter("dataset");
-            stopVisualizationServer(datasetId);
+            String vizType = request.getParameter("type");
+            if (vizType == null || vizType.isEmpty()) {
+                vizType = "individual";
+            }
+
+            String processKey = vizType + "_" + datasetId;
+            stopVisualizationServer(processKey);
 
             Map<String, Object> result = new HashMap<>();
             result.put("stopped", true);
@@ -108,8 +137,17 @@ public class VisualizationServlet extends HttpServlet {
     /**
      * Start the Python Dash visualization server
      */
-    private void startVisualizationServer(String datasetId, String datasetPath) throws IOException {
+    private void startVisualizationServer(String datasetId, String datasetPath, String vizType) throws IOException {
         String pythonScript = getServletContext().getRealPath("/WEB-INF/visualization_suite.py");
+
+        // If individual visualization is requested, use a different script
+        if ("individual".equals(vizType)) {
+            pythonScript = getServletContext().getRealPath("/WEB-INF/individual_viz_suite.py");
+            // If individual script doesn't exist, fall back to main script
+            if (!Files.exists(Paths.get(pythonScript))) {
+                pythonScript = getServletContext().getRealPath("/WEB-INF/visualization_suite.py");
+            }
+        }
 
         // Check if Python script exists
         if (!Files.exists(Paths.get(pythonScript))) {
@@ -121,6 +159,8 @@ public class VisualizationServlet extends HttpServlet {
             "python3",
             pythonScript,
             "--dataset", datasetPath,
+            "--dataset-id", datasetId,
+            "--type", vizType,
             "--port", String.valueOf(VIZ_PORT_BASE)
         );
 
@@ -145,7 +185,7 @@ public class VisualizationServlet extends HttpServlet {
             }
         }).start();
 
-        System.out.println("Started visualization server for dataset: " + datasetId);
+        System.out.println("Started visualization server for dataset: " + datasetId + " (type: " + vizType + ")");
 
         // Wait a moment for server to start
         try {
@@ -172,7 +212,92 @@ public class VisualizationServlet extends HttpServlet {
     }
 
     /**
-     * Get dataset file path from mapping.json
+     * Get individual dataset file path from CSV mapping
+     */
+    private String getIndividualDatasetPath(String datasetId) {
+        try {
+            // First find the GSE and GSM from the CSV files based on SAID
+            String humanCsvPath = getServletContext().getRealPath("/WEB-INF/classes/human/human_obs_by_batch.csv");
+            String mouseCsvPath = getServletContext().getRealPath("/WEB-INF/classes/mouse/mouse_obs_by_batch.csv");
+
+            // Check the data path resolver configuration for actual paths
+            String dataRoot = Utils.DataPathResolver.resolveDataRoot(getServletContext());
+            String downloadDataPath = "download_data";
+
+            // We need to parse the CSV files to find the GSE/GSM for the given SAID
+            java.io.BufferedReader reader = null;
+            String gse = null;
+            String gsm = null;
+            String species = null;
+
+            // Check human CSV first
+            java.io.File humanFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "human/human_obs_by_batch.csv");
+            if (humanFile.exists()) {
+                reader = new java.io.BufferedReader(new java.io.FileReader(humanFile));
+                String headerLine = reader.readLine(); // Skip header
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
+                        gse = parts[9];  // GSE column
+                        gsm = parts[5];  // GSM column
+                        species = "human";
+                        break;
+                    }
+                }
+                reader.close();
+            }
+
+            // If not found in human, check mouse
+            if (gse == null && gsm == null) {
+                java.io.File mouseFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "mouse/mouse_obs_by_batch.csv");
+                if (mouseFile.exists()) {
+                    reader = new java.io.BufferedReader(new java.io.FileReader(mouseFile));
+                    reader.readLine(); // Skip header
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        String[] parts = line.split(",", -1);
+                        if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
+                            gse = parts[9];  // GSE column
+                            gsm = parts[5];  // GSM column
+                            species = "mouse";
+                            break;
+                        }
+                    }
+                    reader.close();
+                }
+            }
+
+            if (gse != null && gsm != null && species != null) {
+                // Build expected H5AD path: /opt/SkinDB/download_data/10X/[species]/[GSE]/[GSM]/[GSE]_[GSM].h5ad
+                String h5adFilename = gse + "_" + gsm + ".h5ad";
+                String h5adPath = Paths.get(dataRoot, downloadDataPath, "10X", species, gse, gsm, h5adFilename).toString();
+
+                // Check if file exists
+                if (Files.exists(Paths.get(h5adPath))) {
+                    return h5adPath;
+                } else {
+                    System.err.println("H5AD file not found at: " + h5adPath);
+                    // Try alternative naming convention
+                    String altH5adPath = Paths.get(dataRoot, "download_data", "10X", species, gse, gsm, gsm + ".h5ad").toString();
+                    if (Files.exists(Paths.get(altH5adPath))) {
+                        return altH5adPath;
+                    } else {
+                        System.err.println("Alternative H5AD file not found at: " + altH5adPath);
+                    }
+                }
+            } else {
+                System.err.println("Could not find GSE/GSM for SAID: " + datasetId);
+            }
+        } catch (Exception e) {
+            System.err.println("Error finding individual dataset path: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get dataset file path from mapping.json (for integrated datasets)
      */
     private String getDatasetPath(String datasetId) {
         try {

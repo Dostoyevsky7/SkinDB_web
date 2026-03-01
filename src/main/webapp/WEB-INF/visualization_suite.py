@@ -35,8 +35,58 @@ app.title = "scSAID Visualization Suite"
 # Global variables
 current_adata = None
 dataset_id = None
+viz_type = "integrated"  # Can be "integrated" or "individual"
 MAX_GENE_OPTIONS = 5000
 MAX_PLOT_CELLS = 8000
+
+
+def load_dataset(dataset_path, dataset_type="integrated"):
+    """
+    Load dataset from H5AD file and optionally perform preprocessing based on type
+    """
+    global current_adata, viz_type
+
+    try:
+        current_adata = sc.read_h5ad(dataset_path)
+        viz_type = dataset_type
+
+        # Compute UMAP if not already present for individual datasets
+        if dataset_type == "individual":
+            if 'X_umap' not in current_adata.obsm_keys():
+                # Perform basic preprocessing
+                if 'highly_variable' not in current_adata.var.keys():
+                    # Normalize and find highly variable genes
+                    sc.pp.normalize_total(current_adata, target_sum=1e4)
+                    sc.pp.log1p(current_adata)
+                    sc.pp.highly_variable_genes(current_adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+
+                # Filter to highly variable genes
+                adata_temp = current_adata[:, current_adata.var['highly_variable']].copy() if 'highly_variable' in current_adata.var.keys() else current_adata
+
+                # Scale and compute PCA
+                sc.pp.scale(adata_temp, max_value=10)
+                sc.tl.pca(adata_temp, svd_solver='arpack')
+
+                # Compute neighbors and UMAP
+                sc.pp.neighbors(adata_temp)
+                sc.tl.umap(adata_temp)
+
+                # Copy the computed UMAP back to the original adata
+                current_adata.obsm['X_umap'] = adata_temp.obsm['X_umap']
+
+                # Also copy other relevant computed components if available
+                if 'X_pca' in adata_temp.obsm_keys():
+                    current_adata.obsm['X_pca'] = adata_temp.obsm['X_pca']
+
+                if 'leiden' in adata_temp.obs.keys():
+                    current_adata.obs['leiden'] = adata_temp.obs['leiden']
+
+        print(f"Dataset loaded successfully: {current_adata.n_obs} cells, {current_adata.n_vars} genes")
+        print(f"Visualization type: {dataset_type}")
+        return True
+    except Exception as e:
+        print(f"Error loading dataset: {str(e)}")
+        return False
 
 
 def _to_dense(matrix):
@@ -915,30 +965,18 @@ def create_correlation_plot(adata, genes, color_by='cell_type'):
     return dcc.Graph(figure=fig, config={'displayModeBar': True, 'displaylogo': False})
 
 
-def load_dataset(dataset_path):
-    """
-    Load dataset from H5AD file
-    """
-    global current_adata
-    try:
-        current_adata = sc.read_h5ad(dataset_path)
-        print(f"Dataset loaded successfully: {current_adata.n_obs} cells, {current_adata.n_vars} genes")
-        return True
-    except Exception as e:
-        print(f"Error loading dataset: {str(e)}")
-        return False
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Interactive Visualization Suite for scSAID')
     parser.add_argument('--dataset', type=str, help='Path to H5AD dataset file')
+    parser.add_argument('--dataset-id', type=str, help='Dataset ID (SAID)')
+    parser.add_argument('--type', type=str, default="integrated", help='Visualization type (integrated/individual)')
     parser.add_argument('--port', type=int, default=8050, help='Port to run the server')
     parser.add_argument('--debug', action='store_true', help='Run in debug mode')
 
     args = parser.parse_args()
 
     if args.dataset:
-        if load_dataset(args.dataset):
+        if load_dataset(args.dataset, args.type):
             print(f"Starting visualization server on port {args.port}...")
             app.run_server(debug=args.debug, host='0.0.0.0', port=args.port)
         else:

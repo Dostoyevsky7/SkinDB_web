@@ -381,7 +381,7 @@
             <div class="cluster">
                 <div class="header">Cell Clustering</div>
                 <div id="dash-container" style="width:1000px; height:800px;">
-                    <iframe src="/dash/?sample_id=<%= saidVal %>" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
+                    <iframe src="/visualization?dataset=<%= saidVal %>&type=individual" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
                 </div>
             </div>
 
