@@ -124,6 +124,56 @@ def _sample_indices(n_obs, max_points):
         return np.arange(n_obs)
     return np.random.choice(n_obs, size=max_points, replace=False)
 
+
+def load_dataset(dataset_path, dataset_type="integrated"):
+    """
+    Load dataset from H5AD file and preprocess if needed for individual datasets
+    """
+    global current_adata, dataset_id
+
+    try:
+        current_adata = sc.read_h5ad(dataset_path)
+        print(f"Dataset loaded successfully: {current_adata.n_obs} cells, {current_adata.n_vars} genes")
+
+        # For individual datasets, if UMAP is not computed, calculate it
+        if dataset_type == "individual" and 'X_umap' not in current_adata.obsm_keys():
+            print("Computing UMAP for individual dataset...")
+
+            # Perform minimal preprocessing for visualization
+            if 'highly_variable' not in current_adata.var.keys():
+                # Basic normalization and identification of highly variable genes
+                sc.pp.normalize_total(current_adata, target_sum=1e4)
+                sc.pp.log1p(current_adata)
+                # Identify highly variable genes
+                sc.pp.highly_variable_genes(current_adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+
+            # Work with highly variable genes for efficiency
+            adata_subset = current_adata[:, current_adata.var['highly_variable']] if 'highly_variable' in current_adata.var.keys() else current_adata
+
+            # Scale the data
+            sc.pp.scale(adata_subset, max_value=10)
+
+            # Compute PCA
+            sc.tl.pca(adata_subset, svd_solver='arpack')
+
+            # Compute neighborhood graph and UMAP
+            sc.pp.neighbors(adata_subset)
+            sc.tl.umap(adata_subset)
+
+            # Copy the computed UMAP back to the full dataset
+            current_adata.obsm['X_umap'] = adata_subset.obsm['X_umap']
+
+            if 'X_pca' in adata_subset.obsm_keys():
+                current_adata.obsm['X_pca'] = adata_subset.obsm['X_pca']
+
+            print("UMAP computation completed for individual dataset.")
+
+        return True
+    except Exception as e:
+        print(f"Error loading dataset: {str(e)}")
+        return False
+
+
 # Main layout
 app.layout = html.Div([
     html.Div([
@@ -976,7 +1026,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.dataset:
-        if load_dataset(args.dataset, args.type):
+        dataset_type = args.type  # Use the provided type
+        if load_dataset(args.dataset, dataset_type=dataset_type):
             print(f"Starting visualization server on port {args.port}...")
             app.run_server(debug=args.debug, host='0.0.0.0', port=args.port)
         else:

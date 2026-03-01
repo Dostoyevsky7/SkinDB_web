@@ -134,9 +134,6 @@ public class VisualizationServlet extends HttpServlet {
         }
     }
 
-    /**
-     * Start the Python Dash visualization server
-     */
     private void startVisualizationServer(String datasetId, String datasetPath, String vizType) throws IOException {
         String pythonScript = getServletContext().getRealPath("/WEB-INF/visualization_suite.py");
 
@@ -154,7 +151,7 @@ public class VisualizationServlet extends HttpServlet {
             throw new IOException("Visualization script not found: " + pythonScript);
         }
 
-        // Build command
+        // Build command - specify type as individual to ensure UMAP computation if needed
         ProcessBuilder pb = new ProcessBuilder(
             "python3",
             pythonScript,
@@ -212,6 +209,7 @@ public class VisualizationServlet extends HttpServlet {
     }
 
     /**
+<<<<<<< HEAD
      * Get individual dataset file path from CSV mapping
      */
     private String getIndividualDatasetPath(String datasetId) {
@@ -298,9 +296,13 @@ public class VisualizationServlet extends HttpServlet {
 
     /**
      * Get dataset file path from mapping.json (for integrated datasets)
+=======
+     * Get dataset file path from mapping.json or find individual dataset file
+>>>>>>> e377376 (Fix Cell Clustering visualization to show individual dataset UMAPs)
      */
     private String getDatasetPath(String datasetId) {
         try {
+            // First try the original mapping approach
             String mappingPath = getServletContext().getRealPath("/WEB-INF/classes/mapping.json");
             if (!Files.exists(Paths.get(mappingPath))) {
                 mappingPath = getServletContext().getRealPath("/WEB-INF/classes/") + "../resources/mapping.json";
@@ -313,11 +315,97 @@ public class VisualizationServlet extends HttpServlet {
                 Map<String, Map<String, String>> mapping = gson.fromJson(content, Map.class);
 
                 if (mapping.containsKey(datasetId)) {
-                    return mapping.get(datasetId).get("file_path");
+                    String filePath = mapping.get(datasetId).get("file_path");
+                    if (filePath != null && Files.exists(Paths.get(filePath))) {
+                        return filePath;
+                    }
                 }
             }
+
+            // If mapping approach failed or file doesn't exist, try to find individual H5AD file
+            return getIndividualDatasetPath(datasetId);
         } catch (Exception e) {
             System.err.println("Error loading dataset mapping: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get individual dataset file path by finding the H5AD file based on SAID
+     */
+    private String getIndividualDatasetPath(String datasetId) {
+        try {
+            // Get data root path using the DataPathResolver
+            String dataRoot = Utils.DataPathResolver.resolveDataRoot(getServletContext());
+            String downloadDataPath = "download_data";
+
+            // Look up GSE and GSM from CSV files based on SAID
+            java.io.File humanFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "human/human_obs_by_batch.csv");
+            java.io.File mouseFile = Utils.DataPathResolver.resolveReadableFile(getServletContext(), "mouse/mouse_obs_by_batch.csv");
+
+            String gse = null;
+            String gsm = null;
+            String species = null;
+
+            // Search in human CSV first
+            if (humanFile.exists()) {
+                java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(humanFile));
+                String headerLine = reader.readLine(); // Skip header
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
+                        gse = parts[9];  // GSE column
+                        gsm = parts[5];  // GSM column
+                        species = "human";
+                        break;
+                    }
+                }
+                reader.close();
+            }
+
+            // If not found in human, search in mouse
+            if (gse == null && gsm == null && mouseFile.exists()) {
+                java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(mouseFile));
+                reader.readLine(); // Skip header
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",", -1);
+                    if (parts.length >= 11 && datasetId.equals(parts[10])) { // SAID is in column 10
+                        gse = parts[9];  // GSE column
+                        gsm = parts[5];  // GSM column
+                        species = "mouse";
+                        break;
+                    }
+                }
+                reader.close();
+            }
+
+            if (gse != null && gsm != null && species != null) {
+                // Build expected H5AD file path: /opt/SkinDB/download_data/10X/[species]/[GSE]/[GSM]/[GSE]_[GSM].h5ad
+                String h5adFilename = gse + "_" + gsm + ".h5ad";
+                String h5adPath = Paths.get(dataRoot, downloadDataPath, "10X", species, gse, gsm, h5adFilename).toString();
+
+                // Check if the file exists
+                if (Files.exists(Paths.get(h5adPath))) {
+                    System.out.println("Found individual dataset file for SAID " + datasetId + ": " + h5adPath);
+                    return h5adPath;
+                } else {
+                    // Try alternative naming convention
+                    String altH5adPath = Paths.get(dataRoot, downloadDataPath, "10X", species, gse, gsm, gsm + ".h5ad").toString();
+                    if (Files.exists(Paths.get(altH5adPath))) {
+                        System.out.println("Found alternative individual dataset file for SAID " + datasetId + ": " + altH5adPath);
+                        return altH5adPath;
+                    } else {
+                        System.err.println("H5AD file not found at: " + h5adPath + " or " + altH5adPath);
+                    }
+                }
+            } else {
+                System.err.println("Could not find GSE/GSM for SAID: " + datasetId);
+            }
+        } catch (Exception e) {
+            System.err.println("Error finding individual dataset path for SAID " + datasetId + ": " + e.getMessage());
         }
 
         return null;
