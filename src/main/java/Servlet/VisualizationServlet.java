@@ -35,6 +35,7 @@ public class VisualizationServlet extends HttpServlet {
 
         String datasetId = request.getParameter("dataset");
         String vizType = request.getParameter("type"); // Added to distinguish between integrated and individual
+        String direct = request.getParameter("direct"); // Parameter to indicate direct visualization access
 
         if (datasetId == null || datasetId.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Dataset ID is required");
@@ -76,10 +77,17 @@ public class VisualizationServlet extends HttpServlet {
             request.setAttribute("vizPort", VIZ_PORT_BASE);
             String scheme = request.getScheme();
             String host = request.getServerName();
-            request.setAttribute("vizUrl", scheme + "://" + host + ":" + VIZ_PORT_BASE + "/viz/?dataset=" + datasetId + "&type=" + vizType);
+            String vizUrl = scheme + "://" + host + ":" + VIZ_PORT_BASE + "/viz/?dataset=" + datasetId + "&type=" + vizType;
 
-            // Forward to JSP
-            request.getRequestDispatcher("visualization.jsp").forward(request, response);
+            request.setAttribute("vizUrl", vizUrl);
+
+            // If direct parameter is set, redirect to the actual visualization
+            if ("true".equals(direct) || "1".equals(direct)) {
+                response.sendRedirect(vizUrl);
+            } else {
+                // Forward to JSP for regular requests
+                request.getRequestDispatcher("visualization.jsp").forward(request, response);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
