@@ -6,41 +6,26 @@
 <header class="site-header">
     <div class="container">
         <a href="index.jsp" class="site-logo">scSAID</a>
+
         <nav class="main-nav">
-            <a href="index.jsp" class="main-nav__link">Home</a>
-
-            <%-- Browse Dropdown --%>
+            <a href="index.jsp" class="main-nav__link<%= request.getRequestURI().endsWith("index.jsp") ? " main-nav__link--active" : "" %>">Home</a>
+            <a href="browse.jsp" class="main-nav__link<%= request.getRequestURI().endsWith("browse.jsp") ? " main-nav__link--active" : "" %>">Browse</a>
+            <a href="gene-search.jsp" class="main-nav__link<%= request.getRequestURI().endsWith("gene-search.jsp") ? " main-nav__link--active" : "" %>">Search</a>
+            <a href="download.jsp" class="main-nav__link<%= request.getRequestURI().endsWith("download.jsp") ? " main-nav__link--active" : "" %>">Download</a>
             <div class="main-nav__item">
-                <a href="browse.jsp" class="main-nav__link">Browse</a>
+                <a href="help?topic=faq" class="main-nav__link<%= request.getRequestURI().startsWith("/help") ? " main-nav__link--active" : "" %>">Help</a>
                 <div class="main-nav__dropdown">
-                    <a href="browse.jsp" class="main-nav__dropdown-link">All Data</a>
-                    <a href="browse.jsp?filter=scrna" class="main-nav__dropdown-link">scRNA-seq</a>
-                    <a href="browse.jsp?filter=spatial" class="main-nav__dropdown-link">Spatial</a>
+                    <a href="help?topic=faq" class="main-nav__dropdown-link">FAQ</a>
+                    <a href="help?topic=methods" class="main-nav__dropdown-link">Methods</a>
+                    <a href="help?topic=markers" class="main-nav__dropdown-link">Markers</a>
+                    <a href="help?topic=pipeline" class="main-nav__dropdown-link">Pipeline</a>
+                    <a href="help?topic=usage" class="main-nav__dropdown-link">Usage</a>
                 </div>
             </div>
-
-            <%-- Tools Dropdown --%>
-            <div class="main-nav__item">
-                <a href="gene-search.jsp" class="main-nav__link">Tools</a>
-                <div class="main-nav__dropdown">
-                    <a href="gene-search.jsp" class="main-nav__dropdown-link">Gene Search</a>
-                    <a href="visualization.jsp" class="main-nav__dropdown-link">Cell Clustering</a>
-                </div>
-            </div>
-
-            <%-- Help Dropdown --%>
-            <div class="main-nav__item">
-                <a href="help.jsp?topic=faq" class="main-nav__link">Help</a>
-                <div class="main-nav__dropdown">
-                    <a href="help.jsp?topic=faq" class="main-nav__dropdown-link">FAQ</a>
-                    <a href="help.jsp?topic=pipeline" class="main-nav__dropdown-link">Pipeline</a>
-                    <a href="contact.jsp" class="main-nav__dropdown-link">Contact</a>
-                    <a href="feedback.jsp" class="main-nav__dropdown-link">Feedback</a>
-                </div>
-            </div>
-
-            <a href="download.jsp" class="main-nav__link">Download</a>
+            <a href="feedback" class="main-nav__link<%= request.getRequestURI().startsWith("/feedback") ? " main-nav__link--active" : "" %>">Feedback</a>
+            <a href="contact" class="main-nav__link<%= request.getRequestURI().startsWith("/contact") ? " main-nav__link--active" : "" %>">Contact</a>
         </nav>
+
         <div class="header-icons">
             <a href="https://github.com/Dostoyevsky7/SkinDB_web" target="_blank" class="header-icon-link" title="View on GitHub">
                 <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
