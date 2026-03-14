@@ -68,7 +68,7 @@ public class VisualizationServlet extends HttpServlet {
 
             // Check if visualization server is already running for this dataset
             if (!runningProcesses.containsKey(processKey)) {
-                startVisualizationServer(processKey, datasetPath, vizType);
+                startVisualizationServer(processKey, datasetPath, vizType, datasetId);
             }
 
             // Set attributes for JSP
@@ -142,7 +142,7 @@ public class VisualizationServlet extends HttpServlet {
         }
     }
 
-    private void startVisualizationServer(String processKey, String datasetPath, String vizType) throws IOException {
+    private void startVisualizationServer(String processKey, String datasetPath, String vizType, String datasetId) throws IOException {
         String pythonScript = getServletContext().getRealPath("/WEB-INF/visualization_suite.py");
 
         // If individual visualization is requested, use a different script
@@ -164,7 +164,7 @@ public class VisualizationServlet extends HttpServlet {
             "python3",
             pythonScript,
             "--dataset", datasetPath,
-            "--dataset-id", datasetId,  // Pass the actual dataset ID
+            "--dataset-id", datasetId,
             "--type", vizType,
             "--port", String.valueOf(VIZ_PORT_BASE)
         );
