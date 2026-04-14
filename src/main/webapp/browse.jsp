@@ -905,13 +905,78 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    // ===== Row Selection =====
-    // Row selection highlighting
+    // ===== Persistent Selection across pages =====
+    var STORAGE_KEY = 'skindb_selected_saids';
+
+    function getStoredSaids() {
+        try {
+            var stored = sessionStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        } catch(e) { return []; }
+    }
+
+    function saveStoredSaids(saids) {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(saids));
+        updateSelectionBadge();
+    }
+
+    function addSaid(said) {
+        var saids = getStoredSaids();
+        if (saids.indexOf(said) === -1) {
+            saids.push(said);
+            saveStoredSaids(saids);
+        }
+    }
+
+    function removeSaid(said) {
+        var saids = getStoredSaids();
+        var idx = saids.indexOf(said);
+        if (idx !== -1) {
+            saids.splice(idx, 1);
+            saveStoredSaids(saids);
+        }
+    }
+
+    function updateSelectionBadge() {
+        var saids = getStoredSaids();
+        var $badge = $('#selection-badge');
+        if (saids.length > 0) {
+            $badge.text(saids.length + ' selected').show();
+        } else {
+            $badge.hide();
+        }
+    }
+
+    // Add badge next to the Generate button
+    $('#integrate-button').after(
+        '<span id="selection-badge" style="display:none; margin-left:12px; background:#3498db; color:#fff; padding:4px 12px; border-radius:12px; font-size:0.85rem; font-weight:500;"></span>' +
+        '<button id="clear-selection-btn" class="btn" style="margin-left:8px; padding:6px 14px; font-size:0.8rem; background:#e74c3c; color:#fff; border:none; border-radius:6px; cursor:pointer; display:none;" title="Clear all selections">Clear All</button>'
+    );
+
+    // Restore selections on page load
+    var storedSaids = getStoredSaids();
+    $('input[name="dataset_checkbox"]').each(function() {
+        if (storedSaids.indexOf($(this).val()) !== -1) {
+            $(this).prop('checked', true);
+            $(this).closest('tr').addClass('selected-row');
+        }
+    });
+    updateSelectionBadge();
+    if (storedSaids.length > 0) $('#clear-selection-btn').show();
+
+    // Row selection highlighting + persist
     document.querySelector('#select-all').closest('table').addEventListener('change', function (e) {
         const cb = e.target;
         if (cb.type !== 'checkbox' || cb.name !== 'dataset_checkbox') return;
         const tr = cb.closest('tr');
         tr.classList.toggle('selected-row', cb.checked);
+        if (cb.checked) {
+            addSaid(cb.value);
+        } else {
+            removeSaid(cb.value);
+        }
+        var count = getStoredSaids().length;
+        if (count > 0) $('#clear-selection-btn').show(); else $('#clear-selection-btn').hide();
     });
 
     // Select all checkbox (only select visible rows)
@@ -922,45 +987,39 @@ $(document).ready(function() {
             if (!$row.hasClass('filtered-out')) {
                 this.checked = flag;
                 $row.toggleClass('selected-row', flag);
+                if (flag) {
+                    addSaid($(this).val());
+                } else {
+                    removeSaid($(this).val());
+                }
             }
         });
+        var count = getStoredSaids().length;
+        if (count > 0) $('#clear-selection-btn').show(); else $('#clear-selection-btn').hide();
     });
 
-    // Integration button
-    $('#integrate-button').on('click', function() {
-        let selectedSaids = [];
-        $('input[name="dataset_checkbox"]:checked').each(function() {
-            selectedSaids.push($(this).val());
-        });
+    // Clear all selections
+    $('#clear-selection-btn').on('click', function() {
+        sessionStorage.removeItem(STORAGE_KEY);
+        $('input[name="dataset_checkbox"]').prop('checked', false);
+        $('#select-all').prop('checked', false);
+        $('tr.selected-row').removeClass('selected-row');
+        updateSelectionBadge();
+        $(this).hide();
+    });
 
-        if (selectedSaids.length < 2) {
-            alert('Please select at least two datasets to integrate.');
+    // Integration button - opens interactive Dash UMAP in new tab
+    $('#integrate-button').on('click', function() {
+        var allSaids = getStoredSaids();
+
+        if (allSaids.length < 1) {
+            alert('Please select at least one dataset to visualize.');
             return;
         }
 
-        $('#umap-result-container').show();
-        $('#loading-indicator').css('display', 'flex');
-        $('#umap-image').hide();
-
-        $.ajax({
-            url: 'integrate',
-            type: 'POST',
-            data: { 'saids[]': selectedSaids },
-            success: function(response) {
-                $('#loading-indicator').hide();
-                if (response.redirectUrl) {
-                    window.open(response.redirectUrl, '_blank');
-                } else if (response.error) {
-                    alert('Error: ' + response.error);
-                } else {
-                    alert('An unknown error occurred.');
-                }
-            },
-            error: function(xhr, status, error) {
-                $('#loading-indicator').hide();
-                alert('AJAX error: ' + error + '\n' + xhr.responseText);
-            }
-        });
+        // Open Dash app in new tab with all persisted SAIDs
+        var url = '/integrated_umap/?saids=' + allSaids.join(',');
+        window.open(url, '_blank');
     });
 });
 </script>

@@ -339,14 +339,11 @@
                 </svg>
                 CellPhoneDB Analysis
             </a>
-            <a href="visualization?dataset=<%= saidVal %>" class="nav-item nav-item--highlight">
+            <a href="#EnrichmentAnalysis" class="nav-item">
                 <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
+                    <path d="M21 12h-4l-3 9L9 3l-3 9H3"></path>
                 </svg>
-                Interactive Visualizations
-                <span class="nav-badge">NEW</span>
+                Enrichment Analysis
             </a>
         </nav>
     </aside>
@@ -368,20 +365,61 @@
                     <div class="detail_container_1"><div class="subtitle">Sex: </div><div class="text_2"><%= sexVal %></div></div>
                 </div>
                 <div style="width: 60%">
-                    <div class="title_1">Dataset Path<div class="separator"></div></div>
-
-                    <div style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
-                        <div class="detail_container_2"><div class="subtitle">H5AD File: </div><div class="text_2" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;"><%= h5adPath %></div></div>
-
+                    <div class="title_1">Experimental Design<div class="separator"></div></div>
+                    <div id="geo-meta-container" style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
+                        <div id="geo-meta-loading" style="color:#999; font-size:0.9rem;">Loading study information...</div>
+                        <div id="geo-meta-content" style="display:none;">
+                            <div class="detail_container_2" style="margin-bottom:10px;">
+                                <div class="subtitle" style="font-weight:600; color:#2c3e50;">Study Title</div>
+                                <div id="geo-title" class="text_2" style="font-size:0.9rem; line-height:1.5; margin-top:4px;"></div>
+                            </div>
+                            <div class="detail_container_2" style="margin-bottom:10px;">
+                                <div class="subtitle" style="font-weight:600; color:#2c3e50;">Summary</div>
+                                <div id="geo-summary" class="text_2" style="font-size:0.85rem; line-height:1.6; margin-top:4px; text-align:justify;"></div>
+                            </div>
+                            <div class="detail_container_2" style="margin-bottom:10px;">
+                                <div class="subtitle" style="font-weight:600; color:#2c3e50;">Overall Design</div>
+                                <div id="geo-design" class="text_2" style="font-size:0.85rem; line-height:1.6; margin-top:4px; text-align:justify;"></div>
+                            </div>
+                            <div id="geo-pubmed-row" class="detail_container_2" style="display:none;">
+                                <div class="subtitle" style="font-weight:600; color:#2c3e50;">PubMed</div>
+                                <div id="geo-pubmed" class="text_2" style="font-size:0.85rem; margin-top:4px;"></div>
+                            </div>
+                        </div>
+                        <div id="geo-meta-empty" style="display:none; color:#999; font-size:0.9rem;">
+                            No GEO metadata available for this dataset.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="CellClustering" id="CellClustering">
             <div class="cluster">
-                <div class="header">Cell Clustering</div>
-                <div id="dash-container" style="width:1000px; height:800px;">
-                    <iframe src="/visualization?dataset=<%= saidVal %>&type=individual&direct=true" style="width:100%; height:100%; border:0;" scrolling="no"></iframe>
+                <div class="header">
+                    <div class="header-content">
+                        <div><div class="header-title">Cell Clustering</div></div>
+                        <div class="umap-controls" style="display:flex; align-items:center; gap:12px;">
+                            <label style="font-size:0.85rem; color:#666;">Color by:</label>
+                            <select id="umapColorBy" class="elegant-select" style="min-width:160px;">
+                                <option value="">Loading...</option>
+                            </select>
+                            <button id="downloadUmapPdf" class="export-btn" title="Download PDF">
+                                <svg class="export-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="umap-container" style="width:100%; min-height:600px; display:flex; justify-content:center; align-items:center; background:#fff;">
+                    <div id="umap-loading" style="text-align:center; color:#999;">
+                        <div class="spinner" style="margin:0 auto 10px;"></div>
+                        Loading UMAP...
+                    </div>
+                    <img id="umap-image" src="" alt="UMAP plot" style="display:none; max-width:100%; height:auto;">
                 </div>
             </div>
 
@@ -460,42 +498,54 @@
                 <div class="panel-body">
                     <!-- Cell Type Selection -->
                     <div class="cpdb-config-section">
-                        <h3 class="cpdb-section-title">Select Cell Types</h3>
-                        <p class="cpdb-section-desc">Choose 2 or more cell types to analyze ligand-receptor interactions</p>
-
-                        <div class="cpdb-cell-selector">
-                            <select id="cpdbCellTypeMultiSelect" multiple class="cpdb-multiselect">
-                                <option value="">Loading cell types...</option>
-                            </select>
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:12px; flex-wrap:wrap;">
+                            <h3 class="cpdb-section-title" style="margin:0;">Cell-Cell Communication</h3>
+                            <div class="cpdb-mode-toggle" style="margin:0;">
+                                <label class="cpdb-radio">
+                                    <input type="radio" name="cpdbMode" value="all" checked>
+                                    <span>All Combinations</span>
+                                </label>
+                                <label class="cpdb-radio">
+                                    <input type="radio" name="cpdbMode" value="directed">
+                                    <span>Sender → Receiver</span>
+                                </label>
+                            </div>
                         </div>
 
-                        <div class="cpdb-mode-toggle">
-                            <label class="cpdb-radio">
-                                <input type="radio" name="cpdbMode" value="all" checked>
-                                <span>All Combinations</span>
-                            </label>
-                            <label class="cpdb-radio">
-                                <input type="radio" name="cpdbMode" value="directed">
-                                <span>Sender → Receiver</span>
-                            </label>
+                        <!-- All Combinations mode: single checkbox list -->
+                        <div id="cpdbAllControls">
+                            <p class="cpdb-section-desc">Select 2 or more cell types to analyze ligand-receptor interactions</p>
+                            <div id="cpdbCellTypeList" style="max-height:300px; overflow-y:auto; border:1px solid #e0e0e0; border-radius:8px; padding:8px 12px; background:#fafafa;">
+                                <div style="color:#999;">Loading cell types...</div>
+                            </div>
+                            <div style="margin-top:6px; font-size:0.8rem; color:#888;">
+                                <span id="cpdbSelectedCount">0</span> cell types selected
+                                <a href="javascript:void(0)" id="cpdbSelectAll" style="margin-left:12px; color:#3498db;">Select All</a>
+                                <a href="javascript:void(0)" id="cpdbClearAll" style="margin-left:8px; color:#e74c3c;">Clear</a>
+                            </div>
                         </div>
 
-                        <!-- Sender/Receiver (shown when directed mode selected) -->
+                        <!-- Sender/Receiver mode: two checkbox lists side by side -->
                         <div id="cpdbDirectedControls" style="display:none;">
-                            <div class="cpdb-directed-row">
-                                <div class="cpdb-directed-col">
-                                    <label>Sender Cell Types</label>
-                                    <select id="cpdbSenderTypes" multiple></select>
+                            <p class="cpdb-section-desc">Assign cell types as senders (left) and receivers (right)</p>
+                            <div style="display:flex; gap:16px; align-items:stretch;">
+                                <div style="flex:1; min-width:0;">
+                                    <label style="font-weight:600; color:#2c3e50; font-size:0.9rem; display:block; margin-bottom:6px;">Sender Cell Types</label>
+                                    <div id="cpdbSenderList" style="max-height:280px; overflow-y:auto; border:1px solid #e0e0e0; border-radius:8px; padding:8px 12px; background:#fafafa;">
+                                    </div>
+                                    <div style="margin-top:4px; font-size:0.75rem; color:#888;"><span id="cpdbSenderCount">0</span> selected</div>
                                 </div>
-                                <div class="cpdb-directed-arrow">→</div>
-                                <div class="cpdb-directed-col">
-                                    <label>Receiver Cell Types</label>
-                                    <select id="cpdbReceiverTypes" multiple></select>
+                                <div style="display:flex; align-items:center; font-size:2rem; color:#999; padding:0 8px;">→</div>
+                                <div style="flex:1; min-width:0;">
+                                    <label style="font-weight:600; color:#2c3e50; font-size:0.9rem; display:block; margin-bottom:6px;">Receiver Cell Types</label>
+                                    <div id="cpdbReceiverList" style="max-height:280px; overflow-y:auto; border:1px solid #e0e0e0; border-radius:8px; padding:8px 12px; background:#fafafa;">
+                                    </div>
+                                    <div style="margin-top:4px; font-size:0.75rem; color:#888;"><span id="cpdbReceiverCount">0</span> selected</div>
                                 </div>
                             </div>
                         </div>
 
-                        <button id="runCpdbAnalysisBtn" class="generate-btn">
+                        <button id="runCpdbAnalysisBtn" class="generate-btn" style="margin-top:16px;">
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
                             </svg>
@@ -533,12 +583,11 @@
                                 <table id="cpdbResultsTable" class="elegant-table">
                                     <thead>
                                         <tr>
-                                            <th>Interaction</th>
-                                            <th>Ligand</th>
-                                            <th>Receptor</th>
+                                            <th>Interaction Pair</th>
                                             <th>Sender</th>
                                             <th>Receiver</th>
-                                            <th>Score</th>
+                                            <th>Mean Expression</th>
+                                            <th>P-value</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -546,6 +595,48 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="cluster" id="EnrichmentAnalysis">
+                <div class="header">
+                    <div class="header-content">
+                        <div><div class="header-title">Enrichment Analysis (GSEA)</div></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:16px; padding:12px 16px; background:#f8f9fa; border-radius:8px; border:1px solid #e9ecef;">
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <label style="font-size:0.85rem; color:#555; font-weight:500;">Gene Set:</label>
+                            <select id="enrichGeneSet" class="elegant-select" style="min-width:220px;">
+                                <option value="">Loading...</option>
+                            </select>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <label style="font-size:0.85rem; color:#555; font-weight:500;">Top:</label>
+                            <select id="enrichTopN" class="elegant-select" style="min-width:80px;">
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                            </select>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <label style="font-size:0.85rem; color:#555; font-weight:500;">Filter:</label>
+                            <select id="enrichFilter" class="elegant-select" style="min-width:130px;">
+                                <option value="all" selected>All results</option>
+                                <option value="significant">Significant only</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="enrich-loading" style="text-align:center; padding:40px; color:#999; display:none;">
+                        <div class="spinner" style="margin:0 auto 10px;"></div>
+                        Loading enrichment data...
+                    </div>
+                    <div id="enrich-empty" style="text-align:center; padding:40px; color:#999; display:none;">
+                        No enrichment data available for this dataset.
+                    </div>
+                    <div id="enrichChart" style="width:100%; min-height:500px;"></div>
                 </div>
             </div>
         </div>
@@ -637,83 +728,335 @@
                     XLSX.writeFile(wb, "filtered_DEG_results.xlsx");
                 }
 
+                // =========================================================================
+                // UMAP PNG Visualization
+                // =========================================================================
+                function loadUmapOptions() {
+                    $.getJSON('/umap_obs_options', { gse: gse, gsm: gsm })
+                        .done(function(data) {
+                            var select = $('#umapColorBy');
+                            select.empty();
+                            var allowed = ["Fine_Map", "Gross_Map"];
+                            var cols = (data.obs_columns || []).filter(function(c) { return allowed.indexOf(c) !== -1; });
+                            if (cols.length > 0) {
+                                cols.forEach(function(col) {
+                                    var selected = (col === data.default_color_by) ? ' selected' : '';
+                                    select.append('<option value="' + col + '"' + selected + '>' + col + '</option>');
+                                });
+                            } else {
+                                select.append('<option value="">No metadata available</option>');
+                            }
+                            loadUmapImage();
+                        })
+                        .fail(function() {
+                            $('#umapColorBy').html('<option value="">Error loading options</option>');
+                            loadUmapImage();
+                        });
+                }
+
+                function loadUmapImage() {
+                    var colorBy = $('#umapColorBy').val() || '';
+                    $('#umap-loading').show();
+                    $('#umap-image').hide();
+                    var imgUrl = '/umap_png?gse=' + encodeURIComponent(gse) + '&gsm=' + encodeURIComponent(gsm);
+                    if (colorBy) imgUrl += '&color_by=' + encodeURIComponent(colorBy);
+                    imgUrl += '&_t=' + Date.now();
+
+                    var img = new Image();
+                    img.onload = function() {
+                        $('#umap-image').attr('src', imgUrl).show();
+                        $('#umap-loading').hide();
+                    };
+                    img.onerror = function() {
+                        $('#umap-loading').html('<p style="color:#c00;">Failed to load UMAP image.</p>');
+                    };
+                    img.src = imgUrl;
+                }
+
+                loadUmapOptions();
+                $('#umapColorBy').on('change', loadUmapImage);
+                $('#downloadUmapPdf').on('click', function() {
+                    var colorBy = $('#umapColorBy').val() || '';
+                    var pdfUrl = '/umap_pdf?gse=' + encodeURIComponent(gse) + '&gsm=' + encodeURIComponent(gsm);
+                    if (colorBy) pdfUrl += '&color_by=' + encodeURIComponent(colorBy);
+                    window.open(pdfUrl, '_blank');
+                });
+
                 initGroupOptions();
                 loadDEG();
                 $('#pvalSlider, #fcSlider, #groupSelect').on('input change', loadDEG);
                 $('#exportExcelBtn').on('click', exportTableToExcel);
 
                 // =========================================================================
-                // SECTION D: CELLPHONEDB DYNAMIC ANALYSIS
                 // =========================================================================
-                console.log("🌟 CellPhoneDB Dynamic Analysis script start");
-
-                // Initialize cell type multi-select
-                function initCpdbCellTypes() {
-                    console.log("🔍 Loading cell types for CellPhoneDB");
-                    $.getJSON(contextPath + '/cpdb-api?action=cell-types', {
-                        said: said
-                    }).done(function(data) {
-                        if (data.error) {
-                            console.error('CPDB cell types error:', data.error);
-                            $('#cpdbCellTypeMultiSelect').html('<option value="">Error: ' + data.error + '</option>');
-                            return;
+                // EXPERIMENTAL DESIGN (GEO Metadata)
+                // =========================================================================
+                $.getJSON(contextPath + '/geo_meta', { said: said })
+                    .done(function(data) {
+                        $('#geo-meta-loading').hide();
+                        if (data && (data.title || data.summary || data.overall_design)) {
+                            $('#geo-title').text(data.title || 'N/A');
+                            $('#geo-summary').text(data.summary || 'N/A');
+                            $('#geo-design').text(data.overall_design || 'N/A');
+                            if (data.pubmed_ids && data.pubmed_ids.length > 0) {
+                                var links = data.pubmed_ids.map(function(pmid) {
+                                    return '<a href="https://pubmed.ncbi.nlm.nih.gov/' + pmid + '/" target="_blank" style="color:#2471a3;">PMID: ' + pmid + '</a>';
+                                });
+                                $('#geo-pubmed').html(links.join(', '));
+                                $('#geo-pubmed-row').show();
+                            }
+                            $('#geo-meta-content').show();
+                        } else {
+                            $('#geo-meta-empty').show();
                         }
-                        console.log("✅ CPDB cell types loaded:", data.cell_types);
-                        const select = $('#cpdbCellTypeMultiSelect');
-                        select.empty();
-                        data.cell_types.forEach(function(ct) {
-                            const count = data.cell_counts ? data.cell_counts[ct] || '' : '';
-                            const label = count ? ct + ' (' + count + ' cells)' : ct;
-                            select.append('<option value="' + ct + '">' + label + '</option>');
+                    })
+                    .fail(function() {
+                        $('#geo-meta-loading').hide();
+                        $('#geo-meta-empty').show();
+                    });
+
+                // Enrichment Analysis - Horizontal Bar Chart
+                // =========================================================================
+                var enrichAllData = [];
+
+                function loadEnrichGeneSets() {
+                    $.getJSON(contextPath + '/enrichment', { said: said, action: 'list' })
+                        .done(function(data) {
+                            var select = $('#enrichGeneSet');
+                            select.empty();
+                            if (data.gene_sets && data.gene_sets.length > 0) {
+                                data.gene_sets.forEach(function(gs) {
+                                    select.append('<option value="' + gs.label + '">' + gs.name + '</option>');
+                                });
+                                loadEnrichData();
+                            } else {
+                                select.append('<option value="">No enrichment data</option>');
+                                $('#enrich-empty').show();
+                            }
+                        })
+                        .fail(function() {
+                            $('#enrichGeneSet').html('<option value="">Error loading</option>');
                         });
-                    }).fail(function(xhr) {
-                        console.error("❌ CPDB cell type request failed:", xhr.status, xhr.statusText);
-                        $('#cpdbCellTypeMultiSelect').html('<option value="">Failed to load cell types</option>');
+                }
+
+                function loadEnrichData() {
+                    var geneSet = $('#enrichGeneSet').val();
+                    var filter = $('#enrichFilter').val();
+                    if (!geneSet) return;
+
+                    $('#enrich-loading').show();
+                    $('#enrich-empty').hide();
+                    $('#enrichChart').empty();
+
+                    $.getJSON(contextPath + '/enrichment', { said: said, gene_set: geneSet, filter: filter })
+                        .done(function(data) {
+                            $('#enrich-loading').hide();
+                            if (!data || data.length === 0) {
+                                $('#enrich-empty').show().text(
+                                    filter === 'significant' ? 'No significant results. Try showing all results.' : 'No enrichment data available.'
+                                );
+                                return;
+                            }
+                            $('#enrich-empty').hide();
+                            enrichAllData = data;
+                            renderEnrichChart();
+                        })
+                        .fail(function() {
+                            $('#enrich-loading').hide();
+                            $('#enrich-empty').show().text('Error loading enrichment data.');
+                        });
+                }
+
+                function renderEnrichChart() {
+                    var topN = parseInt($('#enrichTopN').val()) || 10;
+                    var half = Math.floor(topN / 2);
+
+                    // Split into positive and negative NES
+                    var pos = enrichAllData.filter(function(r) { return parseFloat(r.nes) > 0; });
+                    var neg = enrichAllData.filter(function(r) { return parseFloat(r.nes) < 0; });
+
+                    // Sort by |NES| descending
+                    pos.sort(function(a, b) { return Math.abs(parseFloat(b.nes)) - Math.abs(parseFloat(a.nes)); });
+                    neg.sort(function(a, b) { return Math.abs(parseFloat(b.nes)) - Math.abs(parseFloat(a.nes)); });
+
+                    // Take equal amounts; if one side has fewer, give remainder to the other
+                    var nPos = Math.min(half, pos.length);
+                    var nNeg = Math.min(half, neg.length);
+                    if (nPos < half) nNeg = Math.min(topN - nPos, neg.length);
+                    if (nNeg < half) nPos = Math.min(topN - nNeg, pos.length);
+
+                    var selected = neg.slice(0, nNeg).concat(pos.slice(0, nPos));
+
+                    // Sort for display: negative (most negative first) then positive (least positive first)
+                    selected.sort(function(a, b) { return parseFloat(a.nes) - parseFloat(b.nes); });
+
+                    if (selected.length === 0) {
+                        $('#enrich-empty').show().text('No pathways to display.');
+                        return;
+                    }
+
+                    // Clean term names: remove common prefixes like GOBP_, HALLMARK_, etc.
+                    var terms = selected.map(function(r) {
+                        var t = r.term;
+                        t = t.replace(/^(GOBP_|GOCC_|GOMF_|HALLMARK_|KEGG_|REACTOME_|WP_)/, '');
+                        t = t.replace(/_/g, ' ');
+                        if (t.length > 60) t = t.substring(0, 57) + '...';
+                        return t;
+                    });
+                    var nesValues = selected.map(function(r) { return parseFloat(r.nes); });
+                    var colors = nesValues.map(function(v) { return v > 0 ? '#c0392b' : '#2471a3'; });
+                    var hoverText = selected.map(function(r) {
+                        return '<b>' + r.term.replace(/_/g, ' ') + '</b><br>' +
+                               'NES: ' + parseFloat(r.nes).toFixed(3) + '<br>' +
+                               'FDR q-val: ' + parseFloat(r.fdr_qval).toExponential(2) + '<br>' +
+                               'NOM p-val: ' + parseFloat(r.nom_pval).toExponential(2);
+                    });
+
+                    var chartHeight = Math.max(400, selected.length * 28 + 100);
+
+                    var trace = {
+                        type: 'bar',
+                        orientation: 'h',
+                        x: nesValues,
+                        y: terms,
+                        marker: { color: colors },
+                        text: nesValues.map(function(v) { return v.toFixed(2); }),
+                        textposition: 'outside',
+                        textfont: { size: 11 },
+                        hovertext: hoverText,
+                        hoverinfo: 'text'
+                    };
+
+                    var layout = {
+                        margin: { l: 320, r: 60, t: 30, b: 50 },
+                        xaxis: {
+                            title: 'Normalized Enrichment Score (NES)',
+                            zeroline: true,
+                            zerolinecolor: '#999',
+                            zerolinewidth: 1.5
+                        },
+                        yaxis: {
+                            automargin: true,
+                            tickfont: { size: 11 }
+                        },
+                        height: chartHeight,
+                        plot_bgcolor: '#fff',
+                        paper_bgcolor: '#fff',
+                        font: { family: 'Montserrat, sans-serif' },
+                        shapes: [{
+                            type: 'line', x0: 0, x1: 0,
+                            y0: -0.5, y1: selected.length - 0.5,
+                            line: { color: '#999', width: 1.5, dash: 'dot' }
+                        }],
+                        annotations: [
+                            { x: Math.min.apply(null, nesValues) * 0.5, y: selected.length + 0.3,
+                              text: '<b style="color:#2471a3">Downregulated</b>', showarrow: false,
+                              font: { size: 12, color: '#2471a3' }, xanchor: 'center' },
+                            { x: Math.max.apply(null, nesValues) * 0.5, y: selected.length + 0.3,
+                              text: '<b style="color:#c0392b">Upregulated</b>', showarrow: false,
+                              font: { size: 12, color: '#c0392b' }, xanchor: 'center' }
+                        ]
+                    };
+
+                    Plotly.newPlot('enrichChart', [trace], layout, {
+                        responsive: true,
+                        displayModeBar: true,
+                        modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+                        toImageButtonOptions: { format: 'svg', filename: 'GSEA_' + said }
                     });
                 }
 
-                // Toggle directed mode controls
-                $('input[name="cpdbMode"]').change(function() {
-                    const isDirected = $(this).val() === 'directed';
-                    $('#cpdbDirectedControls').toggle(isDirected);
+                loadEnrichGeneSets();
+                $('#enrichGeneSet, #enrichFilter').on('change', loadEnrichData);
+                $('#enrichTopN').on('change', renderEnrichChart);
 
-                    if (isDirected) {
-                        // Copy selected types to sender/receiver
-                        const selected = $('#cpdbCellTypeMultiSelect').val() || [];
-                        ['#cpdbSenderTypes', '#cpdbReceiverTypes'].forEach(function(sel) {
-                            $(sel).empty();
-                            selected.forEach(function(ct) {
-                                $(sel).append('<option value="' + ct + '">' + ct + '</option>');
-                            });
+                // =========================================================================
+                // SECTION D: CELLPHONEDB DYNAMIC ANALYSIS
+                // =========================================================================
+
+                var cpdbAllCellTypes = [];
+
+                function buildCheckboxList(containerId, cellTypes, cellCounts, prefix) {
+                    var html = '';
+                    cellTypes.forEach(function(ct, i) {
+                        var count = cellCounts[ct] || 0;
+                        var id = prefix + '_' + i;
+                        html += '<label style="display:flex; align-items:center; padding:4px 0; cursor:pointer; gap:8px; font-size:0.85rem;" title="' + ct + ' (' + count + ' cells)">' +
+                            '<input type="checkbox" value="' + ct.replace(/"/g, '&quot;') + '" id="' + id + '" style="margin:0; width:16px; height:16px; cursor:pointer;">' +
+                            '<span style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">' + ct + '</span>' +
+                            '<span style="color:#aaa; font-size:0.75rem; flex-shrink:0;">' + count + '</span>' +
+                            '</label>';
+                    });
+                    $('#' + containerId).html(html);
+                }
+
+                function updateCounts() {
+                    $('#cpdbSelectedCount').text($('#cpdbCellTypeList input:checked').length);
+                    $('#cpdbSenderCount').text($('#cpdbSenderList input:checked').length);
+                    $('#cpdbReceiverCount').text($('#cpdbReceiverList input:checked').length);
+                }
+
+                function initCpdbCellTypes() {
+                    $.getJSON(contextPath + '/cpdb-api?action=cell-types', { said: said })
+                        .done(function(data) {
+                            if (data.error) {
+                                $('#cpdbCellTypeList').html('<div style="color:#c00;">' + data.error + '</div>');
+                                return;
+                            }
+                            cpdbAllCellTypes = data.cell_types;
+                            var counts = data.cell_counts || {};
+                            buildCheckboxList('cpdbCellTypeList', data.cell_types, counts, 'ct_all');
+                            buildCheckboxList('cpdbSenderList', data.cell_types, counts, 'ct_sender');
+                            buildCheckboxList('cpdbReceiverList', data.cell_types, counts, 'ct_recv');
+                            $('#cpdbCellTypeList, #cpdbSenderList, #cpdbReceiverList').on('change', 'input', updateCounts);
+                        })
+                        .fail(function() {
+                            $('#cpdbCellTypeList').html('<div style="color:#c00;">Failed to load cell types</div>');
                         });
-                    }
+                }
+
+                $('#cpdbSelectAll').click(function() {
+                    $('#cpdbCellTypeList input[type="checkbox"]').prop('checked', true);
+                    updateCounts();
+                });
+                $('#cpdbClearAll').click(function() {
+                    $('#cpdbCellTypeList input[type="checkbox"]').prop('checked', false);
+                    updateCounts();
                 });
 
-                // Update sender/receiver when main selection changes
-                $('#cpdbCellTypeMultiSelect').change(function() {
-                    const selected = $(this).val() || [];
-                    if ($('input[name="cpdbMode"]:checked').val() === 'directed') {
-                        ['#cpdbSenderTypes', '#cpdbReceiverTypes'].forEach(function(sel) {
-                            const current = $(sel).val() || [];
-                            $(sel).empty();
-                            selected.forEach(function(ct) {
-                                const isSelected = current.indexOf(ct) !== -1;
-                                $(sel).append('<option value="' + ct + '"' + (isSelected ? ' selected' : '') + '>' + ct + '</option>');
-                            });
-                        });
-                    }
+                $('input[name="cpdbMode"]').change(function() {
+                    var isDirected = $(this).val() === 'directed';
+                    $('#cpdbAllControls').toggle(!isDirected);
+                    $('#cpdbDirectedControls').toggle(isDirected);
                 });
 
                 // Run analysis
                 $('#runCpdbAnalysisBtn').click(function() {
-                    const selectedTypes = $('#cpdbCellTypeMultiSelect').val();
+                    const mode = $('input[name="cpdbMode"]:checked').val();
+                    var selectedTypes = [];
+                    var senderTypes = [];
+                    var receiverTypes = [];
 
-                    if (!selectedTypes || selectedTypes.length < 2) {
-                        alert('Please select at least 2 cell types');
-                        return;
+                    if (mode === 'all') {
+                        $('#cpdbCellTypeList input:checked').each(function() { selectedTypes.push($(this).val()); });
+                        if (selectedTypes.length < 2) {
+                            alert('Please select at least 2 cell types');
+                            return;
+                        }
+                    } else {
+                        $('#cpdbSenderList input:checked').each(function() { senderTypes.push($(this).val()); });
+                        $('#cpdbReceiverList input:checked').each(function() { receiverTypes.push($(this).val()); });
+                        if (senderTypes.length < 1 || receiverTypes.length < 1) {
+                            alert('Please select at least 1 sender and 1 receiver cell type');
+                            return;
+                        }
+                        // Merge unique cell types for CellPhoneDB
+                        var allSet = {};
+                        senderTypes.forEach(function(t) { allSet[t] = true; });
+                        receiverTypes.forEach(function(t) { allSet[t] = true; });
+                        selectedTypes = Object.keys(allSet);
                     }
 
-                    const mode = $('input[name="cpdbMode"]:checked').val();
                     const params = {
                         action: 'run-analysis',
                         said: said,
@@ -721,14 +1064,8 @@
                     };
 
                     if (mode === 'directed') {
-                        const senders = $('#cpdbSenderTypes').val();
-                        const receivers = $('#cpdbReceiverTypes').val();
-                        if (senders && senders.length > 0) {
-                            params.senders = JSON.stringify(senders);
-                        }
-                        if (receivers && receivers.length > 0) {
-                            params.receivers = JSON.stringify(receivers);
-                        }
+                        params.senders = JSON.stringify(senderTypes);
+                        params.receivers = JSON.stringify(receiverTypes);
                     }
 
                     // Show progress
@@ -744,8 +1081,8 @@
                         data: {
                             said: said,
                             cell_types: JSON.stringify(selectedTypes),
-                            senders: mode === 'directed' ? JSON.stringify($('#cpdbSenderTypes').val()) : null,
-                            receivers: mode === 'directed' ? JSON.stringify($('#cpdbReceiverTypes').val()) : null
+                            senders: mode === 'directed' ? JSON.stringify(senderTypes) : null,
+                            receivers: mode === 'directed' ? JSON.stringify(receiverTypes) : null
                         },
                         success: function(response) {
                             console.log("✅ CPDB analysis started:", response);
@@ -793,20 +1130,23 @@
                     $.getJSON(contextPath + '/cpdb-api?action=results', {
                         job_id: jobId
                     }).done(function(data) {
-                        console.log("✅ CPDB results loaded:", data);
+                        console.log("CPDB results loaded:", data);
                         $('#cpdbProgressSection').hide();
                         $('#cpdbResultsSection').show();
 
-                        // Render heatmap
-                        renderCpdbHeatmap(data.heatmap_data);
+                        // Ensure heatmap tab is active
+                        $('.cpdb-tab').removeClass('active').first().addClass('active');
+                        $('.cpdb-tab-content').removeClass('active');
+                        $('#cpdbHeatmapTab').addClass('active');
 
-                        // Render dot plot
-                        renderCpdbDotplot(data.dotplot_data);
-
-                        // Populate table
-                        populateCpdbTable(data.interactions);
+                        // Delay render slightly to let the DOM update display
+                        setTimeout(function() {
+                            try { renderCpdbHeatmap(data.heatmap_data); } catch(e) { console.error('Heatmap render error:', e); }
+                            try { renderCpdbDotplot(data.dotplot_data); } catch(e) { console.error('Dotplot render error:', e); }
+                            try { populateCpdbTable(data.interactions); } catch(e) { console.error('Table render error:', e); }
+                        }, 100);
                     }).fail(function(xhr) {
-                        console.error("❌ Failed to load CPDB results:", xhr.status);
+                        console.error("Failed to load CPDB results:", xhr.status);
                         showCpdbError('Failed to load results');
                     });
                 }
@@ -818,7 +1158,7 @@
                         return;
                     }
 
-                    const trace = {
+                    var trace = {
                         z: heatmapData.z,
                         x: heatmapData.x,
                         y: heatmapData.y,
@@ -828,22 +1168,30 @@
                             [0.5, '#e8927c'],
                             [1, '#8B0000']
                         ],
-                        hoverongaps: false
+                        hoverongaps: false,
+                        hovertemplate: 'Sender: %{x}<br>Receiver: %{y}<br>Significant interactions: %{z}<extra></extra>'
                     };
 
-                    const layout = {
-                        title: 'Ligand-Receptor Interaction Scores',
+                    var el = document.getElementById('cpdbHeatmapPlot');
+                    var w = Math.max(el.offsetWidth - 40, 500);
+                    var h = Math.max(heatmapData.y.length * 40 + 250, 500);
+
+                    var layout = {
+                        title: 'Significant Interactions Between Cell Types',
                         font: { family: 'Montserrat, sans-serif' },
+                        width: w,
+                        height: h,
                         xaxis: {
-                            title: 'Cell Type Pairs (Sender|Receiver)',
+                            title: 'Receiver',
                             tickangle: -45,
-                            tickfont: { size: 10 }
+                            tickfont: { size: 11 }
                         },
                         yaxis: {
-                            title: 'Interactions',
-                            tickfont: { size: 10 }
+                            title: 'Sender',
+                            tickfont: { size: 11 },
+                            automargin: true
                         },
-                        margin: { l: 150, r: 50, t: 80, b: 150 }
+                        margin: { l: 150, r: 50, t: 60, b: 150 }
                     };
 
                     Plotly.newPlot('cpdbHeatmapPlot', [trace], layout, { responsive: true });
@@ -852,40 +1200,75 @@
                 // Render dot plot using Plotly
                 function renderCpdbDotplot(dotplotData) {
                     if (!dotplotData || !dotplotData.interactions || dotplotData.interactions.length === 0) {
-                        $('#cpdbDotplot').html('<div class="cpdb-error"><p class="cpdb-error-text">No interaction data to display</p></div>');
+                        $('#cpdbDotplot').html('<div class="cpdb-error"><p class="cpdb-error-text">No significant interactions to display</p></div>');
                         return;
                     }
 
-                    const trace = {
-                        x: dotplotData.cell_pairs,
-                        y: dotplotData.interactions,
+                    // Flatten 2D arrays into scatter points
+                    var xArr = [], yArr = [], sizeArr = [], colorArr = [], textArr = [];
+                    var interactions = dotplotData.interactions;
+                    var cellPairs = dotplotData.cell_pairs;
+                    var means = dotplotData.means;
+                    var pvalues = dotplotData.pvalues;
+                    var sizes = dotplotData.sizes;
+
+                    for (var i = 0; i < interactions.length; i++) {
+                        for (var j = 0; j < cellPairs.length; j++) {
+                            var m = means[i][j];
+                            var p = pvalues[i][j];
+                            var s = sizes[i][j];
+                            if (s > 0) {
+                                xArr.push(cellPairs[j]);
+                                yArr.push(interactions[i]);
+                                sizeArr.push(Math.min(25, Math.max(4, s * 2.5)));
+                                colorArr.push(m);
+                                textArr.push('Mean: ' + m.toFixed(3) + '<br>p-value: ' + p.toFixed(4));
+                            }
+                        }
+                    }
+
+                    if (xArr.length === 0) {
+                        $('#cpdbDotplot').html('<div class="cpdb-error"><p class="cpdb-error-text">No significant interactions to display</p></div>');
+                        return;
+                    }
+
+                    var trace = {
+                        x: xArr,
+                        y: yArr,
                         mode: 'markers',
                         marker: {
-                            size: dotplotData.sizes.map(function(s) { return Math.min(30, Math.max(5, s * 10)); }),
-                            color: dotplotData.scores,
-                            colorscale: 'RdBu',
-                            reversescale: true,
+                            size: sizeArr,
+                            color: colorArr,
+                            colorscale: [[0, '#2166ac'], [0.5, '#f7f7f7'], [1, '#b2182b']],
                             showscale: true,
-                            colorbar: { title: 'Score' }
+                            colorbar: { title: 'Mean', thickness: 15, len: 0.6 }
                         },
                         type: 'scatter',
-                        text: dotplotData.scores.map(function(s) { return 'Score: ' + s.toFixed(3); }),
-                        hoverinfo: 'text+x+y'
+                        text: textArr,
+                        hovertemplate: '%{y}<br>%{x}<br>%{text}<extra></extra>'
                     };
 
-                    const layout = {
-                        title: 'Top Ligand-Receptor Interactions',
+                    var el = document.getElementById('cpdbDotplot');
+                    var w = Math.max(el.offsetWidth - 40, 600);
+                    var h = Math.max(interactions.length * 22 + 250, 500);
+
+                    var layout = {
+                        title: 'Top Ligand-Receptor Interactions (Dot Plot)',
                         font: { family: 'Montserrat, sans-serif' },
+                        width: w,
+                        height: h,
                         xaxis: {
                             title: 'Cell Type Pairs',
                             tickangle: -45,
-                            tickfont: { size: 10 }
+                            tickfont: { size: 9 },
+                            automargin: true
                         },
                         yaxis: {
-                            title: 'Interactions',
-                            tickfont: { size: 10 }
+                            title: '',
+                            tickfont: { size: 9 },
+                            automargin: true
                         },
-                        margin: { l: 150, r: 100, t: 80, b: 150 }
+                        margin: { l: 200, r: 80, t: 60, b: 150 }
                     };
 
                     Plotly.newPlot('cpdbDotplot', [trace], layout, { responsive: true });
@@ -893,23 +1276,23 @@
 
                 // Populate results table
                 function populateCpdbTable(interactions) {
-                    const tbody = $('#cpdbResultsTable tbody');
+                    var tbody = $('#cpdbResultsTable tbody');
                     tbody.empty();
 
                     if (!interactions || interactions.length === 0) {
-                        tbody.append('<tr><td colspan="6" style="text-align:center;">No interactions found</td></tr>');
+                        tbody.append('<tr><td colspan="5" style="text-align:center; color:#999;">No significant interactions found</td></tr>');
                         return;
                     }
 
-                    interactions.forEach(function(int) {
+                    interactions.forEach(function(row) {
+                        var pClass = row.pvalue < 0.01 ? 'color:#c0392b; font-weight:600;' : (row.pvalue < 0.05 ? 'color:#e67e22;' : '');
                         tbody.append(
                             '<tr>' +
-                            '<td>' + int.interaction + '</td>' +
-                            '<td>' + int.ligand + '</td>' +
-                            '<td>' + int.receptor + '</td>' +
-                            '<td>' + int.cell_type_sender + '</td>' +
-                            '<td>' + int.cell_type_receiver + '</td>' +
-                            '<td>' + int.score.toFixed(4) + '</td>' +
+                            '<td>' + (row.interaction || '') + '</td>' +
+                            '<td>' + (row.sender || '') + '</td>' +
+                            '<td>' + (row.receiver || '') + '</td>' +
+                            '<td>' + (row.mean != null ? row.mean.toFixed(4) : '0') + '</td>' +
+                            '<td style="' + pClass + '">' + (row.pvalue != null ? row.pvalue.toFixed(4) : '1') + '</td>' +
                             '</tr>'
                         );
                     });

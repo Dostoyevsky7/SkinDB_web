@@ -193,4 +193,20 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <servlet>
+        <servlet-name>EnrichmentServlet</servlet-name>
+        <servlet-class>Servlet.EnrichmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EnrichmentServlet</servlet-name>
+        <url-pattern>/enrichment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GeoMetaServlet</servlet-name>
+        <servlet-class>Servlet.GeoMetaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GeoMetaServlet</servlet-name>
+        <url-pattern>/geo_meta</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1584,13 +1584,12 @@ textarea:focus {
     border: 1px solid #e5e0d8;
     border-radius: 12px;
     padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow-x: auto;
 }
 
 .cpdb-plot-container .js-plotly-plot {
     width: 100%;
+    min-height: 450px;
 }
 
 /* Error state */
